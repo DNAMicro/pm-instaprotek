@@ -1,0 +1,4 @@
+{
+  "_comment": "Persistent cache of resolved SKU lookups. Key is the upper-cased SKU as it appeared in the source registration file. Value contains the reconciled Brand menu entry plus the original search evidence.",
+  "lookups": {}
+}

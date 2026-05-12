@@ -1,0 +1,33 @@
+{
+  "crm": {
+    "base_url": "https://qa.crm.instaprotek.com",
+    "login_path": "/",
+    "company_name": "Demo Company",
+    "default_vertical": "Education"
+  },
+  "webhook": {
+    "url": "https://hooks.ringcentral.com/webhook/v2/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvdCI6ImMiLCJvaSI6IjE3MDU3MjE4NTciLCJpZCI6IjM3NDQwNDcxMzEifQ.2wjy0wa4pkJt3Wz4zHj-9okE07C-qeORxkSZaT0w3sY",
+    "timeout_seconds": 15
+  },
+  "playwright": {
+    "default_headless": true,
+    "default_timeout_ms": 30000,
+    "navigation_timeout_ms": 45000,
+    "storage_state_path": ".claude/skills/instaprotek-enterprise-registration/.auth/storage_state.json",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  },
+  "brand_menu_cache": {
+    "max_age_hours": 168
+  },
+  "validation": {
+    "auto_trim_whitespace": true,
+    "auto_normalize_yes_no": true,
+    "auto_titlecase_manufacturer": true,
+    "sku_pattern": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z0-9-]{6,}$"
+  },
+  "search": {
+    "engine": "google",
+    "query_template": "{manufacturer} {model_number} model name",
+    "min_confidence": 0.75
+  }
+}

@@ -1,0 +1,26 @@
+# Credentials — never commit
+credentials.json
+
+# Playwright session storage
+.claude/skills/instaprotek-enterprise-registration/.auth/
+
+# Cached CRM brand menu (stale-able, re-readable)
+.claude/skills/instaprotek-enterprise-registration/config/brand_menu_cache.json
+
+# Run artifacts
+processed/**/screenshots/
+processed/**/run_log.txt
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# Playwright install artifacts
+node_modules/

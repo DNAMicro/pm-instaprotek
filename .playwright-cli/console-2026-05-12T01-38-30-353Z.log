@@ -1,0 +1,20 @@
+[     848ms] [WARNING] Deprecation warning: value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are discouraged and will be removed in an upcoming major release. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.
+Arguments: 
+[0] _isAMomentObject: true, _isUTC: false, _useUTC: false, _l: undefined, _i: 5/6/2026, 8:45:07 AM, _f: undefined, _strict: undefined, _locale: [object Object]
+Error
+    at hooks.createFromInputFallback (https://qa.crm.instaprotek.com/js/app.js:1139:98)
+    at configFromString (https://qa.crm.instaprotek.com/js/app.js:3204:15)
+    at configFromInput (https://qa.crm.instaprotek.com/js/app.js:3430:13)
+    at prepareConfig (https://qa.crm.instaprotek.com/js/app.js:3413:13)
+    at createFromConfig (https://qa.crm.instaprotek.com/js/app.js:3380:44)
+    at createLocalOrUTC (https://qa.crm.instaprotek.com/js/app.js:3467:16)
+    at createLocal (https://qa.crm.instaprotek.com/js/app.js:3471:16)
+    at hooks (https://qa.crm.instaprotek.com/js/app.js:831:29)
+    at formatDateTimezone (https://qa.crm.instaprotek.com/js/app.js:453:40)
+    at Registrations.formatValue (https://qa.crm.instaprotek.com/js/app.js:64382:1290)
+    at DNATable.formatItemValue (https://qa.crm.instaprotek.com/js/app.js:101993:2807)
+    at https://qa.crm.instaprotek.com/js/app.js:101993:5384
+    at Array.map (<anonymous>)
+    at https://qa.crm.instaprotek.com/js/app.js:101993:5019
+    at Array.map (<anonymous>)
+    at DNATable.render (https://qa.crm.instaprotek.com/js/app.js:101993:4690) @ https://qa.crm.instaprotek.com/js/app.js:1111
