@@ -112,9 +112,16 @@ On any hard-fail: files stay in `input/`, failure artifacts (validation report, 
 - `webhook_response.json` — RingCentral response
 - `screenshots/` — per-CRM-step screenshots
 
+## Product SKU selection
+
+The CRM's New Batch form has a Product dropdown under each Plan. The correct product is identified by matching the PO's unit rate against the **Sales price** column in `references/instaProtek Product SKU List.xlsx`. The script logs the resolved SKU (e.g. `ESC030012MO00IK`) before opening the CRM. If no match is found the first available dropdown option is used and a warning is logged.
+
+The reference file ships with the project at `references/instaProtek Product SKU List.xlsx`. Keep it up to date when InstaProtek adds or reprices products.
+
 ## Configuration reference
 
 - `config/settings.json` — CRM URL, company name, vertical, webhook URL, runtime defaults
 - `config/selectors.json` — CRM DOM selectors (populated during first headed run)
 - `config/brand_menu_cache.json` — cached Brand menu, refreshed when stale or with `--refresh-brand-menu`
 - `config/sku_to_model.json` — persistent cache of resolved SKU lookups
+- `references/instaProtek Product SKU List.xlsx` — price-to-SKU lookup table; Sales price column matched against PO unit rate

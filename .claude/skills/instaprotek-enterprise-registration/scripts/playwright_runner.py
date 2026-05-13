@@ -33,9 +33,11 @@ from typing import Any
 
 @dataclass
 class BatchInput:
-    # product_label: leave empty to auto-select the only option in the Product dropdown
-    # (most Plans have exactly one Product). Provide a specific label only if the dropdown
-    # offers multiple options and the caller knows which to pick.
+    # product_label: exact accessible name of the dropdown option — use when you know the full
+    #   label (e.g. "Extended Service Contract - 12 Months (ESC030012MO00IK)").
+    # product_sku_hint: SKU substring to match inside an option label — looked up from the
+    #   reference price list by PO rate. Takes effect only when product_label is empty.
+    # If both are empty, the first available option is auto-selected.
     product_label: str
     number_of_pins: int
     po_number: str
@@ -43,6 +45,7 @@ class BatchInput:
     plan_purchase_price: str         # e.g. "14.43" — PO unit rate; field is required by the CRM
     vertical: str                    # "Education" etc. — see CRM Vertical dropdown options
     invoice_number: str = ""         # optional
+    product_sku_hint: str = ""       # SKU from reference lookup; used to narrow the product dropdown
 
 
 @dataclass
@@ -254,23 +257,41 @@ class CRMRunner:
         base = self.settings["crm"]["base_url"].rstrip("/")
         login_path = self.settings["crm"].get("login_path", "/")
         page.goto(base + login_path)
-        _shot(page, self.screenshot_dir, "login_loaded")
 
-        # If a post-login indicator is already present, skip the login form (storage state restored).
+        # Let the SPA settle so we can reliably distinguish login form vs. restored session.
         try:
-            indicator = _require(self.selectors, "login.post_login_indicator")
-            if _locator(page, indicator).first.is_visible(timeout=2000):
-                self.logger.info("Already logged in (session restored from storage state).")
-                return
-        except SelectorMissing:
-            pass
+            page.wait_for_load_state("networkidle", timeout=15000)
         except Exception:
             pass
+        _shot(page, self.screenshot_dir, "login_loaded")
 
         username_sel = _require(self.selectors, "login.username_input")
         password_sel = _require(self.selectors, "login.password_input")
         submit_sel = _require(self.selectors, "login.submit_button")
         indicator_sel = _require(self.selectors, "login.post_login_indicator")
+
+        # Race: wait for whichever appears first — the username input (need to log in) or the
+        # post-login indicator (storage state restored). Poll with a 10s budget.
+        import time as _time
+        deadline = _time.monotonic() + 10
+        already_logged_in = False
+        while _time.monotonic() < deadline:
+            try:
+                if _locator(page, indicator_sel).first.is_visible(timeout=500):
+                    already_logged_in = True
+                    break
+            except Exception:
+                pass
+            try:
+                if _locator(page, username_sel).first.is_visible(timeout=500):
+                    break
+            except Exception:
+                pass
+
+        if already_logged_in:
+            self.logger.info("Already logged in (session restored from storage state).")
+            _shot(page, self.screenshot_dir, "login_success")
+            return
 
         _locator(page, username_sel).first.fill(self.credentials.username)
         _locator(page, password_sel).first.fill(self.credentials.password)
@@ -303,7 +324,11 @@ class CRMRunner:
         loc = _locator(page, search_input).first
         loc.fill("")
         loc.fill(brand_name)
-        page.wait_for_timeout(500)  # filter debounce
+
+        # Wait for the async filter to render the target row before scanning (Brand Name lives
+        # in cell index 1 of the brand-list table).
+        self._wait_for_filtered_row(brand_name, cell_index=1)
+
         # Click the edit button on the row whose visible text contains the brand name. Multi-
         # word brand names ("Samsung Galaxy") collide with substring matches ("Samsung"), so
         # we additionally check the brand-name cell text equals the requested name before
@@ -335,6 +360,48 @@ class CRMRunner:
         return devices
 
     # -- internal nav + scraping helpers ----------------------------------
+
+    def _wait_for_filtered_row(
+        self,
+        target: str,
+        *,
+        cell_index: int = 0,
+        timeout_ms: int = 15000,
+    ) -> None:
+        """Wait until a table row's cell at `cell_index` equals `target` (case-insensitive).
+
+        CRM tables filter asynchronously: typing into the search input fires a server request
+        and the previous page's rows stay visible (with a "Getting Records..." overlay) until
+        the response arrives. Callers should fill the search input, then call this before
+        iterating rows.
+        """
+        target_norm = (target or "").strip().lower()
+        if not target_norm:
+            return
+        try:
+            self._page.wait_for_function(
+                """({target, idx}) => {
+                    const loading = Array.from(document.querySelectorAll('*')).some(
+                        el => el.children.length === 0
+                            && (el.textContent || '').trim() === 'Getting Records...'
+                    );
+                    if (loading) return false;
+                    const rows = document.querySelectorAll('[role="row"]');
+                    for (const row of rows) {
+                        const cells = row.querySelectorAll('[role="cell"]');
+                        if (cells.length > idx) {
+                            const text = (cells[idx].textContent || '').trim().toLowerCase();
+                            if (text === target) return true;
+                        }
+                    }
+                    return false;
+                }""",
+                arg={"target": target_norm, "idx": cell_index},
+                timeout=timeout_ms,
+            )
+        except Exception:
+            # Caller raises a clean error if the row never appears.
+            pass
 
     def _navigate_to_brand_list(self) -> None:
         """Ensure the page is showing Settings -> Brand. Uses direct URL nav for resilience."""
@@ -421,7 +488,10 @@ class CRMRunner:
         loc.wait_for(state="visible", timeout=15000)
         loc.fill("")
         loc.fill(company_name)
-        page.wait_for_timeout(500)
+
+        # Wait for the async filter to render the target row before scanning (Company Name
+        # lives in cell index 0 of the company-list table).
+        self._wait_for_filtered_row(company_name, cell_index=0)
 
         # Find the row whose name cell equals `company_name` and click into it.
         target_norm = (company_name or "").strip().lower()
@@ -454,7 +524,8 @@ class CRMRunner:
                 ploc = _locator(page, plans_search).first
                 ploc.fill("")
                 ploc.fill(plan_name)
-                page.wait_for_timeout(400)
+                # Plan Name lives in cell index 0 of the Plans table.
+                self._wait_for_filtered_row(plan_name, cell_index=0)
             except Exception:
                 pass
 
@@ -492,20 +563,52 @@ class CRMRunner:
           JS .click() if Playwright's click is blocked.
         """
         page = self._page
-        new_batch_btn = _require(self.selectors, "company.new_batch_button")
-        _locator(page, new_batch_btn).first.click()
+
+        # The Plan Details modal opens on its Details tab by default. Switch to Batches first;
+        # the "add New" (Batch) button only lives there. Without this, the global page's
+        # "add New" button (which adds a Plan, not a Batch) is found first by .first and its
+        # click is intercepted by the open dialog's title.
+        batches_tab_sel = self.selectors.get("plan_detail", {}).get("batches_tab")
+        if batches_tab_sel:
+            try:
+                _locator(page, batches_tab_sel).first.click(timeout=5000)
+            except Exception:
+                self.logger.debug("Batches tab click failed (already active?)")
+
+        # Click "add New" *inside the dialog* — not the obscured outer-page button.
+        dialog = page.get_by_role("dialog").first
+        try:
+            dialog.wait_for(state="visible", timeout=5000)
+            dialog.get_by_role("button", name="add New").first.click()
+        except Exception:
+            # Fall back to the historical global selector if no dialog wrapper is present.
+            new_batch_btn = _require(self.selectors, "company.new_batch_button")
+            _locator(page, new_batch_btn).first.click()
         _shot(page, self.screenshot_dir, "new_batch_dialog")
 
-        # Product — auto-pick the only option when no label specified. We capture the chosen
-        # option's accessible name so the caller can extract the SKU for the later CSV upload
-        # (option name format observed: "Accidental Damage Replacement - 12 Months (ESC030012MO00IK)").
+        # Product — select by exact label, SKU hint, or auto-pick the first option.
+        # Option format observed: "Extended Service Contract - 12 Months (ESC030012MO00IK)"
         product_dropdown = _require(self.selectors, "batch_form.product_dropdown")
         _locator(page, product_dropdown).first.click()
-        chosen_option = (
-            _locator(page, {"role": "option", "name": batch.product_label}).first
-            if batch.product_label
-            else _locator(page, {"role": "option"}).first
-        )
+        if batch.product_label:
+            chosen_option = _locator(page, {"role": "option", "name": batch.product_label}).first
+        elif batch.product_sku_hint:
+            # Find the option whose visible text contains the SKU (in parentheses at the end).
+            all_opts = _locator(page, {"role": "option"})
+            chosen_option = None
+            for i in range(all_opts.count()):
+                opt = all_opts.nth(i)
+                if batch.product_sku_hint in (opt.inner_text() or ""):
+                    chosen_option = opt
+                    break
+            if chosen_option is None:
+                self.logger.warning(
+                    "SKU hint %r not found in Product dropdown; falling back to first option",
+                    batch.product_sku_hint,
+                )
+                chosen_option = all_opts.first
+        else:
+            chosen_option = _locator(page, {"role": "option"}).first
         chosen_product_label = (chosen_option.inner_text() or "").strip()
         chosen_option.click()
 

@@ -459,14 +459,33 @@ def _run_pipeline(
                     )
                     return 1
 
+                # Resolve the product SKU from the reference price list using the PO rate.
+                from utils import lookup_sku_by_price
+
+                sku_hint = ""
+                if po.rate is not None:
+                    sku_result = lookup_sku_by_price(po.rate)
+                    if sku_result:
+                        sku_hint, sku_product_name = sku_result
+                        logger.info(
+                            "Reference lookup: rate=%.2f -> SKU=%r (%s)",
+                            po.rate, sku_hint, sku_product_name,
+                        )
+                    else:
+                        logger.warning(
+                            "No SKU found in reference file for rate %.2f — will auto-select first product",
+                            po.rate,
+                        )
+
                 batch = BatchInput(
-                    product_label="",  # Auto-pick the only product option under the chosen plan
+                    product_label="",
                     number_of_pins=reg.row_count,
                     po_number=po.po_number or "",
                     plan_purchase_date=plan_purchase_date_us,
                     plan_purchase_price=f"{po.rate:.2f}" if po.rate is not None else "0.00",
                     vertical=settings["crm"].get("default_vertical", "Education"),
                     invoice_number="",
+                    product_sku_hint=sku_hint,
                 )
 
                 batch_result: dict[str, str] = {}

@@ -22,6 +22,8 @@ INPUT_DIR = PROJECT_ROOT / "input"
 PROCESSED_DIR = PROJECT_ROOT / "processed"
 FAILURES_DIR = PROCESSED_DIR / "failures"
 CREDENTIALS_PATH = PROJECT_ROOT / "credentials.json"
+REFERENCES_DIR = PROJECT_ROOT / "references"
+_SKU_LIST_FILENAME = "instaProtek Product SKU List.xlsx"
 
 
 # ---- Logging --------------------------------------------------------------
@@ -381,3 +383,66 @@ def first(items: Iterable[Any], default: Any = None) -> Any:
     for item in items:
         return item
     return default
+
+
+# ---- Reference file lookup -----------------------------------------------
+
+
+def lookup_sku_by_price(price: float | None, tolerance: float = 0.005) -> tuple[str, str] | None:
+    """Return (sku, product_name) from the reference XLSX whose Sales price matches `price`.
+
+    Scans the active sheet for a header row containing "SKU" and "Sales price" columns, then
+    walks the data rows beneath it. Matches within `tolerance` to absorb floating-point rounding.
+    Returns None if the file is missing, the price is None, or no match is found.
+    """
+    if price is None:
+        return None
+
+    ref_path = REFERENCES_DIR / _SKU_LIST_FILENAME
+    if not ref_path.exists():
+        return None
+
+    try:
+        import openpyxl
+
+        wb = openpyxl.load_workbook(str(ref_path), read_only=True, data_only=True)
+        ws = wb.active
+
+        sku_col = price_col = name_col = None
+        for row in ws.iter_rows(values_only=True):
+            for i, cell in enumerate(row):
+                if not isinstance(cell, str):
+                    continue
+                label = cell.strip().lower()
+                if label == "sku":
+                    sku_col = i
+                elif label == "sales price":
+                    price_col = i
+                elif label.startswith("product/service") or label == "product name":
+                    name_col = i
+            if sku_col is not None and price_col is not None:
+                break
+
+        if sku_col is None or price_col is None:
+            return None
+        if name_col is None:
+            name_col = 0  # product name is conventionally in column A
+
+        # Re-iterate from the top, skipping rows until past the header. We identify "past header"
+        # by waiting for a row whose price cell is numeric.
+        for row in ws.iter_rows(values_only=True):
+            if len(row) <= max(sku_col, price_col, name_col):
+                continue
+            sku = row[sku_col]
+            sales_price = row[price_col]
+            product_name = row[name_col]
+            if not isinstance(sales_price, (int, float)):
+                continue
+            if sku is None:
+                continue
+            if abs(float(sales_price) - float(price)) <= tolerance:
+                return (str(sku).strip(), str(product_name).strip() if product_name else "")
+    except Exception:
+        pass
+
+    return None
