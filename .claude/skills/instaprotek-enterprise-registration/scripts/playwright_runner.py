@@ -564,24 +564,29 @@ class CRMRunner:
         """
         page = self._page
 
-        # The Plan Details modal opens on its Details tab by default. Switch to Batches first;
-        # the "add New" (Batch) button only lives there. Without this, the global page's
-        # "add New" button (which adds a Plan, not a Batch) is found first by .first and its
-        # click is intercepted by the open dialog's title.
+        # The Plan Detail modal (`.advancedFullDialog`) opens on its Details tab by default.
+        # The visible "add New" button on the outer Company > Plans page (which would add
+        # another Plan) is now obscured by this dialog's title, so a global `.first` click is
+        # intercepted. Switch to the Batches tab inside the dialog, then click "add New"
+        # inside the dialog.
+        try:
+            page.locator(".advancedFullDialog").first.wait_for(state="visible", timeout=10000)
+        except Exception:
+            self.logger.debug("advancedFullDialog wrapper not detected; continuing")
+
         batches_tab_sel = self.selectors.get("plan_detail", {}).get("batches_tab")
         if batches_tab_sel:
             try:
                 _locator(page, batches_tab_sel).first.click(timeout=5000)
+                page.wait_for_timeout(500)  # let the tab content render
             except Exception:
                 self.logger.debug("Batches tab click failed (already active?)")
 
-        # Click "add New" *inside the dialog* — not the obscured outer-page button.
-        dialog = page.get_by_role("dialog").first
         try:
-            dialog.wait_for(state="visible", timeout=5000)
-            dialog.get_by_role("button", name="add New").first.click()
+            dialog_scope = page.locator(".advancedFullDialog").first
+            dialog_scope.get_by_role("button", name="add New").first.click()
         except Exception:
-            # Fall back to the historical global selector if no dialog wrapper is present.
+            self.logger.debug("Scoped add-New click failed; falling back to global selector")
             new_batch_btn = _require(self.selectors, "company.new_batch_button")
             _locator(page, new_batch_btn).first.click()
         _shot(page, self.screenshot_dir, "new_batch_dialog")
