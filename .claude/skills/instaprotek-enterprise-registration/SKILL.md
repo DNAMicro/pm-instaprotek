@@ -19,27 +19,49 @@ Trigger this skill whenever the user asks to:
 
 If a Purchase Order PDF and a registration CSV/XLSX are present in `input/` and the user implies they want them processed, trigger this skill even if they don't use an exact phrase above.
 
-## Company and plan selection (supplied per invocation)
+## Company, plan, and environment selection (supplied per invocation)
 
-Both the CRM company and the CRM plan name are supplied by the user on each invocation, because POs almost never use the CRM's exact plan name (e.g. PO "1 Year Accidental Damage Replacement - Advanced Replacement" maps to CRM plan "Extended Service Contract - 12 Months"). The expected invocation form is:
+The CRM tenant, the CRM plan name, and the target environment (QA vs Production) are all supplied by the user on each invocation. POs almost never use the CRM's exact plan name (e.g. PO "1 Year Accidental Damage Replacement - Advanced Replacement" maps to CRM plan "Extended Service Contract - 12 Months"). The expected invocation forms:
 
 > "Run InstaProtek Registration for company \"<Company Name>\" with plan \"<Plan Name>\""
+>
+> (or, explicit Production:) "Run InstaProtek Registration **in Production** for company \"<X>\" with plan \"<Y>\""
 
-Extract both names from the user's message before invoking the script:
+Extract these fields from the user's message before invoking the script:
 
 1. **Company:** prefer text inside straight or smart double quotes after the word "company". Otherwise, take the text after `for company` up to the next clause (e.g. `with`, `using`) or end-of-sentence.
 2. **Plan:** prefer text inside quotes after "plan" / "with plan" / "using plan". Otherwise the text after those keywords.
-3. If either is missing, use the defaults in `config/settings.json` -> `crm.company_name` and (when added) `crm.default_plan_name`. For QA defaults are `"Demo Company"` and unset. Do NOT guess the plan from the PO description.
+3. **Environment:** if the invocation contains the word "production" / "prod" (case-insensitive), pass `--env Production`. Otherwise omit `--env` and the run defaults to the `Env` field in `credentials.json` (currently `QA`). NEVER auto-route to Production without an explicit signal in the user's message.
+4. If company or plan is missing, use the defaults in `config/settings.json` -> `crm.company_name` and (when added) `crm.default_plan_name`. For QA defaults are `"Demo Company"` and unset. Do NOT guess the plan from the PO description.
 
 Pass the resolved values via CLI flags:
 
 ```bash
+# QA (default)
 python .claude/skills/instaprotek-enterprise-registration/scripts/run.py \
   --company "Demo Company" \
   --plan "Extended Service Contract - 12 Months"
+
+# Production
+python .claude/skills/instaprotek-enterprise-registration/scripts/run.py \
+  --env Production \
+  --company "Connected Solutions Group, LLC." \
+  --plan "<exact CRM plan name>"
 ```
 
-The CRM run will hard-fail with a clear "Company {name} not found in CRM Company list" or "Plan {name} not found under company {company}" error if either supplied name doesn't match. Match is case-insensitive but otherwise exact — include trailing punctuation (e.g. the trailing `.` in `"Connected Solutions Group, LLC."`).
+The CRM run will hard-fail with a clear error if either supplied name doesn't match: "Company {name} not found in CRM Company list" or "Plan {name} not found under company {company}". Match is case-insensitive but otherwise exact — include trailing punctuation (e.g. the trailing `.` in `"Connected Solutions Group, LLC."`).
+
+`credentials.json` schema (gitignored — never commit Production creds):
+
+```json
+{
+  "Env": "QA",
+  "QA":         {"crm_base_url": "...", "username": "...", "password": "..."},
+  "Production": {"crm_base_url": "...", "username": "...", "password": "..."}
+}
+```
+
+`--env <name>` overrides the file's `Env` field. The selected env's `crm_base_url` (if set) overrides `settings.json -> crm.base_url`. If the selected env block still has `<ADD ...>` placeholders, the run hard-fails with a clear "still has placeholder values" error before touching the network.
 
 ## Prerequisites
 

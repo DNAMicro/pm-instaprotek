@@ -183,19 +183,91 @@ def discover_input_files(input_dir: Path = INPUT_DIR) -> DiscoveredFiles:
 class Credentials:
     username: str
     password: str
+    env: str = "QA"
+    crm_base_url: str | None = None
 
 
-def load_credentials(path: Path = CREDENTIALS_PATH) -> Credentials:
+_PLACEHOLDER_PREFIXES = ("<ADD", "<add")
+
+
+def _looks_like_placeholder(value: Any) -> bool:
+    if not isinstance(value, str):
+        return False
+    s = value.strip()
+    return s.startswith(_PLACEHOLDER_PREFIXES) or s.endswith(">")
+
+
+def load_credentials(path: Path = CREDENTIALS_PATH, env: str | None = None) -> Credentials:
+    """Load CRM credentials for the selected environment.
+
+    Schema (current): top-level "Env" selects a sub-object whose name matches (case-insensitive).
+        {
+          "Env": "QA",
+          "QA":         {"username": ..., "password": ..., "crm_base_url": ...},
+          "Production": {"username": ..., "password": ..., "crm_base_url": ...}
+        }
+    Schema (legacy, still accepted): flat object with just username/password at the top.
+        { "username": ..., "password": ... }
+
+    `env` argument (case-insensitive) overrides the file's "Env" field.
+    """
     if not path.exists():
         raise FileNotFoundError(
-            f"credentials.json not found at {path}. Create it with username and password fields."
+            f"credentials.json not found at {path}. Create it with QA/Production blocks (see project README)."
         )
     data = load_json(path)
-    username = (data.get("username") or "").strip()
-    password = data.get("password") or ""
-    if not username or not password:
-        raise ValueError("credentials.json is missing username or password.")
-    return Credentials(username=username, password=password)
+
+    # Legacy flat shape — no env routing
+    if "username" in data and "password" in data and not any(
+        isinstance(v, dict) for v in data.values()
+    ):
+        username = (data.get("username") or "").strip()
+        password = data.get("password") or ""
+        if not username or not password:
+            raise ValueError("credentials.json is missing username or password.")
+        return Credentials(username=username, password=password, env="QA")
+
+    # New env-aware shape
+    selected_env = (env or data.get("Env") or "QA").strip()
+    block = None
+    block_name_used = None
+    for key, value in data.items():
+        if not isinstance(value, dict):
+            continue
+        if key.lower() == selected_env.lower():
+            block = value
+            block_name_used = key
+            break
+    if block is None:
+        available = [k for k, v in data.items() if isinstance(v, dict)]
+        raise ValueError(
+            f"credentials.json has no environment block named {selected_env!r}. "
+            f"Available: {available}"
+        )
+
+    username = (block.get("username") or "").strip()
+    password = block.get("password") or ""
+    crm_base_url = (block.get("crm_base_url") or "").strip() or None
+
+    missing = [n for n, v in (("username", username), ("password", password)) if not v]
+    placeholders = [n for n, v in (("username", username), ("password", password), ("crm_base_url", crm_base_url))
+                    if v is not None and _looks_like_placeholder(v)]
+    if missing:
+        raise ValueError(
+            f"credentials.json env {block_name_used!r} is missing: {missing}"
+        )
+    if placeholders:
+        raise ValueError(
+            f"credentials.json env {block_name_used!r} still has placeholder values for: {placeholders}. "
+            "Replace the <ADD ...> placeholders with real values before running this environment."
+        )
+
+    return Credentials(
+        username=username,
+        password=password,
+        env=block_name_used,
+        crm_base_url=crm_base_url,
+    )
 
 
 # ---- Run folder & timestamp ----------------------------------------------

@@ -168,14 +168,14 @@ def _run_pipeline(
     failure_folder,
     logger,
 ) -> int:
-    # Load credentials
+    # Load credentials (env selectable via --env flag; defaults to credentials.json's "Env" field)
     try:
-        credentials = load_credentials()
+        credentials = load_credentials(env=args.env)
     except Exception as exc:
         _fail(
             stage="load_credentials",
             reason=str(exc),
-            details={},
+            details={"env_requested": args.env},
             success_folder=success_folder,
             failure_folder=failure_folder,
             settings=settings,
@@ -185,6 +185,14 @@ def _run_pipeline(
             logger=logger,
         )
         return 1
+    logger.info("Loaded credentials for env=%s", credentials.env)
+
+    # If the env block specified a CRM base URL, it overrides settings.json
+    if credentials.crm_base_url:
+        prior = settings.get("crm", {}).get("base_url")
+        settings.setdefault("crm", {})["base_url"] = credentials.crm_base_url
+        logger.info("CRM base_url from credentials env %r: %r (was %r)",
+                    credentials.env, credentials.crm_base_url, prior)
 
     # Load + validate the registration file
     from validate_inputs import (
@@ -956,6 +964,15 @@ def _parse_args() -> argparse.Namespace:
             "Required when PO plan description doesn't match the CRM plan verbatim. Overrides "
             "settings.json crm.default_plan_name when provided. If unset, falls back to the PO's "
             "plan_description, which usually does NOT match the CRM plan."
+        ),
+    )
+    p.add_argument(
+        "--env",
+        default=None,
+        help=(
+            "Which environment block in credentials.json to use (case-insensitive). "
+            "Typical values: \"QA\" (default) or \"Production\". Overrides the 'Env' field "
+            "in credentials.json. The env's crm_base_url (if set) overrides settings.json crm.base_url."
         ),
     )
     return p.parse_args()
