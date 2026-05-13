@@ -13,10 +13,33 @@ Trigger this skill whenever the user asks to:
 
 - "run instaprotek", "run instaprotek registration", "process instaprotek", "process the instaprotek input"
 - "register the instaprotek sale", "submit the instaprotek batch"
+- "Run InstaProtek Registration for company \"X\" with plan \"Y\"" (canonical production form — see Company and plan selection below)
 - Reference processing files sitting in `input/` for the InstaProtek project
 - Ask anything about the InstaProtek bulk registration workflow
 
 If a Purchase Order PDF and a registration CSV/XLSX are present in `input/` and the user implies they want them processed, trigger this skill even if they don't use an exact phrase above.
+
+## Company and plan selection (supplied per invocation)
+
+Both the CRM company and the CRM plan name are supplied by the user on each invocation, because POs almost never use the CRM's exact plan name (e.g. PO "1 Year Accidental Damage Replacement - Advanced Replacement" maps to CRM plan "Extended Service Contract - 12 Months"). The expected invocation form is:
+
+> "Run InstaProtek Registration for company \"<Company Name>\" with plan \"<Plan Name>\""
+
+Extract both names from the user's message before invoking the script:
+
+1. **Company:** prefer text inside straight or smart double quotes after the word "company". Otherwise, take the text after `for company` up to the next clause (e.g. `with`, `using`) or end-of-sentence.
+2. **Plan:** prefer text inside quotes after "plan" / "with plan" / "using plan". Otherwise the text after those keywords.
+3. If either is missing, use the defaults in `config/settings.json` -> `crm.company_name` and (when added) `crm.default_plan_name`. For QA defaults are `"Demo Company"` and unset. Do NOT guess the plan from the PO description.
+
+Pass the resolved values via CLI flags:
+
+```bash
+python .claude/skills/instaprotek-enterprise-registration/scripts/run.py \
+  --company "Demo Company" \
+  --plan "Extended Service Contract - 12 Months"
+```
+
+The CRM run will hard-fail with a clear "Company {name} not found in CRM Company list" or "Plan {name} not found under company {company}" error if either supplied name doesn't match. Match is case-insensitive but otherwise exact — include trailing punctuation (e.g. the trailing `.` in `"Connected Solutions Group, LLC."`).
 
 ## Prerequisites
 

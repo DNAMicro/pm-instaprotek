@@ -1,0 +1,610 @@
+- generic [ref=e1]:
+  - dialog [ref=e2616]:
+    - heading "New Batch close" [level=2] [ref=e2617]:
+      - generic [ref=e2618]:
+        - text: New Batch
+        - button "close" [ref=e2619]:
+          - generic [ref=e2620]: close
+    - generic [ref=e2621]:
+      - generic [ref=e2622]:
+        - generic [ref=e2624]:
+          - generic [ref=e2627]: 
+          - generic [ref=e2629]:
+            - generic [ref=e2630]: Product
+            - generic [ref=e2633]:
+              - option "Accidental Damage Replacement - 12 Months (ESC030012MO00IK)" [selected] [ref=e2747]
+              - combobox [ref=e2636]
+        - generic [ref=e2639]:
+          - generic: Number of Pins *
+          - generic [ref=e2640]:
+            - generic [ref=e2641]: 
+            - generic [ref=e2642]:
+              - textbox "Number of Pins *" [ref=e2643]: "20"
+              - separator [ref=e2644]
+        - generic [ref=e2646]:
+          - generic [ref=e2648]: I
+          - generic [ref=e2649]:
+            - generic: Expiration Date (mm/dd/yyyy) *
+            - generic [ref=e2651]:
+              - textbox [ref=e2652]: 06/01/2028
+              - generic [ref=e2655] [cursor=pointer]: arrow_drop_down
+        - generic [ref=e2656]:
+          - generic: PO Number
+          - generic [ref=e2657]:
+            - generic [ref=e2658]: 
+            - generic [ref=e2659]:
+              - textbox "PO Number" [ref=e2660]: "41922"
+              - separator [ref=e2661]
+        - generic [ref=e2662]:
+          - generic: Invoice Number
+          - generic [ref=e2663]:
+            - generic [ref=e2664]: 
+            - generic [ref=e2665]:
+              - textbox "Invoice Number" [ref=e2666]
+              - separator [ref=e2667]
+      - generic [ref=e2668]:
+        - paragraph [ref=e2669]: Workflow
+        - generic [ref=e2671]:
+          - checkbox "Use this batch for registration" [checked] [ref=e2672]:
+            - generic [ref=e2673]: check_box
+          - generic [ref=e2674]: Use this batch for registration
+      - generic [ref=e2675]:
+        - paragraph [ref=e2676]: Enterprise
+        - generic [ref=e2677]:
+          - generic [ref=e2679]:
+            - generic: Plan Purchase Price *
+            - generic [ref=e2680]:
+              - generic [ref=e2681]: B
+              - generic [ref=e2682]:
+                - textbox "Plan Purchase Price *" [ref=e2683]: USD 14.43
+                - separator [ref=e2684]
+          - generic [ref=e2686]:
+            - generic [ref=e2688]: I
+            - generic [ref=e2689]:
+              - generic: Plan Purchase Date (mm/dd/yyyy) *
+              - generic [ref=e2690]:
+                - generic [ref=e2691]:
+                  - textbox [active] [ref=e2692]
+                  - generic [ref=e2695] [cursor=pointer]: arrow_drop_down
+                - generic [ref=e2761]:
+                  - generic [ref=e2762]:
+                    - generic [ref=e2763]:
+                      - generic [ref=e2765] [cursor=pointer]: 
+                      - strong [ref=e2767] [cursor=pointer]: May 2026
+                      - generic [ref=e2769] [cursor=pointer]: 
+                    - generic [ref=e2770]:
+                      - generic [ref=e2771]: Su
+                      - generic [ref=e2772]: Mo
+                      - generic [ref=e2773]: Tu
+                      - generic [ref=e2774]: We
+                      - generic [ref=e2775]: Th
+                      - generic [ref=e2776]: Fr
+                      - generic [ref=e2777]: Sa
+                  - generic [ref=e2778]:
+                    - generic [ref=e2779]:
+                      - generic [ref=e2781] [cursor=pointer]: "26"
+                      - generic [ref=e2783] [cursor=pointer]: "27"
+                      - generic [ref=e2785] [cursor=pointer]: "28"
+                      - generic [ref=e2787] [cursor=pointer]: "29"
+                      - generic [ref=e2789] [cursor=pointer]: "30"
+                      - generic [ref=e2791] [cursor=pointer]: "1"
+                      - generic [ref=e2793] [cursor=pointer]: "2"
+                    - generic [ref=e2794]:
+                      - generic [ref=e2796] [cursor=pointer]: "3"
+                      - generic [ref=e2798] [cursor=pointer]: "4"
+                      - generic [ref=e2800] [cursor=pointer]: "5"
+                      - generic [ref=e2802] [cursor=pointer]: "6"
+                      - generic [ref=e2804] [cursor=pointer]: "7"
+                      - generic [ref=e2806] [cursor=pointer]: "8"
+                      - generic [ref=e2808] [cursor=pointer]: "9"
+                    - generic [ref=e2809]:
+                      - generic [ref=e2811] [cursor=pointer]: "10"
+                      - generic [ref=e2813] [cursor=pointer]: "11"
+                      - generic [ref=e2815] [cursor=pointer]: "12"
+                      - generic [ref=e2817]: "13"
+                      - generic [ref=e2819]: "14"
+                      - generic [ref=e2821]: "15"
+                      - generic [ref=e2823]: "16"
+                    - generic [ref=e2824]:
+                      - generic [ref=e2826]: "17"
+                      - generic [ref=e2828]: "18"
+                      - generic [ref=e2830]: "19"
+                      - generic [ref=e2832]: "20"
+                      - generic [ref=e2834]: "21"
+                      - generic [ref=e2836]: "22"
+                      - generic [ref=e2838]: "23"
+                    - generic [ref=e2839]:
+                      - generic [ref=e2841]: "24"
+                      - generic [ref=e2843]: "25"
+                      - generic [ref=e2845]: "26"
+                      - generic [ref=e2847]: "27"
+                      - generic [ref=e2849]: "28"
+                      - generic [ref=e2851]: "29"
+                      - generic [ref=e2853]: "30"
+                    - generic [ref=e2854]:
+                      - generic [ref=e2856]: "31"
+                      - generic [ref=e2858]: "1"
+                      - generic [ref=e2860]: "2"
+                      - generic [ref=e2862]: "3"
+                      - generic [ref=e2864]: "4"
+                      - generic [ref=e2866]: "5"
+                      - generic [ref=e2868]: "6"
+        - generic [ref=e2696]:
+          - generic [ref=e2698]:
+            - generic: Sales Order ID
+            - generic [ref=e2699]:
+              - generic [ref=e2700]: 
+              - generic [ref=e2701]:
+                - textbox "Sales Order ID" [disabled] [ref=e2702]: SEESC300121
+                - separator [ref=e2703]
+          - generic [ref=e2705]:
+            - generic [ref=e2708]: G
+            - generic [ref=e2710]:
+              - generic [ref=e2748]: Vertical *
+              - generic [ref=e2713]:
+                - option "Education" [selected] [ref=e2759]
+                - combobox [ref=e2716]
+          - generic [ref=e2720]:
+            - generic [ref=e2723]: 
+            - generic [ref=e2728]:
+              - generic [ref=e2729]: Device Management System
+              - combobox [ref=e2731]
+    - contentinfo [ref=e2734]:
+      - button "close Cancel" [ref=e2735]:
+        - generic [ref=e2736]:
+          - generic [ref=e2737]: close
+          - generic [ref=e2738]: Cancel
+      - button "check Save & Continue" [ref=e2739]:
+        - generic [ref=e2740]:
+          - generic [ref=e2741]: check
+          - generic [ref=e2742]: Save & Continue
+  - dialog "Plan Details" [ref=e2030]:
+    - banner [ref=e1348]:
+      - heading "Plan Details" [level=2] [ref=e2031]
+      - button "keyboard_arrow_up" [ref=e1351]: keyboard_arrow_up
+    - generic [ref=e1353]:
+      - generic [ref=e1356]:
+        - list [ref=e1357]:
+          - tab "Navigate" [ref=e1358]:
+            - button "Navigate" [ref=e1359]
+          - tab "Browse" [ref=e1360]:
+            - button "Browse" [ref=e1361]
+        - list [ref=e1366]:
+          - listitem [ref=e1367]:
+            - button "D Companies" [ref=e1370]:
+              - generic [ref=e1371]:
+                - generic [ref=e1372]: D
+                - generic [ref=e1373]: Companies
+            - list [ref=e1375]:
+              - listitem [ref=e1376]:
+                - button "K Demo Company" [ref=e1378]:
+                  - generic [ref=e1379]:
+                    - generic [ref=e1380]: K
+                    - generic [ref=e1381]: Demo Company
+                - list [ref=e2033]:
+                  - listitem [ref=e2034]:
+                    - button "D Plans" [ref=e2037]:
+                      - generic [ref=e2038]:
+                        - generic [ref=e2039]: D
+                        - generic [ref=e2040]: Plans
+                    - list [ref=e2042]:
+                      - listitem [ref=e2043]:
+                        - button "K Extended Service Contract - 12 Months" [ref=e2045]:
+                          - generic [ref=e2046]:
+                            - generic [ref=e2047]: K
+                            - generic [ref=e2048]: Extended Service Contract - 12 Months
+      - generic [ref=e2049]:
+        - generic [ref=e2050]:
+          - generic [ref=e2052]:
+            - 'heading "Plan: Extended Service Contract - 12 Months" [level=2] [ref=e2053]'
+            - generic [ref=e2054]:
+              - button "keyboard_arrow_left" [ref=e2055]:
+                - generic [ref=e2056]: keyboard_arrow_left
+              - generic [ref=e2057]:
+                - text: 3 of
+                - generic [ref=e2058]: "4"
+              - button "keyboard_arrow_right" [ref=e2059]:
+                - generic [ref=e2060]: keyboard_arrow_right
+            - button "close" [ref=e2061]:
+              - generic [ref=e2062]: close
+          - banner [ref=e2063]:
+            - button "check Save" [disabled] [ref=e2064]:
+              - generic:
+                - generic:
+                  - generic: check
+                - generic: Save
+            - button "check Save and Close" [disabled] [ref=e2065]:
+              - generic:
+                - generic:
+                  - generic: check
+                - generic: Save and Close
+            - button "remove_circle Remove" [ref=e2066]:
+              - generic [ref=e2067]:
+                - generic [ref=e2069]: remove_circle
+                - generic [ref=e2070]: Remove
+            - listbox [ref=e2073]:
+              - generic [ref=e2075]: Active arrow_drop_down
+        - generic [ref=e2077]:
+          - button "Upload file_upload" [ref=e2082]:
+            - generic [ref=e2083]:
+              - generic [ref=e2084]: Upload
+              - generic [ref=e2085]: file_upload
+          - generic [ref=e2086]:
+            - generic [ref=e2087]:
+              - generic: Plan Name *
+              - textbox "Plan Name *" [ref=e2089]: Extended Service Contract - 12 Months
+              - separator [ref=e2090]
+            - generic [ref=e2093]:
+              - generic [ref=e2094]: Region *
+              - generic [ref=e2097]:
+                - option "United States" [selected] [ref=e2099]
+                - combobox [ref=e2101]
+            - generic [ref=e2104]:
+              - generic: Coverage Amount *
+              - textbox "Coverage Amount *" [ref=e2105]: USD 300.00
+              - separator [ref=e2106]
+            - generic [ref=e2111]:
+              - generic [ref=e2112]: Plan Type *
+              - generic [ref=e2115]:
+                - option "Single" [selected] [ref=e2117]
+                - combobox [ref=e2119]
+            - generic [ref=e2122]: "Date Created: 05/12/2026"
+            - generic [ref=e2123]: "Date Updated: 05/12/2026"
+        - generic [ref=e2125]:
+          - tablist [ref=e2126]:
+            - tab "library_books Details" [ref=e2127]:
+              - generic [ref=e2128]: library_books
+              - generic [ref=e2129]: Details
+            - tab "s Batches" [selected] [ref=e2130]:
+              - generic [ref=e2131]: s
+              - generic [ref=e2132]: Batches
+            - tab " Timeline" [ref=e2133]:
+              - generic [ref=e2134]: 
+              - generic [ref=e2135]: Timeline
+            - tab "note Notes" [ref=e2136]:
+              - generic [ref=e2137]: note
+              - generic [ref=e2138]: Notes
+          - tabpanel "s Batches" [ref=e2314]:
+            - generic [ref=e2318]:
+              - generic [ref=e2320]:
+                - button "add New" [ref=e2321]:
+                  - generic [ref=e2322]:
+                    - generic [ref=e2324]: add
+                    - generic [ref=e2325]: New
+                - button "file_download Export as CSV" [disabled] [ref=e2326]:
+                  - generic:
+                    - generic:
+                      - generic: file_download
+                    - generic: Export as CSV
+              - generic [ref=e2327]:
+                - generic [ref=e2332]:
+                  - button "Y" [ref=e2333]:
+                    - generic [ref=e2334]: "Y"
+                  - generic [ref=e2335]:
+                    - text: arrow_drop_down
+                    - list [ref=e2337]:
+                      - listitem [ref=e2338]:
+                        - link "All Batches" [ref=e2339] [cursor=pointer]:
+                          - /url: "#"
+                          - heading "All Batches" [level=2] [ref=e2340]
+                  - generic [ref=e2344]:
+                    - button "arrow_drop_down Filter Batches" [ref=e2347]:
+                      - generic [ref=e2348]:
+                        - generic [ref=e2349]: arrow_drop_down
+                        - generic [ref=e2350]: Filter Batches
+                    - generic [ref=e2352]:
+                      - text: search
+                      - textbox "Search Batches..." [ref=e2353]
+                      - separator [ref=e2354]
+                    - button "w" [ref=e2356]:
+                      - generic [ref=e2357]: w
+                - generic [ref=e2361]:
+                  - row "No Records Found!" [ref=e2363]:
+                    - cell "No Records Found!" [ref=e2364]:
+                      - generic [ref=e2366]: No Records Found!
+                  - table [ref=e2368]:
+                    - rowgroup [ref=e2369]:
+                      - row "Batch Number arrow_upward Sales Order ID arrow_upward Product arrow_upward Product Barcode arrow_upward Vertical arrow_upward Expiration Date Number of Pins arrow_upward Pins Used arrow_upward Available Pins arrow_upward PO Number arrow_upward Plan Purchase Date arrow_upward Invoice Number arrow_upward Status arrow_upward Use for Registration arrow_upward Actions" [ref=e2370]:
+                        - columnheader "Batch Number arrow_upward" [ref=e2371]:
+                          - generic [ref=e2372]:
+                            - generic [ref=e2373]: Batch Number
+                            - generic [ref=e2374]: arrow_upward
+                        - columnheader "Sales Order ID arrow_upward" [ref=e2375]:
+                          - generic [ref=e2376]:
+                            - generic [ref=e2377]: Sales Order ID
+                            - generic [ref=e2378]: arrow_upward
+                        - columnheader "Product arrow_upward" [ref=e2379]:
+                          - generic [ref=e2380]:
+                            - generic [ref=e2381]: Product
+                            - generic [ref=e2382]: arrow_upward
+                        - columnheader "Product Barcode arrow_upward" [ref=e2383]:
+                          - generic [ref=e2384]:
+                            - generic [ref=e2385]: Product Barcode
+                            - generic [ref=e2386]: arrow_upward
+                        - columnheader "Vertical arrow_upward" [ref=e2387]:
+                          - generic [ref=e2388]:
+                            - generic [ref=e2389]: Vertical
+                            - generic [ref=e2390]: arrow_upward
+                        - columnheader "Expiration Date" [ref=e2391]
+                        - columnheader "Number of Pins arrow_upward" [ref=e2392]:
+                          - generic [ref=e2393]:
+                            - generic [ref=e2394]: Number of Pins
+                            - generic [ref=e2395]: arrow_upward
+                        - columnheader "Pins Used arrow_upward" [ref=e2396]:
+                          - generic [ref=e2397]:
+                            - generic [ref=e2398]: Pins Used
+                            - generic [ref=e2399]: arrow_upward
+                        - columnheader "Available Pins arrow_upward" [ref=e2400]:
+                          - generic [ref=e2401]:
+                            - generic [ref=e2402]: Available Pins
+                            - generic [ref=e2403]: arrow_upward
+                        - columnheader "PO Number arrow_upward" [ref=e2404]:
+                          - generic [ref=e2405]:
+                            - generic [ref=e2406]: PO Number
+                            - generic [ref=e2407]: arrow_upward
+                        - columnheader "Plan Purchase Date arrow_upward" [ref=e2408]:
+                          - generic [ref=e2409]:
+                            - generic [ref=e2410]: Plan Purchase Date
+                            - generic [ref=e2411]: arrow_upward
+                        - columnheader "Invoice Number arrow_upward" [ref=e2412]:
+                          - generic [ref=e2413]:
+                            - generic [ref=e2414]: Invoice Number
+                            - generic [ref=e2415]: arrow_upward
+                        - columnheader "Status arrow_upward" [ref=e2416]:
+                          - generic [ref=e2417]:
+                            - generic [ref=e2418]: Status
+                            - generic [ref=e2419]: arrow_upward
+                        - columnheader "Use for Registration arrow_upward" [ref=e2420]:
+                          - generic [ref=e2421]:
+                            - generic [ref=e2422]: Use for Registration
+                            - generic [ref=e2423]: arrow_upward
+                        - columnheader "Actions" [ref=e2424]
+                    - rowgroup [ref=e2425]:
+                      - row "Batch Number arrow_upward Sales Order ID arrow_upward Product arrow_upward Product Barcode arrow_upward Vertical arrow_upward Expiration Date Number of Pins arrow_upward Pins Used arrow_upward Available Pins arrow_upward PO Number arrow_upward Plan Purchase Date arrow_upward Invoice Number arrow_upward Status arrow_upward Use for Registration arrow_upward Actions" [ref=e2426]:
+                        - columnheader "Batch Number arrow_upward" [ref=e2427]:
+                          - generic:
+                            - generic [ref=e2428]: Batch Number
+                            - generic [ref=e2429]: arrow_upward
+                        - columnheader "Sales Order ID arrow_upward" [ref=e2430]:
+                          - generic:
+                            - generic [ref=e2431]: Sales Order ID
+                            - generic [ref=e2432]: arrow_upward
+                        - columnheader "Product arrow_upward" [ref=e2433]:
+                          - generic:
+                            - generic [ref=e2434]: Product
+                            - generic [ref=e2435]: arrow_upward
+                        - columnheader "Product Barcode arrow_upward" [ref=e2436]:
+                          - generic:
+                            - generic [ref=e2437]: Product Barcode
+                            - generic [ref=e2438]: arrow_upward
+                        - columnheader "Vertical arrow_upward" [ref=e2439]:
+                          - generic:
+                            - generic [ref=e2440]: Vertical
+                            - generic [ref=e2441]: arrow_upward
+                        - columnheader "Expiration Date" [ref=e2442]:
+                          - generic [ref=e2443]: Expiration Date
+                        - columnheader "Number of Pins arrow_upward" [ref=e2444]:
+                          - generic:
+                            - generic [ref=e2445]: Number of Pins
+                            - generic [ref=e2446]: arrow_upward
+                        - columnheader "Pins Used arrow_upward" [ref=e2447]:
+                          - generic:
+                            - generic [ref=e2448]: Pins Used
+                            - generic [ref=e2449]: arrow_upward
+                        - columnheader "Available Pins arrow_upward" [ref=e2450]:
+                          - generic:
+                            - generic [ref=e2451]: Available Pins
+                            - generic [ref=e2452]: arrow_upward
+                        - columnheader "PO Number arrow_upward" [ref=e2453]:
+                          - generic:
+                            - generic [ref=e2454]: PO Number
+                            - generic [ref=e2455]: arrow_upward
+                        - columnheader "Plan Purchase Date arrow_upward" [ref=e2456]:
+                          - generic:
+                            - generic [ref=e2457]: Plan Purchase Date
+                            - generic [ref=e2458]: arrow_upward
+                        - columnheader "Invoice Number arrow_upward" [ref=e2459]:
+                          - generic:
+                            - generic [ref=e2460]: Invoice Number
+                            - generic [ref=e2461]: arrow_upward
+                        - columnheader "Status arrow_upward" [ref=e2462]:
+                          - generic:
+                            - generic [ref=e2463]: Status
+                            - generic [ref=e2464]: arrow_upward
+                        - columnheader "Use for Registration arrow_upward" [ref=e2465]:
+                          - generic:
+                            - generic [ref=e2466]: Use for Registration
+                            - generic [ref=e2467]: arrow_upward
+                        - columnheader "Actions" [ref=e2468]:
+                          - generic [ref=e2469]: Actions
+                    - rowgroup
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link [ref=e6] [cursor=pointer]:
+        - /url: /portal/dashboard
+        - img [ref=e7]
+      - heading "instaProtek CRM" [level=3] [ref=e10]
+      - button " Logout" [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e15]: 
+          - generic [ref=e16]: Logout
+    - navigation [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e20]:
+          - heading "Agent" [level=2] [ref=e21]
+          - heading "Enterprise" [level=4] [ref=e22]
+        - button "keyboard_arrow_down" [ref=e24]:
+          - generic [ref=e25]: keyboard_arrow_down
+        - link "Jump to content" [ref=e26] [cursor=pointer]:
+          - /url: "#main-content-demo"
+      - list [ref=e27]:
+        - listitem [ref=e28]:
+          - 'button "{ Dashboard" [ref=e29]':
+            - generic [ref=e31]: "{"
+            - generic [ref=e33]: Dashboard
+        - listitem [ref=e34]:
+          - button " Timeline" [ref=e35]:
+            - generic [ref=e37]: 
+            - generic [ref=e39]: Timeline
+        - listitem [ref=e40]:
+          - button " Users" [ref=e41]:
+            - generic [ref=e43]: 
+            - generic [ref=e45]: Users
+        - listitem [ref=e46]:
+          - button "k Customers" [ref=e47]:
+            - generic [ref=e49]: k
+            - generic [ref=e51]: Customers
+        - listitem [ref=e52]:
+          - button " Calls" [ref=e53]:
+            - generic [ref=e55]: 
+            - generic [ref=e57]: Calls
+        - listitem [ref=e58]:
+          - button " Registrations" [ref=e59]:
+            - generic [ref=e61]: 
+            - generic [ref=e63]: Registrations
+        - listitem [ref=e64]:
+          - button " Purchase" [ref=e65]:
+            - generic [ref=e67]: 
+            - generic [ref=e69]: Purchase
+        - listitem [ref=e70]:
+          - button " Test" [ref=e71]:
+            - generic [ref=e73]: 
+            - generic [ref=e75]: Test
+        - listitem [ref=e76]:
+          - button " Orders" [ref=e77]:
+            - generic [ref=e79]: 
+            - generic [ref=e81]: Orders
+        - listitem [ref=e82]:
+          - button " Repair Shops" [ref=e83]:
+            - generic [ref=e85]: 
+            - generic [ref=e87]: Repair Shops
+        - listitem [ref=e88]:
+          - button "j Affiliates" [ref=e89]:
+            - generic [ref=e91]: j
+            - generic [ref=e93]: Affiliates
+        - listitem [ref=e94]:
+          - button " Claim Reports" [ref=e95]:
+            - generic [ref=e97]: 
+            - generic [ref=e99]: Claim Reports
+        - listitem [ref=e100]:
+          - 'button "` Product Reviews" [ref=e101]':
+            - generic [ref=e103]: "`"
+            - generic [ref=e105]: Product Reviews
+        - listitem [ref=e106]:
+          - button "\\ Device Buyback" [ref=e107]:
+            - generic [ref=e109]: \
+            - generic [ref=e111]: Device Buyback
+        - listitem [ref=e112]:
+          - button " Settings keyboard_arrow_down" [ref=e113]:
+            - generic [ref=e115]: 
+            - generic [ref=e117]: Settings
+            - generic [ref=e119]: keyboard_arrow_down
+      - button "keyboard_arrow_left" [ref=e120]:
+        - generic [ref=e121]: keyboard_arrow_left
+    - main [ref=e122]:
+      - generic:
+        - img
+        - img
+      - generic [ref=e126]:
+        - generic [ref=e128]:
+          - button "add New" [ref=e129]:
+            - generic [ref=e130]:
+              - generic [ref=e132]: add
+              - generic [ref=e133]: New
+          - button "file_download Export as CSV" [ref=e134]:
+            - generic [ref=e135]:
+              - generic [ref=e137]: file_download
+              - generic [ref=e138]: Export as CSV
+        - generic [ref=e139]:
+          - generic [ref=e144]:
+            - button "Y" [ref=e145]:
+              - generic [ref=e146]: "Y"
+            - generic [ref=e147]:
+              - text: arrow_drop_down
+              - list [ref=e149]:
+                - listitem [ref=e150]:
+                  - link "All Companies" [ref=e151] [cursor=pointer]:
+                    - /url: "#"
+                    - heading "All Companies" [level=2] [ref=e152]
+            - generic [ref=e156]:
+              - button "arrow_drop_down Filter Companies" [ref=e159]:
+                - generic [ref=e160]:
+                  - generic [ref=e161]: arrow_drop_down
+                  - generic [ref=e162]: Filter Companies
+              - generic [ref=e164]:
+                - text: search
+                - textbox "Search Companies..." [ref=e165]: Demo Company
+                - separator [ref=e166]
+              - button "w" [ref=e168]:
+                - generic [ref=e169]: w
+          - generic [ref=e173]:
+            - table [ref=e175]:
+              - rowgroup [ref=e176]:
+                - row "Company Name arrow_upward Company Phone arrow_upward Products arrow_upward Enable Enterprise Program Actions" [ref=e177]:
+                  - columnheader "Company Name arrow_upward" [ref=e178]:
+                    - generic [ref=e179]:
+                      - generic [ref=e180]: Company Name
+                      - generic [ref=e181]: arrow_upward
+                  - columnheader "Company Phone arrow_upward" [ref=e182]:
+                    - generic [ref=e183]:
+                      - generic [ref=e184]: Company Phone
+                      - generic [ref=e185]: arrow_upward
+                  - columnheader "Products arrow_upward" [ref=e186]:
+                    - generic [ref=e187]:
+                      - generic [ref=e188]: Products
+                      - generic [ref=e189]: arrow_upward
+                  - columnheader "Enable Enterprise Program" [ref=e190]
+                  - columnheader "Actions" [ref=e191]
+              - rowgroup [ref=e192]:
+                - row "Company Name arrow_upward Company Phone arrow_upward Products arrow_upward Enable Enterprise Program Actions" [ref=e193]:
+                  - columnheader "Company Name arrow_upward" [ref=e194]:
+                    - generic:
+                      - generic [ref=e195]: Company Name
+                      - generic [ref=e196]: arrow_upward
+                  - columnheader "Company Phone arrow_upward" [ref=e197]:
+                    - generic:
+                      - generic [ref=e198]: Company Phone
+                      - generic [ref=e199]: arrow_upward
+                  - columnheader "Products arrow_upward" [ref=e200]:
+                    - generic:
+                      - generic [ref=e201]: Products
+                      - generic [ref=e202]: arrow_upward
+                  - columnheader "Enable Enterprise Program" [ref=e203]:
+                    - generic [ref=e204]: Enable Enterprise Program
+                  - columnheader "Actions" [ref=e205]:
+                    - generic [ref=e206]: Actions
+              - rowgroup [ref=e207]:
+                - row "Demo Company +1 (888) 888-8888 4 Yes edit delete" [ref=e1340]:
+                  - cell "Demo Company" [ref=e1341]:
+                    - generic [ref=e211]: Demo Company
+                  - cell "+1 (888) 888-8888" [ref=e212]:
+                    - generic [ref=e215]: +1 (888) 888-8888
+                  - cell "4" [ref=e1342]:
+                    - generic [ref=e218]: "4"
+                  - cell "Yes" [ref=e219]:
+                    - generic [ref=e222]: "Yes"
+                  - cell "edit delete" [ref=e223]:
+                    - generic [ref=e226]:
+                      - button "edit" [ref=e227]:
+                        - generic [ref=e228]: edit
+                      - button "delete" [disabled] [ref=e229]:
+                        - generic: delete
+            - generic [ref=e1317]:
+              - table [ref=e1320]:
+                - rowgroup [ref=e1321]:
+                  - 'row "Rows per page: 1-1 of 1 keyboard_arrow_left keyboard_arrow_right" [ref=e1343]':
+                    - 'cell "Rows per page: 1-1 of 1 keyboard_arrow_left keyboard_arrow_right" [ref=e1344]':
+                      - generic [ref=e1324]:
+                        - generic [ref=e1325]: "Rows per page:"
+                        - listbox [ref=e1328]:
+                          - generic [ref=e1329]:
+                            - generic [ref=e1330]: "50"
+                            - generic [ref=e1331]: arrow_drop_down
+                        - generic [ref=e1332]: 1-1 of 1
+                        - button "keyboard_arrow_left" [disabled] [ref=e1333]:
+                          - generic: keyboard_arrow_left
+                        - button "keyboard_arrow_right" [disabled] [ref=e1334]:
+                          - generic: keyboard_arrow_right
+              - button "vertical_align_bottom" [ref=e1336]:
+                - generic [ref=e1337]: vertical_align_bottom
+    - generic [ref=e1339]: © 2026 instaProtek CRM - Version- 1.0.0

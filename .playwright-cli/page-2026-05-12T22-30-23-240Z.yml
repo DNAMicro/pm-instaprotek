@@ -1,0 +1,400 @@
+- generic [ref=e1]:
+  - dialog "Plan Details" [ref=e943]:
+    - banner [ref=e261]:
+      - heading "Plan Details" [level=2] [ref=e944]
+      - button "keyboard_arrow_up" [ref=e264]: keyboard_arrow_up
+    - generic [ref=e266]:
+      - generic [ref=e269]:
+        - list [ref=e270]:
+          - tab "Navigate" [ref=e271]:
+            - button "Navigate" [ref=e272]
+          - tab "Browse" [ref=e273]:
+            - button "Browse" [ref=e274]
+        - list [ref=e279]:
+          - listitem [ref=e280]:
+            - button "D Companies" [ref=e283]:
+              - generic [ref=e284]:
+                - generic [ref=e285]: D
+                - generic [ref=e286]: Companies
+            - list [ref=e288]:
+              - listitem [ref=e289]:
+                - button "K Demo Company" [ref=e291]:
+                  - generic [ref=e292]:
+                    - generic [ref=e293]: K
+                    - generic [ref=e294]: Demo Company
+                - list [ref=e946]:
+                  - listitem [ref=e947]:
+                    - button "D Plans" [ref=e950]:
+                      - generic [ref=e951]:
+                        - generic [ref=e952]: D
+                        - generic [ref=e953]: Plans
+                    - list [ref=e955]:
+                      - listitem [ref=e956]:
+                        - button "K Extended Service Contract - 12 Months" [ref=e958]:
+                          - generic [ref=e959]:
+                            - generic [ref=e960]: K
+                            - generic [ref=e961]: Extended Service Contract - 12 Months
+      - generic [ref=e962]:
+        - generic [ref=e963]:
+          - generic [ref=e965]:
+            - 'heading "Plan: Extended Service Contract - 12 Months" [level=2] [ref=e966]'
+            - generic [ref=e967]:
+              - button "keyboard_arrow_left" [ref=e968]:
+                - generic [ref=e969]: keyboard_arrow_left
+              - generic [ref=e970]:
+                - text: 3 of
+                - generic [ref=e971]: "4"
+              - button "keyboard_arrow_right" [ref=e972]:
+                - generic [ref=e973]: keyboard_arrow_right
+            - button "close" [ref=e974]:
+              - generic [ref=e975]: close
+          - banner [ref=e976]:
+            - button "check Save" [disabled] [ref=e977]:
+              - generic:
+                - generic:
+                  - generic: check
+                - generic: Save
+            - button "check Save and Close" [disabled] [ref=e978]:
+              - generic:
+                - generic:
+                  - generic: check
+                - generic: Save and Close
+            - button "remove_circle Remove" [ref=e979]:
+              - generic [ref=e980]:
+                - generic [ref=e982]: remove_circle
+                - generic [ref=e983]: Remove
+            - listbox [ref=e986]:
+              - generic [ref=e988]: Active arrow_drop_down
+        - generic [ref=e990]:
+          - button "Upload file_upload" [ref=e995]:
+            - generic [ref=e996]:
+              - generic [ref=e997]: Upload
+              - generic [ref=e998]: file_upload
+          - generic [ref=e999]:
+            - generic [ref=e1000]:
+              - generic: Plan Name *
+              - textbox "Plan Name *" [ref=e1002]: Extended Service Contract - 12 Months
+              - separator [ref=e1003]
+            - generic [ref=e1006]:
+              - generic [ref=e1007]: Region *
+              - generic [ref=e1010]:
+                - option "United States" [selected] [ref=e1012]
+                - combobox [ref=e1014]
+            - generic [ref=e1017]:
+              - generic: Coverage Amount *
+              - textbox "Coverage Amount *" [ref=e1018]: USD 300.00
+              - separator [ref=e1019]
+            - generic [ref=e1024]:
+              - generic [ref=e1025]: Plan Type *
+              - generic [ref=e1028]:
+                - option "Single" [selected] [ref=e1030]
+                - combobox [ref=e1032]
+            - generic [ref=e1035]: "Date Created: 05/12/2026"
+            - generic [ref=e1036]: "Date Updated: 05/12/2026"
+        - generic [ref=e1038]:
+          - tablist [ref=e1039]:
+            - tab "library_books Details" [selected] [ref=e1040]:
+              - generic [ref=e1041]: library_books
+              - generic [ref=e1042]: Details
+            - tab "s Batches" [ref=e1043]:
+              - generic [ref=e1044]: s
+              - generic [ref=e1045]: Batches
+            - tab " Timeline" [ref=e1046]:
+              - generic [ref=e1047]: 
+              - generic [ref=e1048]: Timeline
+            - tab "note Notes" [ref=e1049]:
+              - generic [ref=e1050]: note
+              - generic [ref=e1051]: Notes
+          - tabpanel "library_books Details" [ref=e1055]:
+            - generic [ref=e1058]:
+              - generic [ref=e1060]:
+                - generic: Plan Code *
+                - generic [ref=e1061]:
+                  - generic [ref=e1062]: 
+                  - generic [ref=e1063]:
+                    - textbox "Plan Code *" [ref=e1064]: ESC
+                    - separator [ref=e1065]
+              - generic [ref=e1066]:
+                - generic [ref=e1067]:
+                  - generic [ref=e1070]: "y"
+                  - generic [ref=e1072]:
+                    - generic [ref=e1073]: Administrator *
+                    - generic [ref=e1076]:
+                      - option "InstaProtek" [selected] [ref=e1078]
+                      - combobox [ref=e1080]
+                - generic [ref=e1083]:
+                  - generic: SKU
+                  - generic [ref=e1084]:
+                    - generic [ref=e1085]: person
+                    - generic [ref=e1086]:
+                      - textbox "SKU" [ref=e1087]: ESC030012MO00IK
+                      - separator [ref=e1088]
+                - generic [ref=e1089]:
+                  - generic [ref=e1092]: r
+                  - generic [ref=e1094]:
+                    - generic [ref=e1095]: Support *
+                    - generic [ref=e1098]:
+                      - option "Instaprotek (Enterprise)" [selected] [ref=e1100]
+                      - combobox [ref=e1102]
+                - generic [ref=e1105]:
+                  - generic [ref=e1108]: q
+                  - generic [ref=e1110]:
+                    - generic [ref=e1111]: Underwriter *
+                    - generic [ref=e1114]:
+                      - option "Ensure Protect" [selected] [ref=e1116]
+                      - combobox [ref=e1118]
+                - generic [ref=e1122]:
+                  - generic [ref=e1123]:
+                    - generic [ref=e1124]: "Website:"
+                    - generic [ref=e1125]: https://instaprotek.com/enterprise
+                  - generic [ref=e1126]:
+                    - generic [ref=e1127]: "Email:"
+                    - generic [ref=e1128]: enterprise@instaprotek.com
+                  - generic [ref=e1129]:
+                    - generic [ref=e1130]: "Phone:"
+                    - generic [ref=e1131]: +1 844 368 7274
+                  - generic [ref=e1132]:
+                    - generic [ref=e1133]: "Hours:"
+                    - generic [ref=e1134]: 8AM - 5PM PST Monday-Friday
+                  - generic [ref=e1135]:
+                    - generic [ref=e1136]: "Address:"
+                    - generic [ref=e1137]: 1 Wrigley, Irvine, California , United States, 92618
+                - generic [ref=e1138]:
+                  - generic [ref=e1141]: b
+                  - generic [ref=e1143]:
+                    - generic [ref=e1144]: Coverage Type *
+                    - generic [ref=e1147]:
+                      - option "Repair and Replacement" [selected] [ref=e1149]
+                      - combobox "Coverage Type Amount *" [ref=e1151]
+                - generic [ref=e1154]:
+                  - generic [ref=e1157]: B
+                  - generic [ref=e1159]:
+                    - generic [ref=e1160]: Coverage Cost Type *
+                    - generic [ref=e1163]:
+                      - option "Repair Or Replacement" [selected] [ref=e1165]
+                      - combobox [ref=e1167]
+                - generic [ref=e1170]:
+                  - generic: Coverage Period (Year/s) *
+                  - generic [ref=e1171]:
+                    - generic [ref=e1172]: z
+                    - generic [ref=e1173]:
+                      - textbox "Coverage Period (Year/s) *" [ref=e1174]: "1"
+                      - separator [ref=e1175]
+                - generic [ref=e1176]:
+                  - generic [ref=e1179]: b
+                  - generic [ref=e1181]:
+                    - generic [ref=e1182]: Subscription Type *
+                    - generic [ref=e1185]:
+                      - option "One-Time Payment" [selected] [ref=e1187]
+                      - combobox [ref=e1189]
+                - generic [ref=e1192]:
+                  - generic [ref=e1195]: 
+                  - generic [ref=e1197]:
+                    - generic [ref=e1198]: Channel *
+                    - generic [ref=e1201]:
+                      - option "Call Center" [selected] [ref=e1203]
+                      - combobox [ref=e1205]
+                - generic [ref=e1208]:
+                  - generic: Coverage Type Amount *
+                  - generic [ref=e1209]:
+                    - generic [ref=e1210]: B
+                    - generic [ref=e1211]:
+                      - textbox [ref=e1212]: USD 300.00
+                      - separator [ref=e1213]
+              - generic [ref=e1215]: Terms *
+              - generic [ref=e1217]:
+                - img [ref=e1218]
+                - link "T&C_SMB.pdf" [ref=e1220] [cursor=pointer]:
+                  - /url: https://instaprotek-upload.dnaqa.net/file?path=/images/product_list/2026-05-12T19:14:32.067Z.pdf&type=terms
+                - button "delete" [ref=e1221]:
+                  - generic [ref=e1223]: delete
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link [ref=e6] [cursor=pointer]:
+        - /url: /portal/dashboard
+        - img [ref=e7]
+      - heading "instaProtek CRM" [level=3] [ref=e10]
+      - button " Logout" [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e15]: 
+          - generic [ref=e16]: Logout
+    - navigation [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e20]:
+          - heading "Agent" [level=2] [ref=e21]
+          - heading "Enterprise" [level=4] [ref=e22]
+        - button "keyboard_arrow_down" [ref=e24]:
+          - generic [ref=e25]: keyboard_arrow_down
+        - link "Jump to content" [ref=e26] [cursor=pointer]:
+          - /url: "#main-content-demo"
+      - list [ref=e27]:
+        - listitem [ref=e28]:
+          - 'button "{ Dashboard" [ref=e29]':
+            - generic [ref=e31]: "{"
+            - generic [ref=e33]: Dashboard
+        - listitem [ref=e34]:
+          - button " Timeline" [ref=e35]:
+            - generic [ref=e37]: 
+            - generic [ref=e39]: Timeline
+        - listitem [ref=e40]:
+          - button " Users" [ref=e41]:
+            - generic [ref=e43]: 
+            - generic [ref=e45]: Users
+        - listitem [ref=e46]:
+          - button "k Customers" [ref=e47]:
+            - generic [ref=e49]: k
+            - generic [ref=e51]: Customers
+        - listitem [ref=e52]:
+          - button " Calls" [ref=e53]:
+            - generic [ref=e55]: 
+            - generic [ref=e57]: Calls
+        - listitem [ref=e58]:
+          - button " Registrations" [ref=e59]:
+            - generic [ref=e61]: 
+            - generic [ref=e63]: Registrations
+        - listitem [ref=e64]:
+          - button " Purchase" [ref=e65]:
+            - generic [ref=e67]: 
+            - generic [ref=e69]: Purchase
+        - listitem [ref=e70]:
+          - button " Test" [ref=e71]:
+            - generic [ref=e73]: 
+            - generic [ref=e75]: Test
+        - listitem [ref=e76]:
+          - button " Orders" [ref=e77]:
+            - generic [ref=e79]: 
+            - generic [ref=e81]: Orders
+        - listitem [ref=e82]:
+          - button " Repair Shops" [ref=e83]:
+            - generic [ref=e85]: 
+            - generic [ref=e87]: Repair Shops
+        - listitem [ref=e88]:
+          - button "j Affiliates" [ref=e89]:
+            - generic [ref=e91]: j
+            - generic [ref=e93]: Affiliates
+        - listitem [ref=e94]:
+          - button " Claim Reports" [ref=e95]:
+            - generic [ref=e97]: 
+            - generic [ref=e99]: Claim Reports
+        - listitem [ref=e100]:
+          - 'button "` Product Reviews" [ref=e101]':
+            - generic [ref=e103]: "`"
+            - generic [ref=e105]: Product Reviews
+        - listitem [ref=e106]:
+          - button "\\ Device Buyback" [ref=e107]:
+            - generic [ref=e109]: \
+            - generic [ref=e111]: Device Buyback
+        - listitem [ref=e112]:
+          - button " Settings keyboard_arrow_down" [ref=e113]:
+            - generic [ref=e115]: 
+            - generic [ref=e117]: Settings
+            - generic [ref=e119]: keyboard_arrow_down
+      - button "keyboard_arrow_left" [ref=e120]:
+        - generic [ref=e121]: keyboard_arrow_left
+    - main [ref=e122]:
+      - generic:
+        - img
+        - img
+      - generic [ref=e126]:
+        - generic [ref=e128]:
+          - button "add New" [ref=e129]:
+            - generic [ref=e130]:
+              - generic [ref=e132]: add
+              - generic [ref=e133]: New
+          - button "file_download Export as CSV" [ref=e134]:
+            - generic [ref=e212]:
+              - generic [ref=e214]: file_download
+              - generic [ref=e215]: Export as CSV
+        - generic [ref=e135]:
+          - generic [ref=e140]:
+            - button "Y" [ref=e141]:
+              - generic [ref=e142]: "Y"
+            - generic [ref=e143]:
+              - text: arrow_drop_down
+              - list [ref=e145]:
+                - listitem [ref=e146]:
+                  - link "All Companies" [ref=e147] [cursor=pointer]:
+                    - /url: "#"
+                    - heading "All Companies" [level=2] [ref=e148]
+            - generic [ref=e152]:
+              - button "arrow_drop_down Filter Companies" [ref=e155]:
+                - generic [ref=e156]:
+                  - generic [ref=e157]: arrow_drop_down
+                  - generic [ref=e158]: Filter Companies
+              - generic [ref=e160]:
+                - text: search
+                - textbox "Search Companies..." [ref=e161]: Demo Company
+                - separator [ref=e162]
+              - button "w" [ref=e164]:
+                - generic [ref=e165]: w
+          - generic [ref=e169]:
+            - table [ref=e178]:
+              - rowgroup [ref=e179]:
+                - row "Company Name arrow_upward Company Phone arrow_upward Products arrow_upward Enable Enterprise Program Actions" [ref=e180]:
+                  - columnheader "Company Name arrow_upward" [ref=e181]:
+                    - generic [ref=e182]:
+                      - generic [ref=e183]: Company Name
+                      - generic [ref=e184]: arrow_upward
+                  - columnheader "Company Phone arrow_upward" [ref=e185]:
+                    - generic [ref=e186]:
+                      - generic [ref=e187]: Company Phone
+                      - generic [ref=e188]: arrow_upward
+                  - columnheader "Products arrow_upward" [ref=e189]:
+                    - generic [ref=e190]:
+                      - generic [ref=e191]: Products
+                      - generic [ref=e192]: arrow_upward
+                  - columnheader "Enable Enterprise Program" [ref=e193]
+                  - columnheader "Actions" [ref=e194]
+              - rowgroup [ref=e195]:
+                - row "Company Name arrow_upward Company Phone arrow_upward Products arrow_upward Enable Enterprise Program Actions" [ref=e196]:
+                  - columnheader "Company Name arrow_upward" [ref=e197]:
+                    - generic:
+                      - generic [ref=e198]: Company Name
+                      - generic [ref=e199]: arrow_upward
+                  - columnheader "Company Phone arrow_upward" [ref=e200]:
+                    - generic:
+                      - generic [ref=e201]: Company Phone
+                      - generic [ref=e202]: arrow_upward
+                  - columnheader "Products arrow_upward" [ref=e203]:
+                    - generic:
+                      - generic [ref=e204]: Products
+                      - generic [ref=e205]: arrow_upward
+                  - columnheader "Enable Enterprise Program" [ref=e206]:
+                    - generic [ref=e207]: Enable Enterprise Program
+                  - columnheader "Actions" [ref=e208]:
+                    - generic [ref=e209]: Actions
+              - rowgroup [ref=e216]:
+                - row "Demo Company +1 (888) 888-8888 4 Yes edit delete" [ref=e217]:
+                  - cell "Demo Company" [ref=e218]:
+                    - generic [ref=e220]: Demo Company
+                  - cell "+1 (888) 888-8888" [ref=e221]:
+                    - generic [ref=e224]: +1 (888) 888-8888
+                  - cell "4" [ref=e225]:
+                    - generic [ref=e227]: "4"
+                  - cell "Yes" [ref=e228]:
+                    - generic [ref=e231]: "Yes"
+                  - cell "edit delete" [ref=e232]:
+                    - generic [ref=e235]:
+                      - button "edit" [ref=e236]:
+                        - generic [ref=e237]: edit
+                      - button "delete" [disabled] [ref=e238]:
+                        - generic: delete
+            - generic [ref=e240]:
+              - table [ref=e241]:
+                - rowgroup [ref=e242]:
+                  - 'row "Rows per page: 1-1 of 1 keyboard_arrow_left keyboard_arrow_right" [ref=e243]':
+                    - 'cell "Rows per page: 1-1 of 1 keyboard_arrow_left keyboard_arrow_right" [ref=e244]':
+                      - generic [ref=e245]:
+                        - generic [ref=e246]: "Rows per page:"
+                        - listbox [ref=e249]:
+                          - generic [ref=e250]:
+                            - generic [ref=e251]: "50"
+                            - generic [ref=e252]: arrow_drop_down
+                        - generic [ref=e253]: 1-1 of 1
+                        - button "keyboard_arrow_left" [disabled] [ref=e254]:
+                          - generic: keyboard_arrow_left
+                        - button "keyboard_arrow_right" [disabled] [ref=e255]:
+                          - generic: keyboard_arrow_right
+              - button "vertical_align_bottom" [ref=e257]:
+                - generic [ref=e258]: vertical_align_bottom
+    - generic [ref=e211]: © 2026 instaProtek CRM - Version- 1.0.0

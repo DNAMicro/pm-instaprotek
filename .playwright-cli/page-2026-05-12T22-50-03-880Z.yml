@@ -1,0 +1,400 @@
+- generic [ref=e1]:
+  - dialog "Company Details" [ref=e1347]:
+    - banner [ref=e1348]:
+      - heading "Company Details" [level=2] [ref=e1349]
+      - button "keyboard_arrow_up" [active] [ref=e1351]: keyboard_arrow_up
+    - generic [ref=e1353]:
+      - generic [ref=e1356]:
+        - list [ref=e1357]:
+          - tab "Navigate" [ref=e1358]:
+            - button "Navigate" [ref=e1359]
+          - tab "Browse" [ref=e1360]:
+            - button "Browse" [ref=e1361]
+        - list [ref=e1366]:
+          - listitem [ref=e1367]:
+            - button "D Companies" [ref=e1370]:
+              - generic [ref=e1371]:
+                - generic [ref=e1372]: D
+                - generic [ref=e1373]: Companies
+            - list [ref=e1375]:
+              - listitem [ref=e1376]:
+                - button "K Demo Company" [ref=e1378]:
+                  - generic [ref=e1379]:
+                    - generic [ref=e1380]: K
+                    - generic [ref=e1381]: Demo Company
+      - generic [ref=e1383]:
+        - generic [ref=e1384]:
+          - generic [ref=e1386]:
+            - 'heading "Company: Demo Company" [level=2] [ref=e1387]'
+            - generic [ref=e1388]:
+              - button "keyboard_arrow_left" [disabled] [ref=e1389]:
+                - generic: keyboard_arrow_left
+              - generic [ref=e1390]:
+                - text: 1 of
+                - generic [ref=e1391]: "1"
+              - button "keyboard_arrow_right" [disabled] [ref=e1392]:
+                - generic: keyboard_arrow_right
+            - button "close" [ref=e1393]:
+              - generic [ref=e1394]: close
+          - banner [ref=e1395]:
+            - button "check Save" [disabled] [ref=e1396]:
+              - generic:
+                - generic:
+                  - generic: check
+                - generic: Save
+            - button "check Save and Close" [disabled] [ref=e1397]:
+              - generic:
+                - generic:
+                  - generic: check
+                - generic: Save and Close
+            - button "delete Delete" [disabled] [ref=e1398]:
+              - generic:
+                - generic:
+                  - generic: delete
+                - generic: Delete
+            - listbox [ref=e1401]:
+              - generic [ref=e1403]: Active arrow_drop_down
+        - generic [ref=e1405]:
+          - button "Upload file_upload" [ref=e1410]:
+            - generic [ref=e1411]:
+              - generic [ref=e1412]: Upload
+              - generic [ref=e1413]: file_upload
+          - generic [ref=e1414]:
+            - generic [ref=e1415]:
+              - generic: Company Name *
+              - textbox "Company Name *" [ref=e1416]: Demo Company
+              - separator [ref=e1417]
+            - generic [ref=e1418]: "Date Created: 04/18/2024"
+            - generic [ref=e1419]: "Date Updated: 04/29/2026"
+        - generic [ref=e1421]:
+          - tablist [ref=e1422]:
+            - tab "library_books Details" [selected] [ref=e1423]:
+              - generic [ref=e1424]: library_books
+              - generic [ref=e1425]: Details
+            - tab " Users" [ref=e1426]:
+              - generic [ref=e1427]: 
+              - generic [ref=e1428]: Users
+            - tab "i Plans" [ref=e1429]:
+              - generic [ref=e1430]: i
+              - generic [ref=e1431]: Plans
+            - tab " Products" [ref=e1432]:
+              - generic [ref=e1433]: 
+              - generic [ref=e1434]: Products
+            - tab " Timeline" [ref=e1435]:
+              - generic [ref=e1436]: 
+              - generic [ref=e1437]: Timeline
+            - tab "note Notes" [ref=e1438]:
+              - generic [ref=e1439]: note
+              - generic [ref=e1440]: Notes
+          - tabpanel "library_books Details" [ref=e1444]:
+            - generic [ref=e1446]:
+              - generic [ref=e1448]: Enterprise Program
+              - generic [ref=e1450]:
+                - checkbox "Enable Enterprise Program" [checked] [ref=e1451]:
+                  - generic [ref=e1452]: check_box
+                - generic [ref=e1453]: Enable Enterprise Program
+              - generic [ref=e1455]: Company Details
+              - generic [ref=e1456]:
+                - generic [ref=e1457]:
+                  - generic [ref=e1458]:
+                    - generic: Company Code *
+                    - generic [ref=e1459]:
+                      - generic [ref=e1460]: "*"
+                      - generic [ref=e1461]:
+                        - textbox "Company Code *" [ref=e1462]: SE
+                        - separator [ref=e1463]
+                  - generic [ref=e1464]:
+                    - generic [ref=e1467]: 
+                    - generic [ref=e1469]:
+                      - generic [ref=e1470]: Repair Network
+                      - generic [ref=e1473]:
+                        - option "22 - Repair Cell Shop" [selected] [ref=e1475]
+                        - combobox [ref=e1477]
+                - generic [ref=e1480]:
+                  - generic [ref=e1481]:
+                    - generic [ref=e1484]: 
+                    - generic [ref=e1486]:
+                      - generic [ref=e1487]: Country *
+                      - generic [ref=e1490]:
+                        - option "United States" [selected] [ref=e1492]
+                        - combobox [ref=e1494]
+                  - generic [ref=e1497]:
+                    - generic [ref=e1500]: h
+                    - generic [ref=e1502]:
+                      - generic [ref=e1503]: Language *
+                      - generic [ref=e1506]:
+                        - option "English" [selected] [ref=e1508]
+                        - combobox [ref=e1510]
+                - generic [ref=e1513]:
+                  - generic [ref=e1514]:
+                    - generic: First Name *
+                    - generic [ref=e1515]:
+                      - generic [ref=e1516]: person
+                      - generic [ref=e1517]:
+                        - textbox "First Name *" [ref=e1518]: Sarah
+                        - separator [ref=e1519]
+                  - generic [ref=e1520]:
+                    - generic: Last Name *
+                    - generic [ref=e1521]:
+                      - generic [ref=e1522]: person
+                      - generic [ref=e1523]:
+                        - textbox "Last Name *" [ref=e1524]: Enterprise
+                        - separator [ref=e1525]
+                - generic [ref=e1527]:
+                  - generic: Email Address
+                  - generic [ref=e1528]:
+                    - generic [ref=e1529]: email
+                    - generic [ref=e1530]:
+                      - textbox "Email Address" [ref=e1531]: sarah@dnamicro.com
+                      - separator [ref=e1532]
+                - generic [ref=e1533]:
+                  - generic [ref=e1534]:
+                    - generic [ref=e1536]: 
+                    - generic [ref=e1538]:
+                      - generic [ref=e1539]: Country Code *
+                      - generic [ref=e1542]:
+                        - option "US (+1)" [selected] [ref=e1544]
+                        - combobox [ref=e1546]
+                  - generic [ref=e1549]:
+                    - generic: Phone Number *
+                    - textbox "Phone Number *" [ref=e1550]: (888) 888-8888
+                    - separator [ref=e1551]
+                - generic [ref=e1552]:
+                  - text: 
+                  - generic [ref=e1553]:
+                    - generic [ref=e1555]:
+                      - generic: Street *
+                      - generic [ref=e1556]:
+                        - generic [ref=e1557]: 
+                        - generic [ref=e1558]:
+                          - textbox "Street *" [ref=e1559]: 1 Wrigley
+                          - separator [ref=e1560]
+                    - generic [ref=e1562]:
+                      - generic: Unit/Apartment/Suite
+                      - generic [ref=e1563]:
+                        - generic [ref=e1564]: 
+                        - generic [ref=e1565]:
+                          - textbox "Unit/Apartment/Suite" [ref=e1566]
+                          - separator [ref=e1567]
+                    - generic [ref=e1569]:
+                      - generic: City *
+                      - generic [ref=e1570]:
+                        - generic [ref=e1571]: domain
+                        - generic [ref=e1572]:
+                          - textbox "City *" [ref=e1573]: Irvine
+                          - separator [ref=e1574]
+                    - generic [ref=e1575]:
+                      - generic [ref=e1577]: 
+                      - generic [ref=e1579]:
+                        - generic [ref=e1580]: Country *
+                        - generic [ref=e1582]:
+                          - generic [ref=e1583]:
+                            - option "United States" [selected] [ref=e1585]
+                            - combobox [ref=e1587]
+                          - generic "Clear value" [ref=e1588] [cursor=pointer]
+                    - generic [ref=e1591]:
+                      - generic [ref=e1593]: "4"
+                      - generic [ref=e1595]:
+                        - generic [ref=e1596]: Province *
+                        - generic [ref=e1598]:
+                          - generic [ref=e1599]:
+                            - option "California" [selected] [ref=e1601]
+                            - combobox [ref=e1603]
+                          - generic "Clear value" [ref=e1604] [cursor=pointer]
+                    - generic [ref=e1608]:
+                      - generic: Postal Code *
+                      - generic [ref=e1609]:
+                        - generic [ref=e1610]: 
+                        - generic [ref=e1611]:
+                          - textbox "Postal Code *" [ref=e1612]: "92618"
+                          - separator [ref=e1613]
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link [ref=e6] [cursor=pointer]:
+        - /url: /portal/dashboard
+        - img [ref=e7]
+      - heading "instaProtek CRM" [level=3] [ref=e10]
+      - button " Logout" [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e15]: 
+          - generic [ref=e16]: Logout
+    - navigation [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e20]:
+          - heading "Agent" [level=2] [ref=e21]
+          - heading "Enterprise" [level=4] [ref=e22]
+        - button "keyboard_arrow_down" [ref=e24]:
+          - generic [ref=e25]: keyboard_arrow_down
+        - link "Jump to content" [ref=e26] [cursor=pointer]:
+          - /url: "#main-content-demo"
+      - list [ref=e27]:
+        - listitem [ref=e28]:
+          - 'button "{ Dashboard" [ref=e29]':
+            - generic [ref=e31]: "{"
+            - generic [ref=e33]: Dashboard
+        - listitem [ref=e34]:
+          - button " Timeline" [ref=e35]:
+            - generic [ref=e37]: 
+            - generic [ref=e39]: Timeline
+        - listitem [ref=e40]:
+          - button " Users" [ref=e41]:
+            - generic [ref=e43]: 
+            - generic [ref=e45]: Users
+        - listitem [ref=e46]:
+          - button "k Customers" [ref=e47]:
+            - generic [ref=e49]: k
+            - generic [ref=e51]: Customers
+        - listitem [ref=e52]:
+          - button " Calls" [ref=e53]:
+            - generic [ref=e55]: 
+            - generic [ref=e57]: Calls
+        - listitem [ref=e58]:
+          - button " Registrations" [ref=e59]:
+            - generic [ref=e61]: 
+            - generic [ref=e63]: Registrations
+        - listitem [ref=e64]:
+          - button " Purchase" [ref=e65]:
+            - generic [ref=e67]: 
+            - generic [ref=e69]: Purchase
+        - listitem [ref=e70]:
+          - button " Test" [ref=e71]:
+            - generic [ref=e73]: 
+            - generic [ref=e75]: Test
+        - listitem [ref=e76]:
+          - button " Orders" [ref=e77]:
+            - generic [ref=e79]: 
+            - generic [ref=e81]: Orders
+        - listitem [ref=e82]:
+          - button " Repair Shops" [ref=e83]:
+            - generic [ref=e85]: 
+            - generic [ref=e87]: Repair Shops
+        - listitem [ref=e88]:
+          - button "j Affiliates" [ref=e89]:
+            - generic [ref=e91]: j
+            - generic [ref=e93]: Affiliates
+        - listitem [ref=e94]:
+          - button " Claim Reports" [ref=e95]:
+            - generic [ref=e97]: 
+            - generic [ref=e99]: Claim Reports
+        - listitem [ref=e100]:
+          - 'button "` Product Reviews" [ref=e101]':
+            - generic [ref=e103]: "`"
+            - generic [ref=e105]: Product Reviews
+        - listitem [ref=e106]:
+          - button "\\ Device Buyback" [ref=e107]:
+            - generic [ref=e109]: \
+            - generic [ref=e111]: Device Buyback
+        - listitem [ref=e112]:
+          - button " Settings keyboard_arrow_down" [ref=e113]:
+            - generic [ref=e115]: 
+            - generic [ref=e117]: Settings
+            - generic [ref=e119]: keyboard_arrow_down
+      - button "keyboard_arrow_left" [ref=e120]:
+        - generic [ref=e121]: keyboard_arrow_left
+    - main [ref=e122]:
+      - generic:
+        - img
+        - img
+      - generic [ref=e126]:
+        - generic [ref=e128]:
+          - button "add New" [ref=e129]:
+            - generic [ref=e130]:
+              - generic [ref=e132]: add
+              - generic [ref=e133]: New
+          - button "file_download Export as CSV" [ref=e134]:
+            - generic [ref=e135]:
+              - generic [ref=e137]: file_download
+              - generic [ref=e138]: Export as CSV
+        - generic [ref=e139]:
+          - generic [ref=e144]:
+            - button "Y" [ref=e145]:
+              - generic [ref=e146]: "Y"
+            - generic [ref=e147]:
+              - text: arrow_drop_down
+              - list [ref=e149]:
+                - listitem [ref=e150]:
+                  - link "All Companies" [ref=e151] [cursor=pointer]:
+                    - /url: "#"
+                    - heading "All Companies" [level=2] [ref=e152]
+            - generic [ref=e156]:
+              - button "arrow_drop_down Filter Companies" [ref=e159]:
+                - generic [ref=e160]:
+                  - generic [ref=e161]: arrow_drop_down
+                  - generic [ref=e162]: Filter Companies
+              - generic [ref=e164]:
+                - text: search
+                - textbox "Search Companies..." [ref=e165]: Demo Company
+                - separator [ref=e166]
+              - button "w" [ref=e168]:
+                - generic [ref=e169]: w
+          - generic [ref=e173]:
+            - table [ref=e175]:
+              - rowgroup [ref=e176]:
+                - row "Company Name arrow_upward Company Phone arrow_upward Products arrow_upward Enable Enterprise Program Actions" [ref=e177]:
+                  - columnheader "Company Name arrow_upward" [ref=e178]:
+                    - generic [ref=e179]:
+                      - generic [ref=e180]: Company Name
+                      - generic [ref=e181]: arrow_upward
+                  - columnheader "Company Phone arrow_upward" [ref=e182]:
+                    - generic [ref=e183]:
+                      - generic [ref=e184]: Company Phone
+                      - generic [ref=e185]: arrow_upward
+                  - columnheader "Products arrow_upward" [ref=e186]:
+                    - generic [ref=e187]:
+                      - generic [ref=e188]: Products
+                      - generic [ref=e189]: arrow_upward
+                  - columnheader "Enable Enterprise Program" [ref=e190]
+                  - columnheader "Actions" [ref=e191]
+              - rowgroup [ref=e192]:
+                - row "Company Name arrow_upward Company Phone arrow_upward Products arrow_upward Enable Enterprise Program Actions" [ref=e193]:
+                  - columnheader "Company Name arrow_upward" [ref=e194]:
+                    - generic:
+                      - generic [ref=e195]: Company Name
+                      - generic [ref=e196]: arrow_upward
+                  - columnheader "Company Phone arrow_upward" [ref=e197]:
+                    - generic:
+                      - generic [ref=e198]: Company Phone
+                      - generic [ref=e199]: arrow_upward
+                  - columnheader "Products arrow_upward" [ref=e200]:
+                    - generic:
+                      - generic [ref=e201]: Products
+                      - generic [ref=e202]: arrow_upward
+                  - columnheader "Enable Enterprise Program" [ref=e203]:
+                    - generic [ref=e204]: Enable Enterprise Program
+                  - columnheader "Actions" [ref=e205]:
+                    - generic [ref=e206]: Actions
+              - rowgroup [ref=e207]:
+                - row "Demo Company +1 (888) 888-8888 4 Yes edit delete" [ref=e1340]:
+                  - cell "Demo Company" [ref=e1341]:
+                    - generic [ref=e211]: Demo Company
+                  - cell "+1 (888) 888-8888" [ref=e212]:
+                    - generic [ref=e215]: +1 (888) 888-8888
+                  - cell "4" [ref=e1342]:
+                    - generic [ref=e218]: "4"
+                  - cell "Yes" [ref=e219]:
+                    - generic [ref=e222]: "Yes"
+                  - cell "edit delete" [ref=e223]:
+                    - generic [ref=e226]:
+                      - button "edit" [ref=e227]:
+                        - generic [ref=e228]: edit
+                      - button "delete" [disabled] [ref=e229]:
+                        - generic: delete
+            - generic [ref=e1317]:
+              - table [ref=e1320]:
+                - rowgroup [ref=e1321]:
+                  - 'row "Rows per page: 1-1 of 1 keyboard_arrow_left keyboard_arrow_right" [ref=e1343]':
+                    - 'cell "Rows per page: 1-1 of 1 keyboard_arrow_left keyboard_arrow_right" [ref=e1344]':
+                      - generic [ref=e1324]:
+                        - generic [ref=e1325]: "Rows per page:"
+                        - listbox [ref=e1328]:
+                          - generic [ref=e1329]:
+                            - generic [ref=e1330]: "50"
+                            - generic [ref=e1331]: arrow_drop_down
+                        - generic [ref=e1332]: 1-1 of 1
+                        - button "keyboard_arrow_left" [disabled] [ref=e1333]:
+                          - generic: keyboard_arrow_left
+                        - button "keyboard_arrow_right" [disabled] [ref=e1334]:
+                          - generic: keyboard_arrow_right
+              - button "vertical_align_bottom" [ref=e1336]:
+                - generic [ref=e1337]: vertical_align_bottom
+    - generic [ref=e1339]: © 2026 instaProtek CRM - Version- 1.0.0

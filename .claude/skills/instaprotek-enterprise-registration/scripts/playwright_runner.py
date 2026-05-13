@@ -33,17 +33,29 @@ from typing import Any
 
 @dataclass
 class BatchInput:
-    product_label: str               # Plan / product name from PO
+    # product_label: leave empty to auto-select the only option in the Product dropdown
+    # (most Plans have exactly one Product). Provide a specific label only if the dropdown
+    # offers multiple options and the caller knows which to pick.
+    product_label: str
     number_of_pins: int
     po_number: str
     plan_purchase_date: str          # "MM/DD/YYYY"
-    vertical: str                    # "Education"
+    plan_purchase_price: str         # e.g. "14.43" — PO unit rate; field is required by the CRM
+    vertical: str                    # "Education" etc. — see CRM Vertical dropdown options
+    invoice_number: str = ""         # optional
 
 
 @dataclass
 class TransactionInput:
-    transaction_date: str            # "MM/DD/YYYY" — from PO
-    effective_date: str              # "MM/DD/YYYY" — from CSV delivery date
+    transaction_date: str            # "MM/DD/YYYY" — usually PO order date
+    effective_date: str              # "MM/DD/YYYY" — usually first row's Delivery Date
+
+
+@dataclass
+class BulkUploadInput:
+    file_path: Path
+    company_name: str                # Company dropdown on Step 2
+    product_sku: str                 # Product SKU/Barcode dropdown on Step 2 (e.g. plan SKU)
 
 
 @dataclass
@@ -106,6 +118,58 @@ def _safe(value: str) -> str:
     """File-system-safe slug derived from an arbitrary string."""
     out = "".join(c if c.isalnum() else "_" for c in (value or "").lower())
     return out.strip("_")[:40] or "unknown"
+
+
+# JS that sets an <input>'s value the way React requires: invoke the prototype's value setter
+# (bypasses React's controlled-input fence) and dispatch input + change events so React state
+# syncs. Returns the value back as a sanity check.
+_REACT_SET_INPUT_JS = """(el, value) => {
+  const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+  setter.call(el, value);
+  el.dispatchEvent(new Event('input', { bubbles: true }));
+  el.dispatchEvent(new Event('change', { bubbles: true }));
+  el.dispatchEvent(new Event('blur', { bubbles: true }));
+  return el.value;
+}"""
+
+
+def _react_set_input(page, css_selector: str, value: str) -> None:
+    """Set a React-controlled <input>'s value via the prototype setter. Use for fields where
+    Playwright's .fill() is rejected (notably the react-datepicker text inputs)."""
+    page.locator(css_selector).first.evaluate(_REACT_SET_INPUT_JS, value)
+
+
+def _react_close_datepicker(page, css_selector_for_input: str) -> None:
+    """react-datepicker-component leaves its calendar open after a JS value-set, and the open
+    calendar overlay intercepts pointer events on neighboring buttons (notably Save). Click
+    the picker's icon to toggle the calendar closed before continuing.
+    """
+    page.evaluate(
+        """(sel) => {
+          const inp = document.querySelector(sel);
+          if (!inp) return;
+          const dp = inp.closest('.react-datepicker-component');
+          if (!dp) return;
+          const icon = dp.querySelector('.icon-rc-datepicker, .input-button');
+          if (icon) icon.click();
+        }""",
+        css_selector_for_input,
+    )
+
+
+def _js_click_button_by_text(page, text: str) -> bool:
+    """Force-click a button whose textContent contains `text`. Last-resort when an overlay
+    is intercepting Playwright's pointer events. Returns True if a button was clicked."""
+    return bool(page.evaluate(
+        """(t) => {
+          const btns = Array.from(document.querySelectorAll('button'));
+          const target = btns.reverse().find(b => b.textContent && b.textContent.includes(t) && !b.disabled);
+          if (!target) return false;
+          target.click();
+          return true;
+        }""",
+        text,
+    ))
 
 
 def _shot(page, screenshot_dir: Path, name: str) -> Path:
@@ -341,92 +405,290 @@ class CRMRunner:
                 break
         return items
 
-    def open_company_and_plan(self, plan_name: str) -> None:
-        page = self._page
-        # Navigate Settings -> Company -> Demo Company
-        settings_nav = _require(self.selectors, "settings.settings_nav")
-        company_link = _require(self.selectors, "settings.company_link")
-        company_picker = self.selectors.get("company", {}).get("company_picker") or ""
-        demo_option = _require(self.selectors, "company.demo_company_option")
+    def open_company_and_plan(self, company_name: str, plan_name: str) -> None:
+        """Navigate Settings -> Company -> <company_name> -> Plans tab -> click <plan_name>.
 
-        _locator(page, settings_nav).first.click()
-        _locator(page, company_link).first.click()
-        if company_picker:
-            _locator(page, company_picker).first.click()
-        _locator(page, demo_option).first.click()
-        _shot(page, self.screenshot_dir, "company_selected")
+        Uses the Company-list search input + exact-name row-cell match so the company can
+        be any tenant (Demo Company for QA, buyer's company name in Production). Hard-fails
+        with a clear error if the company or plan can't be located.
+        """
+        page = self._page
+        base = self.settings["crm"]["base_url"].rstrip("/")
+        if not page.url.startswith(base + "/portal/company"):
+            page.goto(base + "/portal/company")
+        search_input = _require(self.selectors, "company.company_search_input")
+        loc = _locator(page, search_input).first
+        loc.wait_for(state="visible", timeout=15000)
+        loc.fill("")
+        loc.fill(company_name)
+        page.wait_for_timeout(500)
+
+        # Find the row whose name cell equals `company_name` and click into it.
+        target_norm = (company_name or "").strip().lower()
+        rows = page.get_by_role("row")
+        company_cell = None
+        for i in range(rows.count()):
+            row = rows.nth(i)
+            cells = row.get_by_role("cell")
+            if cells.count() < 1:
+                continue
+            cell_text = (cells.nth(0).inner_text() or "").strip().lower()
+            if cell_text == target_norm:
+                company_cell = cells.nth(0)
+                break
+        if company_cell is None:
+            _shot(page, self.screenshot_dir, f"FAILURE_company_not_found_{_safe(company_name)}")
+            raise RuntimeError(f"Company {company_name!r} not found in CRM Company list")
+        company_cell.click()
+        _shot(page, self.screenshot_dir, f"company_selected_{_safe(company_name)}")
 
         # Plans tab + plan row
         plans_tab = _require(self.selectors, "company.plans_tab")
-        plan_row_template = _require(self.selectors, "company.plan_row_by_name")
-
         _locator(page, plans_tab).first.click()
-        if isinstance(plan_row_template, str):
-            sel = plan_row_template.replace("{plan_name}", plan_name)
-        elif isinstance(plan_row_template, dict) and "text" in plan_row_template:
-            sel = {"text": plan_name, "exact": True}
-        else:
-            sel = plan_row_template
-        _locator(page, sel).first.click()
-        _shot(page, self.screenshot_dir, "plan_selected")
+        _locator(page, plans_tab).first.wait_for(state="visible")
 
-    def create_batch(self, batch: BatchInput) -> None:
+        # Optional: narrow the plan list via search if the input exists in the selectors
+        plans_search = self.selectors.get("company", {}).get("plans_search_input")
+        if plans_search:
+            try:
+                ploc = _locator(page, plans_search).first
+                ploc.fill("")
+                ploc.fill(plan_name)
+                page.wait_for_timeout(400)
+            except Exception:
+                pass
+
+        # Click the plan row whose first text cell equals `plan_name`
+        target_plan = (plan_name or "").strip().lower()
+        rows = page.get_by_role("row")
+        plan_cell = None
+        for i in range(rows.count()):
+            row = rows.nth(i)
+            cells = row.get_by_role("cell")
+            if cells.count() < 1:
+                continue
+            cell_text = (cells.nth(0).inner_text() or "").strip().lower()
+            if cell_text == target_plan:
+                plan_cell = cells.nth(0)
+                break
+        if plan_cell is None:
+            _shot(page, self.screenshot_dir, f"FAILURE_plan_not_found_{_safe(plan_name)}")
+            raise RuntimeError(
+                f"Plan {plan_name!r} not found under company {company_name!r}"
+            )
+        plan_cell.click()
+        _shot(page, self.screenshot_dir, f"plan_selected_{_safe(plan_name)}")
+
+    def create_batch(self, batch: BatchInput) -> dict[str, str]:
+        """Open the New Batch dialog, fill the form, click Save & Continue.
+
+        Notes captured from the 2026-05-12 first-run end-to-end:
+        - Product dropdown usually has exactly one option (the product associated with the
+          current Plan). If `batch.product_label` is empty we auto-pick it.
+        - Plan Purchase Date is a react-datepicker-component input that rejects Playwright
+          `.fill()`. We use the JS prototype-setter and explicitly close the calendar
+          afterward — its overlay otherwise intercepts the Save button's pointer events.
+        - The Save & Continue button is sometimes still intercepted; we fall back to a
+          JS .click() if Playwright's click is blocked.
+        """
         page = self._page
         new_batch_btn = _require(self.selectors, "company.new_batch_button")
         _locator(page, new_batch_btn).first.click()
         _shot(page, self.screenshot_dir, "new_batch_dialog")
 
-        # Fill batch form
-        self._fill_dropdown_or_text("batch_form.product_dropdown", batch.product_label)
+        # Product — auto-pick the only option when no label specified. We capture the chosen
+        # option's accessible name so the caller can extract the SKU for the later CSV upload
+        # (option name format observed: "Accidental Damage Replacement - 12 Months (ESC030012MO00IK)").
+        product_dropdown = _require(self.selectors, "batch_form.product_dropdown")
+        _locator(page, product_dropdown).first.click()
+        chosen_option = (
+            _locator(page, {"role": "option", "name": batch.product_label}).first
+            if batch.product_label
+            else _locator(page, {"role": "option"}).first
+        )
+        chosen_product_label = (chosen_option.inner_text() or "").strip()
+        chosen_option.click()
+
         _locator(page, _require(self.selectors, "batch_form.number_of_pins_input")).first.fill(
             str(batch.number_of_pins)
         )
         _locator(page, _require(self.selectors, "batch_form.po_number_input")).first.fill(
             batch.po_number
         )
-        _locator(page, _require(self.selectors, "batch_form.plan_purchase_date_input")).first.fill(
-            batch.plan_purchase_date
+        if batch.invoice_number:
+            _locator(page, _require(self.selectors, "batch_form.invoice_number_input")).first.fill(
+                batch.invoice_number
+            )
+        _locator(page, _require(self.selectors, "batch_form.plan_purchase_price_input")).first.fill(
+            batch.plan_purchase_price
         )
-        self._fill_dropdown_or_text("batch_form.vertical_dropdown", batch.vertical)
+
+        # Plan Purchase Date — react-datepicker workaround
+        date_css = _require(self.selectors, "batch_form.plan_purchase_date_input_css")
+        _react_set_input(page, date_css, batch.plan_purchase_date)
+        _react_close_datepicker(page, date_css)
+
+        # Vertical — open dropdown, click option
+        _locator(page, _require(self.selectors, "batch_form.vertical_dropdown")).first.click()
+        _locator(page, {"role": "option", "name": batch.vertical}).first.click()
+
         _shot(page, self.screenshot_dir, "batch_filled")
 
-        _locator(page, _require(self.selectors, "batch_form.save_and_continue_button")).first.click()
+        # Save & Continue — try Playwright click first, fall back to JS click if overlay intercepts
+        save_btn = _locator(page, _require(self.selectors, "batch_form.save_and_continue_button")).first
+        try:
+            save_btn.click(timeout=5000)
+        except Exception:
+            self.logger.info("Save & Continue intercepted; falling back to JS click")
+            if not _js_click_button_by_text(page, "Save & Continue"):
+                raise
+        # Wait until the batch detail page loads
+        page.wait_for_url("**/portal/company/**", timeout=30_000)
         _shot(page, self.screenshot_dir, "batch_saved")
 
-    def import_csv(self, file_path: Path) -> None:
-        page = self._page
-        registrations_nav = _require(self.selectors, "registrations.registrations_nav")
-        import_btn = _require(self.selectors, "registrations.import_csv_button")
-        file_input = _require(self.selectors, "registrations.file_input")
-        complete_indicator = _require(self.selectors, "registrations.import_complete_indicator")
+        # Pull the product SKU out of the option label (last "(...)" group)
+        import re as _re
+        sku_match = _re.search(r"\(([^()]+)\)\s*$", chosen_product_label)
+        product_sku = sku_match.group(1) if sku_match else ""
+        return {"product_label": chosen_product_label, "product_sku": product_sku}
 
-        _locator(page, registrations_nav).first.click()
-        _locator(page, import_btn).first.click()
-        _locator(page, file_input).first.set_input_files(str(file_path))
-        _shot(page, self.screenshot_dir, "csv_upload_started")
-        _locator(page, complete_indicator).first.wait_for(state="visible", timeout=120_000)
-        _shot(page, self.screenshot_dir, "csv_upload_complete")
+    def import_csv(self, upload: BulkUploadInput) -> None:
+        """Drive the global Registrations -> Import CSV 3-step Bulk Upload dialog.
+
+        Captured 2026-05-12: registrations are uploaded at /portal/registration (NOT within
+        a plan/batch). Step 2 asks for Company and Product SKU (the plan SKU / barcode).
+        Step 3 shows "File Imported Successfully" on success.
+        """
+        page = self._page
+        base = self.settings["crm"]["base_url"].rstrip("/")
+        if not page.url.startswith(base + "/portal/registration"):
+            page.goto(base + "/portal/registration")
+
+        _locator(page, _require(self.selectors, "registrations.import_csv_button")).first.click()
+        _shot(page, self.screenshot_dir, "bulk_upload_step1")
+
+        # Step 1: file
+        file_input_css = _require(self.selectors, "registrations.file_input")
+        page.locator(file_input_css).first.set_input_files(str(upload.file_path))
+        _shot(page, self.screenshot_dir, "bulk_upload_file_selected")
+
+        # Advance to Step 2
+        _locator(page, _require(self.selectors, "registrations.step1_next_button")).first.click()
+
+        # Step 2: Company + Product SKU
+        _locator(page, _require(self.selectors, "registrations.step2_company_dropdown")).first.click()
+        _locator(page, {"role": "option", "name": upload.company_name}).first.click()
+
+        _locator(page, _require(self.selectors, "registrations.step2_product_sku_dropdown")).first.click()
+        _locator(page, {"role": "option", "name": upload.product_sku}).first.click()
+        _shot(page, self.screenshot_dir, "bulk_upload_step2_filled")
+
+        # Click Upload — fall back to JS if a row-validation overlay blocks
+        upload_btn = _locator(page, _require(self.selectors, "registrations.step2_upload_button")).first
+        try:
+            upload_btn.click(timeout=5000)
+        except Exception:
+            if not _js_click_button_by_text(page, "Upload"):
+                raise
+
+        # Step 3: success indicator
+        success_indicator = _require(self.selectors, "registrations.import_complete_indicator")
+        _locator(page, success_indicator).first.wait_for(state="visible", timeout=180_000)
+        _shot(page, self.screenshot_dir, "bulk_upload_complete")
+
+        # Close the dialog
+        close_btn = self.selectors.get("registrations", {}).get("close_button")
+        if close_btn:
+            try:
+                _locator(page, close_btn).first.click(timeout=3000)
+            except Exception:
+                pass
+
+    def open_batch_by_po(self, po_number: str) -> None:
+        """Find the batch we just created (by PO Number) in the current Plan's Batches tab
+        and click into it. Must be called when the Plan Details modal/page is visible."""
+        page = self._page
+        plans_batches_tab = _require(self.selectors, "plan_detail.batches_tab")
+        _locator(page, plans_batches_tab).first.click()
+        # Find the row whose PO Number cell equals po_number; click the Batch Number cell.
+        target = (po_number or "").strip()
+        rows = page.get_by_role("row")
+        for i in range(rows.count()):
+            row = rows.nth(i)
+            row_text = (row.inner_text() or "").strip()
+            if target and target in row_text:
+                cells = row.get_by_role("cell")
+                if cells.count() >= 1:
+                    cells.nth(0).click()
+                    _shot(page, self.screenshot_dir, f"batch_opened_po_{_safe(po_number)}")
+                    return
+        _shot(page, self.screenshot_dir, f"FAILURE_batch_not_found_po_{_safe(po_number)}")
+        raise RuntimeError(f"Batch with PO {po_number!r} not found in current Plan's batches")
 
     def create_transaction(self, txn: TransactionInput) -> None:
+        """Open New Transaction (from a Batch detail), drive the 3-tab dialog.
+
+        Tab 1: select-all pins (header checkbox toggles all rows).
+        Tab 2: override Transaction Date and Effective Date (both default to today; both
+               are react-datepicker inputs so they need the JS setter + close).
+        Tab 3: click "Generate New Transaction" — that's the real submit. Wait for
+               "Transaction successfully generated" alert.
+        """
         page = self._page
-        new_txn_btn = _require(self.selectors, "company.new_transaction_button")
+        new_txn_btn = _require(self.selectors, "batch_detail.new_transaction_button")
         _locator(page, new_txn_btn).first.click()
         _shot(page, self.screenshot_dir, "new_transaction_dialog")
 
-        _locator(page, _require(self.selectors, "transaction_form.transaction_date_input")).first.fill(
-            txn.transaction_date
+        # Tab 1: select all pins (header checkbox is the first checkbox in the dialog).
+        # Native checkbox clicks via overlay-wrapped icons are unreliable; use JS.
+        clicked = page.evaluate("""() => {
+          const d = document.querySelector('[role="dialog"]');
+          if (!d) return false;
+          const cb = d.querySelector('input[type="checkbox"]');
+          if (!cb) return false;
+          cb.click();
+          return true;
+        }""")
+        if not clicked:
+            raise RuntimeError("Could not find select-all checkbox in transaction dialog")
+        # Confirm count
+        page.wait_for_function(
+            "() => { const d = document.querySelector('[role=\"dialog\"]'); return d && /Selected Pin\\/s:\\s*\\d+\\s*Out Of\\s*\\d+/.test(d.innerText) && !/0\\s*Out Of/.test(d.innerText); }",
+            timeout=15_000,
         )
-        _locator(page, _require(self.selectors, "transaction_form.effective_date_input")).first.fill(
-            txn.effective_date
-        )
-        # Select all rows + submit
-        _locator(page, _require(self.selectors, "transaction_form.select_all_checkbox")).first.check()
-        _shot(page, self.screenshot_dir, "transaction_filled")
+        _shot(page, self.screenshot_dir, "txn_tab1_pins_selected")
 
-        _locator(page, _require(self.selectors, "transaction_form.submit_button")).first.click()
-        _locator(page, _require(self.selectors, "transaction_form.submit_success_indicator")).first.wait_for(
-            state="visible", timeout=120_000
-        )
+        # Advance to Tab 2 and override dates
+        _locator(page, _require(self.selectors, "transaction_form.next_button")).first.click()
+
+        txn_date_css = _require(self.selectors, "transaction_form.transaction_date_input_css")
+        eff_date_css = _require(self.selectors, "transaction_form.effective_date_input_css")
+        _react_set_input(page, txn_date_css, txn.transaction_date)
+        _react_close_datepicker(page, txn_date_css)
+        _react_set_input(page, eff_date_css, txn.effective_date)
+        _react_close_datepicker(page, eff_date_css)
+        _shot(page, self.screenshot_dir, "txn_tab2_dates_set")
+
+        # Advance to Tab 3 (review) — if the dialog is already on the final step the button
+        # will be labeled Generate; otherwise click Next first.
+        next_btn = _locator(page, _require(self.selectors, "transaction_form.next_button")).first
+        try:
+            if next_btn.is_enabled(timeout=2000):
+                next_btn.click()
+        except Exception:
+            pass
+
+        # Generate
+        generate_btn = _locator(page, _require(self.selectors, "transaction_form.generate_button")).first
+        try:
+            generate_btn.click(timeout=5000)
+        except Exception:
+            if not _js_click_button_by_text(page, "Generate New Transaction"):
+                raise
+
+        # Wait for success
+        success_indicator = _require(self.selectors, "transaction_form.submit_success_indicator")
+        _locator(page, success_indicator).first.wait_for(state="visible", timeout=120_000)
         _shot(page, self.screenshot_dir, "transaction_submitted")
 
     # -- helpers -----------------------------------------------------------

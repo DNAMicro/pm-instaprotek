@@ -1,0 +1,190 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - link [ref=e6] [cursor=pointer]:
+      - /url: /portal/dashboard
+      - img [ref=e7]
+    - heading "instaProtek CRM" [level=3] [ref=e10]
+    - button " Logout" [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e15]: 
+        - generic [ref=e16]: Logout
+  - navigation [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e20]:
+        - heading "Agent" [level=2] [ref=e21]
+        - heading "Enterprise" [level=4] [ref=e22]
+      - button "keyboard_arrow_down" [ref=e24]:
+        - generic [ref=e25]: keyboard_arrow_down
+      - link "Jump to content" [ref=e26] [cursor=pointer]:
+        - /url: "#main-content-demo"
+    - list [ref=e27]:
+      - listitem [ref=e28]:
+        - 'button "{ Dashboard" [ref=e29]':
+          - generic [ref=e31]: "{"
+          - generic [ref=e33]: Dashboard
+      - listitem [ref=e34]:
+        - button " Timeline" [ref=e35]:
+          - generic [ref=e37]: 
+          - generic [ref=e39]: Timeline
+      - listitem [ref=e40]:
+        - button " Users" [ref=e41]:
+          - generic [ref=e43]: 
+          - generic [ref=e45]: Users
+      - listitem [ref=e46]:
+        - button "k Customers" [ref=e47]:
+          - generic [ref=e49]: k
+          - generic [ref=e51]: Customers
+      - listitem [ref=e52]:
+        - button " Calls" [ref=e53]:
+          - generic [ref=e55]: 
+          - generic [ref=e57]: Calls
+      - listitem [ref=e58]:
+        - button " Registrations" [ref=e59]:
+          - generic [ref=e61]: 
+          - generic [ref=e63]: Registrations
+      - listitem [ref=e64]:
+        - button " Purchase" [ref=e65]:
+          - generic [ref=e67]: 
+          - generic [ref=e69]: Purchase
+      - listitem [ref=e70]:
+        - button " Test" [ref=e71]:
+          - generic [ref=e73]: 
+          - generic [ref=e75]: Test
+      - listitem [ref=e76]:
+        - button " Orders" [ref=e77]:
+          - generic [ref=e79]: 
+          - generic [ref=e81]: Orders
+      - listitem [ref=e82]:
+        - button " Repair Shops" [ref=e83]:
+          - generic [ref=e85]: 
+          - generic [ref=e87]: Repair Shops
+      - listitem [ref=e88]:
+        - button "j Affiliates" [ref=e89]:
+          - generic [ref=e91]: j
+          - generic [ref=e93]: Affiliates
+      - listitem [ref=e94]:
+        - button " Claim Reports" [ref=e95]:
+          - generic [ref=e97]: 
+          - generic [ref=e99]: Claim Reports
+      - listitem [ref=e100]:
+        - 'button "` Product Reviews" [ref=e101]':
+          - generic [ref=e103]: "`"
+          - generic [ref=e105]: Product Reviews
+      - listitem [ref=e106]:
+        - button "\\ Device Buyback" [ref=e107]:
+          - generic [ref=e109]: \
+          - generic [ref=e111]: Device Buyback
+      - listitem [ref=e112]:
+        - button " Settings keyboard_arrow_down" [ref=e113]:
+          - generic [ref=e115]: 
+          - generic [ref=e117]: Settings
+          - generic [ref=e119]: keyboard_arrow_down
+    - button "keyboard_arrow_left" [ref=e120]:
+      - generic [ref=e121]: keyboard_arrow_left
+  - main [ref=e122]:
+    - generic:
+      - img
+      - img
+    - generic [ref=e126]:
+      - generic [ref=e128]:
+        - button "add New" [ref=e129]:
+          - generic [ref=e130]:
+            - generic [ref=e132]: add
+            - generic [ref=e133]: New
+        - button "file_download Export as CSV" [ref=e134]:
+          - generic [ref=e212]:
+            - generic [ref=e214]: file_download
+            - generic [ref=e215]: Export as CSV
+      - generic [ref=e135]:
+        - generic [ref=e140]:
+          - button "Y" [ref=e141]:
+            - generic [ref=e142]: "Y"
+          - generic [ref=e143]:
+            - text: arrow_drop_down
+            - list [ref=e145]:
+              - listitem [ref=e146]:
+                - link "All Companies" [ref=e147] [cursor=pointer]:
+                  - /url: "#"
+                  - heading "All Companies" [level=2] [ref=e148]
+          - generic [ref=e152]:
+            - button "arrow_drop_down Filter Companies" [ref=e155]:
+              - generic [ref=e156]:
+                - generic [ref=e157]: arrow_drop_down
+                - generic [ref=e158]: Filter Companies
+            - generic [ref=e160]:
+              - text: search
+              - textbox "Search Companies..." [active] [ref=e161]: Demo Company
+              - separator [ref=e162]
+            - button "w" [ref=e164]:
+              - generic [ref=e165]: w
+        - generic [ref=e169]:
+          - table [ref=e178]:
+            - rowgroup [ref=e179]:
+              - row "Company Name arrow_upward Company Phone arrow_upward Products arrow_upward Enable Enterprise Program Actions" [ref=e180]:
+                - columnheader "Company Name arrow_upward" [ref=e181]:
+                  - generic [ref=e182]:
+                    - generic [ref=e183]: Company Name
+                    - generic [ref=e184]: arrow_upward
+                - columnheader "Company Phone arrow_upward" [ref=e185]:
+                  - generic [ref=e186]:
+                    - generic [ref=e187]: Company Phone
+                    - generic [ref=e188]: arrow_upward
+                - columnheader "Products arrow_upward" [ref=e189]:
+                  - generic [ref=e190]:
+                    - generic [ref=e191]: Products
+                    - generic [ref=e192]: arrow_upward
+                - columnheader "Enable Enterprise Program" [ref=e193]
+                - columnheader "Actions" [ref=e194]
+            - rowgroup [ref=e195]:
+              - row "Company Name arrow_upward Company Phone arrow_upward Products arrow_upward Enable Enterprise Program Actions" [ref=e196]:
+                - columnheader "Company Name arrow_upward" [ref=e197]:
+                  - generic:
+                    - generic [ref=e198]: Company Name
+                    - generic [ref=e199]: arrow_upward
+                - columnheader "Company Phone arrow_upward" [ref=e200]:
+                  - generic:
+                    - generic [ref=e201]: Company Phone
+                    - generic [ref=e202]: arrow_upward
+                - columnheader "Products arrow_upward" [ref=e203]:
+                  - generic:
+                    - generic [ref=e204]: Products
+                    - generic [ref=e205]: arrow_upward
+                - columnheader "Enable Enterprise Program" [ref=e206]:
+                  - generic [ref=e207]: Enable Enterprise Program
+                - columnheader "Actions" [ref=e208]:
+                  - generic [ref=e209]: Actions
+            - rowgroup [ref=e216]:
+              - row "Demo Company +1 (888) 888-8888 4 Yes edit delete" [ref=e217]:
+                - cell "Demo Company" [ref=e218]:
+                  - generic [ref=e220]: Demo Company
+                - cell "+1 (888) 888-8888" [ref=e221]:
+                  - generic [ref=e224]: +1 (888) 888-8888
+                - cell "4" [ref=e225]:
+                  - generic [ref=e227]: "4"
+                - cell "Yes" [ref=e228]:
+                  - generic [ref=e231]: "Yes"
+                - cell "edit delete" [ref=e232]:
+                  - generic [ref=e235]:
+                    - button "edit" [ref=e236]:
+                      - generic [ref=e237]: edit
+                    - button "delete" [disabled] [ref=e238]:
+                      - generic: delete
+          - generic [ref=e240]:
+            - table [ref=e241]:
+              - rowgroup [ref=e242]:
+                - 'row "Rows per page: 1-1 of 1 keyboard_arrow_left keyboard_arrow_right" [ref=e243]':
+                  - 'cell "Rows per page: 1-1 of 1 keyboard_arrow_left keyboard_arrow_right" [ref=e244]':
+                    - generic [ref=e245]:
+                      - generic [ref=e246]: "Rows per page:"
+                      - listbox [ref=e249]:
+                        - generic [ref=e250]:
+                          - generic [ref=e251]: "50"
+                          - generic [ref=e252]: arrow_drop_down
+                      - generic [ref=e253]: 1-1 of 1
+                      - button "keyboard_arrow_left" [disabled] [ref=e254]:
+                        - generic: keyboard_arrow_left
+                      - button "keyboard_arrow_right" [disabled] [ref=e255]:
+                        - generic: keyboard_arrow_right
+            - button "vertical_align_bottom" [ref=e257]:
+              - generic [ref=e258]: vertical_align_bottom
+  - generic [ref=e211]: © 2026 instaProtek CRM - Version- 1.0.0

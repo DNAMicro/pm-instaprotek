@@ -64,8 +64,14 @@ def main() -> int:
         boot_logger.error("Dependency install failed: %s", exc)
         return 2
 
-    # Load settings
+    # Load settings; apply CLI overrides
     settings = load_json(CONFIG_DIR / "settings.json")
+    if args.company:
+        settings.setdefault("crm", {})["company_name"] = args.company.strip()
+        boot_logger.info("Using CRM company from --company: %r", settings["crm"]["company_name"])
+    if args.plan:
+        settings.setdefault("crm", {})["plan_name"] = args.plan.strip()
+        boot_logger.info("Using CRM plan from --plan: %r", settings["crm"]["plan_name"])
 
     # Discover input files first — if this fails we can't compute a PO number for the folder.
     try:
@@ -405,7 +411,7 @@ def _run_pipeline(
                     return 0
 
                 # ---- Step 2: batch ----
-                from playwright_runner import BatchInput, TransactionInput
+                from playwright_runner import BatchInput, BulkUploadInput, TransactionInput
 
                 plan_purchase_date_us = format_date_us(po.order_date)
                 transaction_date_us = plan_purchase_date_us
@@ -446,16 +452,32 @@ def _run_pipeline(
                     return 1
 
                 batch = BatchInput(
-                    product_label=po.plan_description or "",
+                    product_label="",  # Auto-pick the only product option under the chosen plan
                     number_of_pins=reg.row_count,
                     po_number=po.po_number or "",
                     plan_purchase_date=plan_purchase_date_us,
+                    plan_purchase_price=f"{po.rate:.2f}" if po.rate is not None else "0.00",
                     vertical=settings["crm"].get("default_vertical", "Education"),
+                    invoice_number="",
                 )
 
+                batch_result: dict[str, str] = {}
                 try:
-                    runner.open_company_and_plan(po.plan_description or "")
-                    runner.create_batch(batch)
+                    # Plan name: --plan flag wins, then settings.json crm.plan_name, then PO description
+                    # (last one usually doesn't match the CRM and will hard-fail clean).
+                    plan_name_for_run = (
+                        settings["crm"].get("plan_name")
+                        or settings["crm"].get("default_plan_name")
+                        or po.plan_description
+                        or ""
+                    )
+                    runner.open_company_and_plan(
+                        settings["crm"].get("company_name", "Demo Company"),
+                        plan_name_for_run,
+                    )
+                    batch_result = runner.create_batch(batch) or {}
+                    logger.info("Batch created: product_label=%r product_sku=%r",
+                                batch_result.get("product_label"), batch_result.get("product_sku"))
                 except Exception as exc:
                     logger.exception("Batch creation failed: %s", exc)
                     _fail(
@@ -473,8 +495,28 @@ def _run_pipeline(
                     return 1
 
                 # ---- Step 3: CSV upload ----
+                product_sku_for_upload = batch_result.get("product_sku", "")
+                if not product_sku_for_upload:
+                    _fail(
+                        stage="import_csv",
+                        reason="Could not extract Product SKU from the Batch's Product dropdown option. "
+                               "Step 2 of Bulk Upload requires the SKU/barcode.",
+                        details={"batch_result": batch_result},
+                        success_folder=success_folder,
+                        failure_folder=failure_folder,
+                        settings=settings,
+                        po=po,
+                        run_timestamp=run_timestamp,
+                        skip_webhook=args.skip_webhook,
+                        logger=logger,
+                    )
+                    return 1
                 try:
-                    runner.import_csv(cleaned_path)
+                    runner.import_csv(BulkUploadInput(
+                        file_path=cleaned_path,
+                        company_name=settings["crm"].get("company_name", "Demo Company"),
+                        product_sku=product_sku_for_upload,
+                    ))
                 except Exception as exc:
                     logger.exception("CSV import failed: %s", exc)
                     _fail(
@@ -492,11 +534,18 @@ def _run_pipeline(
                     return 1
 
                 # ---- Step 4: transaction ----
+                # After upload we're back on /portal/registration; re-navigate to the batch
+                # we just created (lookup by PO number) before opening New Transaction.
                 txn = TransactionInput(
                     transaction_date=transaction_date_us,
                     effective_date=effective_date_us,
                 )
                 try:
+                    runner.open_company_and_plan(
+                        settings["crm"].get("company_name", "Demo Company"),
+                        plan_name_for_run,
+                    )
+                    runner.open_batch_by_po(po.po_number or "")
                     runner.create_transaction(txn)
                 except Exception as exc:
                     logger.exception("Transaction submission failed: %s", exc)
@@ -890,6 +939,25 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--skip-webhook", action="store_true", help="Do not post to RingCentral")
     p.add_argument("--refresh-brand-menu", action="store_true", help="Force a re-read of the CRM Brand menu")
     p.add_argument("--verbose", action="store_true", help="Verbose stdout logging")
+    p.add_argument(
+        "--company",
+        default=None,
+        help=(
+            "CRM company name for this run (e.g. \"Demo Company\" for QA, "
+            "\"Connected Solutions Group, LLC.\" for production). Overrides "
+            "settings.json crm.company_name when provided."
+        ),
+    )
+    p.add_argument(
+        "--plan",
+        default=None,
+        help=(
+            "CRM plan name to attach this batch to (e.g. \"Extended Service Contract - 12 Months\"). "
+            "Required when PO plan description doesn't match the CRM plan verbatim. Overrides "
+            "settings.json crm.default_plan_name when provided. If unset, falls back to the PO's "
+            "plan_description, which usually does NOT match the CRM plan."
+        ),
+    )
     return p.parse_args()
 
 

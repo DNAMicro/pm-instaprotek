@@ -1,0 +1,27 @@
+- generic [ref=e5]:
+  - img [ref=e7]
+  - generic [ref=e8]:
+    - heading "Login" [level=2] [ref=e10]
+    - paragraph [ref=e11]: error Enter your email and password... Error!
+    - generic [ref=e12]:
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - generic: Email*
+          - generic [ref=e16]:
+            - generic [ref=e17]: person
+            - generic [ref=e18]:
+              - textbox "Email*" [ref=e19]
+              - separator [ref=e20]
+        - generic [ref=e21]:
+          - generic: Password*
+          - generic [ref=e22]:
+            - generic [ref=e23]: lock
+            - generic [ref=e24]:
+              - textbox "Password*" [ref=e25]
+              - separator [ref=e26]
+            - button "remove_red_eye" [ref=e27]:
+              - generic [ref=e28]: remove_red_eye
+        - button "Login" [ref=e30]
+      - link "Forgot Password" [ref=e32] [cursor=pointer]:
+        - /url: /recover
+        - button "Forgot Password" [ref=e33]

@@ -1,7 +1,6 @@
 {
-  "_comment": "Populated 2026-05-11 from exploratory headed run against qa.crm.instaprotek.com. Prefer accessibility locators (role+name, label) over CSS for resilience. Buttons in the left nav have icon-font prefixes that appear in the accessible name (e.g. 'N Brand', '* Company', 'i Plans') — these prefixes are part of the name string.",
+  "_comment": "Populated 2026-05-11 from exploratory headed run, refined 2026-05-12 after a full end-to-end submit against Demo Company (PO 41922 → Batch 8136). Prefer accessibility locators (role+name, label). Buttons in the left nav have icon-font prefixes that appear in the accessible name (e.g. 'N Brand', '* Company', 'i Plans') — those prefixes are part of the name string.",
   "_format": "string for CSS selector, or object like {\"role\": \"button\", \"name\": \"Save\"} for accessibility-based locator. The orchestrator's `_locator()` understands: role+name, label, text, test_id, placeholder, or a raw CSS string.",
-  "_unknown": "transaction_form.* selectors are NOT yet captured — they live inside a Batch detail page which can only be reached AFTER a batch has been created. Capture during a real first submit.",
 
   "login": {
     "username_input": {"role": "textbox", "name": "Email*"},
@@ -14,64 +13,77 @@
     "settings_nav": {"role": "button", "name": " Settings keyboard_arrow_down"},
     "company_link": {"role": "button", "name": "* Company"},
     "brand_link": {"role": "button", "name": "N Brand"},
-    "_brand_hierarchy_note": "The CRM stores models as Brand -> Devices (two levels). Settings -> Brand shows a single-column list of Brand names. Clicking a Brand opens its detail page, which has a 'Devices' tab listing every device/model under that brand (e.g. Samsung Galaxy has 221 devices: A01, A02, A13 5G, etc.). Device names exclude the brand prefix ('Galaxy' is implicit in the brand name 'Samsung Galaxy'). The registration file's Manufacturer column maps to the Brand name and the Model Number column maps to the Device name — BOTH cells get rewritten to the exact CRM strings when the file's values don't match.",
+    "_brand_hierarchy_note": "The CRM stores models as Brand -> Devices. Settings -> Brand is a single-column list of Brand names. Clicking a Brand opens its detail page; the Devices tab there has every model under that brand. Device names exclude the brand prefix ('Galaxy' is implicit in 'Samsung Galaxy'). Both the Manufacturer (Brand) and Model Number (Device) cells in the registration file get rewritten to the exact CRM strings when they don't match.",
     "brand_table_rows": "table tbody tr",
     "brand_search_input": {"role": "textbox", "name": "Search Brands..."},
-    "brand_export_csv_button": {"role": "button", "name": "file_download Export as CSV"},
-    "brand_row_edit_button_template": "row matching brand name -> 'edit' button (use brand_search_input + first row's edit button)"
+    "brand_export_csv_button": {"role": "button", "name": "file_download Export as CSV"}
   },
 
   "brand_detail": {
-    "_note": "Inside a single Brand's detail page. Devices tab is selected by default.",
     "devices_tab": {"role": "tab", "name": " Devices"},
     "devices_search_input": {"role": "textbox", "name": "Search Devices..."},
     "devices_table_rows": "table tbody tr",
-    "devices_pagination_next": {"role": "button", "name": "keyboard_arrow_right"},
-    "devices_pagination_label": "table tfoot tr"
+    "devices_pagination_next": {"role": "button", "name": "keyboard_arrow_right"}
   },
 
   "company": {
-    "_note": "There is no 'company picker' modal — Settings -> Company lands on a paginated table of all companies. Search by company name, then click the company's row cell to open its detail page.",
-    "company_picker": "",
+    "_note": "Settings -> Company lands on a paginated table of all companies. Search by company name, then click the company's first-cell to open its detail page (which has tabs Details / Users / Plans / Products / Timeline / Notes).",
     "company_search_input": {"role": "textbox", "name": "Search Companies..."},
     "demo_company_option": {"role": "cell", "name": "Demo Company"},
     "plans_tab": {"role": "tab", "name": "i Plans"},
     "plans_search_input": {"role": "textbox", "name": "Search Plans..."},
     "plan_row_by_name": {"role": "cell", "name": "{plan_name}"},
-    "new_batch_button": {"role": "button", "name": "add New"},
-    "_new_transaction_button_note": "The 'New Transaction' button is inside the Batch detail view, which requires an existing Batch. Selector not yet captured.",
-    "new_transaction_button": ""
+    "new_batch_button": {"role": "button", "name": "add New"}
+  },
+
+  "plan_detail": {
+    "_note": "After clicking a Plan, a Plan Details modal opens with tabs Details/Batches/Timeline/Notes. The 'add New' button under Batches opens the New Batch dialog.",
+    "batches_tab": {"role": "tab", "name": "s Batches"},
+    "batches_add_new_button": {"role": "button", "name": "add New"}
   },
 
   "batch_form": {
-    "_note": "Form fields observed in the 'New Batch' dialog opened from a Plan's Batches tab.",
-    "product_dropdown": {"role": "combobox", "name": "Product"},
+    "_note": "Fields observed in the New Batch dialog. Plan Purchase Date is a react-datepicker-component input — .fill() does NOT work; use _react_set_input + _react_close_datepicker. The Save button is sometimes blocked by the calendar overlay; the runner falls back to a JS click.",
+    "product_dropdown": {"role": "listbox", "name": "Product"},
     "number_of_pins_input": {"role": "textbox", "name": "Number of Pins *"},
     "po_number_input": {"role": "textbox", "name": "PO Number"},
-    "_plan_purchase_date_input_note": "The date input has no accessible name in the snapshot — using a placeholder/format hint locator. Verify on next run; may need a CSS selector.",
-    "plan_purchase_date_input": {"placeholder": "mm/dd/yyyy"},
-    "plan_purchase_price_input": {"role": "textbox", "name": "Plan Purchase Price *"},
     "invoice_number_input": {"role": "textbox", "name": "Invoice Number"},
-    "vertical_dropdown": {"role": "combobox", "name": "Vertical *"},
+    "plan_purchase_price_input": {"role": "textbox", "name": "Plan Purchase Price *"},
+    "plan_purchase_date_input_css": ".productBatch_purchase-date input, .batch-Datepicker input",
+    "vertical_dropdown": {"role": "listbox", "name": "Vertical"},
     "save_and_continue_button": {"role": "button", "name": "check Save & Continue"},
     "cancel_button": {"role": "button", "name": "close Cancel"}
   },
 
+  "batch_detail": {
+    "_note": "Opened after creating a batch, or by clicking a batch's Batch Number cell in the plan's Batches table. 'New Transaction' button at the top opens the 3-tab transaction dialog.",
+    "new_transaction_button": {"role": "button", "name": "s New Transaction"},
+    "used_pins_textbox": {"role": "textbox", "name": "Used Pins"},
+    "export_batch_button": {"role": "button", "name": "s Export Batch"}
+  },
+
   "registrations": {
-    "_note": "Registrations Import CSV is a GLOBAL action under /portal/registration — not scoped to a specific company. The Batch/Plan association presumably happens inside Step 2 of the 3-step Bulk Data Upload dialog (Step 1 = file picker, Step 2/3 = review + import). Capture step 2 selectors during the first real submit.",
+    "_note": "Registrations Import CSV at /portal/registration is GLOBAL (not company-scoped). The Bulk Upload dialog has 3 steps: Step 1 = Choose File (xlsx/xls/csv), Step 2 = Company + Product SKU dropdowns + Upload button, Step 3 = success message.",
     "registrations_nav": {"role": "button", "name": " Registrations"},
     "import_csv_button": {"role": "button", "name": "file_upload Import CSV"},
     "file_input": "input[type='file']",
-    "next_button": {"role": "button", "name": "chevron_right Next"},
-    "import_complete_indicator": ""
+    "step1_next_button": {"role": "button", "name": "chevron_right Next"},
+    "step2_company_dropdown": {"role": "listbox"},
+    "step2_product_sku_dropdown": {"role": "listbox"},
+    "step2_upload_button": {"role": "button", "name": "chevron_right Upload"},
+    "import_complete_indicator": {"text": "File Imported Successfully"},
+    "close_button": {"role": "button", "name": "close"}
   },
 
   "transaction_form": {
-    "_note": "Not yet captured. The flow is: open a created Batch -> find New Transaction button -> dialog with transaction_date + effective_date inputs, select-all checkbox, Submit button. Capture during the first real submit.",
-    "transaction_date_input": "",
-    "effective_date_input": "",
-    "select_all_checkbox": "",
-    "submit_button": "",
-    "submit_success_indicator": ""
+    "_note": "3-tab dialog opened from a Batch detail's New Transaction button. Tab 1 = pin selection (header checkbox toggles all), Tab 2 = Transaction Date + Effective Date overrides (both react-datepicker inputs), Tab 3 = review then 'Generate New Transaction' button. The Generate click yields an alert: 'Transaction successfully generated'.",
+    "next_button": {"role": "button", "name": "chevron_right Next"},
+    "previous_button": {"role": "button", "name": "chevron_left Previous"},
+    "select_all_checkbox_css": "[role='dialog'] input[type='checkbox']",
+    "transaction_date_input_css": "[role='dialog'] .react-datepicker-component:nth-of-type(1) input",
+    "effective_date_input_css": "[role='dialog'] .react-datepicker-component:nth-of-type(2) input",
+    "generate_button": {"role": "button", "name": "check Generate New Transaction"},
+    "submit_success_indicator": {"text": "Transaction successfully generated."},
+    "cancel_button": {"role": "button", "name": "close Cancel"}
   }
 }
