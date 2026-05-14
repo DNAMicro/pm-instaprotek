@@ -1,0 +1,10 @@
+{
+  "url": "https://hooks.ringcentral.com/webhook/v2/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvdCI6ImMiLCJvaSI6IjE3MDU3MjE4NTciLCJpZCI6IjM3NDQwNDcxMzEifQ.2wjy0wa4pkJt3Wz4zHj-9okE07C-qeORxkSZaT0w3sY",
+  "request_body": {
+    "title": "InstaProtek registration FAILED \u2014 PO 42047",
+    "text": "**Stage:** create_batch\n**Reason:** Plan 'Extended Service Contract - 12 Months' not found under company 'Demo Company'\n**Details:**\n```\n{\n  \"traceback\": \"Traceback (most recent call last):\\n  File \\\"C:\\\\Users\\\\sarahgamba\\\\Dropbox\\\\PC\\\\Documents\\\\pm-instaprotek\\\\.claude\\\\skills\\\\instaprotek-enterprise-registration\\\\scripts\\\\run.py\\\", line 501, in _run_pipeline\\n    runner.open_company_and_plan(\\n  File \\\"C:\\\\Users\\\\sarahgamba\\\\Dropbox\\\\PC\\\\Documents\\\\pm-instaprotek\\\\.claude\\\\skills\\\\instaprotek-enterprise-registration\\\\scripts\\\\playwright_runner.py\\\", line 577, in open_company_and_plan\\n    raise RuntimeError(\\nRuntimeError: Plan 'Extended Service Contract - 12 Months' not found under company 'Demo Company'\\n\",\n  \"batch\": {\n    \"product_label\": \"\",\n    \"number_of_pins\": 20,\n    \"po_number\": \"42047\",\n    \"plan_purchase_date\": \"05/11/2026\",\n    \"plan_purchase_price\": \"14.43\",\n    \"vertical\": \"Education\",\n    \"invoice_number\": \"\",\n    \"product_sku_hint\": \"ESC030012MO00IK\"\n  }\n}\n```\n**Failure folder:** `processed\\failures\\2026-05-13_204600_PO42047`\n**Run timestamp (UTC):** 2026-05-13_204600"
+  },
+  "status_code": 200,
+  "response_text": "{\"status\":\"OK\"}",
+  "ok": true
+}

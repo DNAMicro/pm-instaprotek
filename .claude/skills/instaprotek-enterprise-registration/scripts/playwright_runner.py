@@ -510,12 +510,83 @@ class CRMRunner:
             _shot(page, self.screenshot_dir, f"FAILURE_company_not_found_{_safe(company_name)}")
             raise RuntimeError(f"Company {company_name!r} not found in CRM Company list")
         company_cell.click()
+
+        # The click triggers an async navigation to Company Details. Confirm the transition
+        # actually completed before touching the Plans tab — the Plans tab does not exist on
+        # the Companies list page, so a premature click silently fails.
+        try:
+            page.get_by_role("heading", name=f"Company: {company_name}").first.wait_for(
+                state="visible", timeout=15000
+            )
+        except Exception:
+            self.logger.debug("Company Details heading didn't appear within 15s")
+        # Also wait for the Company Details tablist to render — the heading appears before
+        # the tab list is interactive when state is restored from prior session.
+        try:
+            page.locator("ul.md-tabs[role='tablist']").first.wait_for(state="visible", timeout=10000)
+            # Give the tablist's icons / aria-selected attribute one render cycle to settle.
+            page.wait_for_timeout(800)
+        except Exception:
+            self.logger.debug("Company Details tablist didn't appear within 10s")
         _shot(page, self.screenshot_dir, f"company_selected_{_safe(company_name)}")
 
-        # Plans tab + plan row
-        plans_tab = _require(self.selectors, "company.plans_tab")
-        _locator(page, plans_tab).first.click()
-        _locator(page, plans_tab).first.wait_for(state="visible")
+        # Plans tab + plan row. The tab DOM is:
+        #   <li role="tab"><i class="md-icon--tab ..."></i><div class="md-tab-label">Plans</div></li>
+        # Playwright's .click() resolves coordinates and sometimes routes to an adjacent tab
+        # (PRODUCTS) when the Material Design tabs are still settling. Click via native JS to
+        # avoid coordinate-based dispatch. Confirm by waiting for content unique to the Plans
+        # tab; retry up to 3× if it didn't take.
+        plans_search_sel = self.selectors.get("company", {}).get("plans_search_input")
+
+        def _click_plans_tab_js() -> str | None:
+            return page.evaluate(
+                """() => {
+                    const labels = document.querySelectorAll('.md-tab-label');
+                    for (const lbl of labels) {
+                        if ((lbl.textContent || '').trim() === 'Plans') {
+                            const tab = lbl.closest("[role='tab']");
+                            if (tab) {
+                                tab.click();
+                                return tab.id || 'unknown';
+                            }
+                        }
+                    }
+                    return null;
+                }"""
+            )
+
+        clicked_id = None
+        for attempt in range(3):
+            clicked_id = _click_plans_tab_js()
+            self.logger.debug("Plans tab JS click attempt %d -> id=%r", attempt + 1, clicked_id)
+            if clicked_id is None:
+                page.wait_for_timeout(1000)
+                continue
+            if plans_search_sel is None:
+                page.wait_for_timeout(500)
+                break
+            # Verify the click took by checking aria-selected on the clicked tab.
+            try:
+                page.wait_for_function(
+                    """(id) => {
+                        const el = document.getElementById(id);
+                        return el && el.getAttribute('aria-selected') === 'true';
+                    }""",
+                    arg=clicked_id,
+                    timeout=5000,
+                )
+            except Exception:
+                self.logger.debug("Plans tab aria-selected didn't flip on attempt %d", attempt + 1)
+                continue
+            try:
+                _locator(page, plans_search_sel).first.wait_for(state="visible", timeout=5000)
+                _shot(page, self.screenshot_dir, "plans_tab_active")
+                break
+            except Exception:
+                self.logger.debug("Plans tab click attempt %d didn't reveal search; retrying", attempt + 1)
+        else:
+            self.logger.warning("Plans tab didn't switch after 3 attempts; continuing anyway")
+            _shot(page, self.screenshot_dir, "plans_tab_switch_failed")
 
         # Optional: narrow the plan list via search if the input exists in the selectors
         plans_search = self.selectors.get("company", {}).get("plans_search_input")
@@ -526,8 +597,10 @@ class CRMRunner:
                 ploc.fill(plan_name)
                 # Plan Name lives in cell index 0 of the Plans table.
                 self._wait_for_filtered_row(plan_name, cell_index=0)
-            except Exception:
-                pass
+            except Exception as exc:
+                self.logger.debug("Plans search fill/wait failed: %s", exc)
+
+        _shot(page, self.screenshot_dir, "before_plan_row_scan")
 
         # Click the plan row whose first text cell equals `plan_name`
         target_plan = (plan_name or "").strip().lower()
