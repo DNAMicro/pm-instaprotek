@@ -1,0 +1,10 @@
+{
+  "url": "https://hooks.ringcentral.com/webhook/v2/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvdCI6ImMiLCJvaSI6IjE3MDU3MjE4NTciLCJpZCI6IjM3NDQwNDcxMzEifQ.2wjy0wa4pkJt3Wz4zHj-9okE07C-qeORxkSZaT0w3sY",
+  "request_body": {
+    "title": "InstaProtek registration FAILED \u2014 PO 42047",
+    "text": "**Stage:** create_transaction\n**Reason:** Batch with PO '42047' not found in current Plan's batches\n**Details:**\n```\n{\n  \"traceback\": \"Traceback (most recent call last):\\n  File \\\"C:\\\\Users\\\\sarahgamba\\\\Dropbox\\\\PC\\\\Documents\\\\pm-instaprotek\\\\.claude\\\\skills\\\\instaprotek-enterprise-registration\\\\scripts\\\\run.py\\\", line 580, in _run_pipeline\\n    runner.open_batch_by_po(po.po_number or \\\"\\\")\\n  File \\\"C:\\\\Users\\\\sarahgamba\\\\Dropbox\\\\PC\\\\Documents\\\\pm-instaprotek\\\\.claude\\\\skills\\\\instaprotek-enterprise-registration\\\\scripts\\\\playwright_runner.py\\\", line 991, in open_batch_by_po\\n    raise RuntimeError(f\\\"Batch with PO {po_number!r} not found in current Plan's batches\\\")\\nRuntimeError: Batch with PO '42047' not found in current Plan's batches\\n\",\n  \"transaction\": {\n    \"transaction_date\": \"05/11/2026\",\n    \"effective_date\": \"05/07/2026\"\n  }\n}\n```\n**Failure folder:** `processed\\failures\\2026-05-16_012936_PO42047`\n**Run timestamp (UTC):** 2026-05-16_012936"
+  },
+  "status_code": 200,
+  "response_text": "{\"status\":\"OK\"}",
+  "ok": true
+}

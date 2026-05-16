@@ -1,0 +1,99 @@
+{
+  "found": true,
+  "labels": [
+    {
+      "text": "Company *",
+      "for": "company",
+      "classes": "md-floating-label md-floating-label--floating md-text--secondary"
+    },
+    {
+      "text": "Product SKU *",
+      "for": "register_under",
+      "classes": "md-floating-label md-floating-label--floating md-text--theme-primary"
+    }
+  ],
+  "select_fields": [
+    {
+      "classes": "md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field md-text",
+      "outer_preview": "<div id=\"company-toggle\" role=\"listbox\" tabindex=\"0\" aria-pressed=\"true\" class=\"md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field md-text\"><div class=\"md-ink-container\"></div><div class=\"md-icon-separator md-text-field md-text-field--floating-margin md-select-field--btn\"><span class=\"md-icon-text\">Demo Company</span><i class=\"dnaicon dnaicon-company\"></i></div><input type=\"hidden\" id=\"company\" value=\"d2a14fa7-567f-499b-a87b-ee9df2df5e9b\" style=\"\"></div>",
+      "hidden_input_id": "company",
+      "hidden_input_name": "",
+      "hidden_input_value": "d2a14fa7-567f-499b-a87b-ee9df2df5e9b",
+      "toggle_id": null,
+      "toggle_role": null,
+      "toggle_aria_labelledby": null,
+      "toggle_aria_label": null,
+      "displayed_text": "Demo Company"
+    },
+    {
+      "classes": "md-paper md-paper--1 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field",
+      "outer_preview": "<div id=\"register_under-toggle\" role=\"listbox\" tabindex=\"0\" aria-pressed=\"true\" class=\"md-paper md-paper--1 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field\"><div class=\"md-ink-container\"></div><div class=\"md-icon-separator md-text-field md-text-field--floating-margin md-select-field--btn\"><span class=\"md-icon-text\"></span><i class=\"dnaicon dnaicon-barcode\"></i></div><input type=\"hidden\" id=\"register_under\" value=\"\" style=\"\"></div>",
+      "hidden_input_id": "register_under",
+      "hidden_input_name": "",
+      "hidden_input_value": "",
+      "toggle_id": null,
+      "toggle_role": null,
+      "toggle_aria_labelledby": null,
+      "toggle_aria_label": null,
+      "displayed_text": ""
+    }
+  ],
+  "listboxes": [
+    {
+      "id": "company-toggle",
+      "classes": "md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field md-text",
+      "aria_label": null,
+      "aria_labelledby": null,
+      "text": "Demo Company"
+    },
+    {
+      "id": "register_under-toggle",
+      "classes": "md-paper md-paper--1 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field",
+      "aria_label": null,
+      "aria_labelledby": null,
+      "text": ""
+    },
+    {
+      "id": "register_under-menu-options",
+      "classes": "md-list md-layover-child md-layover-child--below md-layover-child--simplified md-list--menu md-list--menu-restricted md-list--menu-contained md-list--menu-below md-paper md-paper--2",
+      "aria_label": null,
+      "aria_labelledby": null,
+      "text": "ESC030012MO00IK846641731777614238026266814202333330"
+    }
+  ],
+  "comboboxes": [],
+  "global_menus": [
+    {
+      "tag": "UL",
+      "classes": "md-list md-layover-child md-layover-child--below md-layover-child--simplified md-list--menu md-list--menu-restricted md-list--menu-contained md-list--menu-below md-paper md-paper--2",
+      "text_preview": "ESC030012MO00IK846641731777614238026266814202333330",
+      "outer_preview": "<ul role=\"listbox\" id=\"register_under-menu-options\" class=\"md-list md-layover-child md-layover-child--below md-layover-child--simplified md-list--menu md-list--menu-restricted md-list--menu-contained md-list--menu-below md-paper md-paper--2\"><li class=\"md-list-item\"><div role=\"option\" data-id=\"0\" data-value=\"ESC030012MO00IK\" class=\"md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text\" tabindex=\"-1\" aria-pressed=\"false\"><div class=\"md-tile-content\"><div class=\"md-tile-text--primary md-text\">ESC030012MO00IK</div></div></div></li><li class=\"md-list-item\"><div role=\"option\" data-id=\"1\" data-value=\"846641731777\" class=\"md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text\" tabindex=\"-1\" aria-pressed=\"false\"><div class=\"md-tile-content\"><div class=\"md-tile-text--primary md-text\">846641731777</div></div></div></li><li class=\"md-list-item\"><div role=\"option\" data-id=\"2\" data-value=\"614238026266\" class=\"md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text\" tabindex=\"-1\" aria-pressed=\"false\"><div class=\"md-tile-content\"><div class=\"md-tile-text--primary md-text\">614238026266</div></div></div></li><li class=\"md-list-item\"><div role=\"option\" data-id=\"3\" data-value=\"814202333330\" class=\"md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text\" tabindex=\"-1\" aria-pressed=\"false\"><div class=\"md-tile-content\"><div class=\"md-tile-text--primary md-text\">814202333330</div></div></div></li></ul>"
+    }
+  ],
+  "global_listitems": [
+    {
+      "id": "",
+      "text": "ESC030012MO00IK",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "846641731777",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "614238026266",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "814202333330",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    }
+  ]
+}

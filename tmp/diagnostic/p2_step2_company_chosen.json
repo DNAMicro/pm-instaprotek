@@ -1,0 +1,60 @@
+{
+  "found": true,
+  "labels": [
+    {
+      "text": "Company *",
+      "for": "company",
+      "classes": "md-floating-label md-floating-label--floating md-text--secondary"
+    },
+    {
+      "text": "Product SKU *",
+      "for": "register_under",
+      "classes": "md-floating-label md-floating-label--inactive md-floating-label--inactive-sized md-text--secondary"
+    }
+  ],
+  "select_fields": [
+    {
+      "classes": "md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field md-text",
+      "outer_preview": "<div id=\"company-toggle\" role=\"listbox\" tabindex=\"0\" aria-pressed=\"true\" class=\"md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field md-text\"><div class=\"md-ink-container\"></div><div class=\"md-icon-separator md-text-field md-text-field--floating-margin md-select-field--btn\"><span class=\"md-icon-text\">Demo Company</span><i class=\"dnaicon dnaicon-company\"></i></div><input type=\"hidden\" id=\"company\" value=\"d2a14fa7-567f-499b-a87b-ee9df2df5e9b\" style=\"\"></div>",
+      "hidden_input_id": "company",
+      "hidden_input_name": "",
+      "hidden_input_value": "d2a14fa7-567f-499b-a87b-ee9df2df5e9b",
+      "toggle_id": null,
+      "toggle_role": null,
+      "toggle_aria_labelledby": null,
+      "toggle_aria_label": null,
+      "displayed_text": "Demo Company"
+    },
+    {
+      "classes": "md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field",
+      "outer_preview": "<div id=\"register_under-toggle\" role=\"listbox\" tabindex=\"0\" aria-pressed=\"false\" class=\"md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field\"><div class=\"md-ink-container\"></div><div class=\"md-icon-separator md-text-field md-text-field--floating-margin md-select-field--btn\"><span class=\"md-icon-text\"></span><i class=\"dnaicon dnaicon-barcode\"></i></div><input type=\"hidden\" id=\"register_under\" value=\"\" style=\"\"></div>",
+      "hidden_input_id": "register_under",
+      "hidden_input_name": "",
+      "hidden_input_value": "",
+      "toggle_id": null,
+      "toggle_role": null,
+      "toggle_aria_labelledby": null,
+      "toggle_aria_label": null,
+      "displayed_text": ""
+    }
+  ],
+  "listboxes": [
+    {
+      "id": "company-toggle",
+      "classes": "md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field md-text",
+      "aria_label": null,
+      "aria_labelledby": null,
+      "text": "Demo Company"
+    },
+    {
+      "id": "register_under-toggle",
+      "classes": "md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field",
+      "aria_label": null,
+      "aria_labelledby": null,
+      "text": ""
+    }
+  ],
+  "comboboxes": [],
+  "global_menus": [],
+  "global_listitems": []
+}

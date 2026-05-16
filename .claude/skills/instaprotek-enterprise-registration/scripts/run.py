@@ -83,7 +83,7 @@ def main() -> int:
             stage="discover_files",
             reason=str(exc),
             details={"input_dir": str(INPUT_DIR)},
-            skip_webhook=args.skip_webhook,
+            skip_webhook=args.skip_webhook or args.skip_failure_webhook,
             logger=boot_logger,
         )
         return 1
@@ -100,7 +100,7 @@ def main() -> int:
             stage="parse_po",
             reason=f"PO parsing exception: {exc}",
             details={"po_pdf": discovered.po_pdf.name, "traceback": traceback.format_exc()},
-            skip_webhook=args.skip_webhook,
+            skip_webhook=args.skip_webhook or args.skip_failure_webhook,
             logger=boot_logger,
         )
         return 1
@@ -151,7 +151,7 @@ def main() -> int:
             details={"traceback": traceback.format_exc()},
             failure_folder=failure_folder,
             run_timestamp=run_timestamp,
-            skip_webhook=args.skip_webhook,
+            skip_webhook=args.skip_webhook or args.skip_failure_webhook,
             logger=logger,
         )
         return 1
@@ -181,7 +181,7 @@ def _run_pipeline(
             settings=settings,
             po=po,
             run_timestamp=run_timestamp,
-            skip_webhook=args.skip_webhook,
+            skip_webhook=args.skip_webhook or args.skip_failure_webhook,
             logger=logger,
         )
         return 1
@@ -213,7 +213,7 @@ def _run_pipeline(
             settings=settings,
             po=po,
             run_timestamp=run_timestamp,
-            skip_webhook=args.skip_webhook,
+            skip_webhook=args.skip_webhook or args.skip_failure_webhook,
             logger=logger,
         )
         return 1
@@ -248,7 +248,7 @@ def _run_pipeline(
             settings=settings,
             po=po,
             run_timestamp=run_timestamp,
-            skip_webhook=args.skip_webhook,
+            skip_webhook=args.skip_webhook or args.skip_failure_webhook,
             logger=logger,
         )
         return 1
@@ -305,7 +305,7 @@ def _run_pipeline(
                         settings=settings,
                         po=po,
                         run_timestamp=run_timestamp,
-                        skip_webhook=args.skip_webhook,
+                        skip_webhook=args.skip_webhook or args.skip_failure_webhook,
                         logger=logger,
                     )
                     return 1
@@ -334,7 +334,7 @@ def _run_pipeline(
                             settings=settings,
                             po=po,
                             run_timestamp=run_timestamp,
-                            skip_webhook=args.skip_webhook,
+                            skip_webhook=args.skip_webhook or args.skip_failure_webhook,
                             logger=logger,
                         )
                         return 1
@@ -373,7 +373,7 @@ def _run_pipeline(
                         settings=settings,
                         po=po,
                         run_timestamp=run_timestamp,
-                        skip_webhook=args.skip_webhook,
+                        skip_webhook=args.skip_webhook or args.skip_failure_webhook,
                         logger=logger,
                     )
                     return 1
@@ -440,7 +440,7 @@ def _run_pipeline(
                         settings=settings,
                         po=po,
                         run_timestamp=run_timestamp,
-                        skip_webhook=args.skip_webhook,
+                        skip_webhook=args.skip_webhook or args.skip_failure_webhook,
                         logger=logger,
                     )
                     return 1
@@ -454,28 +454,33 @@ def _run_pipeline(
                         settings=settings,
                         po=po,
                         run_timestamp=run_timestamp,
-                        skip_webhook=args.skip_webhook,
+                        skip_webhook=args.skip_webhook or args.skip_failure_webhook,
                         logger=logger,
                     )
                     return 1
 
-                # Resolve the product SKU from the reference price list using the PO rate.
-                from utils import lookup_sku_by_price
-
+                # Resolve the product SKU. --product-sku flag wins; otherwise consult the
+                # references price list using the PO rate.
                 sku_hint = ""
-                if po.rate is not None:
-                    sku_result = lookup_sku_by_price(po.rate)
-                    if sku_result:
-                        sku_hint, sku_product_name = sku_result
-                        logger.info(
-                            "Reference lookup: rate=%.2f -> SKU=%r (%s)",
-                            po.rate, sku_hint, sku_product_name,
-                        )
-                    else:
-                        logger.warning(
-                            "No SKU found in reference file for rate %.2f — will auto-select first product",
-                            po.rate,
-                        )
+                if args.product_sku:
+                    sku_hint = args.product_sku.strip()
+                    logger.info("Using product SKU from --product-sku flag: %r (skipping references lookup)", sku_hint)
+                else:
+                    from utils import lookup_sku_by_price
+
+                    if po.rate is not None:
+                        sku_result = lookup_sku_by_price(po.rate)
+                        if sku_result:
+                            sku_hint, sku_product_name = sku_result
+                            logger.info(
+                                "Reference lookup: rate=%.2f -> SKU=%r (%s)",
+                                po.rate, sku_hint, sku_product_name,
+                            )
+                        else:
+                            logger.warning(
+                                "No SKU found in reference file for rate %.2f — will auto-select first product",
+                                po.rate,
+                            )
 
                 batch = BatchInput(
                     product_label="",
@@ -516,7 +521,7 @@ def _run_pipeline(
                         settings=settings,
                         po=po,
                         run_timestamp=run_timestamp,
-                        skip_webhook=args.skip_webhook,
+                        skip_webhook=args.skip_webhook or args.skip_failure_webhook,
                         logger=logger,
                     )
                     return 1
@@ -534,7 +539,7 @@ def _run_pipeline(
                         settings=settings,
                         po=po,
                         run_timestamp=run_timestamp,
-                        skip_webhook=args.skip_webhook,
+                        skip_webhook=args.skip_webhook or args.skip_failure_webhook,
                         logger=logger,
                     )
                     return 1
@@ -555,7 +560,7 @@ def _run_pipeline(
                         settings=settings,
                         po=po,
                         run_timestamp=run_timestamp,
-                        skip_webhook=args.skip_webhook,
+                        skip_webhook=args.skip_webhook or args.skip_failure_webhook,
                         logger=logger,
                     )
                     return 1
@@ -585,7 +590,7 @@ def _run_pipeline(
                         settings=settings,
                         po=po,
                         run_timestamp=run_timestamp,
-                        skip_webhook=args.skip_webhook,
+                        skip_webhook=args.skip_webhook or args.skip_failure_webhook,
                         logger=logger,
                     )
                     return 1
@@ -601,7 +606,7 @@ def _run_pipeline(
                 settings=settings,
                 po=po,
                 run_timestamp=run_timestamp,
-                skip_webhook=args.skip_webhook,
+                skip_webhook=args.skip_webhook or args.skip_failure_webhook,
                 logger=logger,
             )
             return 1
@@ -963,7 +968,12 @@ def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="InstaProtek enterprise registration orchestrator")
     p.add_argument("--headed", action="store_true", help="Launch Playwright with a visible browser")
     p.add_argument("--dry-run", action="store_true", help="Validate + resolve only; do not touch CRM or webhook")
-    p.add_argument("--skip-webhook", action="store_true", help="Do not post to RingCentral")
+    p.add_argument("--skip-webhook", action="store_true", help="Do not post to RingCentral (success or failure)")
+    p.add_argument(
+        "--skip-failure-webhook",
+        action="store_true",
+        help="Suppress only failure webhook posts; still post success webhook on a successful run.",
+    )
     p.add_argument("--refresh-brand-menu", action="store_true", help="Force a re-read of the CRM Brand menu")
     p.add_argument("--verbose", action="store_true", help="Verbose stdout logging")
     p.add_argument(
@@ -992,6 +1002,14 @@ def _parse_args() -> argparse.Namespace:
             "Which environment block in credentials.json to use (case-insensitive). "
             "Typical values: \"QA\" (default) or \"Production\". Overrides the 'Env' field "
             "in credentials.json. The env's crm_base_url (if set) overrides settings.json crm.base_url."
+        ),
+    )
+    p.add_argument(
+        "--product-sku",
+        default=None,
+        help=(
+            "Product SKU / barcode (e.g. \"ESC030012MO00IK\") to pick in the New Batch dialog. "
+            "When provided, bypasses the references-folder price lookup entirely."
         ),
     )
     return p.parse_args()

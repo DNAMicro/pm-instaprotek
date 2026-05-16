@@ -1,0 +1,141 @@
+{
+  "found": true,
+  "labels": [
+    {
+      "text": "Company *",
+      "for": "company",
+      "classes": "md-floating-label md-floating-label--floating md-text--theme-primary"
+    }
+  ],
+  "select_fields": [
+    {
+      "classes": "md-paper md-paper--1 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field",
+      "outer_preview": "<div id=\"company-toggle\" role=\"listbox\" tabindex=\"0\" aria-pressed=\"true\" class=\"md-paper md-paper--1 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field\"><div class=\"md-ink-container\"></div><div class=\"md-icon-separator md-text-field md-text-field--floating-margin md-select-field--btn\"><span class=\"md-icon-text\"></span><i class=\"dnaicon dnaicon-company\"></i></div><input type=\"hidden\" id=\"company\" value=\"\" style=\"\"></div>",
+      "hidden_input_id": "company",
+      "hidden_input_name": "",
+      "hidden_input_value": "",
+      "toggle_id": null,
+      "toggle_role": null,
+      "toggle_aria_labelledby": null,
+      "toggle_aria_label": null,
+      "displayed_text": ""
+    }
+  ],
+  "listboxes": [
+    {
+      "id": "company-toggle",
+      "classes": "md-paper md-paper--1 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field",
+      "aria_label": null,
+      "aria_labelledby": null,
+      "text": ""
+    },
+    {
+      "id": "company-menu-options",
+      "classes": "md-list md-layover-child md-layover-child--below md-layover-child--simplified md-list--menu md-list--menu-restricted md-list--menu-contained md-list--menu-below md-paper md-paper--2",
+      "aria_label": null,
+      "aria_labelledby": null,
+      "text": "+ 1 company+ 1 company + 1+ 1Correct data company1 ++ 2 company+ 3 CORRECT DATA COMPANY 3 ++ Correct data company ++ NEW"
+    }
+  ],
+  "comboboxes": [],
+  "global_menus": [
+    {
+      "tag": "UL",
+      "classes": "md-list md-layover-child md-layover-child--below md-layover-child--simplified md-list--menu md-list--menu-restricted md-list--menu-contained md-list--menu-below md-paper md-paper--2",
+      "text_preview": "+ 1 company+ 1 company + 1+ 1Correct data company1 ++ 2 company+ 3 CORRECT DATA COMPANY 3 ++ Correct data company ++ NEW ENTERPRISE COMPANY ++2 COMPANY+3COMPANY-- nex com--01 new company 10----03 new ",
+      "outer_preview": "<ul role=\"listbox\" id=\"company-menu-options\" class=\"md-list md-layover-child md-layover-child--below md-layover-child--simplified md-list--menu md-list--menu-restricted md-list--menu-contained md-list--menu-below md-paper md-paper--2\"><li class=\"md-list-item\"><div role=\"option\" data-id=\"0\" data-value=\"d626bd5b-8170-4ffc-aa8e-377084d9bbf1\" class=\"md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text\" tabindex=\"-1\" aria-pressed=\"false\"><div class=\"md-tile-content\"><div class=\"md-tile-text--primary md-text\">+ 1 company</div></div></div></li><li class=\"md-list-item\"><div role=\"option\" data-id=\"1\" data-value=\"2c9376fe-84d7-47c2-bc7d-42fc06b265df\" class=\"md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text\" tabindex=\"-1\" aria-pressed=\"false\"><div class=\"md-tile-content\"><div class=\"md-tile-text--primary md-text\">+ 1 company + 1</div></div></div></li><li class=\"md-list-item\"><div role=\"option\" data-id=\"2\" data-value=\"5e21e6cc-1fa2-42c7-97fa-618feadce435\" class=\"md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text\" tabindex=\"-1\" aria-pressed=\"false\"><div class=\"md-tile-content\"><div class=\"md-tile-text--primary md-text\">+ 1Correct data company1 +</div></div></div></li><li class=\"md-list-item\"><div role=\"option\" data-id=\"3\" data-value=\"312ec9f7-ecbe-4e8d-b581-0dcce7934945\" class=\"md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text\" tabindex=\"-1\" aria-pressed=\"false\"><div class=\"md-tile-content\"><di"
+    }
+  ],
+  "global_listitems": [
+    {
+      "id": "",
+      "text": "+ 1 company",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "+ 1 company + 1",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "+ 1Correct data company1 +",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "+ 2 company",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "+ 3 CORRECT DATA COMPANY 3 +",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "+ Correct data company +",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "+ NEW ENTERPRISE COMPANY +",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "+2 COMPANY",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "+3COMPANY",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "-- nex com",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "--01 new company 10--",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "--03 new company 30--",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "--04 new company",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "--NEW COMPANY--",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    },
+    {
+      "id": "",
+      "text": "01 company name 5654678",
+      "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-list-tile md-text",
+      "aria_selected": null
+    }
+  ]
+}

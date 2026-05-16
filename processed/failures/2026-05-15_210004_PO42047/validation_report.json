@@ -1,0 +1,795 @@
+{
+  "fixes_applied": [
+    {
+      "row": 1,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 1,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 1,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 1,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 2,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 2,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 2,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 2,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 3,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 3,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 3,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 3,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 4,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 4,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 4,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 4,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 5,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 5,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 5,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 5,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 6,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 6,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 6,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 6,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 7,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 7,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 7,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 7,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 8,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 8,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 8,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 8,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 9,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 9,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 9,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 9,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 10,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 10,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 10,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 10,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 11,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 11,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 11,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 11,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 12,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 12,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 12,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 12,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 13,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 13,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 13,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 13,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 14,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 14,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 14,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 14,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 15,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 15,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 15,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 15,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 16,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 16,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 16,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 16,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 17,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 17,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 17,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 17,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 18,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 18,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 18,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 18,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 19,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 19,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 19,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 19,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    },
+    {
+      "row": 20,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Yigit  Can ",
+      "after": "Yigit Can"
+    },
+    {
+      "row": 20,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Melbourne ",
+      "after": "Melbourne"
+    },
+    {
+      "row": 20,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "05/07/2026\u00a0",
+      "after": "05/07/2026"
+    },
+    {
+      "row": 20,
+      "column": "New? (Yes/No)",
+      "fix": "normalize_yes_no",
+      "before": "no",
+      "after": "No"
+    }
+  ],
+  "cross_validation": {
+    "csv_row_count": 20,
+    "po_quantity": 20,
+    "row_count_match": true,
+    "csv_end_user_name": "Yigit Can Cankat",
+    "po_end_user_name": "Yigit Can Cankat",
+    "end_user_match": true
+  },
+  "warnings": [],
+  "model_resolution": [
+    {
+      "row": 1,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 2,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 3,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 4,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 5,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 6,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 7,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 8,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 9,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 10,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 11,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 12,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 13,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 14,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 15,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 16,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 17,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 18,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 19,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 20,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    }
+  ]
+}

@@ -43,14 +43,16 @@
   },
 
   "batch_form": {
-    "_note": "Fields observed in the New Batch dialog. Plan Purchase Date is a react-datepicker-component input — .fill() does NOT work; use _react_set_input + _react_close_datepicker. The Save button is sometimes blocked by the calendar overlay; the runner falls back to a JS click.",
-    "product_dropdown": {"role": "listbox", "name": "Product"},
+    "_note": "Fields observed in the New Batch dialog. Product/Vertical/Region are react-select v1 components (NOT native <select> or aria listbox) — target the .Select-control wrapper and open the menu with dispatch_event('mousedown') + .click(); options render as .Select-menu-outer .Select-option. Plan Purchase Date is a react-datepicker-component input — .fill() does NOT work; use _react_set_input + _react_close_datepicker. The Save button is sometimes blocked by the calendar overlay; the runner falls back to a JS click.",
+    "product_dropdown": ".Select-control:has(#product_name)",
+    "product_option_list": ".Select-menu-outer .Select-option",
     "number_of_pins_input": {"role": "textbox", "name": "Number of Pins *"},
     "po_number_input": {"role": "textbox", "name": "PO Number"},
     "invoice_number_input": {"role": "textbox", "name": "Invoice Number"},
     "plan_purchase_price_input": {"role": "textbox", "name": "Plan Purchase Price *"},
     "plan_purchase_date_input_css": ".productBatch_purchase-date input, .batch-Datepicker input",
-    "vertical_dropdown": {"role": "listbox", "name": "Vertical"},
+    "vertical_dropdown": ".Select-control:has(#vertical)",
+    "vertical_option_list": ".Select-menu-outer .Select-option",
     "save_and_continue_button": {"role": "button", "name": "check Save & Continue"},
     "cancel_button": {"role": "button", "name": "close Cancel"}
   },
@@ -68,11 +70,13 @@
     "import_csv_button": {"role": "button", "name": "file_upload Import CSV"},
     "file_input": "input[type='file']",
     "step1_next_button": {"role": "button", "name": "chevron_right Next"},
-    "step2_company_dropdown": {"role": "listbox"},
-    "step2_product_sku_dropdown": {"role": "listbox"},
+    "_step2_note": "Step 2 fields are react-md md-select-field controls (NOT react-select v1). Each toggle is a div[role=listbox] with a stable id (#company-toggle, #register_under-toggle). The SKU toggle only renders after a Company is chosen. Menu items render in a document-level portal as [role=option] OUTSIDE .bulkDialog — match them globally by accessible name. Avoid {role: listbox} on its own — a md-select-field--pagination toggle on the underlying Registration table also has role=listbox and can resolve first.",
+    "step2_company_dropdown": "#company-toggle",
+    "step2_company_dropdown_wait": "#register_under-toggle",
+    "step2_product_sku_dropdown": "#register_under-toggle",
     "step2_upload_button": {"role": "button", "name": "chevron_right Upload"},
     "import_complete_indicator": {"text": "File Imported Successfully"},
-    "close_button": {"role": "button", "name": "close"}
+    "close_button": ".bulkDialog .dialog-title-close"
   },
 
   "transaction_form": {

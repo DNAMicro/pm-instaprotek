@@ -1,0 +1,209 @@
+{
+  "found": true,
+  "classes": "md-paper md-paper--5 md-dialog md-dialog--centered md-background--card userDialog md-cell--bg-white modal-dialog_container overflow-VisibleDialog",
+  "inner_html_preview": "<h2 id=\"dialog-title\" class=\"md-title md-title--dialog\"><span class=\"md-grid md-cell md-cell--12  md-cell--center md-text--center dialog_toolbar\">New Batch<button type=\"button\" class=\"md-btn md-btn--icon md-pointer--hover md-inline-block md-cell--right\"><i class=\"md-icon material-icons md-text--inherit\">close</i></button></span></h2><section class=\"md-dialog-content md-dialog-content--padded\" style=\"\"><span aria-hidden=\"true\"></span><div class=\"md-grid\"><div class=\"md-grid md-grid--bottom\"><div class=\"multiSelect__withIcon md-cell md-cell--6 dropdown-select productBatch \"><div class=\"multiSelect__withIcon__icon\"><i class=\"dnaicon dnaicon-undefined hide\"></i><i class=\"dnaicon dnaicon-cubes\"></i></div><div class=\"multiSelect__withIcon__select\"><div class=\"Select-withPlaceholder undefined\"><span class=\"Select-placeholder2\">Product </span><div class=\"Select is-searchable Select--single\"><div class=\"Select-control\"><div class=\"Select-multi-value-wrapper\" id=\"react-select-16--value\"><div class=\"Select-placeholder\">Product </div><div class=\"Select-input\" style=\"display: inline-block;\"><input id=\"product_name\" aria-activedescendant=\"react-select-16--value\" aria-expanded=\"false\" aria-haspopup=\"false\" aria-owns=\"\" role=\"combobox\" value=\"\" style=\"box-sizing: content-box; width: 5px;\"><div style=\"position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 14px; font-family: Roboto, sans-serif, Tahoma, Geneva; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;\"></div></div></div><span class=\"Select-arrow-zone\"><span class=\"Select-arrow\"></span></span></div></div></div></div></div></div><div class=\"md-text-field-container md-full-width md-text-field-container--input md-cell md-cell--6 left40 dialog_content--textfield numberOfPins\"><label for=\"number_pin\" class=\"md-floating-label md-floating-label--inactive md-floating-label--inactive-sized md-floating-label--icon-offset md-text--secondary\">Number of Pins *</label><div class=\"md-text-field-icon-container\"><i class=\"md-icon material-icons md-text-field-icon md-text-field-icon--positioned dnaicon dnaicon-pin-1\"></i><div class=\"md-text-field-divider-container md-text-field-divider-container--grow\"><input required=\"\" id=\"number_pin\" type=\"text\" class=\"md-text-field md-text-field--floating-margin md-full-width md-text\" value=\"\" style=\"\"><hr class=\"md-divider md-divider--text-field md-divider--expand-from-left\"></div></div></div><div class=\"md-cell--6\"><div class=\"datePicker sc-bdVaJa gLNgKV md-cell md-cell--12 batch-Datepicker withIcon hasValue\"><div class=\"datePicker-icon\"><i class=\"dnaicon dnaicon-calendar\"></i></div><div class=\"datePicker-container\"><div class=\"datePicker-placeholder\">Expiration Date (mm/dd/yyyy) *</div><div class=\"react-datepicker-component\" style=\"margin-right: -2px;\"><div class=\"react-datepicker-input has-value\"><input gutter=\"0.5rem\" readonly=\"\" value=\"06/01/2028\" style=\"\"><div class=\"button-wrapper\" style=\"box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row; flex: 0 1 auto; align-items: center;\"><div class=\"input-button\" style=\"box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row; flex: 0 0 auto;\"><i class=\"icon-rc-datepicker icon-rc-datepicker_calendar\"></i></div></div></div></div></div></div></div><div class=\"md-text-field-container md-full-width md-text-field-container--input md-cell md-cell--6 left40 dialog_content--textfield\"><label for=\"po_number\" class=\"md-floating-label md-floating-label--inactive md-floating-label--inactive-sized md-floating-label--icon-offset md-text--secondary\">PO Number</label><div class=\"md-text-field-icon-container\"><i class=\"md-icon material-icons md-text-field-icon md-text-field-icon--positioned dnaicon dnaicon-purchase dnaicon-size--lg\"></i><div class=\"md-text-field-divider-container md-text-field-divider-container--grow\"><input id=\"po_number\" type=\"text\" class=\"md-text-field md",
+  "role_elements": {
+    "listbox": [],
+    "combobox": [
+      {
+        "aria_label": null,
+        "aria_labelledby": null,
+        "text": "",
+        "tag": "INPUT",
+        "classes": ""
+      },
+      {
+        "aria_label": null,
+        "aria_labelledby": null,
+        "text": "",
+        "tag": "INPUT",
+        "classes": ""
+      },
+      {
+        "aria_label": null,
+        "aria_labelledby": null,
+        "text": "",
+        "tag": "INPUT",
+        "classes": ""
+      }
+    ],
+    "dialog": [],
+    "textbox": [],
+    "option": [],
+    "menu": [],
+    "menuitem": [],
+    "button": []
+  },
+  "labels": [
+    {
+      "text": "Number of Pins *",
+      "forAttr": "number_pin",
+      "classes": "md-floating-label md-floating-label--inactive md-floating-label--inactive-sized "
+    },
+    {
+      "text": "PO Number",
+      "forAttr": "po_number",
+      "classes": "md-floating-label md-floating-label--inactive md-floating-label--inactive-sized "
+    },
+    {
+      "text": "Invoice Number",
+      "forAttr": "invoice_number",
+      "classes": "md-floating-label md-floating-label--inactive md-floating-label--inactive-sized "
+    },
+    {
+      "text": "check_boxUse this batch for registration",
+      "forAttr": "use_for_registration",
+      "classes": "md-selection-control-label md-pointer--hover md-text"
+    },
+    {
+      "text": "Plan Purchase Price *",
+      "forAttr": "plan_purchase_price",
+      "classes": "md-floating-label md-floating-label--floating md-floating-label--icon-offset md-"
+    },
+    {
+      "text": "Sales Order ID",
+      "forAttr": "sales_order_id",
+      "classes": "md-floating-label md-floating-label--floating md-floating-label--icon-offset md-"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "text",
+      "name": "",
+      "id": "product_name",
+      "placeholder": "",
+      "value": "",
+      "aria_label": null,
+      "readonly": false,
+      "disabled": false,
+      "classes": ""
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "number_pin",
+      "placeholder": "",
+      "value": "",
+      "aria_label": null,
+      "readonly": false,
+      "disabled": false,
+      "classes": "md-text-field md-text-field--floating-margin md-full-width md-text"
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "",
+      "placeholder": "",
+      "value": "06/01/2028",
+      "aria_label": null,
+      "readonly": true,
+      "disabled": false,
+      "classes": ""
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "po_number",
+      "placeholder": "",
+      "value": "",
+      "aria_label": null,
+      "readonly": false,
+      "disabled": false,
+      "classes": "md-text-field md-text-field--floating-margin md-full-width md-text"
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "invoice_number",
+      "placeholder": "",
+      "value": "",
+      "aria_label": null,
+      "readonly": false,
+      "disabled": false,
+      "classes": "md-text-field md-text-field--floating-margin md-full-width md-text"
+    },
+    {
+      "type": "checkbox",
+      "name": "use_for_registration",
+      "id": "use_for_registration",
+      "placeholder": "",
+      "value": "",
+      "aria_label": null,
+      "readonly": false,
+      "disabled": false,
+      "classes": "md-selection-control-input"
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "plan_purchase_price",
+      "placeholder": "",
+      "value": "USD  0.00",
+      "aria_label": null,
+      "readonly": false,
+      "disabled": false,
+      "classes": "md-text-field md-text-field--floating-margin md-full-width md-text"
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "",
+      "placeholder": "",
+      "value": "",
+      "aria_label": null,
+      "readonly": true,
+      "disabled": false,
+      "classes": ""
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "sales_order_id",
+      "placeholder": "",
+      "value": "SEESC300122",
+      "aria_label": null,
+      "readonly": false,
+      "disabled": true,
+      "classes": "md-text-field md-text-field--floating-margin md-full-width md-text--disabled"
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "vertical",
+      "placeholder": "",
+      "value": "",
+      "aria_label": null,
+      "readonly": false,
+      "disabled": false,
+      "classes": ""
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "integrated_company",
+      "placeholder": "",
+      "value": "",
+      "aria_label": null,
+      "readonly": false,
+      "disabled": false,
+      "classes": ""
+    }
+  ],
+  "buttons": [
+    {
+      "text": "close",
+      "disabled": false,
+      "classes": "md-btn md-btn--icon md-pointer--hover md-inline-block md-cell--right"
+    },
+    {
+      "text": "closeCancel",
+      "disabled": false,
+      "classes": "md-btn md-btn--flat md-btn--text md-pointer--hover md-text md-inline-block md-bt"
+    },
+    {
+      "text": "checkSave & Continue",
+      "disabled": false,
+      "classes": "md-btn md-btn--flat md-btn--text md-pointer--hover md-text--theme-primary md-ink"
+    }
+  ]
+}

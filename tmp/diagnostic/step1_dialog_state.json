@@ -1,0 +1,156 @@
+{
+  "found": true,
+  "strategy": ".bulkDialog",
+  "classes": "md-dialog-container md-overlay md-overlay--active wizardDialog mediumDialog fewFields wizardDialog--fixedTabs registrationDialog bulkDialog",
+  "outer_html_preview": "<span class=\"md-dialog-container md-overlay md-overlay--active wizardDialog mediumDialog fewFields wizardDialog--fixedTabs registrationDialog bulkDialog\" tabindex=\"-1\" style=\"z-index: 99999;\"><div aria-labelledby=\"newCallWizard\" id=\"dialog\" role=\"dialog\" class=\"md-paper md-paper--5 md-dialog md-dialog--centered md-background--card md-cell--bg-white modal-dialog_container\"><h2 id=\"dialog-title\" class=\"md-title md-title--dialog\"><span><div class=\"dialog-title-text\">Bulk Data Upload</div><button type=\"button\" class=\"md-btn md-btn--icon md-pointer--hover md-inline-block dialog-title-close\"><i class=\"md-icon material-icons md-text--inherit\">close</i></button></span></h2><section class=\"md-dialog-content md-dialog-content--padded\" style=\"max-height: 630px;\"><span aria-hidden=\"true\"></span><div class=\"md-card md-background--card md-cell md-cell--12 wizardDialog-tab tabsContainer wizard-override\"><section class=\"md-tabs-container wizard \"><ul class=\"md-tabs md-background--primary\" role=\"tablist\"><span aria-hidden=\"true\"></span><li id=\"undefined-0\" role=\"tab\" aria-controls=\"undefined-panel-0\" aria-selected=\"true\" class=\"md-fake-btn md-pointer--hover md-fake-btn--no-outline md-tab md-tab--active done\" tabindex=\"0\" aria-pressed=\"false\"><div class=\"md-tab-label\">1</div></li><li id=\"undefined-1\" role=\"tab\" aria-controls=\"undefined-panel-1\" aria-selected=\"false\" class=\"md-fake-btn md-pointer--hover md-fake-btn--no-outline md-tab md-tab--inactive\" tabindex=\"0\" aria-pressed=\"false\"><div class=\"md-tab-label\">2</div></li><li id=\"undefined-2\" role=\"tab\" aria-controls=\"undefined-panel-2\" aria-selected=\"false\" class=\"md-fake-btn md-pointer--hover md-fake-btn--no-outline md-tab md-tab--inactive\" tabindex=\"0\" aria-pressed=\"false\"><div class=\"md-tab-label\">3</div></li><span class=\"md-tab-indicator\" style=\"height: 2px; width: 48px; transform: translate3d(63.5853px, 0px, 0px);\"></span></ul><div class=\"md-tabs-content\" style=\"overflow-x: hidden;\"><div class=\"react-swipeable-view-container\" style=\"flex-direction: row; transition: all; direction: ltr; display: flex; will-change: transform; transform: translate(0%, 0px);\"><div aria-hidden=\"false\" data-swipeable=\"true\" style=\"width: 100%; flex-shrink: 0; overflow: auto; height: 491px;\"><div id=\"undefined-panel-0\" class=\"md-tab-panel fullpageDialog__tabsPanel\" role=\"tabpanel\" aria-hidden=\"false\" aria-labelledby=\"undefined-0\"><span aria-hidden=\"true\"></span><div class=\"md-cell md-cell--12 md-grid wizard__content\"><h1 class=\"wizard__content__title\"><span class=\"step\">Step 1</span><span class=\"title\">Upload File</span></h1><div class=\"csv-dropzone\" id=\"drop_zone\" aria-disabled=\"false\" style=\"position: relative;\"><img src=\"/imgs/app/csv_upload.png\" class=\"csv-dropzone-image\"><p>Drag and drop or <span class=\"span-choose-file\">choose a file</span> to upload.</p><input accept=\".csv, .xlsx, .xls\" type=\"file\" multiple=\"\" autocomplete=\"off\" style=\"position: absolute; inset: 0px; opacity: 1e-05; pointer-events: none;\"></div><div class=\"csv-uploader-msg\"><p>Getting started with bulk registration upload?</p><p>1. You can upload .xslx, .xls, or .csv files.</p><p>2. Please check that your file has the right headers and all fields are filled in correctly.</p><p>3. You can <span class=\"dowload-csv-template\">download the sample bulk registration template here.</span></p></div></div></div></div><div aria-hidden=\"true\" data-swipeable=\"true\" style=\"width: 100%; flex-shrink: 0; overflow: auto; height: 491px;\"><div id=\"undefined-panel-1\" class=\"md-tab-panel fullpageDialog__tabsPanel\" role=\"tabpanel\" aria-hidden=\"true\" aria-labelledby=\"undefined-1\"><span aria-hidden=\"true\"></span><div class=\"md-cell md-cell--12 md-grid wizard__content\"><h1 class=\"wizard__content__title mb-2\"><span class=\"step\">Step 2</span><span class=\"title\">Check Column Values</span></h1><div><div class=\"bulk_dropdown-container \"><div id=\"company-menu\" aria-haspopup=\"true\" aria-expanded=\"false\" class=\"md-layover md-layover--simplified md-inline-block md-menu-container md-menu-container--menu-below md-menu--select-field md-cell md-cell--12 fullpage_dialog--field dialog_content--state dropdown_menu affiliate withIcon \"><div class=\"md-select-field__toggle\"><label for=\"company\" class=\"md-floating-label md-floating-label--inactive md-floating-label--inactive-sized md-text--secondary\">Company *</label><div id=\"company-toggle\" role=\"listbox\" tabindex=\"0\" aria-pressed=\"false\" class=\"md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field\"><div class=\"md-ink-container\"></div><div class=\"md-icon-separator md-text-field md-text-field--floating-margin md-select-field--btn\"><span class=\"md-icon-text\"></span><i class=\"dnaicon dnaicon-company\"></i></div><input type=\"hidden\" id=\"company\" value=\"\" style=\"\"></div></div></div></div><div class=\"csv-table-control-container\"></div></div><div class=\"csv-error-toggle-container\"></div><div class=\"csv-data-table-container\"><table class=\"csv-data-table\"><thead><tr><th></th><th>First Name</th><th>Last Name</th><th>Phone Number</th><th>Email</th><th>Street Address</th><th>City</th><th>State</th><th>Zip Code</th><th>Serial Number</th><th>Manufacturer</th><th>Model Number</th><th>Delivery Date</th><th>Purchase Date</th><th>Purchase Price</th><th>New? (Yes/No)</th></tr></thead><tbody><tr><td colspan=\"16\" style=\"text-align: center;\">No Data</td></tr></tbody></table></div><div class=\"pagination\"><div class=\"csv-pagination-container\">Rows per page:<div class=\"custom-dropdown\"><button class=\"custom-dropdown-button\"><span style=\"width: 100%;\">10</span><i class=\"md-icon material-icons\">arrow_drop_down</i></button></div><div></div></div><span>1-0 of 0</span><div class=\"csv-pagination-container\"><button class=\"csv-pagination-button\" disabled=\"\"><i class=\"md-icon material-icons md-text--inherit\">chevron_left</i></button><button class=\"csv-pagination-button\"><i class=\"md-icon material-icons md-text--inherit\">chevron_right</i></button></div></div></div></div></div><div aria-hidden=\"true\" data-swipeable=\"true\" style=\"width: 100%; flex-shrink: 0; overflow: auto; height: 491px;\"><div id=\"undefined-panel-2\" class=\"md-tab-panel fullpageDialog__tabsPanel\" role=\"tabpanel\" aria-hidden=\"true\" aria-labelledby=\"undefined-2\"><span aria-hidden=\"true\"></span><div class=\"md-cell md-cell--12 md-grid wizard__content\"><h1 class=\"wizard__content__title mb-2\"><span class=\"step\">Final Step</span><span class=\"title\">Import</span></h1><div class=\"md-cell md-cell--12 bulk-upload-success-container\"><div class=\"csv-spinner\"></div><p>Importing your file, please wait ...</p></div></div></div></div></div></div></section></div></section><footer class=\"md-dialog-footer md-dialog-footer--inline\"><button type=\"button\" class=\"md-btn md-btn--flat md-btn--text md-pointer--hover md-text md-inline-block md-btn--dialog dialogAction__button--cancel\"><div class=\"md-icon-separator\"><i class=\"md-icon material-icons md-text--inherit\">close</i><span class=\"md-icon-text\">Cancel</span></div></button><div class=\"md-btn--dialog\"><span>Note: You will get to recheck the document in the next step before final import.</span></div><button type=\"button\" class=\"md-btn md-btn--flat md-btn--raised md-btn--text md-pointer--hover md-background--primary md-background--primary-hover md-inline-block md-btn--dialog button-bg--primary false\"><div class=\"md-icon-separator\"><i class=\"md-icon material-icons md-text--inherit\">chevron_right</i><span class=\"md-icon-text\">Next</span></div></button></footer></div></span>",
+  "labels": [
+    {
+      "text": "Company *",
+      "tag": "LABEL",
+      "for": "company",
+      "classes": "md-floating-label md-floating-label--inactive md-floating-label--inactive-sized md-text--secondary"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "INPUT",
+      "type": "file",
+      "name": null,
+      "id": null,
+      "role": null,
+      "placeholder": null,
+      "value": null,
+      "aria_label": null,
+      "aria_labelledby": null,
+      "aria_describedby": null,
+      "readonly": false,
+      "disabled": false,
+      "classes": "",
+      "parent_classes": "csv-dropzone",
+      "grandparent_classes": "md-cell md-cell--12 md-grid wizard__content"
+    },
+    {
+      "tag": "INPUT",
+      "type": "hidden",
+      "name": null,
+      "id": "company",
+      "role": null,
+      "placeholder": null,
+      "value": null,
+      "aria_label": null,
+      "aria_labelledby": null,
+      "aria_describedby": null,
+      "readonly": false,
+      "disabled": false,
+      "classes": "",
+      "parent_classes": "md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field",
+      "grandparent_classes": "md-select-field__toggle"
+    }
+  ],
+  "buttons": [
+    {
+      "text": "close",
+      "disabled": false,
+      "id": null,
+      "classes": "md-btn md-btn--icon md-pointer--hover md-inline-block dialog-title-close"
+    },
+    {
+      "text": "10arrow_drop_down",
+      "disabled": false,
+      "id": null,
+      "classes": "custom-dropdown-button"
+    },
+    {
+      "text": "chevron_left",
+      "disabled": true,
+      "id": null,
+      "classes": "csv-pagination-button"
+    },
+    {
+      "text": "chevron_right",
+      "disabled": false,
+      "id": null,
+      "classes": "csv-pagination-button"
+    },
+    {
+      "text": "closeCancel",
+      "disabled": false,
+      "id": null,
+      "classes": "md-btn md-btn--flat md-btn--text md-pointer--hover md-text md-inline-block md-btn--dialog dialogAction__button--cancel"
+    },
+    {
+      "text": "chevron_rightNext",
+      "disabled": false,
+      "id": null,
+      "classes": "md-btn md-btn--flat md-btn--raised md-btn--text md-pointer--hover md-background--primary md-background--primary-hover md-inline-block md-btn--dialog button-bg--primary false"
+    }
+  ],
+  "select_controls": [],
+  "role_elements": {
+    "listbox": [
+      {
+        "tag": "DIV",
+        "id": "company-toggle",
+        "aria_label": null,
+        "aria_labelledby": null,
+        "text": "",
+        "classes": "md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field",
+        "parent_classes": "md-select-field__toggle"
+      }
+    ],
+    "combobox": [],
+    "option": [],
+    "menu": [],
+    "menuitem": [],
+    "button": [],
+    "textbox": [],
+    "tab": [
+      {
+        "tag": "LI",
+        "id": "undefined-0",
+        "aria_label": null,
+        "aria_labelledby": null,
+        "text": "1",
+        "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-tab md-tab--active done",
+        "parent_classes": "md-tabs md-background--primary"
+      },
+      {
+        "tag": "LI",
+        "id": "undefined-1",
+        "aria_label": null,
+        "aria_labelledby": null,
+        "text": "2",
+        "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-tab md-tab--inactive",
+        "parent_classes": "md-tabs md-background--primary"
+      },
+      {
+        "tag": "LI",
+        "id": "undefined-2",
+        "aria_label": null,
+        "aria_labelledby": null,
+        "text": "3",
+        "classes": "md-fake-btn md-pointer--hover md-fake-btn--no-outline md-tab md-tab--inactive",
+        "parent_classes": "md-tabs md-background--primary"
+      }
+    ],
+    "dialog": [
+      {
+        "tag": "DIV",
+        "id": "dialog",
+        "aria_label": null,
+        "aria_labelledby": "newCallWizard",
+        "text": "Bulk Data Uploadclose123Step 1Upload FileDrag and drop or choose a file to upload.Getting started with bulk registration",
+        "classes": "md-paper md-paper--5 md-dialog md-dialog--centered md-background--card md-cell--bg-white modal-dialog_container",
+        "parent_classes": "md-dialog-container md-overlay md-overlay--active wizardDialog mediumDialog fewFields wizardDialog--fixedTabs registrationDialog bulkDialog"
+      }
+    ]
+  },
+  "wizard_active_step": null,
+  "global_listbox_count": 2,
+  "global_listbox_first": {
+    "id": "company-toggle",
+    "classes": "md-paper md-paper--0 md-fake-btn md-pointer--hover md-fake-btn--no-outline md-select-field",
+    "text": "",
+    "inside_dialog": true
+  }
+}

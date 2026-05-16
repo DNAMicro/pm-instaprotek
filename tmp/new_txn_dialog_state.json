@@ -1,0 +1,436 @@
+{
+  "found": true,
+  "innerText": "New Transaction\nclose\n1\n2\n3\nTransaction Details\nTransaction Date (mm/dd/yyyy) *\nEffective Date (mm/dd/yyyy) *\nSKU *\nQuantity *\nPrice (Plan Purchase Price) *\nSales Order ID *\nChannel *\nCall Center\nFirst Name *\nperson\nLast Name *\nperson\nEmail Address *\nemail\nCountry Code *\nUS (+1)\nPhone Number *\nStreet *\nUnit/Apartment/Suite\nCity *\ndomain\nCountry *\nUnited States\nProvince *\nFlorida\nPostal Code *\nPins\n\nSelected Pin/s: 0 Out Of 20\n\nClear All\nRegistered\narrow_drop_down\nFilter Pins\ncheck_box_outline_blank\n\t\nPin Number\narrow_upward\n\t\nStatus\narrow_upward\n\tSerial Number\tSerial Type\tManufacturer\tModel\tPrice\n\ncheck_box_outline_blank\n\t\nPin Number\narrow_upward\n\t\nStatus\narrow_upward\n\t\nSerial Number\n\t\nSerial Type\n\t\nManufacturer\n\t\nModel\n\t\nPrice\n\n\ncheck_box_outline_blank\n\t\n630673997882\n\t\nRegistered\n\t\n350153159360851\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n594395478474\n\t\nRegistered\n\t\n359606632181302\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n439838980910\n\t\nRegistered\n\t\n359606632659646\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n353122797130\n\t\nRegistered\n\t\n357861965512399\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n391274996993\n\t\nRegistered\n\t\n350153159537805\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n231663111061\n\t\nRegistered\n\t\n350153159146094\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n514307174946\n\t\nRegistered\n\t\n357861965415023\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n687795357999\n\t\nRegistered\n\t\n350153159095481\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n419838847558\n\t\nRegistered\n\t\n359606632778750\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n113550651906\n\t\nRegistered\n\t\n350153159385965\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n809070154723\n\t\nRegistered\n\t\n350153159491797\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n838067380090\n\t\nRegistered\n\t\n350153159474132\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n648863993586\n\t\nRegistered\n\t\n350153159147605\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n603921403342\n\t\nRegistered\n\t\n357156753051878\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n892631352093\n\t\nRegistered\n\t\n350153159598609\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n097781226325\n\t\nRegistered\n\t\n357861965461555\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n890505154066\n\t\nRegistered\n\t\n350153159507725\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n799188501958\n\t\nRegistered\n\t\n350153159700866\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n411208893759\n\t\nRegistered\n\t\n359606632824620\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\ncheck_box_outline_blank\n\t\n058735953927\n\t\nRegistered\n\t\n350153159069379\n\t\nIMEI\n\t\nSamsung Galaxy\n\t\nA15 5G\n\t\nUSD 85.00\n\n\n\nRows per page:\n50\narrow_drop_down\n1-20 of 20\nkeyboard_arrow_left\nkeyboard_arrow_right\nvertical_align_top\nTransaction Summary\nTransaction Details\nTrasaction Date:\n2026-05-15\nEffective Date:\n2026-05-15\nSKU:\nESC030012MO00IK\nQuantity:\n20\nPrice (Plan Purchase Price):\n14.43\nSales Order ID:\nSEESC300122\nChannel:\nCall Center\nCustomer Details\nFirst Name:\nYigit Can\nLast Name:\nCankat\nEmail Address:\ndirectors@cnktlogistics.com\nPhone Number:\n3213133141\nStreet:\n4449 Chastain Drive\nCity:\nMelbourne\nState:\nFlorida\nPostal Code:\n32940\nDevice List\nSelected Pin/s:\n0 Out Of 20\nclose\nCancel\nchevron_right\nNext",
+  "inputCount": 42,
+  "inputs": [
+    {
+      "type": "text",
+      "name": "",
+      "id": "",
+      "value": "05/15/2026",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "",
+      "value": "05/15/2026",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "espSKU",
+      "value": "ESC030012MO00IK",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "qty",
+      "value": "20",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "price",
+      "value": "USD  14.43",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "salesOrderId",
+      "value": "SEESC300122",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "channel",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "firstName",
+      "value": "Yigit Can",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "lastName",
+      "value": "Cankat",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "custEmail",
+      "value": "directors@cnktlogistics.com",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "phone_code",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "custPhone",
+      "value": "(321) 313-3141",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "",
+      "value": "4449 Chastain Drive, Melbourne, Florida 32940, United States",
+      "placeholder": "Search address",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "street",
+      "value": "4449 Chastain Drive",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "unit_number",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "city",
+      "value": "Melbourne",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "country",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "state",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "zip_code",
+      "value": "32940",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "text",
+      "name": "",
+      "id": "dnaTable2-searchField",
+      "value": "",
+      "placeholder": "Search Pins...",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-toggle-all",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-1",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-2",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-3",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-4",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-5",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-6",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-7",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-8",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-9",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-10",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-11",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-12",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-13",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-14",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-15",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-16",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-17",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-18",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-19",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "checkbox",
+      "name": "undefined-control-checkbox",
+      "id": "undefined-20",
+      "value": "",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "type": "hidden",
+      "name": "",
+      "id": "undefined-pagination",
+      "value": "50",
+      "placeholder": "",
+      "checked": false,
+      "disabled": false
+    }
+  ],
+  "buttons": [
+    {
+      "text": "close",
+      "disabled": false
+    },
+    {
+      "text": "Clear All",
+      "disabled": true
+    },
+    {
+      "text": "",
+      "disabled": false
+    },
+    {
+      "text": "keyboard_arrow_left",
+      "disabled": false
+    },
+    {
+      "text": "keyboard_arrow_right",
+      "disabled": false
+    },
+    {
+      "text": "arrow_drop_down\nFilter Pins",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "disabled": false
+    },
+    {
+      "text": "keyboard_arrow_left",
+      "disabled": true
+    },
+    {
+      "text": "keyboard_arrow_right",
+      "disabled": true
+    },
+    {
+      "text": "vertical_align_top",
+      "disabled": false
+    },
+    {
+      "text": "close\nCancel",
+      "disabled": false
+    },
+    {
+      "text": "chevron_right\nNext",
+      "disabled": false
+    }
+  ],
+  "hasCheckbox": true
+}

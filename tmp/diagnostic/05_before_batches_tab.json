@@ -1,0 +1,429 @@
+{
+  "dialogs": [
+    {
+      "classes": "md-dialog-container fullPage__dialog show advancedFullDialog",
+      "visible": true,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1400.39599609375,
+        "h": 900.593994140625
+      },
+      "buttons": [
+        {
+          "text": "close",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": 13.997523307800293,
+            "y": 11.212870597839355,
+            "w": 39.19554138183594,
+            "h": 39.19554138183594
+          },
+          "classes": "md-btn md-btn--icon md-pointer--hover md-btn--tooltip md-inline-block md-btn--toolbar",
+          "inner_icons": [
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons md-text--inherit",
+              "text": "close"
+            }
+          ]
+        },
+        {
+          "text": "format_list_bulleted",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": false,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "classes": "md-btn md-btn--flat md-btn--icon md-btn--text md-pointer--hover md-inline-block treeViewer__grid--sidbarToggle",
+          "inner_icons": [
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons md-text--inherit",
+              "text": "format_list_bulleted"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons",
+              "text": "format_list_bulleted"
+            }
+          ]
+        },
+        {
+          "text": "Navigate",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": 7.995048999786377,
+            "y": 71.99256896972656,
+            "w": 72.49999237060547,
+            "h": 39.03464889526367
+          },
+          "classes": "md-btn md-pointer--hover md-text md-inline-block tabItem__button",
+          "inner_icons": []
+        },
+        {
+          "text": "Browse",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": 80.49504089355469,
+            "y": 71.99256896972656,
+            "w": 64.24504852294922,
+            "h": 39.03464889526367
+          },
+          "classes": "md-btn md-pointer--hover md-text md-inline-block tabItem__button",
+          "inner_icons": []
+        },
+        {
+          "text": "Companies",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": -67.54949951171875,
+            "y": 121.99256896972656,
+            "w": 124.76483917236328,
+            "h": 31.992572784423828
+          },
+          "classes": "md-btn md-btn--flat md-btn--text md-pointer--hover md-text md-inline-block treeViewer__item--buttonFolder",
+          "inner_icons": [
+            {
+              "tag": "DIV",
+              "cls": "md-icon-separator",
+              "text": "Companies"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon icon icont-treeview-folder md-text--inherit",
+              "text": ""
+            },
+            {
+              "tag": "SPAN",
+              "cls": "md-icon-text",
+              "text": "Companies"
+            }
+          ]
+        },
+        {
+          "text": "Demo Company",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": -45.160888671875,
+            "y": 153.98513793945312,
+            "w": 167.4504852294922,
+            "h": 31.992572784423828
+          },
+          "classes": "md-btn md-btn--flat md-btn--text md-pointer--hover md-text md-inline-block treeViewer__item--buttonItem   field-capitalized",
+          "inner_icons": [
+            {
+              "tag": "DIV",
+              "cls": "md-icon-separator",
+              "text": "Demo Company"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon icon icont-treeview-user md-text--inherit",
+              "text": ""
+            },
+            {
+              "tag": "SPAN",
+              "cls": "md-icon-text md-text",
+              "text": "Demo Company"
+            }
+          ]
+        },
+        {
+          "text": "Plans",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": -22.772275924682617,
+            "y": 185.9777069091797,
+            "w": 92.72276306152344,
+            "h": 31.992572784423828
+          },
+          "classes": "md-btn md-btn--flat md-btn--text md-pointer--hover md-text md-inline-block treeViewer__item--buttonFolder",
+          "inner_icons": [
+            {
+              "tag": "DIV",
+              "cls": "md-icon-separator",
+              "text": "Plans"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon icon icont-treeview-folder md-text--inherit",
+              "text": ""
+            },
+            {
+              "tag": "SPAN",
+              "cls": "md-icon-text",
+              "text": "Plans"
+            }
+          ]
+        },
+        {
+          "text": "Extended Service Contract - 12 Months",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": -0.3836633265018463,
+            "y": 217.97027587890625,
+            "w": 308.96038818359375,
+            "h": 31.992572784423828
+          },
+          "classes": "md-btn md-btn--flat md-btn--text md-pointer--hover md-text md-inline-block treeViewer__item--buttonItem  selected field-capitalized",
+          "inner_icons": [
+            {
+              "tag": "DIV",
+              "cls": "md-icon-separator",
+              "text": "Extended Service Contract - 12 Months"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon icon icont-treeview-user md-text--inherit",
+              "text": ""
+            },
+            {
+              "tag": "SPAN",
+              "cls": "md-icon-text md-text",
+              "text": "Extended Service Contract - 12 Months"
+            }
+          ]
+        },
+        {
+          "text": "keyboard_arrow_left",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": 1222.3514404296875,
+            "y": 75.18563842773438,
+            "w": 41.99257278442383,
+            "h": 41.99257278442383
+          },
+          "classes": "md-btn md-btn--flat md-btn--icon md-btn--text md-pointer--hover md-inline-block contentPaging__button contentPaging__button--prev",
+          "inner_icons": [
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons md-text--inherit",
+              "text": "keyboard_arrow_left"
+            }
+          ]
+        },
+        {
+          "text": "keyboard_arrow_right",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": 1294.8018798828125,
+            "y": 75.18563842773438,
+            "w": 41.99257278442383,
+            "h": 41.99257278442383
+          },
+          "classes": "md-btn md-btn--flat md-btn--icon md-btn--text md-pointer--hover md-inline-block contentPaging__button contentPaging__button--next",
+          "inner_icons": [
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons md-text--inherit",
+              "text": "keyboard_arrow_right"
+            }
+          ]
+        },
+        {
+          "text": "close",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": 1336.79443359375,
+            "y": 75.18563842773438,
+            "w": 41.99257278442383,
+            "h": 41.99257278442383
+          },
+          "classes": "md-btn md-btn--flat md-btn--icon md-btn--text md-pointer--hover md-btn--tooltip md-inline-block advancedFullDialog__content__toolbar--buttonClose",
+          "inner_icons": [
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons md-text--inherit",
+              "text": "close"
+            }
+          ]
+        },
+        {
+          "text": "checkSave",
+          "aria_label": null,
+          "title": null,
+          "disabled": true,
+          "visible": true,
+          "rect": {
+            "x": 262.982666015625,
+            "y": 131.75741577148438,
+            "w": 87.99504089355469,
+            "h": 31.992572784423828
+          },
+          "classes": "md-btn md-btn--flat md-btn--text md-btn--raised-disabled md-text--disabled md-inline-block button-bg--green ",
+          "inner_icons": [
+            {
+              "tag": "DIV",
+              "cls": "md-icon-separator",
+              "text": "checkSave"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons md-text--inherit",
+              "text": "check"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons",
+              "text": "check"
+            },
+            {
+              "tag": "SPAN",
+              "cls": "md-icon-text",
+              "text": "Save"
+            }
+          ]
+        },
+        {
+          "text": "checkSave and Close",
+          "aria_label": null,
+          "title": null,
+          "disabled": true,
+          "visible": true,
+          "rect": {
+            "x": 357.97027587890625,
+            "y": 131.75741577148438,
+            "w": 153.27969360351562,
+            "h": 31.992572784423828
+          },
+          "classes": "md-btn md-btn--flat md-btn--text md-btn--raised-disabled md-text--disabled md-inline-block btn-primary-2 ",
+          "inner_icons": [
+            {
+              "tag": "DIV",
+              "cls": "md-icon-separator",
+              "text": "checkSave and Close"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons md-text--inherit",
+              "text": "check"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons",
+              "text": "check"
+            },
+            {
+              "tag": "SPAN",
+              "cls": "md-icon-text",
+              "text": "Save and Close"
+            }
+          ]
+        },
+        {
+          "text": "remove_circleRemove",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": 518.2425537109375,
+            "y": 131.75741577148438,
+            "w": 107.95791625976562,
+            "h": 31.992572784423828
+          },
+          "classes": "md-btn md-btn--raised md-btn--text md-pointer--hover md-text md-inline-block button-bg--danger ",
+          "inner_icons": [
+            {
+              "tag": "DIV",
+              "cls": "md-icon-separator",
+              "text": "remove_circleRemove"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons md-text--inherit",
+              "text": "remove_circle"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons",
+              "text": "remove_circle"
+            },
+            {
+              "tag": "SPAN",
+              "cls": "md-icon-text",
+              "text": "Remove"
+            }
+          ]
+        },
+        {
+          "text": "delete",
+          "aria_label": null,
+          "title": null,
+          "disabled": false,
+          "visible": true,
+          "rect": {
+            "x": 764.381103515625,
+            "y": 1064.90087890625,
+            "w": 39.999996185302734,
+            "h": 39.999996185302734
+          },
+          "classes": "md-btn md-btn--flat md-btn--icon md-btn--text md-pointer--hover md-inline-block md-btn md-btn--icon md-pointer--hover md-inline-block md-cell--right",
+          "inner_icons": [
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons md-text--inherit",
+              "text": "delete"
+            },
+            {
+              "tag": "I",
+              "cls": "md-icon material-icons md-text--inherit",
+              "text": "delete"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "dialog_count": 1,
+  "body_modals": [
+    {
+      "cls": "md-dialog-container fullPage__dialog show advancedFullDialog",
+      "role": null,
+      "visible": true,
+      "text_preview": "Plan Details closeformat_list_bulletedNavigateBrowseCompaniesDemo CompanyPlansExtended Service Contract - 12 MonthsPlan:"
+    },
+    {
+      "cls": "md-paper md-paper--5 md-dialog md-dialog--full-page md-background--card",
+      "role": "dialog",
+      "visible": true,
+      "text_preview": "Plan Details closeformat_list_bulletedNavigateBrowseCompaniesDemo CompanyPlansExtended Service Contract - 12 MonthsPlan:"
+    }
+  ]
+}

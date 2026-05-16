@@ -142,6 +142,87 @@ def _react_set_input(page, css_selector: str, value: str) -> None:
     page.locator(css_selector).first.evaluate(_REACT_SET_INPUT_JS, value)
 
 
+def _react_set_date_by_label(page, label_text: str, value: str) -> str:
+    """Find the date input whose nearest label contains `label_text` and set its value via
+    the React-aware prototype setter. Returns the input's value after the set (for verification).
+
+    Used because the New Batch dialog has multiple `.react-datepicker-component` inputs
+    (Plan Purchase Date AND Expiration Date) and a class-based selector picks the wrong one.
+    Approach: find a SMALL element (<80 chars of text) whose own text starts with the desired
+    label, then look for a date input in its sibling container or the surrounding field group.
+    """
+    result = page.evaluate(
+        """({labelText, value}) => {
+          const norm = (s) => (s || '').replace(/\\s+/g, ' ').trim().toLowerCase();
+          const want = norm(labelText);
+
+          const isDateInput = (el) => {
+              if (!el || el.tagName !== 'INPUT') return false;
+              if (el.type && el.type !== 'text') return false;
+              const ph = (el.placeholder || '').toLowerCase();
+              const cls = (el.className || '').toLowerCase();
+              // mm/dd/yyyy placeholder, or react-datepicker / batch-Datepicker class somewhere up the tree
+              if (ph.includes('mm/dd') || ph.includes('yyyy')) return true;
+              let p = el.parentElement;
+              for (let i = 0; i < 5 && p; i++) {
+                  if (p.classList && (
+                      p.classList.contains('react-datepicker-component') ||
+                      p.classList.contains('batch-Datepicker') ||
+                      Array.from(p.classList).some(c => c.toLowerCase().includes('datepicker'))
+                  )) return true;
+                  p = p.parentElement;
+              }
+              return false;
+          };
+
+          // Strategy 1: find a SMALL element whose own text starts with the label.
+          // Then walk up to a parent that also contains a date input.
+          let target = null;
+          const candidates = Array.from(document.querySelectorAll(
+              'label, span, div, .md-floating-label, .md-text-field-message'
+          ));
+          for (const el of candidates) {
+              const t = norm(el.innerText || el.textContent || '');
+              if (t.length === 0 || t.length > 80) continue;
+              if (!t.startsWith(want)) continue;
+              // Search nearby for a date input: check siblings, then walk up
+              let scope = el;
+              for (let i = 0; i < 6 && scope && !target; i++) {
+                  const ins = Array.from(scope.querySelectorAll('input'));
+                  for (const inp of ins) {
+                      if (isDateInput(inp)) { target = inp; break; }
+                  }
+                  scope = scope.parentElement;
+              }
+              if (target) break;
+          }
+
+          // Strategy 2 (last-resort): collect all date inputs in the dialog. If exactly 2
+          // and label is "Plan Purchase Date", pick the LAST one (Plan Purchase Date is at
+          // the bottom of the New Batch dialog, Expiration Date is above).
+          if (!target) {
+              const dialog = document.querySelector('.md-dialog--centered, .userDialog, [role="dialog"]') || document;
+              const dateInputs = Array.from(dialog.querySelectorAll('input')).filter(isDateInput);
+              if (dateInputs.length >= 1) {
+                  if (want.includes('plan purchase')) target = dateInputs[dateInputs.length - 1];
+                  else if (want.includes('expiration')) target = dateInputs[0];
+                  else target = dateInputs[0];
+              }
+          }
+
+          if (!target) return null;
+          const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+          setter.call(target, value);
+          target.dispatchEvent(new Event('input', { bubbles: true }));
+          target.dispatchEvent(new Event('change', { bubbles: true }));
+          target.dispatchEvent(new Event('blur', { bubbles: true }));
+          return target.value;
+        }""",
+        {"labelText": label_text, "value": value},
+    )
+    return result or ""
+
+
 def _react_close_datepicker(page, css_selector_for_input: str) -> None:
     """react-datepicker-component leaves its calendar open after a JS value-set, and the open
     calendar overlay intercepts pointer events on neighboring buttons (notably Save). Click
@@ -157,6 +238,19 @@ def _react_close_datepicker(page, css_selector_for_input: str) -> None:
           if (icon) icon.click();
         }""",
         css_selector_for_input,
+    )
+
+
+def _react_close_all_datepickers(page) -> None:
+    """Close every open react-datepicker calendar on the page."""
+    page.evaluate(
+        """() => {
+          for (const dp of document.querySelectorAll('.react-datepicker-component')) {
+              const icon = dp.querySelector('.icon-rc-datepicker, .input-button');
+              const cal = dp.querySelector('.react-datepicker-popper, .react-datepicker');
+              if (icon && cal) icon.click();
+          }
+        }"""
     )
 
 
@@ -588,17 +682,74 @@ class CRMRunner:
             self.logger.warning("Plans tab didn't switch after 3 attempts; continuing anyway")
             _shot(page, self.screenshot_dir, "plans_tab_switch_failed")
 
-        # Optional: narrow the plan list via search if the input exists in the selectors
+        # The CRM has started auto-swapping Plans → Products tab after a short delay
+        # (observed 2026-05-15). The Plans subtree mounts, then detaches mid-interaction.
+        # Re-click Plans whenever we detect the subtree is gone, then retry the fill.
+        def _plans_tab_is_active() -> bool:
+            try:
+                return bool(page.evaluate(
+                    """() => {
+                        const labels = document.querySelectorAll('.md-tab-label');
+                        for (const lbl of labels) {
+                            if ((lbl.textContent || '').trim() === 'Plans') {
+                                const tab = lbl.closest("[role='tab']");
+                                return !!(tab && tab.getAttribute('aria-selected') === 'true');
+                            }
+                        }
+                        return false;
+                    }"""
+                ))
+            except Exception:
+                return False
+
+        def _re_click_plans_tab() -> bool:
+            for attempt in range(3):
+                clicked = _click_plans_tab_js()
+                self.logger.debug("Plans tab re-click attempt %d -> id=%r", attempt + 1, clicked)
+                if clicked is None:
+                    page.wait_for_timeout(500)
+                    continue
+                try:
+                    page.wait_for_function(
+                        """(id) => {
+                            const el = document.getElementById(id);
+                            return el && el.getAttribute('aria-selected') === 'true';
+                        }""",
+                        arg=clicked,
+                        timeout=3000,
+                    )
+                    return True
+                except Exception:
+                    page.wait_for_timeout(500)
+            return False
+
         plans_search = self.selectors.get("company", {}).get("plans_search_input")
         if plans_search:
-            try:
-                ploc = _locator(page, plans_search).first
-                ploc.fill("")
-                ploc.fill(plan_name)
-                # Plan Name lives in cell index 0 of the Plans table.
-                self._wait_for_filtered_row(plan_name, cell_index=0)
-            except Exception as exc:
-                self.logger.debug("Plans search fill/wait failed: %s", exc)
+            for fill_attempt in range(4):
+                try:
+                    if not _plans_tab_is_active():
+                        self.logger.debug("Plans tab no longer active before fill attempt %d; re-clicking", fill_attempt + 1)
+                        _re_click_plans_tab()
+                    ploc = _locator(page, plans_search).first
+                    ploc.wait_for(state="visible", timeout=5000)
+                    ploc.fill("")
+                    ploc.fill(plan_name)
+                    self._wait_for_filtered_row(plan_name, cell_index=0)
+                    break
+                except Exception as exc:
+                    msg = str(exc)
+                    self.logger.debug("Plans search fill/wait attempt %d failed: %s", fill_attempt + 1, msg)
+                    # If the Plans subtree detached, the CRM likely flipped to Products. Re-click and retry.
+                    if not _re_click_plans_tab():
+                        self.logger.debug("Plans tab re-click did not stick on attempt %d", fill_attempt + 1)
+                        page.wait_for_timeout(500)
+
+        # Final guard: ensure we're still on Plans before the row scan.
+        if not _plans_tab_is_active():
+            self.logger.warning("Plans tab not active before row scan; forcing re-click")
+            _re_click_plans_tab()
+            # Give the table a moment to render after the re-click
+            page.wait_for_timeout(1000)
 
         _shot(page, self.screenshot_dir, "before_plan_row_scan")
 
@@ -662,20 +813,28 @@ class CRMRunner:
             self.logger.debug("Scoped add-New click failed; falling back to global selector")
             new_batch_btn = _require(self.selectors, "company.new_batch_button")
             _locator(page, new_batch_btn).first.click()
+        # Wait for the centered New Batch dialog to actually render before screenshotting / probing.
+        try:
+            page.wait_for_selector(".md-dialog--centered .userDialog", timeout=10000)
+        except Exception:
+            self.logger.debug("New Batch dialog (.md-dialog--centered .userDialog) didn't appear in 10s")
         _shot(page, self.screenshot_dir, "new_batch_dialog")
 
-        # Product — select by exact label, SKU hint, or auto-pick the first option.
-        # Option format observed: "Extended Service Contract - 12 Months (ESC030012MO00IK)"
+        # Product — react-select v1 control. Open with mousedown (click alone doesn't trigger),
+        # then pick from .Select-menu-outer .Select-option. Option text observed:
+        # "Extended Service Contract - 12 Months (ESC030012MO00IK)".
         product_dropdown = _require(self.selectors, "batch_form.product_dropdown")
-        _locator(page, product_dropdown).first.click()
+        product_ctrl = _locator(page, product_dropdown).first
+        product_ctrl.dispatch_event("mousedown")
+        product_ctrl.click()
+        page.wait_for_selector(".Select-menu-outer .Select-option", timeout=10000)
+        option_list = _locator(page, _require(self.selectors, "batch_form.product_option_list"))
         if batch.product_label:
-            chosen_option = _locator(page, {"role": "option", "name": batch.product_label}).first
+            chosen_option = option_list.filter(has_text=batch.product_label).first
         elif batch.product_sku_hint:
-            # Find the option whose visible text contains the SKU (in parentheses at the end).
-            all_opts = _locator(page, {"role": "option"})
             chosen_option = None
-            for i in range(all_opts.count()):
-                opt = all_opts.nth(i)
+            for i in range(option_list.count()):
+                opt = option_list.nth(i)
                 if batch.product_sku_hint in (opt.inner_text() or ""):
                     chosen_option = opt
                     break
@@ -684,9 +843,9 @@ class CRMRunner:
                     "SKU hint %r not found in Product dropdown; falling back to first option",
                     batch.product_sku_hint,
                 )
-                chosen_option = all_opts.first
+                chosen_option = option_list.first
         else:
-            chosen_option = _locator(page, {"role": "option"}).first
+            chosen_option = option_list.first
         chosen_product_label = (chosen_option.inner_text() or "").strip()
         chosen_option.click()
 
@@ -704,14 +863,27 @@ class CRMRunner:
             batch.plan_purchase_price
         )
 
-        # Plan Purchase Date — react-datepicker workaround
-        date_css = _require(self.selectors, "batch_form.plan_purchase_date_input_css")
-        _react_set_input(page, date_css, batch.plan_purchase_date)
-        _react_close_datepicker(page, date_css)
+        # Plan Purchase Date — react-datepicker. Use label-based targeting because the
+        # dialog now has multiple .react-datepicker-component inputs (Plan Purchase Date
+        # and Expiration Date) and the old class-based selector picks the wrong one.
+        actual_date = _react_set_date_by_label(page, "Plan Purchase Date", batch.plan_purchase_date)
+        if not actual_date or actual_date != batch.plan_purchase_date:
+            self.logger.warning(
+                "Plan Purchase Date set to %r but field reports %r — date may not have stuck",
+                batch.plan_purchase_date, actual_date,
+            )
+        else:
+            self.logger.info("Plan Purchase Date set to %r (verified)", actual_date)
+        _react_close_all_datepickers(page)
 
-        # Vertical — open dropdown, click option
-        _locator(page, _require(self.selectors, "batch_form.vertical_dropdown")).first.click()
-        _locator(page, {"role": "option", "name": batch.vertical}).first.click()
+        # Vertical — same react-select v1 pattern as Product.
+        vertical_ctrl = _locator(page, _require(self.selectors, "batch_form.vertical_dropdown")).first
+        vertical_ctrl.dispatch_event("mousedown")
+        vertical_ctrl.click()
+        page.wait_for_selector(".Select-menu-outer .Select-option", timeout=10000)
+        _locator(page, _require(self.selectors, "batch_form.vertical_option_list")).filter(
+            has_text=batch.vertical
+        ).first.click()
 
         _shot(page, self.screenshot_dir, "batch_filled")
 
@@ -726,12 +898,16 @@ class CRMRunner:
         # Wait until the batch detail page loads
         page.wait_for_url("**/portal/company/**", timeout=30_000)
         _shot(page, self.screenshot_dir, "batch_saved")
+        # Capture the batch detail URL so Step 4 can navigate back directly instead of
+        # searching the Batches table (which is racy and may not even show a PO Number column).
+        self._last_batch_url = page.url
+        self.logger.info("Batch detail URL captured: %s", self._last_batch_url)
 
         # Pull the product SKU out of the option label (last "(...)" group)
         import re as _re
         sku_match = _re.search(r"\(([^()]+)\)\s*$", chosen_product_label)
         product_sku = sku_match.group(1) if sku_match else ""
-        return {"product_label": chosen_product_label, "product_sku": product_sku}
+        return {"product_label": chosen_product_label, "product_sku": product_sku, "batch_url": self._last_batch_url}
 
     def import_csv(self, upload: BulkUploadInput) -> None:
         """Drive the global Registrations -> Import CSV 3-step Bulk Upload dialog.
@@ -756,12 +932,23 @@ class CRMRunner:
         # Advance to Step 2
         _locator(page, _require(self.selectors, "registrations.step1_next_button")).first.click()
 
-        # Step 2: Company + Product SKU
+        # Step 2: Company + Product SKU.
+        # These are react-md md-select-field controls (NOT react-select v1). The toggles
+        # are stable ids #company-toggle / #register_under-toggle inside .bulkDialog.
+        # The SKU toggle is NOT in the DOM until a Company is selected. Menu items render
+        # in a document-level portal as [role=option] — match by accessible name.
+        page.wait_for_selector(".bulkDialog #company-toggle", timeout=10000)
         _locator(page, _require(self.selectors, "registrations.step2_company_dropdown")).first.click()
-        _locator(page, {"role": "option", "name": upload.company_name}).first.click()
+        page.wait_for_selector("[role='option']", timeout=10000)
+        page.get_by_role("option", name=upload.company_name, exact=True).first.click()
 
+        sku_wait = self.selectors.get("registrations", {}).get(
+            "step2_company_dropdown_wait", ".bulkDialog #register_under-toggle"
+        )
+        page.wait_for_selector(sku_wait, timeout=10000)
         _locator(page, _require(self.selectors, "registrations.step2_product_sku_dropdown")).first.click()
-        _locator(page, {"role": "option", "name": upload.product_sku}).first.click()
+        page.wait_for_selector("[role='option']", timeout=10000)
+        page.get_by_role("option", name=upload.product_sku, exact=True).first.click()
         _shot(page, self.screenshot_dir, "bulk_upload_step2_filled")
 
         # Click Upload — fall back to JS if a row-validation overlay blocks
@@ -771,10 +958,11 @@ class CRMRunner:
         except Exception:
             if not _js_click_button_by_text(page, "Upload"):
                 raise
+        _shot(page, self.screenshot_dir, "bulk_upload_after_upload_click")
 
-        # Step 3: success indicator
+        # Step 3: success indicator. The CRM can take several minutes to ingest a batch.
         success_indicator = _require(self.selectors, "registrations.import_complete_indicator")
-        _locator(page, success_indicator).first.wait_for(state="visible", timeout=180_000)
+        _locator(page, success_indicator).first.wait_for(state="visible", timeout=600_000)
         _shot(page, self.screenshot_dir, "bulk_upload_complete")
 
         # Close the dialog
@@ -786,12 +974,28 @@ class CRMRunner:
                 pass
 
     def open_batch_by_po(self, po_number: str) -> None:
-        """Find the batch we just created (by PO Number) in the current Plan's Batches tab
-        and click into it. Must be called when the Plan Details modal/page is visible."""
+        """Open the batch we just created. Preferred path: navigate directly to the URL
+        captured during create_batch (self._last_batch_url). Fallback: search the Plan's
+        Batches table by PO number. The fallback is fragile because the table loads async
+        and may not even show a PO Number column.
+        """
         page = self._page
+
+        last_url = getattr(self, "_last_batch_url", None)
+        if last_url:
+            self.logger.info("Opening batch by captured URL: %s", last_url)
+            page.goto(last_url)
+            page.wait_for_load_state("domcontentloaded")
+            _shot(page, self.screenshot_dir, f"batch_opened_po_{_safe(po_number)}")
+            return
+
+        # Fallback: table search. Wait for rows to populate first.
         plans_batches_tab = _require(self.selectors, "plan_detail.batches_tab")
         _locator(page, plans_batches_tab).first.click()
-        # Find the row whose PO Number cell equals po_number; click the Batch Number cell.
+        try:
+            page.wait_for_selector("table tbody tr", timeout=15000)
+        except Exception:
+            self.logger.debug("Batches table didn't populate in 15s; scanning anyway")
         target = (po_number or "").strip()
         rows = page.get_by_role("row")
         for i in range(rows.count()):
