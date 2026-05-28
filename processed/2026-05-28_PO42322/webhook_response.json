@@ -1,0 +1,10 @@
+{
+  "url": "https://hooks.ringcentral.com/webhook/v2/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvdCI6ImMiLCJvaSI6IjE3MDU3MjE4NTciLCJpZCI6IjM3NDQwNDcxMzEifQ.2wjy0wa4pkJt3Wz4zHj-9okE07C-qeORxkSZaT0w3sY",
+  "request_body": {
+    "title": "InstaProtek registration submitted \u2014 PO 42322",
+    "text": "**Plan:** Extended Service Contract - 12 Months\n**Pins:** 75\n**End user:** Kriti Whitney\n**Transaction date:** 05/27/2026\n**Effective date:** 05/26/2026\n**Auto-corrected rows:** 0\n**Flagged rows:** 0\n**Run folder:** `processed/2026-05-28_PO42322`\n**Run timestamp (UTC):** 2026-05-28T06:18:53+00:00"
+  },
+  "status_code": 200,
+  "response_text": "{\"status\":\"OK\"}",
+  "ok": true
+}

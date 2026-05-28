@@ -1,0 +1,56 @@
+InstaProtek Production registration — PO 42322
+================================================
+
+Final state in CRM:
+  Company:        Connected Solutions Group, LLC
+  Plan:           Extended Service Contract - 12 Months
+  Batch Number:   9505
+  Sales Order ID: CSGESC3001299
+  PO Number:      42322
+  Product SKU:    ESC030012MO00IK
+  Pin Count:      75
+  Status:         Registered (transaction generated end-to-end by automation)
+
+Dates:
+  Transaction Date: 05/27/2026 (PO order date)
+  Effective Date:   05/26/2026 (first row Delivery Date)
+
+End user (from PO):
+  Name:    Kriti Whitney
+  Email:   kwhitney@continuumwa.com
+  Phone:   425-961-9500
+  Address: Continuum Care Hospice, 19009 33rd Ave W, ste 305, Lynnwood WA 98036
+
+Contracts generated:
+  Total: 75
+  See contract_numbers.txt for the full list.
+  First 3: 477008080459, 892482399300, 008644608815
+  Last 3:  520775234583, 963431749356, 561153495032
+
+End-to-end automation flow that completed this run:
+  - Validation: 75 rows, brand-menu reconciliation skipped.
+  - Batch created automatically (script paused before upload at operator's request
+    to confirm all 75 pins generated; operator confirmed).
+  - CSV uploaded automatically via /portal/registration bulk upload.
+  - Transaction generated automatically via the prod New Transaction dialog flow:
+      Tab 1: pre-filled metadata; overrode Effective Date to 05/26/2026.
+      Tab 2: bumped Rows per page from default 50 -> 100, then header select-all
+             reached 75/75 (would have only hit 50 without the rows-per-page change).
+      Tab 3: clicked Generate New Transaction, waited for success alert.
+  - Contracts tab scraped automatically for the 75 generated contract numbers.
+  - RingCentral success summary posted (HTTP 200 OK) including contract count + samples.
+
+Skill code changes made during this run:
+  - run_transaction_only.py: added --prod-dialog flow with rows-per-page=100 JS click,
+    paginated-select-all fallback, contract-number scraping from Contracts tab.
+  - playwright_runner.py: open_batch_by_po() fallback now uses Search Batches filter
+    instead of substring-scanning row text (prod table has no PO Number column).
+
+Operational notes for future prod runs:
+  - Production CRM still requires --headed.
+  - Pass --skip-brand-reconcile when the operator confirms the registration file is good.
+  - After --skip-brand-reconcile + batch creation, pause if requested so operator can
+    confirm pin generation, then re-run with --existing-batch to do upload+transaction.
+  - For batches > 50 pins, the prod txn Tab 2 must have Rows per page bumped before
+    select-all — clicks on the pagination toggle/option must go via JS evaluate()
+    because they render outside the dialog's viewport.

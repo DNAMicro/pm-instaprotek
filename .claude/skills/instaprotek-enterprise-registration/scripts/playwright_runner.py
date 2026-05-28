@@ -989,24 +989,62 @@ class CRMRunner:
             _shot(page, self.screenshot_dir, f"batch_opened_po_{_safe(po_number)}")
             return
 
-        # Fallback: table search. Wait for rows to populate first.
+        # Fallback: open the Batches tab, wait for the loading overlay to clear, filter
+        # via the Search Batches input (the batches table does not expose a PO Number column
+        # in prod, so substring-searching row text won't match — we must use the search box).
         plans_batches_tab = _require(self.selectors, "plan_detail.batches_tab")
         _locator(page, plans_batches_tab).first.click()
-        try:
-            page.wait_for_selector("table tbody tr", timeout=15000)
-        except Exception:
-            self.logger.debug("Batches table didn't populate in 15s; scanning anyway")
         target = (po_number or "").strip()
+
+        try:
+            page.wait_for_function(
+                """() => {
+                    return !Array.from(document.querySelectorAll('*')).some(
+                        el => el.children.length === 0
+                            && (el.textContent || '').trim() === 'Getting Records...'
+                    );
+                }""",
+                timeout=30000,
+            )
+        except Exception:
+            self.logger.warning("'Getting Records...' overlay still present after 30s")
+        page.wait_for_timeout(500)
+
+        try:
+            search = page.get_by_role("textbox", name="Search Batches...").first
+            search.wait_for(state="visible", timeout=10000)
+            search.fill("")
+            search.fill(target)
+            page.wait_for_timeout(1500)
+            try:
+                page.wait_for_function(
+                    """() => {
+                        return !Array.from(document.querySelectorAll('*')).some(
+                            el => el.children.length === 0
+                                && (el.textContent || '').trim() === 'Getting Records...'
+                        );
+                    }""",
+                    timeout=15000,
+                )
+            except Exception:
+                pass
+            _shot(page, self.screenshot_dir, f"batches_filtered_{_safe(po_number)}")
+        except Exception as exc:
+            self.logger.warning("Search Batches input not usable: %s", exc)
+
         rows = page.get_by_role("row")
         for i in range(rows.count()):
             row = rows.nth(i)
-            row_text = (row.inner_text() or "").strip()
-            if target and target in row_text:
-                cells = row.get_by_role("cell")
-                if cells.count() >= 1:
-                    cells.nth(0).click()
-                    _shot(page, self.screenshot_dir, f"batch_opened_po_{_safe(po_number)}")
-                    return
+            cells = row.get_by_role("cell")
+            if cells.count() < 1:
+                continue
+            txt = (cells.nth(0).inner_text() or "").strip()
+            if not txt or "rows per page" in txt.lower():
+                continue
+            self.logger.info("Clicking batch row: %r", txt)
+            cells.nth(0).click()
+            _shot(page, self.screenshot_dir, f"batch_opened_po_{_safe(po_number)}")
+            return
         _shot(page, self.screenshot_dir, f"FAILURE_batch_not_found_po_{_safe(po_number)}")
         raise RuntimeError(f"Batch with PO {po_number!r} not found in current Plan's batches")
 
