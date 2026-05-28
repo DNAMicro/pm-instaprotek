@@ -264,6 +264,9 @@ def _run_pipeline(
     )
     brand_cache_fresh = _brand_cache_fresh(brand_cache, settings)
     need_brand_refresh = args.refresh_brand_menu or not brand_cache_fresh
+    if args.skip_brand_reconcile:
+        need_brand_refresh = False
+        logger.info("--skip-brand-reconcile set: trusting registration file as-is (no Brand-menu reconciliation).")
 
     brand_names: list[str] = list(brand_cache.get("brands") or [])
     devices_by_brand: dict[str, list[str]] = dict(brand_cache.get("devices_by_brand") or {})
@@ -340,17 +343,21 @@ def _run_pipeline(
                         return 1
 
                 # ---- Resolve model names against the live Brand -> Device catalog ----
-                resolution_report = _resolve_models(
-                    reg=reg,
-                    validation=validation,
-                    brand_names=brand_names,
-                    devices_by_brand=devices_by_brand,
-                    runner=runner,
-                    brand_cache_path=brand_cache_path,
-                    brand_cache=brand_cache,
-                    settings=settings,
-                    logger=logger,
-                )
+                if args.skip_brand_reconcile:
+                    from resolve_model_names import ResolutionReport
+                    resolution_report = ResolutionReport(outcomes=[])
+                else:
+                    resolution_report = _resolve_models(
+                        reg=reg,
+                        validation=validation,
+                        brand_names=brand_names,
+                        devices_by_brand=devices_by_brand,
+                        runner=runner,
+                        brand_cache_path=brand_cache_path,
+                        brand_cache=brand_cache,
+                        settings=settings,
+                        logger=logger,
+                    )
 
                 if resolution_report.unresolved:
                     _fail(
@@ -379,13 +386,20 @@ def _run_pipeline(
                     return 1
 
                 # Write cleaned + preserved registration files into the success folder.
-                cleaned_path, original_copy_path = write_cleaned_and_preserved(
-                    reg,
-                    destination_folder=success_folder,
-                    original_source=discovered.registration_file,
-                )
-                logger.info("Cleaned registration written to %s", cleaned_path)
-                logger.info("Original preserved at %s", original_copy_path)
+                if args.skip_brand_reconcile:
+                    # Trust the operator's file: copy it as-is, no cleaned rewrite.
+                    cleaned_path = success_folder / discovered.registration_file.name
+                    shutil.copy2(discovered.registration_file, cleaned_path)
+                    original_copy_path = cleaned_path
+                    logger.info("Registration file copied as-is to %s (--skip-brand-reconcile)", cleaned_path)
+                else:
+                    cleaned_path, original_copy_path = write_cleaned_and_preserved(
+                        reg,
+                        destination_folder=success_folder,
+                        original_source=discovered.registration_file,
+                    )
+                    logger.info("Cleaned registration written to %s", cleaned_path)
+                    logger.info("Original preserved at %s", original_copy_path)
 
                 # Write the validation + resolution reports
                 save_json(
@@ -494,37 +508,55 @@ def _run_pipeline(
                 )
 
                 batch_result: dict[str, str] = {}
-                try:
-                    # Plan name: --plan flag wins, then settings.json crm.plan_name, then PO description
-                    # (last one usually doesn't match the CRM and will hard-fail clean).
-                    plan_name_for_run = (
-                        settings["crm"].get("plan_name")
-                        or settings["crm"].get("default_plan_name")
-                        or po.plan_description
-                        or ""
-                    )
-                    runner.open_company_and_plan(
-                        settings["crm"].get("company_name", "Demo Company"),
-                        plan_name_for_run,
-                    )
-                    batch_result = runner.create_batch(batch) or {}
-                    logger.info("Batch created: product_label=%r product_sku=%r",
-                                batch_result.get("product_label"), batch_result.get("product_sku"))
-                except Exception as exc:
-                    logger.exception("Batch creation failed: %s", exc)
-                    _fail(
-                        stage="create_batch",
-                        reason=str(exc),
-                        details={"traceback": traceback.format_exc(), "batch": batch.__dict__},
-                        success_folder=success_folder,
-                        failure_folder=failure_folder,
-                        settings=settings,
-                        po=po,
-                        run_timestamp=run_timestamp,
-                        skip_webhook=args.skip_webhook or args.skip_failure_webhook,
-                        logger=logger,
-                    )
-                    return 1
+                # Plan name: --plan flag wins, then settings.json crm.plan_name, then PO description
+                # (last one usually doesn't match the CRM and will hard-fail clean).
+                plan_name_for_run = (
+                    settings["crm"].get("plan_name")
+                    or settings["crm"].get("default_plan_name")
+                    or po.plan_description
+                    or ""
+                )
+                if args.existing_batch:
+                    if not sku_hint:
+                        _fail(
+                            stage="create_batch",
+                            reason="--existing-batch requires --product-sku (no New Batch dropdown to read it from).",
+                            details={},
+                            success_folder=success_folder,
+                            failure_folder=failure_folder,
+                            settings=settings,
+                            po=po,
+                            run_timestamp=run_timestamp,
+                            skip_webhook=args.skip_webhook or args.skip_failure_webhook,
+                            logger=logger,
+                        )
+                        return 1
+                    batch_result = {"product_sku": sku_hint, "product_label": sku_hint}
+                    logger.info("Skipping batch creation per --existing-batch; using SKU %r for upload.", sku_hint)
+                else:
+                    try:
+                        runner.open_company_and_plan(
+                            settings["crm"].get("company_name", "Demo Company"),
+                            plan_name_for_run,
+                        )
+                        batch_result = runner.create_batch(batch) or {}
+                        logger.info("Batch created: product_label=%r product_sku=%r",
+                                    batch_result.get("product_label"), batch_result.get("product_sku"))
+                    except Exception as exc:
+                        logger.exception("Batch creation failed: %s", exc)
+                        _fail(
+                            stage="create_batch",
+                            reason=str(exc),
+                            details={"traceback": traceback.format_exc(), "batch": batch.__dict__},
+                            success_folder=success_folder,
+                            failure_folder=failure_folder,
+                            settings=settings,
+                            po=po,
+                            run_timestamp=run_timestamp,
+                            skip_webhook=args.skip_webhook or args.skip_failure_webhook,
+                            logger=logger,
+                        )
+                        return 1
 
                 # ---- Step 3: CSV upload ----
                 product_sku_for_upload = batch_result.get("product_sku", "")
@@ -975,6 +1007,15 @@ def _parse_args() -> argparse.Namespace:
         help="Suppress only failure webhook posts; still post success webhook on a successful run.",
     )
     p.add_argument("--refresh-brand-menu", action="store_true", help="Force a re-read of the CRM Brand menu")
+    p.add_argument(
+        "--skip-brand-reconcile",
+        action="store_true",
+        help=(
+            "Trust the registration file as-is: skip the CRM Brand-menu read and the row-by-row "
+            "model resolution step, and upload the operator's original file byte-for-byte instead "
+            "of a cleaned copy."
+        ),
+    )
     p.add_argument("--verbose", action="store_true", help="Verbose stdout logging")
     p.add_argument(
         "--company",
@@ -1010,6 +1051,15 @@ def _parse_args() -> argparse.Namespace:
         help=(
             "Product SKU / barcode (e.g. \"ESC030012MO00IK\") to pick in the New Batch dialog. "
             "When provided, bypasses the references-folder price lookup entirely."
+        ),
+    )
+    p.add_argument(
+        "--existing-batch",
+        action="store_true",
+        help=(
+            "Skip batch creation: a batch for this PO already exists in the CRM. The script "
+            "goes straight to Step 3 (CSV upload) and Step 4 (transaction). Requires "
+            "--product-sku since we can't read it from a New Batch dropdown when we skip it."
         ),
     )
     return p.parse_args()

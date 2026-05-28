@@ -1,0 +1,1589 @@
+{
+  "fixes_applied": [
+    {
+      "row": 1,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 1,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 1,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 2,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 2,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 2,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 3,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 3,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 3,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 4,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 4,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 4,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 5,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 5,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 5,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 6,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 6,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 6,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 7,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 7,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 7,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 8,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 8,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 8,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 9,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 9,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 9,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 10,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 10,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 10,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 11,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 11,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 11,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 12,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 12,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 12,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 13,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 13,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 13,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 14,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 14,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 14,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 15,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 15,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 15,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 16,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 16,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 16,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 17,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 17,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 17,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 18,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 18,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 18,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 19,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 19,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 19,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 20,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 20,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 20,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 21,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 21,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 21,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 22,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 22,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 22,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 23,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 23,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 23,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 24,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 24,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 24,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 25,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 25,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 25,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 26,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 26,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 26,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 27,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 27,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 27,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 28,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 28,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 28,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 29,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 29,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 29,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 30,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 30,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 30,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 31,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 31,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 31,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 32,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 32,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 32,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 33,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 33,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 33,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 34,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 34,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 34,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 35,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 35,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 35,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 36,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 36,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 36,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 37,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 37,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 37,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 38,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 38,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 38,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 39,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 39,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 39,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 40,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 40,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 40,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 41,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 41,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 41,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 42,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 42,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 42,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 43,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 43,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 43,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 44,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 44,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 44,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 45,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 45,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 45,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 46,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 46,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 46,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 47,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 47,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 47,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 48,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 48,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 48,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 49,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 49,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 49,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 50,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 50,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 50,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 51,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 51,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 51,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 52,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 52,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 52,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 53,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 53,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 53,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 54,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 54,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 54,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 55,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 55,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 55,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 56,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 56,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 56,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 57,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 57,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 57,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 58,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 58,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 58,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 59,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 59,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 59,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 60,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 60,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 60,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 61,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 61,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 61,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 62,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 62,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 62,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 63,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 63,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 63,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 64,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 64,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 64,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 65,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 65,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 65,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 66,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 66,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 66,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 67,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 67,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 67,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 68,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 68,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 68,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 69,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 69,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 69,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 70,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 70,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 70,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 71,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 71,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 71,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 72,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 72,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 72,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 73,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 73,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 73,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 74,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 74,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 74,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    },
+    {
+      "row": 75,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Kriti ",
+      "after": "Kriti"
+    },
+    {
+      "row": 75,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Lynnwood ",
+      "after": "Lynnwood"
+    },
+    {
+      "row": 75,
+      "column": "Delivery Date",
+      "fix": "trim_whitespace",
+      "before": "5/26/2026\u00a0",
+      "after": "5/26/2026"
+    }
+  ],
+  "cross_validation": {
+    "csv_row_count": 75,
+    "po_quantity": 75,
+    "row_count_match": true,
+    "csv_end_user_name": "Kriti Whitney",
+    "po_end_user_name": "Kriti Whitney",
+    "end_user_match": true
+  },
+  "warnings": [],
+  "model_resolution": []
+}

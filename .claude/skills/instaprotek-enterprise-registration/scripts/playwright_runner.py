@@ -350,7 +350,7 @@ class CRMRunner:
         page = self._page
         base = self.settings["crm"]["base_url"].rstrip("/")
         login_path = self.settings["crm"].get("login_path", "/")
-        page.goto(base + login_path)
+        page.goto(base + login_path, wait_until="domcontentloaded")
 
         # Let the SPA settle so we can reliably distinguish login form vs. restored session.
         try:

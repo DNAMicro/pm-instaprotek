@@ -1,0 +1,854 @@
+{
+  "fixes_applied": [
+    {
+      "row": 1,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 1,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 1,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 2,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 2,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 2,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 3,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 3,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 3,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 4,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 4,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 4,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 5,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 5,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 5,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 6,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 6,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 6,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 7,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 7,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 7,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 8,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 8,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 8,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 9,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 9,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 9,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 10,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 10,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 10,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 11,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 11,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 11,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 12,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 12,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 12,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 13,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 13,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 13,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 14,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 14,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 14,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 15,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 15,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 15,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 16,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 16,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 16,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 17,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 17,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 17,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 18,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 18,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 18,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 19,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 19,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 19,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 20,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 20,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 20,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 21,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 21,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 21,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 22,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 22,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 22,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 23,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 23,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 23,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 24,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 24,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 24,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 25,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 25,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 25,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 26,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 26,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 26,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 27,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 27,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 27,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 28,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 28,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 28,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 29,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 29,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 29,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 30,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 30,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 30,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 31,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 31,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 31,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 32,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 32,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 32,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 33,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 33,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 33,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 34,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 34,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 34,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 35,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 35,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 35,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 36,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 36,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 36,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 37,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 37,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 37,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 38,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 38,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 38,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 39,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 39,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 39,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    },
+    {
+      "row": 40,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "Mallory ",
+      "after": "Mallory"
+    },
+    {
+      "row": 40,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "Dallas ",
+      "after": "Dallas"
+    },
+    {
+      "row": 40,
+      "column": "Manufacturer",
+      "fix": "trim_whitespace",
+      "before": "Motorola\u00a0",
+      "after": "Motorola"
+    }
+  ],
+  "cross_validation": {
+    "csv_row_count": 40,
+    "po_quantity": 40,
+    "row_count_match": true,
+    "csv_end_user_name": "Mallory Richards",
+    "po_end_user_name": "Mallory Richards",
+    "end_user_match": true
+  },
+  "warnings": [],
+  "model_resolution": []
+}

@@ -1,0 +1,40 @@
+InstaProtek Production registration — PO 42325
+================================================
+
+Final state in CRM:
+  Company:        Connected Solutions Group, LLC
+  Plan:           Extended Service Contract - 12 Months
+  Batch Number:   9504
+  Sales Order ID: CSGESC3001298
+  PO Number:      42325
+  Product SKU:    ESC030012MO00IK
+  Used Pins:      40 / 40
+  Status:         Registered
+
+Dates:
+  Plan Purchase Date: 05/27/2026 (PO order date)
+  Effective Date:     05/19/2026 (first row Delivery Date)
+  Run timestamp UTC:  2026-05-28T05:22:44+00:00
+
+End user (from PO):
+  Name:    Mallory Richards
+  Email:   mallory.richards@smartmotiondsp.co
+  Phone:   972.971.1957
+  Address: Smart Motion Logistics, 4411 McKinney Ave, Unit 21, Dallas TX 75205
+
+Notes (how this run actually completed):
+  - Validation: 40 rows, 0 flagged. Brand-menu reconciliation skipped per operator
+    request (--skip-brand-reconcile); file uploaded as-is.
+  - Batch created by automation (URL: /portal/company/a395cc90-438f-4f5b-9c40-9dc8c75cac42).
+  - File upload + transaction completed during the run; operator confirmed status.
+  - RingCentral success summary posted (HTTP 200 OK).
+
+Skill changes made in this session (in .claude/skills/instaprotek-enterprise-registration/):
+  - scripts/playwright_runner.py login(): use wait_until="domcontentloaded".
+  - scripts/run.py: added --skip-brand-reconcile and --existing-batch flags.
+  - scripts/run_transaction_only.py: new one-shot helper for Step 4 only.
+
+Operational notes for future prod runs:
+  - Production CRM requires --headed (headless Chromium is blocked).
+  - Pass --skip-failure-webhook to suppress RingCentral noise on transient errors.
+  - Company name in prod is "Connected Solutions Group, LLC" (no trailing period).
