@@ -14,8 +14,11 @@ These instructions apply to any regression work done here.
   mechanical work (copying templates, filling status cells, tallying counts, simple lookups);
   use a stronger model only for judgment-heavy work (triaging defect severity, interpreting
   failures, writing the release-readiness / Go–No-go summary).
-- **Version control:** after each regression cycle, commit the updated tracker, checklist, and
-  defect log and push to git — `git add . && git commit -m "Regression run <version>" && git push`.
+- **Version control (required):** ALWAYS commit and push at the end of every regression cycle —
+  never skip it. Run git through **bash** (git is on the bash PATH here, not PowerShell):
+  `git add -A && git commit -m "Regression run <version>" && git push`.
+  Remote: `https://github.com/DNAMicro/pm-instaprotek.git` (add once with
+  `git remote add origin <url>` if it isn't set).
 - **Test data cleanup:** after running the tests, delete all test records created during the run
   so the environment is left clean. Capture any needed evidence first; never run this against Production.
 

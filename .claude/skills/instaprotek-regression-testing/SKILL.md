@@ -70,6 +70,7 @@ the templates for each release so every cycle keeps its own record.
   lightweight model for mechanical steps (copying templates, filling Status cells, tallying
   counts, simple lookups), and a stronger model only for judgment-heavy steps (triaging defect
   severity, interpreting failures, writing the release-readiness recommendation).
-- **Version control:** at the end of each cycle, commit the updated tracker, checklist, and
-  defect log to git and push — e.g. `git add . && git commit -m "Regression run <version>" && git push`.
-- **Test data cleanup:** by default, delete all test records created 
+- **Version control (required):** ALWAYS commit and push at the end of every regression cycle —
+  never skip it. Run git through **bash** (git is on the bash PATH, not PowerShell); if `git` is
+  not found, you are in the wrong shell — switch to bash. Commands:
+  `
