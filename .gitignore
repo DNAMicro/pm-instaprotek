@@ -22,5 +22,8 @@ venv/
 .idea/
 .vscode/
 
+# LibreOffice / Excel lock files
+.~lock.*#
+
 # Playwright install artifacts
 node_modules/
