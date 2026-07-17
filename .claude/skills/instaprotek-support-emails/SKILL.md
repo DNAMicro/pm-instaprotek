@@ -41,8 +41,9 @@ Customer-centric and human — warm, direct, competent. Must NOT read as AI-gene
 
 ## Sources of incoming email
 
-1. **Microsoft 365 connector (preferred):** use `outlook_email_search` to pull the relevant
-   message(s) — e.g. unread in the support mailbox, or the message Sarah describes. Read-only.
+1. **Microsoft 365 connector (preferred):** use `outlook_email_search` with
+   `mailboxOwnerEmail: support@instaprotek.com` (the support mailbox — shared/delegated) to pull
+   the relevant message(s) — e.g. recent unread, or the message Sarah describes. Read-only.
 2. **Files:** any .eml/.msg/.txt/.pdf/.md dropped in `support-emails/inbox/`.
 3. **Pasted text** in the conversation.
 
@@ -64,7 +65,9 @@ say so in the review header and use `[NEEDS INFO]` in the body rather than guess
 4. Append a line to `support-emails/drafts/_draft_log.csv`
    (`date,from,subject,category,flags,file`). Create the file with headers if missing.
 5. Tell Sarah in chat: how many drafts, which are flagged `NEEDS APPROVAL` / `ESCALATE` /
-   `NEEDS INFO`, and where they are. She reviews, edits, and sends from Outlook herself.
+   `NEEDS INFO`, and where they are. She reviews, edits, and sends from Outlook herself —
+   **always from the support mailbox (support@instaprotek.com), never from admin@ or a
+   personal account.** Every draft carries a `From: support@instaprotek.com` line as a reminder.
 
 ## Escalation flags
 

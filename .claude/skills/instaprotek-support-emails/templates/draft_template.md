@@ -6,6 +6,7 @@
 **Notes for Sarah:** <anything to verify before sending>
 
 <!-- ===== READY-TO-PASTE REPLY ===== -->
+**From:** support@instaprotek.com  (send from the support mailbox in Outlook)
 **To:** <customer email>
 **Subject:** Re: <original subject>
 
