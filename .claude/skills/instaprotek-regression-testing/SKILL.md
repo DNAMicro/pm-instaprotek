@@ -41,6 +41,23 @@ the templates for each release so every cycle keeps its own record.
   priority (P1–P4), status (`Open` → `In Progress` → `Fixed - Retest` → `Closed`/`Deferred`),
   steps to reproduce, and environment.
 - Put the resulting Defect ID back on the failing test case row.
+- **File each genuine product bug in Jira (required).** For every `Fail` that is a real product
+  defect (not a test-data/environment problem), create a Jira **Bug** and place it in the
+  **"Regression Testing Bugs" sprint**, **left Unassigned**.
+  Board: https://dnamicro.atlassian.net/jira/software/c/projects/INSTA/boards/2/backlog
+  - Jira coordinates: cloudId `aa523965-6d7b-4eff-9dc0-e02aafcfeac9`, projectKey `INSTA`
+    (project id `10001`), issueType `Bug` (id `10009`), Sprint field `customfield_10020` set to
+    the **"Regression Testing Bugs"** sprint's numeric id, `assignee_account_id` omitted (unassigned).
+  - Resolve the sprint id at filing time (no Agile MCP tool lists sprints): read it from
+    `customfield_10020` on any issue already in that sprint via
+    `sprint = "Regression Testing Bugs"`; if the sprint is still empty, ask for the sprint id.
+    Never file into a different sprint as a fallback — leave it in the backlog and flag it instead.
+  - Bug fields: summary `[Regression][<Module>] <short title>`; description with Steps to
+    Reproduce, Expected vs. Actual, Environment (QA), the scenario ID, and severity; map severity
+    → priority (Critical→Highest, High→High, Medium→Medium, Low→Low); set the `environment` field
+    to the run environment; add label `regression`.
+  - Put the returned Jira key (e.g. `INSTA-1234`) back on the failing scenario row and into the
+    Confluence report's defect log.
 
 ### 4. Report
 - The **Run Summary** tab totals everything automatically. After editing the workbook, run the

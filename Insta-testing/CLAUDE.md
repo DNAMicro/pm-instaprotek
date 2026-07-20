@@ -14,6 +14,10 @@ These instructions apply to any regression work done here.
   mechanical work (copying templates, filling status cells, tallying counts, simple lookups);
   use a stronger model only for judgment-heavy work (triaging defect severity, interpreting
   failures, writing the release-readiness / Go–No-go summary).
+- **Bug filing (required):** file each genuine product bug found during a run as a Jira **Bug** in
+  the **INSTA** project, placed in the **"Regression Testing Bugs" sprint** and left **Unassigned**
+  (board 2). Never file into a different sprint as a fallback — if the sprint id can't be resolved,
+  leave the bug in the backlog and flag it. See the skill's "Log defects" step for fields/mapping.
 - **Report delivery (required):** publish the full regression report as a NEW Confluence page in
   the **instaProtek** space (key `IE`) under the **"Regression testing"** folder — cloudId
   `aa523965-6d7b-4eff-9dc0-e02aafcfeac9`, spaceId `82444597`, parentId (folder) `822149121`.
