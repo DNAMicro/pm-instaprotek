@@ -14,6 +14,11 @@ These instructions apply to any regression work done here.
   mechanical work (copying templates, filling status cells, tallying counts, simple lookups);
   use a stronger model only for judgment-heavy work (triaging defect severity, interpreting
   failures, writing the release-readiness / Go–No-go summary).
+- **Report delivery (required):** publish the full regression report as a NEW Confluence page in
+  the **instaProtek** space (key `IE`) under the **"Regression testing"** folder — cloudId
+  `aa523965-6d7b-4eff-9dc0-e02aafcfeac9`, spaceId `82444597`, parentId (folder) `822149121`.
+  One page per run (never overwrite). Then post the release-readiness summary to RingCentral with
+  the Confluence page **link** included. See the skill's Report step for the required page contents.
 - **Version control (required):** ALWAYS commit and push at the end of every regression cycle —
   never skip it. Run git through **bash** (git is on the bash PATH here, not PowerShell):
   `git add -A && git commit -m "Regression run <version>" && git push`.

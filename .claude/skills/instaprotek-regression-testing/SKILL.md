@@ -47,6 +47,22 @@ the templates for each release so every cycle keeps its own record.
   spreadsheet recalculation step so cached values refresh before reading or sharing results.
 - Produce a short release-readiness note: pass rate, open Critical/High defects, and a Go/No-go
   recommendation measured against the exit criteria in the test plan.
+- **Publish the full report to Confluence (required).** Create a NEW page (never overwrite a
+  prior run's page) in the **instaProtek** space (key `IE`) under the **"Regression testing"**
+  folder. Coordinates: cloudId `aa523965-6d7b-4eff-9dc0-e02aafcfeac9`, spaceId `82444597`,
+  parentId (folder) `822149121`. Title: `Instaprotek Regression Report — <version> (<YYYY-MM-DD>)`.
+  The page must contain the FULL detail of the run:
+  - Run metadata: version, environment, run date, tester/account, suite source file.
+  - Run Summary: total / Pass / Fail / Blocked / Not Run / N/A counts and pass rate.
+  - Per-module results table (one row per module: executed, pass/fail/blocked counts).
+  - Full defect log (Defect ID, module/case, severity, priority, status, repro, environment).
+  - Blocked / skipped items with the reason (e.g. role-permission cases when only one login exists).
+  - Go/No-go recommendation against the exit gate.
+- **Post to RingCentral (required).** After the Confluence page is published, post the
+  release-readiness summary (version, pass rate, open Critical/High count, Go/No-go) to the
+  RingCentral webhook, and **include the link to the Confluence page** in that post. The webhook
+  URL is the one configured in `.claude/skills/instaprotek-enterprise-registration/config/settings.json`
+  unless a dedicated regression channel is provided.
 
 ### 5. Clean up (teardown)
 - Once results and any needed evidence are recorded, **delete all test records created during
