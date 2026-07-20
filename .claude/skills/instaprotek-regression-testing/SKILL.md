@@ -54,7 +54,14 @@ the templates for each release so every cycle keeps its own record.
   The page must contain the FULL detail of the run:
   - Run metadata: version, environment, run date, tester/account, suite source file.
   - Run Summary: total / Pass / Fail / Blocked / Not Run / N/A counts and pass rate.
-  - Per-module results table (one row per module: executed, pass/fail/blocked counts).
+  - Per-module roll-up table (one row per module: executed, pass/fail/blocked counts).
+  - **Full per-scenario results table — every single scenario tested, one row each, grouped by
+    module.** Columns: Module · Scenario ID · Test Description · **Expected Result** ·
+    **Actual Result** · Status (`Pass`/`Fail`/`Blocked`/`Not Run`/`N/A`) · Notes / Defect ID.
+    Document expected vs. actual for EVERY scenario, not just failures — no scenario is omitted
+    or collapsed. Use a Confluence status lozenge for the Status cell (green Pass / red Fail /
+    yellow Blocked). For a Fail, the Actual Result must state what actually happened; for Blocked,
+    the Notes must give the reason.
   - Full defect log (Defect ID, module/case, severity, priority, status, repro, environment).
   - Blocked / skipped items with the reason (e.g. role-permission cases when only one login exists).
   - Go/No-go recommendation against the exit gate.
