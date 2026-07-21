@@ -26,6 +26,10 @@ These instructions apply to any regression work done here.
   Blocked status** (no scenario omitted or collapsed), plus the roll-up summary and defect log.
   Then post the release-readiness summary to RingCentral with the Confluence page **link**
   included. See the skill's Report step for the full required page contents.
+- **Per-module RingCentral updates (required):** post a RingCentral update as **each module
+  completes** (module name, pass/fail/blocked tally, key findings + any Jira bug keys), not only
+  one summary at the end. The final full report still goes to Confluence with a link posted to
+  RingCentral. Reuse the enterprise-registration webhook; payload is `{"title","text"}` markdown.
 - **Version control (required):** ALWAYS commit and push at the end of every regression cycle —
   never skip it. Run git through **bash** (git is on the bash PATH here, not PowerShell):
   `git add -A && git commit -m "Regression run <version>" && git push`.
