@@ -113,4 +113,10 @@ the templates for each release so every cycle keeps its own record.
 - **Version control (required):** ALWAYS commit and push at the end of every regression cycle —
   never skip it. Run git through **bash** (git is on the bash PATH, not PowerShell); if `git` is
   not found, you are in the wrong shell — switch to bash. Commands:
-  `
+  `git add -A && git commit -m "Regression run <version>" && git push`
+  Remote: `https://github.com/DNAMicro/pm-instaprotek.git` (add once with `git remote add origin <url>` if unset).
+- **Test data cleanup (required):** after a run, delete all test records created during it so the
+  environment is left clean. Capture any needed evidence first; never run cleanup against Production.
+- **Scope note:** exclude modules the team marks out of scope (currently Orders, Product Reviews,
+  Device Buyback — app-only / out of scope) by setting their cases to `N/A`; do not count them in pass rate.
+- **Bug filing & report delivery are REQUIRED every run** — see steps 3 (Jira) and 4 (Confluence + RingCentral).
