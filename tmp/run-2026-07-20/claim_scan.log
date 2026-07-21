@@ -1,0 +1,10 @@
+reg[0] 5677d8bf-5cc | ? | New=True | ERROR unable-to-file
+reg[1] 77d02d4c-8e9 | ? | New=True | clicked-unclear
+reg[2] 5a872e40-106 | ? | New=True | clicked-unclear
+reg[3] 6522f350-345 | ? | New=True | clicked-unclear
+reg[4] ef80e83c-925 | ? | New=True | clicked-unclear
+reg[5] c0114b00-279 | ? | New=True | clicked-unclear
+reg[6] 869721a5-e88 | ? | New=True | clicked-unclear
+reg[7] 0839add8-65f | ? | New=True | clicked-unclear
+reg[8] 3b2d3b51-bbb | ? | New=True | WIZARD OPENED
+RESULT: claimable-with-working-wizard = 3b2d3b51-bbb
