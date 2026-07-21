@@ -15,7 +15,7 @@ claims, repairs, and buyback. Every reply is a DRAFT for Sarah to review. Nothin
 ## Hard rules (non-negotiable)
 
 1. **Never send.** Do not send email through any connector, browser, or script. Output is
-   draft files only. If asked to "just send it", refuse and point to the drafts folder.
+   draft files (and, when run on the desktop, unsent Outlook drafts created by `push_drafts_to_outlook.ps1`, which only saves drafts and never sends) only. If asked to "just send it", refuse and point to the drafts folder.
 2. **No concessions without explicit approval.** Never offer refunds, replacements, discounts,
    credits, free services/months, waived fees, coverage exceptions, or policy overrides unless
    Sarah has explicitly approved that specific concession in this conversation. If the customer
@@ -81,7 +81,8 @@ the customer also asks for a refund/replacement/other concession.
    reply (To / Subject / body).
 4. Append a line to `support-emails/drafts/_draft_log.csv`
    (`date,from,subject,category,flags,file`). Create the file with headers if missing.
-5. Tell Sarah in chat: how many drafts, which are flagged `NEEDS APPROVAL` / `ESCALATE` /
+5. **Load the drafts into Outlook (when running on the desktop).** Run `support-emails/push_drafts_to_outlook.ps1` in PowerShell to create each draft in the Outlook Drafts folder, From `support@instaprotek.com` - it saves drafts only and never sends (needs classic desktop Outlook). If there's no desktop Outlook available (e.g. running in Cowork), skip this and leave the draft files for a manual push.
+6. Tell Sarah in chat: how many drafts, which are flagged `NEEDS APPROVAL` / `ESCALATE` /
    `NEEDS INFO`, and where they are. She reviews, edits, and sends from Outlook herself —
    **always from the support mailbox (support@instaprotek.com), never from admin@ or a
    personal account.** Every draft carries a `From: support@instaprotek.com` line as a reminder.
