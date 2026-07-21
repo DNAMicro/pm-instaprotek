@@ -27,3 +27,7 @@ venv/
 
 # Playwright install artifacts
 node_modules/
+
+# Playwright session state (contains live login tokens)
+auth_state.json
+**/auth_state.json
