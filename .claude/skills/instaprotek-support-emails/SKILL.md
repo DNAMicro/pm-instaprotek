@@ -53,6 +53,23 @@ Ground every factual claim in `support-emails/reference/` (FAQ, policies, canned
 plan/coverage docs). Check it before drafting. If reference docs don't cover the question,
 say so in the review header and use `[NEEDS INFO]` in the body rather than guessing.
 
+## Canned responses (apply first)
+
+Before drafting from scratch, check `support-emails/reference/canned_responses.md`. If the inquiry
+matches one of these, use that approved response (personalize the greeting with the first name if known):
+
+- **Device make/model or product-list confusion** - asks about entering device make & model, the
+  "product list", or says "cannot find company / brand / product" or "add device / model / brand":
+  explain the list is for their device (where the app is installed), not the product; the product is
+  already recognized from the scanned barcode; enter the phone's make and model to proceed.
+- **Empty email or photo only (no details)** - reply asking how you can help and for a few details.
+- **Connection / server error** - "cannot connect to server", "unable to connect", or anything about
+  connectivity: ask if it's still happening, advise uninstall/reinstall to refresh the server
+  connection, then register again.
+
+Use the wording in `canned_responses.md` for these. Still never send; still flag NEEDS APPROVAL if
+the customer also asks for a refund/replacement/other concession.
+
 ## Workflow
 
 1. Collect the email(s) from connector, inbox folder, or paste.
