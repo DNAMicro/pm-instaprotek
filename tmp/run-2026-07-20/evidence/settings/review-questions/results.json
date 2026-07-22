@@ -1,0 +1,78 @@
+{
+ "New Review Question|1": [
+  "PASS",
+  "New button opens the create modal"
+ ],
+ "New Review Question|2": [
+  "PASS",
+  "Title field accepts input ('RegTestQA20260720')"
+ ],
+ "New Review Question|3": [
+  "PASS",
+  "Question field accepts input"
+ ],
+ "New Review Question|4": [
+  "PASS",
+  "Option field accepts input"
+ ],
+ "New Review Question|5": [
+  "FAIL",
+  "Save created record []"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Review questions grid displays (columns ['Title', 'Review Question', 'Option', 'Actions'], rows=10)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Review Questions)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Title', 'Review Question', 'Option']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Title'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Title'): ['Convenience', 'DNA CHRISTMAS PARTY 2023', 'Ease of Installation', 'Performance', 'Product Quality', 'Quality']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value 'Convenience' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'Review_Question_07-21-2026.csv'"
+ ],
+ "Grid|10": [
+  "FAIL",
+  "Clicking a grid record opens its edit view (no-row)"
+ ],
+ "Grid|11": [
+  "PARTIAL",
+  "no editable text field located in the open record"
+ ],
+ "Grid|12": [
+  "PARTIAL",
+  "no Save button in open record"
+ ],
+ "Grid|13": [
+  "PARTIAL",
+  "Delete shows a Yes/No confirm dialog (no-row)"
+ ],
+ "Grid|14": [
+  "PARTIAL",
+  "confirm dialog present; Yes button not resolved"
+ ]
+}

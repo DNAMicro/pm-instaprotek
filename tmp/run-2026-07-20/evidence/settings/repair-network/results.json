@@ -1,0 +1,70 @@
+{
+ "New Repair Network|1": [
+  "PASS",
+  "New button opens the create modal"
+ ],
+ "New Repair Network|2": [
+  "PASS",
+  "Name field accepts input ('RegTestQA20260720')"
+ ],
+ "New Repair Network|3": [
+  "PASS",
+  "Save created record; modal closed ['Repair Network created successfully']"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Repair network grid displays (columns ['Repair Network Name', 'Action'], rows=35)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Repair Network)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Repair Network Name']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Repair Network Name'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "FAIL",
+  "Value dropdown (dependent on 'Repair Network Name'): []"
+ ],
+ "Grid|6": [
+  "FAIL",
+  "Value '(none)' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV present; Timeout 9000ms exceeded while waiti"
+ ],
+ "Grid|10": [
+  "PASS",
+  "Clicking a grid record opens its edit view"
+ ],
+ "Grid|11": [
+  "PARTIAL",
+  "Edited name field -> 'RegTestQA20260720'"
+ ],
+ "Grid|12": [
+  "PASS",
+  "Save applied; edit persisted (modal closed / success)"
+ ],
+ "Grid|13": [
+  "PASS",
+  "Delete shows a confirm dialog (Yes/No)"
+ ],
+ "Grid|14": [
+  "PASS",
+  "Yes/No confirm buttons work (clicked Yes -> record deleted)"
+ ]
+}
