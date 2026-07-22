@@ -1,0 +1,226 @@
+{
+ "New Brand|1": [
+  "PASS",
+  "New button opens create modal"
+ ],
+ "New Brand|2": [
+  "PASS",
+  "Profile-image is native file input"
+ ],
+ "New Brand|3": [
+  "PASS",
+  "Image upload reflected"
+ ],
+ "New Brand|4": [
+  "PASS",
+  "Name accepts input ('RegTestQA20260720')"
+ ],
+ "New Brand|5": [
+  "PASS",
+  "Save & Continue routed to record (8000d0f4-b64)"
+ ],
+ "Record|1": [
+  "PASS",
+  "Record shows Save / Save & Close buttons"
+ ],
+ "Record|2": [
+  "PASS",
+  "Record details (name, dates) display"
+ ],
+ "Record|3": [
+  "PASS",
+  "Devices is the default/available tab"
+ ],
+ "Record|4": [
+  "PASS",
+  "Record action buttons present"
+ ],
+ "Devices|1": [
+  "PASS",
+  "Filter dropdown displayed"
+ ],
+ "Devices|2": [
+  "PASS",
+  "Filter options = columns: ['Device Name', 'Categories', 'Internet Connection Type', 'Bypass Screen Test', 'Protection Coverage']"
+ ],
+ "Devices|3": [
+  "PASS",
+  "Selected column; value field displayed"
+ ],
+ "Devices|4": [
+  "PARTIAL",
+  "Value dropdown: free-text/empty"
+ ],
+ "Devices|5": [
+  "PARTIAL",
+  "value free-text"
+ ],
+ "Devices|6": [
+  "PARTIAL",
+  "Add Filter applied (no-btn)"
+ ],
+ "Devices|7": [
+  "PASS",
+  "Search field accepts input and filters"
+ ],
+ "Devices|8": [
+  "PASS",
+  "Export as CSV downloaded 'Brands_07-21-2026.csv'"
+ ],
+ "Devices|9": [
+  "PASS",
+  "Devices grid displayed"
+ ],
+ "Devices|10": [
+  "PASS",
+  "New button opens New Device modal"
+ ],
+ "Devices|11": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|12": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|13": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|14": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|15": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|16": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|17": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|18": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|19": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|20": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|21": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|22": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Devices|23": [
+  "PARTIAL",
+  "New Device form present; full field-by-field create is data-dependent (identifier/category/connection/deviceID/workflow) \u2014 modal opened & fields available"
+ ],
+ "Timeline|1": [
+  "PASS",
+  "Filter Activity dropdown displayed"
+ ],
+ "Timeline|2": [
+  "PASS",
+  "Filter options: ['Brand Name']"
+ ],
+ "Timeline|3": [
+  "PASS",
+  "value field displayed"
+ ],
+ "Timeline|4": [
+  "PASS",
+  "value dropdown: ['3Plus', 'Accent', 'Accutime', 'Acer']"
+ ],
+ "Timeline|5": [
+  "PASS",
+  "value selected"
+ ],
+ "Timeline|6": [
+  "PASS",
+  "Add Filter applied"
+ ],
+ "Timeline|7": [
+  "PASS",
+  "Activity search field present"
+ ],
+ "Timeline|8": [
+  "PASS",
+  "Timeline logs user actions with timestamps"
+ ],
+ "Notes|1": [
+  "FAIL",
+  "New opens New Note modal"
+ ],
+ "Notes|2": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Notes|3": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Notes|4": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Notes|5": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Notes|6": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Notes|7": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Brands grid displays (columns ['Image', 'Brand Name', 'Actions'], rows=1)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Brands)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Brand Name']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Brand Name'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Brand Name'): ['3Plus', 'Accent', 'Accutime', 'Acer', 'Advance', 'Agptek']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value '3Plus' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'Brands_07-21-2026.csv'"
+ ]
+}

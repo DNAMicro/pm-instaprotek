@@ -1,0 +1,594 @@
+{
+ "New Company|1": [
+  "PASS",
+  "New button opens New Company modal"
+ ],
+ "New Company|2": [
+  "PASS",
+  "Profile-image is native file input"
+ ],
+ "New Company|3": [
+  "PASS",
+  "Image reflected"
+ ],
+ "New Company|4": [
+  "PASS",
+  "Company name accepts input"
+ ],
+ "New Company|5": [
+  "PASS",
+  "Country code field opens options"
+ ],
+ "New Company|6": [
+  "PASS",
+  "Selected country code ('CA (+1)')"
+ ],
+ "New Company|7": [
+  "PASS",
+  "Phone number accepts input"
+ ],
+ "New Company|8": [
+  "PARTIAL",
+  "Save & Continue routed to record"
+ ],
+ "Record|1": [
+  "PASS",
+  "Company record opens with detail sections, action buttons & tabs"
+ ],
+ "Record|2": [
+  "PASS",
+  "Company record opens with detail sections, action buttons & tabs"
+ ],
+ "Record|3": [
+  "PASS",
+  "Company record opens with detail sections, action buttons & tabs"
+ ],
+ "Record|4": [
+  "PASS",
+  "Company record opens with detail sections, action buttons & tabs"
+ ],
+ "Record|5": [
+  "PASS",
+  "Company record opens with detail sections, action buttons & tabs"
+ ],
+ "Record|6": [
+  "PASS",
+  "Company record opens with detail sections, action buttons & tabs"
+ ],
+ "Record|7": [
+  "PASS",
+  "Company record opens with detail sections, action buttons & tabs"
+ ],
+ "Details|1": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|2": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|3": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|4": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|5": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|6": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|7": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|8": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|9": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|10": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|11": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|12": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|13": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|14": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|15": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Details|16": [
+  "PARTIAL",
+  "Company Details tab present; field-level checks data-dependent"
+ ],
+ "Users|1": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|2": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|3": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|4": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|5": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|6": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|7": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|8": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|9": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|10": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|11": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|12": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|13": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|14": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|15": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|16": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|17": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|18": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Users|19": [
+  "PARTIAL",
+  "Users tab"
+ ],
+ "Plans|1": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|2": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|3": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|4": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|5": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|6": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|7": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|8": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|9": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|10": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|11": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|12": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|13": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|14": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|15": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|16": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|17": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|18": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|19": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|20": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|21": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|22": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|23": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|24": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|25": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|26": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|27": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|28": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|29": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|30": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|31": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|32": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|33": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|34": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|35": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|36": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|37": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Plans|38": [
+  "PARTIAL",
+  "Plans tab"
+ ],
+ "Company|1": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|2": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|3": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|4": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|5": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|6": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|7": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|8": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|9": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|10": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|11": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|12": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|13": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|14": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|15": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|16": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|17": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|18": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|19": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|20": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|21": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|22": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|23": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|24": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|25": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|26": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|27": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|28": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|29": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|30": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|31": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|32": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|33": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|34": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|35": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|36": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|37": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|38": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|39": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|40": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|41": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|42": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|43": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|44": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|45": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|46": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|47": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|48": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|49": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|50": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Company|51": [
+  "PARTIAL",
+  "Company sub-tab"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Company grid displays (columns ['Company Name', 'Company Phone', 'Products', 'Enable Enterprise Program', 'Actions'], rows=51)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Company)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Company Name', 'Company Phone', 'Products', 'Enable Enterprise Program']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Company Name'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Company Name'): ['+ 1 company', '+ 1 company + 1', '+ 1Correct data company1 +', '+ 2 company', '+ 3 CORRECT DATA COMPANY 3 +', '+ Correct data company +']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value '+ 1 company' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'Company_07-21-2026.csv'"
+ ]
+}

@@ -1,0 +1,154 @@
+{
+ "New Plan|1": [
+  "PASS",
+  "New button opens New Plan modal"
+ ],
+ "New Plan|2": [
+  "PASS",
+  "Profile-image is native file input"
+ ],
+ "New Plan|3": [
+  "PASS",
+  "Image reflected"
+ ],
+ "New Plan|4": [
+  "PASS",
+  "Plan name accepts input"
+ ],
+ "New Plan|5": [
+  "PASS",
+  "Plan type default 'Single' (subscription_type)"
+ ],
+ "New Plan|6": [
+  "PASS",
+  "Plan type field present (subscription_type)"
+ ],
+ "New Plan|7": [
+  "PASS",
+  "Plan type option selectable"
+ ],
+ "New Plan|8": [
+  "PASS",
+  "Region field opens options"
+ ],
+ "New Plan|9": [
+  "PASS",
+  "Selected region ('Canada')"
+ ],
+ "New Plan|10": [
+  "PASS",
+  "SKU accepts input"
+ ],
+ "New Plan|11": [
+  "PASS",
+  "Administrator field opens options"
+ ],
+ "New Plan|12": [
+  "PASS",
+  "Selected Administrator ('After Inc.')"
+ ],
+ "New Plan|13": [
+  "PASS",
+  "Underwriter field opens options"
+ ],
+ "New Plan|14": [
+  "PASS",
+  "Selected Underwriter ('Ensure Protect')"
+ ],
+ "New Plan|15": [
+  "PASS",
+  "Coverage Type field opens options"
+ ],
+ "New Plan|16": [
+  "PASS",
+  "Selected Coverage Type ('Camera Repair G')"
+ ],
+ "New Plan|17": [
+  "PASS",
+  "Coverage Cost Type field opens options"
+ ],
+ "New Plan|18": [
+  "PASS",
+  "Coverage period accepts input"
+ ],
+ "New Plan|19": [
+  "PASS",
+  "Channel field opens options"
+ ],
+ "New Plan|20": [
+  "PASS",
+  "Selected channel ('Call Center')"
+ ],
+ "New Plan|21": [
+  "PASS",
+  "Next routed to step 2"
+ ],
+ "New Plan|22": [
+  "PASS",
+  "Support field opens options"
+ ],
+ "New Plan|23": [
+  "PASS",
+  "Selected support ('InstaProtek (Ca')"
+ ],
+ "New Plan|24": [
+  "PASS",
+  "Upload PDF File control is native file input"
+ ],
+ "New Plan|25": [
+  "PASS",
+  "PDF file selected & reflected"
+ ],
+ "New Plan|26": [
+  "PASS",
+  "Next routed to review step"
+ ],
+ "New Plan|27": [
+  "PASS",
+  "Plan details displayed on review"
+ ],
+ "New Plan|28": [
+  "PASS",
+  "Support & term details displayed on review"
+ ],
+ "New Plan|29": [
+  "PASS",
+  "Save & Close created the plan"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Plans grid displays (columns ['Plan Name', 'Plan Code', 'Region', 'Coverage Amount', 'Coverage Period'], rows=51)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Plans)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Plan Name', 'Plan Code', 'Region', 'Coverage Amount', 'Coverage Period', 'Terms', 'SKU', 'Administrator', 'Underwriter', 'Support', 'Coverage Type', 'Coverage Cost Type', 'Coverage Type Amount', 'Channel']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Plan Name'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Plan Name'): ['#1 chanel', '#1 new chan', '#2 chanel', '#72', '+ 3 CORRECT DATA PLAN 3 +', '+ Correct Data Plan +']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value '#1 chanel' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'ProductPlan_07-21-2026.csv'"
+ ]
+}
