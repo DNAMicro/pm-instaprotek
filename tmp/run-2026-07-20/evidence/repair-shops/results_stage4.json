@@ -1,0 +1,62 @@
+{
+ "Timeline|1": [
+  "PASS",
+  "Filter Activity dropdown displayed"
+ ],
+ "Timeline|2": [
+  "PASS",
+  "Filter options = activity columns: ['Date', 'Action']"
+ ],
+ "Timeline|3": [
+  "PASS",
+  "Selected 'Action'; 'Select a value' field displayed"
+ ],
+ "Timeline|4": [
+  "PASS",
+  "Value dropdown (dependent on 'Action' column): ['Create Shop', 'Update Shop']"
+ ],
+ "Timeline|5": [
+  "PASS",
+  "Value 'Create Shop' selected; Add Filter button displayed"
+ ],
+ "Timeline|6": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 activity grid filtered by Create Shop"
+ ],
+ "Timeline|7": [
+  "PASS",
+  "Activity search field accepts input and filters"
+ ],
+ "Timeline|8": [
+  "PASS",
+  "Timeline logs user actions (Create/Update Shop entries with timestamps present=True)"
+ ],
+ "Notes|1": [
+  "PASS",
+  "New button opens New Note modal"
+ ],
+ "Notes|2": [
+  "PASS",
+  "Title field accepts input ('Regression Test Note')"
+ ],
+ "Notes|3": [
+  "PASS",
+  "Content box accepts input ('This is a regression test note body.')"
+ ],
+ "Notes|4": [
+  "PASS",
+  "Note saved (toast 'Note successfully created'); modal closed; note in grid (present=True)"
+ ],
+ "Notes|5": [
+  "PASS",
+  "Edit modal opens with details populated (title='Regression Test Note', body present=True)"
+ ],
+ "Notes|6": [
+  "PASS",
+  "Content edited (EDITED appended=True); Save & Close available"
+ ],
+ "Notes|7": [
+  "PASS",
+  "Edit saved; modal closed; change persisted (EDITED found on reopen=True)"
+ ]
+}

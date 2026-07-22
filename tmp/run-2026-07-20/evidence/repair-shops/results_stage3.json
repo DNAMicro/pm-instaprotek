@@ -1,0 +1,102 @@
+{
+ "Branches|9": [
+  "PASS",
+  "New button opens New Branch modal with form"
+ ],
+ "Branches|10": [
+  "PASS",
+  "Branch profile-image control is native file input (invokes OS file picker)"
+ ],
+ "Branches|11": [
+  "PASS",
+  "Uploaded image reflected in branch profile-image section"
+ ],
+ "Branches|12": [
+  "PASS",
+  "Branch name reflects 'RegressionTest BranchQA20260720'"
+ ],
+ "Branches|13": [
+  "PASS",
+  "Operating Days options Sunday..Saturday: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']"
+ ],
+ "Branches|14": [
+  "PASS",
+  "Selected day (Monday) reflects on the field"
+ ],
+ "Branches|15": [
+  "PASS",
+  "AM options 6:00 AM..11:30 AM (12 opts)"
+ ],
+ "Branches|16": [
+  "PASS",
+  "Selected AM time (8:00 AM) reflects on the field"
+ ],
+ "Branches|17": [
+  "PASS",
+  "PM options 5:00 PM..11:30 PM (14 opts)"
+ ],
+ "Branches|18": [
+  "PASS",
+  "Selected PM time (6:00 PM) reflects on the field"
+ ],
+ "Branches|19": [
+  "PASS",
+  "'Open 24 Hours' checked \u2192 AM/PM time fields disabled (disabled selects=2)"
+ ],
+ "Branches|20": [
+  "PASS",
+  "Default phone type is 'Work' (toggle='Workphone')"
+ ],
+ "Branches|21": [
+  "PASS",
+  "Phone type dropdown shows the alternate option: ['Mobile'] (current stays 'Work')"
+ ],
+ "Branches|22": [
+  "PASS",
+  "Phone number reflects '(555) 123-4567'"
+ ],
+ "Branches|23": [
+  "PASS",
+  "Address suggestions displayed (1 results)"
+ ],
+ "Branches|24": [
+  "PASS",
+  "Selecting suggestion displays address breakdown sub-form (street/city/country/state/zip) \u2014 shown=True; fields require manual entry"
+ ],
+ "Branches|25": [
+  "PASS",
+  "Branch saved; modal closed; branch shows in grid (present=True)"
+ ],
+ "Branches|1": [
+  "PASS",
+  "Filter Branches dropdown displayed"
+ ],
+ "Branches|2": [
+  "PASS",
+  "Filter options = branch grid columns: ['Branch Name', 'Address', 'Phone', 'Status']"
+ ],
+ "Branches|3": [
+  "PASS",
+  "Selected 'Status'; 'Select a value' field displayed"
+ ],
+ "Branches|4": [
+  "PASS",
+  "Value dropdown (dependent on 'Status'): ['Active']"
+ ],
+ "Branches|5": [
+  "PASS",
+  "Value 'Active' selected; Add Filter button present"
+ ],
+ "Branches|6": [
+  "PASS",
+  "Add Filter clicked (clicked); Custom Filter tab present=True"
+ ],
+ "Branches|7": [
+  "PASS",
+  "Branch search filters grid (matched created branch=True)"
+ ],
+ "Branches|8": [
+  "PASS",
+  "Export as CSV downloaded 'Branches_07-21-2026.csv'"
+ ]
+}

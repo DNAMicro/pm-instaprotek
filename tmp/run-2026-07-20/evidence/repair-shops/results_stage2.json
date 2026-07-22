@@ -1,0 +1,34 @@
+{
+ "New Repair Shop|1": [
+  "PASS",
+  "'New' opens New Repair Shop modal (Upload, Name*, Save & Continue)"
+ ],
+ "New Repair Shop|2": [
+  "PASS",
+  "Profile-image 'Upload' control is a native file input (#upload) that invokes the OS file picker on click"
+ ],
+ "New Repair Shop|3": [
+  "PASS",
+  "Uploaded image renders as preview in profile-image section"
+ ],
+ "New Repair Shop|4": [
+  "PASS",
+  "Name reflects 'RegressionTest ShopQA20260720'; Save & Continue enabled (disabled True->False)"
+ ],
+ "New Repair Shop|5": [
+  "PASS",
+  "Saved; modal closed & routed to record URL https://qa.crm.instaprotek.com/portal/shop/82b67f5c-212a-42b3-a7d8-4359ee08f64f"
+ ],
+ "Record|1": [
+  "PASS",
+  "Record shows Save / Save & Close buttons"
+ ],
+ "Record|2": [
+  "PASS",
+  "Details: name=True, image=True, dateCreated=True, dateUpdated=True"
+ ],
+ "Record|3": [
+  "PASS",
+  "Tabs=['format_list_bulletedNavigateBrowseRepair ShopsRegressionTest ShopQA20260720', 'NavigateBrowse', 'Navigate', 'Navigate', 'Browse', 'Browse']; active='Branches' (Branches default=True)"
+ ]
+}
