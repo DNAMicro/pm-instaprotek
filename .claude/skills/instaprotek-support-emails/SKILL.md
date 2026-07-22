@@ -62,7 +62,10 @@ matches one of these, use that approved response (personalize the greeting with 
   "product list", or says "cannot find company / brand / product" or "add device / model / brand":
   explain the list is for their device (where the app is installed), not the product; the product is
   already recognized from the scanned barcode; enter the phone's make and model to proceed.
-- **Empty email or photo only (no details)** - reply asking how you can help and for a few details.
+- **Default for everything else (catch-all)** - if the inquiry does not clearly match the
+  product-list or connection rules (including empty/photo-only emails, or anything you are unsure
+  about), do NOT compose a bespoke answer. Use the "how can we help you" default response and let
+  Sarah handle the specifics.
 - **Connection / server error** - "cannot connect to server", "unable to connect", or anything about
   connectivity: ask if it's still happening, advise uninstall/reinstall to refresh the server
   connection, then register again.
@@ -74,7 +77,7 @@ the customer also asks for a refund/replacement/other concession.
 
 1. Collect the email(s) from connector, inbox folder, or paste.
 2. For each email: classify (registration / claim / coverage question / repair / buyback /
-   billing / account / complaint / other), check reference docs, then draft.
+   billing / account / complaint / other), check reference docs, then draft. If it does not clearly match a canned rule, use the default "how can we help you" response instead of composing a bespoke reply (still flag NEEDS APPROVAL / ESCALATE where relevant).
 3. Save one file per draft in `support-emails/drafts/` named
    `YYYY-MM-DD_<from-or-subject-slug>.md` using `templates/draft_template.md`:
    a review header (category, summary of the ask, flags, refs used), then the ready-to-paste

@@ -17,8 +17,9 @@ try entering your phone's make and model and you should be able to proceed.
 Best,
 InstaProtek Support
 
-## 2. Empty email or photo only (no details)
-Triggers: no description in the body, or only an image/attachment with no text.
+## 2. Default (catch-all) - use for ANYTHING not clearly matching #1 or #3
+Triggers: empty body; photo/attachment only; unclear or vague request; or any inquiry not
+covered by an approved answer. When in doubt, use this - do NOT compose a bespoke reply.
 
 Hello,
 
