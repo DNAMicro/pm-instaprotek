@@ -43,7 +43,11 @@ foreach ($f in $files) {
     $mail.Body = $body
     try { $mail.SentOnBehalfOfName = $Support } catch { }
     $mail.Save()                              # DRAFT only - never .Send()
-    if ($target) { [void]$mail.Move($target) }
+    # .Save() already lands the item in the default Drafts folder. The Move
+    # below is a best-effort no-op for that case; never let it abort the loop.
+    if ($target -and $mail.Parent.EntryID -ne $target.EntryID) {
+        try { [void]$mail.Move($target) } catch { Write-Host "  (move skipped: already in Drafts)" }
+    }
     $made++
     Write-Host "draft created: $to  |  $subj"
 }
