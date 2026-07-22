@@ -1,0 +1,70 @@
+{
+ "New Coverage Cost Type|1": [
+  "PASS",
+  "New button opens the create modal"
+ ],
+ "New Coverage Cost Type|2": [
+  "PASS",
+  "Name field accepts input ('RegTestQA20260720')"
+ ],
+ "New Coverage Cost Type|3": [
+  "PASS",
+  "Save & Close created record; modal closed ['Coverage Cost Type successfully created', 'Created']"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Coverage cost types grid displays (columns ['Coverage Cost Type', 'Created', 'Actions'], rows=7)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Coverage Cost Type)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Coverage Cost Type', 'Created']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Coverage Cost Type'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Coverage Cost Type'): ['Deductible', 'RegTestQA20260720', 'Repair', 'Repair Or Replacement', 'Replacement', 'Shipping & Handling']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value 'Deductible' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'Coverage_cost_types_07-21-2026.csv'"
+ ],
+ "Grid|10": [
+  "PASS",
+  "Clicking a grid record opens its edit view"
+ ],
+ "Grid|11": [
+  "PARTIAL",
+  "Edited name field -> 'RegTestQA20260720'"
+ ],
+ "Grid|12": [
+  "PASS",
+  "Save applied; edit persisted (modal closed / success)"
+ ],
+ "Grid|13": [
+  "PASS",
+  "Delete shows a confirm dialog (Yes/No)"
+ ],
+ "Grid|14": [
+  "PASS",
+  "Yes/No confirm buttons work (clicked Yes -> record deleted)"
+ ]
+}

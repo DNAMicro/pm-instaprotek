@@ -1,0 +1,78 @@
+{
+ "New Underwriter|1": [
+  "PASS",
+  "New button opens the create modal"
+ ],
+ "New Underwriter|2": [
+  "PASS",
+  "Profile-image control is native file input (invokes OS file picker)"
+ ],
+ "New Underwriter|3": [
+  "PASS",
+  "Uploaded image reflected in profile-image section"
+ ],
+ "New Underwriter|4": [
+  "PASS",
+  "Name field accepts input ('RegTestQA20260720')"
+ ],
+ "New Underwriter|5": [
+  "PASS",
+  "Save created record; modal closed []"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Underwriters grid displays (columns ['Company Name', 'Actions'], rows=9)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Underwriters)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Company Name']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Company Name'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Company Name'): ['InstaProtek (Canada)', 'Instaprotek (Enterprise 2)', 'Instaprotek (Enterprise)', 'InstaProtek (Japan)', 'Instaprotek (Test-Support)', 'InstaProtek (Warranty)']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value 'InstaProtek (Canada)' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'Underwriters_07-21-2026.csv'"
+ ],
+ "Grid|10": [
+  "PASS",
+  "Clicking a grid record opens its edit view"
+ ],
+ "Grid|11": [
+  "PASS",
+  "Edited name field -> 'RegTestQA20260720 EDIT'"
+ ],
+ "Grid|12": [
+  "PASS",
+  "Save applied; edit persisted (modal closed / success)"
+ ],
+ "Grid|13": [
+  "PARTIAL",
+  "delete: Locator.click: Timeout 30000ms exceeded.\nCall"
+ ],
+ "Grid|14": [
+  "PARTIAL",
+  "confirm: Locator.click: Timeout 30000ms exceeded."
+ ]
+}

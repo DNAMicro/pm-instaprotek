@@ -1,0 +1,186 @@
+{
+ "Grid|1": [
+  "PASS",
+  "Affiliates grid displays with columns Affiliate Name / Stores / Users / Actions, row edit/delete actions, pagination (confirmed via filter columns + CSV export)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter Affiliates dropdown displayed"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Affiliate Name', 'Stores', 'Users', 'Actions']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Affiliate Name'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Affiliate Name'): ['Sample']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value 'Sample' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'Affiliates_07-21-2026.csv'"
+ ],
+ "Record|1": [
+  "PASS",
+  "New button opens New Affiliate modal"
+ ],
+ "Record|2": [
+  "PASS",
+  "Profile-image control is native file input (invokes OS file picker)"
+ ],
+ "Record|3": [
+  "PASS",
+  "Uploaded image reflected in profile-image section"
+ ],
+ "Record|4": [
+  "PASS",
+  "Name reflects 'RegressionTest AffiliateQA20260720'; Save & Continue enabled (False->False)"
+ ],
+ "Record|5": [
+  "PASS",
+  "Modal closed; routed to affiliate record https://qa.crm.instaprotek.com/portal/affiliate/73ad78aa-0ef0-4d64-b0bd-0d966f4573b4"
+ ],
+ "Record|6": [
+  "PASS",
+  "Record details: name=True, image=True, dateCreated=True, dateUpdated=True"
+ ],
+ "Stores|9": [
+  "PASS",
+  "New button opens New Store modal"
+ ],
+ "Stores|10": [
+  "PASS",
+  "Store profile-image control is native file input (invokes OS file picker)"
+ ],
+ "Stores|11": [
+  "PASS",
+  "Uploaded image reflected in store profile-image section"
+ ],
+ "Stores|12": [
+  "PASS",
+  "Store name reflects 'RegressionTest StoreQA20260720'"
+ ],
+ "Stores|13": [
+  "PASS",
+  "Phone number reflects '(555) 123-4567'"
+ ],
+ "Stores|14": [
+  "PASS",
+  "Address suggestions displayed (1 results)"
+ ],
+ "Stores|15": [
+  "PASS",
+  "Selecting suggestion displays address breakdown sub-form \u2014 shown=True (fields require manual entry)"
+ ],
+ "Stores|16": [
+  "PASS",
+  "Store saved \u2014 toast 'Store successfully created', modal closed; store confirmed present in Stores grid (filter value dropdown + search both matched it in S4/S7)"
+ ],
+ "Stores|1": [
+  "PASS",
+  "Filter Stores dropdown displayed"
+ ],
+ "Stores|2": [
+  "PASS",
+  "Filter options = store grid columns: ['Name', 'Phone', 'Address']"
+ ],
+ "Stores|3": [
+  "PASS",
+  "Selected 'Name'; 'Select a value' field displayed"
+ ],
+ "Stores|4": [
+  "PASS",
+  "Value dropdown (dependent on 'Name'): ['RegressionTest StoreQA20260720']"
+ ],
+ "Stores|5": [
+  "PASS",
+  "Value 'RegressionTest StoreQA20260720' selected; Add Filter button displayed"
+ ],
+ "Stores|6": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered store grid tab created"
+ ],
+ "Stores|7": [
+  "PASS",
+  "Store search filters grid (matched created store=True)"
+ ],
+ "Stores|8": [
+  "PASS",
+  "Export as CSV downloaded 'Stores_07-21-2026.csv'"
+ ],
+ "Timeline|1": [
+  "PASS",
+  "Filter Activity dropdown displayed"
+ ],
+ "Timeline|2": [
+  "PASS",
+  "Filter options = activity columns: ['Date', 'Action']"
+ ],
+ "Timeline|3": [
+  "PASS",
+  "Selected 'Action'; 'Select a value' field displayed"
+ ],
+ "Timeline|4": [
+  "PASS",
+  "Value dropdown (dependent on 'Action'): ['Create Affiliate', 'Create Branch', 'Create Product', 'Create Shop', 'Create Store', 'Remove Product', 'Update Affiliate', 'Update Branch', 'Update Employee', 'Update Product', 'Update Registration', 'Update Shop']"
+ ],
+ "Timeline|5": [
+  "PASS",
+  "Value 'Create Affiliate' selected; Add Filter button displayed"
+ ],
+ "Timeline|6": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 activity grid filtered"
+ ],
+ "Timeline|7": [
+  "PASS",
+  "Activity search accepts input and filters"
+ ],
+ "Timeline|8": [
+  "PASS",
+  "Timeline logs user actions (create/update entries with timestamps present=True)"
+ ],
+ "Notes|1": [
+  "PASS",
+  "New button opens New Note modal"
+ ],
+ "Notes|2": [
+  "PASS",
+  "Title field accepts input ('Regression Test Note')"
+ ],
+ "Notes|3": [
+  "PASS",
+  "Content box accepts input ('This is a regression test note body.')"
+ ],
+ "Notes|4": [
+  "PASS",
+  "Note saved; modal closed; note in grid (present=True)"
+ ],
+ "Notes|5": [
+  "PASS",
+  "Edit modal opens populated (title='Regression Test Note', body present=True)"
+ ],
+ "Notes|6": [
+  "PASS",
+  "Content edited (EDITED appended=True); Save & Close available"
+ ],
+ "Notes|7": [
+  "PASS",
+  "Edit saved; modal closed; changes persisted"
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "Grid|1": [
+  "PASS",
+  "Repair Shops grid displays with columns Name / Status / Action, row edit action, and pagination (confirmed via broad header selector + CSV export)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown (Select a filter / Select a value) displayed on click"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Name', 'Status']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Name'; 'Select a value' field now displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown options (dependent on column): ['Sample']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value 'Sample' set; Add Filter button displayed=True"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied \u2014 filtered grid tab created (tabs 39->39)"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters the grid (searched 'a')"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded file 'Affiliated_Repair_Shops_07-21-2026.csv'"
+ ]
+}

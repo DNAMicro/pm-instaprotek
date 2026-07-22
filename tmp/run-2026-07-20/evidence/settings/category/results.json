@@ -1,0 +1,178 @@
+{
+ "New Device Categories|1": [
+  "PASS",
+  "New button opens create modal"
+ ],
+ "New Device Categories|2": [
+  "PASS",
+  "Profile-image is native file input"
+ ],
+ "New Device Categories|3": [
+  "PASS",
+  "Image upload reflected"
+ ],
+ "New Device Categories|4": [
+  "PASS",
+  "Name accepts input ('RegTestQA20260720')"
+ ],
+ "New Device Categories|5": [
+  "PASS",
+  "Save & Continue routed to record (8028799e-b17)"
+ ],
+ "Devices|1": [
+  "PASS",
+  "Filter dropdown displayed"
+ ],
+ "Devices|2": [
+  "PASS",
+  "Filter options = columns: ['Brand Name', 'Device Name']"
+ ],
+ "Devices|3": [
+  "PASS",
+  "Selected column; value field displayed"
+ ],
+ "Devices|4": [
+  "PARTIAL",
+  "Value dropdown: free-text/empty"
+ ],
+ "Devices|5": [
+  "PARTIAL",
+  "value free-text"
+ ],
+ "Devices|6": [
+  "PARTIAL",
+  "Add Filter applied (no-btn)"
+ ],
+ "Devices|7": [
+  "PASS",
+  "Search field accepts input and filters"
+ ],
+ "Devices|8": [
+  "PASS",
+  "Export as CSV downloaded 'Categories_07-21-2026.csv'"
+ ],
+ "Devices|9": [
+  "PASS",
+  "Add button opens the association picker modal"
+ ],
+ "Devices|10": [
+  "PARTIAL",
+  "Association picker present (search+select existing, next/save) \u2014 modal opened; selection is data-dependent"
+ ],
+ "Devices|11": [
+  "PARTIAL",
+  "Association picker present (search+select existing, next/save) \u2014 modal opened; selection is data-dependent"
+ ],
+ "Devices|12": [
+  "PARTIAL",
+  "Association picker present (search+select existing, next/save) \u2014 modal opened; selection is data-dependent"
+ ],
+ "Devices|13": [
+  "PARTIAL",
+  "Association picker present (search+select existing, next/save) \u2014 modal opened; selection is data-dependent"
+ ],
+ "Devices|14": [
+  "PARTIAL",
+  "Association picker present (search+select existing, next/save) \u2014 modal opened; selection is data-dependent"
+ ],
+ "Devices|15": [
+  "PARTIAL",
+  "Association picker present (search+select existing, next/save) \u2014 modal opened; selection is data-dependent"
+ ],
+ "Timeline|1": [
+  "PASS",
+  "Filter Activity dropdown displayed"
+ ],
+ "Timeline|2": [
+  "PASS",
+  "Filter options: ['Device Category Name']"
+ ],
+ "Timeline|3": [
+  "PASS",
+  "value field displayed"
+ ],
+ "Timeline|4": [
+  "PASS",
+  "value dropdown: ['Cables', 'Cables and Chargers', 'Chargers', 'Chromebook']"
+ ],
+ "Timeline|5": [
+  "PASS",
+  "value selected"
+ ],
+ "Timeline|6": [
+  "PASS",
+  "Add Filter applied"
+ ],
+ "Timeline|7": [
+  "PASS",
+  "Activity search field present"
+ ],
+ "Timeline|8": [
+  "PASS",
+  "Timeline logs user actions with timestamps"
+ ],
+ "Notes|1": [
+  "FAIL",
+  "New opens New Note modal"
+ ],
+ "Notes|2": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Notes|3": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Notes|4": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Notes|5": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Notes|6": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Notes|7": [
+  "PARTIAL",
+  "Locator.fill: Timeout 30000ms excee"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Device categories grid displays (columns ['Device Category Name', 'Actions'], rows=21)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Device Categories)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Device Category Name']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Device Category Name'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Device Category Name'): ['Cables', 'Cables and Chargers', 'Chargers', 'Chromebook', 'gaming phone', 'Headphones']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value 'Cables' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'Categories_07-21-2026.csv'"
+ ]
+}

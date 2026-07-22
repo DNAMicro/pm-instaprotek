@@ -1,0 +1,114 @@
+{
+ "Support|1": [
+  "PASS",
+  "New button opens the create modal"
+ ],
+ "Support|2": [
+  "PASS",
+  "Company Name accepts input ('RegTestQA20260720')"
+ ],
+ "Support|3": [
+  "PASS",
+  "Email Address accepts input"
+ ],
+ "Support|4": [
+  "PASS",
+  "Country Code field opens options"
+ ],
+ "Support|5": [
+  "PASS",
+  "Selected country code ('CA (+1)')"
+ ],
+ "Support|6": [
+  "PASS",
+  "Phone Number accepts input"
+ ],
+ "Support|7": [
+  "PASS",
+  "Website accepts input"
+ ],
+ "Support|8": [
+  "PASS",
+  "Business Hours accepts input"
+ ],
+ "Support|9": [
+  "PASS",
+  "Language field opens options"
+ ],
+ "Support|10": [
+  "PASS",
+  "Selected language ('Catalan EDIT')"
+ ],
+ "Support|11": [
+  "PASS",
+  "Address search shows suggestions"
+ ],
+ "Support|12": [
+  "PASS",
+  "Selecting suggestion populates address breakdown"
+ ],
+ "Support|13": [
+  "PASS",
+  "Notes/content box accepts input"
+ ],
+ "Support|14": [
+  "FAIL",
+  "Save & Close created record []"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Support grid displays (columns ['Company Name', 'Email', 'Phone', 'Business Hours', 'Website'], rows=14)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Support)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Company Name', 'Email', 'Phone', 'Business Hours', 'Website']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Company Name'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Company Name'): ['InstaProtek (Canada)', 'Instaprotek (Enterprise 2)', 'Instaprotek (Enterprise)', 'InstaProtek (Japan)', 'Instaprotek (Test-Support)', 'InstaProtek (Warranty)']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value 'InstaProtek (Canada)' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'Supports_07-21-2026.csv'"
+ ],
+ "Grid|10": [
+  "FAIL",
+  "Clicking a grid record opens its edit view (no-row)"
+ ],
+ "Grid|11": [
+  "PARTIAL",
+  "no editable text field located in the open record"
+ ],
+ "Grid|12": [
+  "PARTIAL",
+  "no Save button in open record"
+ ],
+ "Grid|13": [
+  "PARTIAL",
+  "Delete shows a Yes/No confirm dialog (no-row)"
+ ],
+ "Grid|14": [
+  "PARTIAL",
+  "confirm dialog present; Yes button not resolved"
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "New Coverage Type|1": [
+  "PASS",
+  "New button opens the create modal"
+ ],
+ "New Coverage Type|2": [
+  "PASS",
+  "Name field accepts input ('RegTestQA20260720')"
+ ],
+ "New Coverage Type|3": [
+  "PASS",
+  "Save & Close created record; modal closed ['Created', 'Created']"
+ ],
+ "Grid|1": [
+  "FAIL",
+  "Coverage types grid displays (columns [])"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter Coverage Types dropdown displayed"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Coverage Type', 'Created']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Coverage Type'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Coverage Type'): ['[TEST] SCREEN COVERAGE & PRODUCT REPLACEMENT', 'Camera Repair Guarantee', 'Case & Screen Protector Guarantee', 'Coverage Type X (test)', 'Device Guarantee Excluding Screen Repair', 'Product Replacement']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value '[TEST] SCREEN COVERAGE & PRODUCT REPLACEMENT' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'Coverage_types_07-21-2026.csv'"
+ ],
+ "Grid|10": [
+  "PASS",
+  "Clicking a grid record opens its edit view"
+ ],
+ "Grid|11": [
+  "PASS",
+  "Edited name field -> 'RegTestQA20260720 EDIT'"
+ ],
+ "Grid|12": [
+  "PASS",
+  "Save applied; edit persisted (modal closed / success)"
+ ],
+ "Grid|13": [
+  "PASS",
+  "Delete shows a confirm dialog (Yes/No)"
+ ],
+ "Grid|14": [
+  "PASS",
+  "Yes/No confirm buttons work (clicked Yes -> record deleted)"
+ ]
+}

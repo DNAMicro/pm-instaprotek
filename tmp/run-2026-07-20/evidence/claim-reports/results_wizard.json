@@ -1,0 +1,250 @@
+{
+ "Claim Reports|1": [
+  "PASS",
+  "New opens New Claim modal; Step 1 'Search Registration' displayed"
+ ],
+ "Claim Reports|2": [
+  "PASS",
+  "Step 1 registrations grid displays (10 rows)"
+ ],
+ "Claim Reports|3": [
+  "PASS",
+  "Search registration '798027154805' (match shown=True)"
+ ],
+ "Claim Reports|4": [
+  "PASS",
+  "Registration selected (green radio pill); Next enabled=True"
+ ],
+ "Claim Reports|5": [
+  "PASS",
+  "Next routed to Step 2 Product Details (already-claimed guard toasts when reg has a claim)"
+ ],
+ "Claim Reports|6": [
+  "PASS",
+  "Step 2 Product Details shows: ['Pin', 'Plan', 'Device', 'IMEI', 'Barcode']"
+ ],
+ "Claim Reports|7": [
+  "PASS",
+  "Routed to Step 3 Customer Details (present=True)"
+ ],
+ "Claim Reports|8": [
+  "PASS",
+  "Step 3 customer fields populated (first_name='Mujtaba', email/phone/address from registration)"
+ ],
+ "Claim Reports|9": [
+  "FAIL",
+  "DEVIATION: customer-detail fields are disabled/read-only in the wizard (and on the record's Customer Details tab) \u2014 cannot update. Contradicts expected 'should be able to update'. May be intended data-integrity behavior \u2014 flag for PM (not auto-filed)."
+ ],
+ "Claim Reports|10": [
+  "PASS",
+  "Routed to Step 4 (final review step with Done button present=True)"
+ ],
+ "Claim Reports|11": [
+  "FAIL",
+  "DEVIATION: test expects a Step-4 'Problem Summary' (Problem Date/Was in Use/Problem Type/Problem Description/Trouble Shooting) \u2014 NONE present. Current wizard Step 4 is a Review step (Customer/Coverage/Device Guarantee info) with a required Notes field. Likely intentional redesign \u2014 flag for PM (not auto-filed)."
+ ],
+ "Claim Reports|12": [
+  "FAIL",
+  "DEVIATION: no 'Problem Type' field, so the 'Damaged -> Damage Cause' conditional cannot be exercised. Step 4 exposes only a free-text Notes field (verified editable). Same redesign deviation as S11 \u2014 flag for PM."
+ ],
+ "Claim Reports|13": [
+  "PASS",
+  "Done created the claim (toast 'Service Request Number', default status 'Request') and opened the claim record (full-dialog, claim # 1784680722999). Reg 798027154805 now has a claim (deleted in cleanup)."
+ ],
+ "Record|1": [
+  "PASS",
+  "Status section displays; default status 'Request' shown"
+ ],
+ "Record|2": [
+  "PASS",
+  "Claim section: Claim Number + Date & Time of Claim + date created shown in claim header"
+ ],
+ "Record|3": [
+  "PASS",
+  "Registration is the default open tab (Registration Number/Plan/Coverage visible on load)"
+ ],
+ "Record|4": [
+  "PASS",
+  "'Customer Details' tab present and routes to its page"
+ ],
+ "Record|5": [
+  "PASS",
+  "'Location' tab present and routes to its page"
+ ],
+ "Record|6": [
+  "PASS",
+  "'Appointment' tab present and routes to its page"
+ ],
+ "Record|9": [
+  "PASS",
+  "'Timeline' tab present and routes to its page"
+ ],
+ "Record|10": [
+  "PASS",
+  "'Notes' tab present and routes to its page"
+ ],
+ "Record|7": [
+  "PASS",
+  "DEVIATION (naming): test names a 'Claim Summary' tab; current build exposes 'Claim Receipt' (routes OK) plus Repair Approval/Reimbursement Review/Payment Info. Flag for PM; functionally covered."
+ ],
+ "Record|8": [
+  "PASS",
+  "DEVIATION (naming): test names a 'Claim Status Details' tab; current build exposes the Status section + Repair Approval / Reimbursement Review / Payment Info tabs (route OK). Flag for PM; functionally covered."
+ ],
+ "Registration|1": [
+  "PASS",
+  "Registration Number displayed"
+ ],
+ "Registration|2": [
+  "PASS",
+  "Plan displayed"
+ ],
+ "Registration|3": [
+  "PASS",
+  "Coverage Amount displayed"
+ ],
+ "Registration|4": [
+  "PASS",
+  "Device details displayed: ['App', 'Device', 'OS']"
+ ],
+ "Registration|5": [
+  "PASS",
+  "Terms & Conditions opens a new tab (:)"
+ ],
+ "Registration|6": [
+  "PASS",
+  "Product Details: barcode/name/device-category present (['Product Barcode', 'Product Name', 'Device Category'])"
+ ],
+ "Registration|7": [
+  "PASS",
+  "Store Receipt: Receipt Date/Coverage Type/View Receipt present (['Receipt Date', 'Coverage Type'])"
+ ],
+ "Registration|8": [
+  "PASS",
+  "Store field displayed and inputtable (#store_id-select present=True)"
+ ],
+ "Registration|9": [
+  "PASS",
+  "Store field accepts input (set 'QA')"
+ ],
+ "Registration|10": [
+  "PASS",
+  "Branch field displayed"
+ ],
+ "Registration|11": [
+  "PASS",
+  "Branch field accepts input ('Test Branch')"
+ ],
+ "Registration|12": [
+  "PASS",
+  "Receipt Number field displayed and inputtable"
+ ],
+ "Registration|13": [
+  "PASS",
+  "Receipt Number accepts input ('RCPT-QA-001')"
+ ],
+ "Registration|14": [
+  "PASS",
+  "View Receipt opened a new tab (https://instaprotek-registration-api.dnaqa.net/rec)"
+ ],
+ "Customer Detail|1": [
+  "PASS",
+  "Customer details display: ['First Name', 'Last Name', 'Email', 'Country Code', 'Phone Number', 'Country', 'Language', 'Street', 'City']"
+ ],
+ "Appointment|1": [
+  "BLOCKED",
+  "Appointment tab shows 'No appointment details to show' at the initial 'Request' claim stage \u2014 no Appointment Date field to select. Appointment scheduling appears to unlock at a later claim stage; cannot exercise now."
+ ],
+ "Appointment|2": [
+  "BLOCKED",
+  "Same as S1 \u2014 no Appointment Time field present at the 'Request' stage ('No appointment details to show')."
+ ],
+ "Claim Receipt|1": [
+  "BLOCKED",
+  "Available claim-eligible registration is a 'Camera Repair Guarantee' product, so the Claim Receipt is a guarantee-claim receipt with no 'Order Date' (test assumes a purchase/insurance claim). Needs an order-based claim to validate."
+ ],
+ "Claim Receipt|2": [
+  "PASS",
+  "Claim Number displayed"
+ ],
+ "Claim Receipt|3": [
+  "PASS",
+  "Customer contact details display on the receipt (Customer Information: Name 'Mujtaba Haider', Phone, Email). Note: labeled 'Customer Information' (not 'Shipping Details'); shipping address not shown for a guarantee claim."
+ ],
+ "Claim Receipt|4": [
+  "BLOCKED",
+  "Guarantee-claim receipt shows Coverage Information + Device Product Guarantee Information instead of an Order Details/cost/card block. Order-details validation needs an order-based claim type."
+ ],
+ "Claim Receipt|5": [
+  "BLOCKED",
+  "Guarantee-claim receipt shows a support phone (+1 844 368 7274) but no 'Business Hours' / support-email block as the test expects. Needs confirmation whether that block applies to guarantee claims."
+ ],
+ "Repair Receipt|1": [
+  "PASS",
+  "'Is the customer using an insurance?' checkbox displayed"
+ ],
+ "Repair Receipt|2": [
+  "PASS",
+  "Checking insurance question reveals Device Insurance field"
+ ],
+ "Repair Receipt|3": [
+  "PASS",
+  "Device insurance options display: ['Asurion', 'Assurant', 'Apple Care', 'Samsung Care']"
+ ],
+ "Repair Receipt|4": [
+  "PASS",
+  "Selected insurance option 'Asurion' reflects on field"
+ ],
+ "Repair Receipt|5": [
+  "PASS",
+  "Receipt Details section fields: ['Date', 'Amount', 'Device', 'Covered']"
+ ],
+ "Repair Receipt|6": [
+  "PASS",
+  "Date field present in Receipt Details (date picker field=True; calendar interaction limited in headless)"
+ ],
+ "Repair Receipt|7": [
+  "PASS",
+  "Amount field accepts input ('USD  1.00')"
+ ],
+ "Repair Receipt|8": [
+  "PASS",
+  "Device selectable (picked 'Accent FAST7 3G')"
+ ],
+ "Repair Receipt|9": [
+  "PASS",
+  "Covered amount accepts input ('USD  0.00')"
+ ],
+ "Repair Receipt|10": [
+  "PASS",
+  "Image upload accepted; reflects in container"
+ ],
+ "Notes|1": [
+  "PASS",
+  "New button opens New Note modal"
+ ],
+ "Notes|2": [
+  "PASS",
+  "Title field accepts input ('Regression Test Note')"
+ ],
+ "Notes|3": [
+  "PASS",
+  "Content box accepts input"
+ ],
+ "Notes|4": [
+  "PASS",
+  "Note saved; modal closed; note in grid (present=True)"
+ ],
+ "Notes|5": [
+  "PASS",
+  "Edit modal opens populated (title='Regression Test Note')"
+ ],
+ "Notes|6": [
+  "PASS",
+  "Content edited; Save & Close available"
+ ],
+ "Notes|7": [
+  "PASS",
+  "Edit saved; modal closed; changes persisted"
+ ]
+}

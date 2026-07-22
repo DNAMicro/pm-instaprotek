@@ -1,0 +1,94 @@
+{
+ "New Language|1": [
+  "PASS",
+  "New button opens the create modal"
+ ],
+ "New Language|2": [
+  "PASS",
+  "Profile-image control is native file input"
+ ],
+ "New Language|3": [
+  "PASS",
+  "Image upload reflected"
+ ],
+ "New Language|4": [
+  "PASS",
+  "Language field accepts input ('TestLang QA')"
+ ],
+ "New Language|5": [
+  "PASS",
+  "ISO Code field accepts input ('tq')"
+ ],
+ "New Language|6": [
+  "PASS",
+  "Date format field opens options"
+ ],
+ "New Language|7": [
+  "PASS",
+  "Selected date format option ('yyyy-MM-dd')"
+ ],
+ "New Language|8": [
+  "PASS",
+  "Time format radio (24 Hours) selectable"
+ ],
+ "New Language|9": [
+  "PASS",
+  "Save created record []"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Languages grid displays (columns ['Language', 'ISO Code', 'Date Format', 'Time Format', 'Actions'], rows=7)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Languages)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Language', 'ISO Code', 'Date Format', 'Time Format']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Language'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PARTIAL",
+  "Value dropdown (dependent on 'Language'): no options loaded / value is free-text"
+ ],
+ "Grid|6": [
+  "PARTIAL",
+  "value column has no enumerable options (free-text filter)"
+ ],
+ "Grid|7": [
+  "FAIL",
+  "Add Filter applied (no-btn) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "FAIL",
+  "Locator.fill: Timeout 30000ms exceeded.\nCall log:\n"
+ ],
+ "Grid|9": [
+  "FAIL",
+  "Export as CSV present; Locator.click: Timeout 30000ms exce"
+ ],
+ "Grid|10": [
+  "PASS",
+  "Clicking a grid record opens its edit view (clicked-action)"
+ ],
+ "Grid|11": [
+  "PASS",
+  "Edited a field -> 'Catalan EDIT'"
+ ],
+ "Grid|12": [
+  "PASS",
+  "Save applied; edit persisted"
+ ],
+ "Grid|13": [
+  "PARTIAL",
+  "Delete shows a Yes/No confirm dialog (no-row)"
+ ],
+ "Grid|14": [
+  "PARTIAL",
+  "confirm dialog present; Yes button not resolved"
+ ]
+}

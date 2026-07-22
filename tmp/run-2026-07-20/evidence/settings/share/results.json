@@ -1,0 +1,106 @@
+{
+ "New Share|1": [
+  "PASS",
+  "New button opens the create modal"
+ ],
+ "New Share|2": [
+  "PASS",
+  "Upload Icon section is native file input"
+ ],
+ "New Share|3": [
+  "PASS",
+  "Icon image reflected"
+ ],
+ "New Share|4": [
+  "PASS",
+  "Upload Logo section is native file input"
+ ],
+ "New Share|5": [
+  "PASS",
+  "Logo image reflected"
+ ],
+ "New Share|6": [
+  "PASS",
+  "Store Name accepts input ('RegTestQA20260720')"
+ ],
+ "New Share|7": [
+  "PASS",
+  "Mobile Script accepts input"
+ ],
+ "New Share|8": [
+  "PARTIAL",
+  "bypass: Locator.check: Timeout 30000ms exceeded."
+ ],
+ "New Share|9": [
+  "PARTIAL",
+  "showdone: Locator.check: Timeout 30000ms exceeded."
+ ],
+ "New Share|10": [
+  "PASS",
+  "Done Button Title accepts input"
+ ],
+ "New Share|11": [
+  "PASS",
+  "Review Done URL accepts input"
+ ],
+ "New Share|12": [
+  "FAIL",
+  "Save created record []"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Shares grid displays (columns ['Store Icon', 'Store Logo', 'Store Name', 'Bypass Product Review', 'Show Done Button'], rows=1)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Shares)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Store Name', 'Bypass Product Review', 'Show Done Button', 'Done Button Title']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Store Name'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Store Name'): ['1', 'Amazon', 'Best Buy', 'Instaprotek', 'Liquipel', 'RegTestQA20260720']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value '1' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'Share_07-21-2026.csv'"
+ ],
+ "Grid|10": [
+  "PASS",
+  "Clicking a grid record opens its edit view (clicked-action)"
+ ],
+ "Grid|11": [
+  "PASS",
+  "Edited a field -> 'RegTestQA20260720 EDIT'"
+ ],
+ "Grid|12": [
+  "PASS",
+  "Save applied; edit persisted"
+ ],
+ "Grid|13": [
+  "PASS",
+  "Delete shows a Yes/No confirm dialog (clicked)"
+ ],
+ "Grid|14": [
+  "PASS",
+  "Yes/No confirm buttons work (clicked Yes -> record deleted)"
+ ]
+}

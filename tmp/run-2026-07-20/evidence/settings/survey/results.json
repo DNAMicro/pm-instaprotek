@@ -1,0 +1,42 @@
+{
+ "New Registration Survey|r1": [
+  "PASS",
+  "New button opens New Survey modal with Question field"
+ ],
+ "New Registration Survey|r2": [
+  "PASS",
+  "Question field accepts input"
+ ],
+ "New Registration Survey|r3": [
+  "FAIL",
+  "Save & Close created survey question []"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Registration survey questions display on the grid"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Edit button opens edit modal with the question populated"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Updated the question"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Save & Close applied; change persisted"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Delete button shows confirm dialog"
+ ],
+ "Grid|6": [
+  "PASS",
+  "No button cancels deletion (record retained)"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Yes button confirms deletion (record removed)"
+ ]
+}

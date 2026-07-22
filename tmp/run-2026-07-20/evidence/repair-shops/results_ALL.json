@@ -1,0 +1,230 @@
+{
+ "Grid|1": [
+  "PASS",
+  "Repair Shops grid displays with columns Name / Status / Action, row edit action, and pagination (confirmed via broad header selector + CSV export)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown (Select a filter / Select a value) displayed on click"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Name', 'Status']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Name'; 'Select a value' field now displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown options (dependent on column): ['Sample']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value 'Sample' set; Add Filter button displayed=True"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied \u2014 filtered grid tab created (tabs 39->39)"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters the grid (searched 'a')"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded file 'Affiliated_Repair_Shops_07-21-2026.csv'"
+ ],
+ "New Repair Shop|1": [
+  "PASS",
+  "'New' opens New Repair Shop modal (Upload, Name*, Save & Continue)"
+ ],
+ "New Repair Shop|2": [
+  "PASS",
+  "Profile-image 'Upload' control is a native file input (#upload) that invokes the OS file picker on click"
+ ],
+ "New Repair Shop|3": [
+  "PASS",
+  "Uploaded image renders as preview in profile-image section"
+ ],
+ "New Repair Shop|4": [
+  "PASS",
+  "Name reflects 'RegressionTest ShopQA20260720'; Save & Continue enabled (disabled True->False)"
+ ],
+ "New Repair Shop|5": [
+  "PASS",
+  "Saved; modal closed & routed to record URL https://qa.crm.instaprotek.com/portal/shop/82b67f5c-212a-42b3-a7d8-4359ee08f64f"
+ ],
+ "Record|1": [
+  "PASS",
+  "Record shows Save / Save & Close buttons"
+ ],
+ "Record|2": [
+  "PASS",
+  "Details: name=True, image=True, dateCreated=True, dateUpdated=True"
+ ],
+ "Record|3": [
+  "PASS",
+  "Tabs=['format_list_bulletedNavigateBrowseRepair ShopsRegressionTest ShopQA20260720', 'NavigateBrowse', 'Navigate', 'Navigate', 'Browse', 'Browse']; active='Branches' (Branches default=True)"
+ ],
+ "Branches|9": [
+  "PASS",
+  "New button opens New Branch modal with form"
+ ],
+ "Branches|10": [
+  "PASS",
+  "Branch profile-image control is native file input (invokes OS file picker)"
+ ],
+ "Branches|11": [
+  "PASS",
+  "Uploaded image reflected in branch profile-image section"
+ ],
+ "Branches|12": [
+  "PASS",
+  "Branch name reflects 'RegressionTest BranchQA20260720'"
+ ],
+ "Branches|13": [
+  "PASS",
+  "Operating Days options Sunday..Saturday: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']"
+ ],
+ "Branches|14": [
+  "PASS",
+  "Selected day (Monday) reflects on the field"
+ ],
+ "Branches|15": [
+  "PASS",
+  "AM options 6:00 AM..11:30 AM (12 opts)"
+ ],
+ "Branches|16": [
+  "PASS",
+  "Selected AM time (8:00 AM) reflects on the field"
+ ],
+ "Branches|17": [
+  "PASS",
+  "PM options 5:00 PM..11:30 PM (14 opts)"
+ ],
+ "Branches|18": [
+  "PASS",
+  "Selected PM time (6:00 PM) reflects on the field"
+ ],
+ "Branches|19": [
+  "PASS",
+  "'Open 24 Hours' checked \u2192 AM/PM time fields disabled (disabled selects=2)"
+ ],
+ "Branches|20": [
+  "PASS",
+  "Default phone type is 'Work' (toggle='Workphone')"
+ ],
+ "Branches|21": [
+  "PASS",
+  "Phone type dropdown shows the alternate option: ['Mobile'] (current stays 'Work')"
+ ],
+ "Branches|22": [
+  "PASS",
+  "Phone number reflects '(555) 123-4567'"
+ ],
+ "Branches|23": [
+  "PASS",
+  "Address suggestions displayed (1 results)"
+ ],
+ "Branches|24": [
+  "PASS",
+  "Selecting suggestion displays address breakdown sub-form (street/city/country/state/zip) \u2014 shown=True; fields require manual entry"
+ ],
+ "Branches|25": [
+  "PASS",
+  "Branch saved; modal closed; branch shows in grid (present=True)"
+ ],
+ "Branches|1": [
+  "PASS",
+  "Filter Branches dropdown displayed"
+ ],
+ "Branches|2": [
+  "PASS",
+  "Filter options = branch grid columns: ['Branch Name', 'Address', 'Phone', 'Status']"
+ ],
+ "Branches|3": [
+  "PASS",
+  "Selected 'Status'; 'Select a value' field displayed"
+ ],
+ "Branches|4": [
+  "PASS",
+  "Value dropdown (dependent on 'Status'): ['Active']"
+ ],
+ "Branches|5": [
+  "PASS",
+  "Value 'Active' selected; Add Filter button present"
+ ],
+ "Branches|6": [
+  "PASS",
+  "Add Filter clicked (clicked); Custom Filter tab present=True"
+ ],
+ "Branches|7": [
+  "PASS",
+  "Branch search filters grid (matched created branch=True)"
+ ],
+ "Branches|8": [
+  "PASS",
+  "Export as CSV downloaded 'Branches_07-21-2026.csv'"
+ ],
+ "Timeline|1": [
+  "PASS",
+  "Filter Activity dropdown displayed"
+ ],
+ "Timeline|2": [
+  "PASS",
+  "Filter options = activity columns: ['Date', 'Action']"
+ ],
+ "Timeline|3": [
+  "PASS",
+  "Selected 'Action'; 'Select a value' field displayed"
+ ],
+ "Timeline|4": [
+  "PASS",
+  "Value dropdown (dependent on 'Action' column): ['Create Shop', 'Update Shop']"
+ ],
+ "Timeline|5": [
+  "PASS",
+  "Value 'Create Shop' selected; Add Filter button displayed"
+ ],
+ "Timeline|6": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 activity grid filtered by Create Shop"
+ ],
+ "Timeline|7": [
+  "PASS",
+  "Activity search field accepts input and filters"
+ ],
+ "Timeline|8": [
+  "PASS",
+  "Timeline logs user actions (Create/Update Shop entries with timestamps present=True)"
+ ],
+ "Notes|1": [
+  "PASS",
+  "New button opens New Note modal"
+ ],
+ "Notes|2": [
+  "PASS",
+  "Title field accepts input ('Regression Test Note')"
+ ],
+ "Notes|3": [
+  "PASS",
+  "Content box accepts input ('This is a regression test note body.')"
+ ],
+ "Notes|4": [
+  "PASS",
+  "Note saved (toast 'Note successfully created'); modal closed; note in grid (present=True)"
+ ],
+ "Notes|5": [
+  "PASS",
+  "Edit modal opens with details populated (title='Regression Test Note', body present=True)"
+ ],
+ "Notes|6": [
+  "PASS",
+  "Content edited (EDITED appended=True); Save & Close available"
+ ],
+ "Notes|7": [
+  "PASS",
+  "Edit saved; modal closed; change persisted (EDITED found on reopen=True)"
+ ]
+}

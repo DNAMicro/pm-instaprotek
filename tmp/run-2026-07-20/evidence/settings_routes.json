@@ -1,0 +1,18 @@
+{
+ "Device Category": "/portal/category",
+ "Product Category": "/portal/product-category",
+ "Brand": "/portal/brand",
+ "Registration Survey": "/portal/survey",
+ "Plans": "/portal/product-plans",
+ "Company": "/portal/company",
+ "Repair Network": "/portal/repair-network",
+ "Languages": "/portal/languages",
+ "Regions": "/portal/regions",
+ "Administrators": "/portal/administrators",
+ "Underwriters": "/portal/underwriters",
+ "Support": "/portal/support",
+ "Coverage Type": "/portal/coverage-type",
+ "Coverage Cost Type": "/portal/coverage-cost-type",
+ "Share": "/portal/share/product",
+ "Review Questions": "/portal/review-questions"
+}
