@@ -1,0 +1,173 @@
+{
+ "per": {
+  "USERS": [
+   {
+    "PASS": 34,
+    "FAIL": 1
+   },
+   35
+  ],
+  "PORTAL - REGISTRATION": [
+   {
+    "PASS": 40,
+    "BLOCKED": 1
+   },
+   41
+  ],
+  "ORDERS": [
+   {
+    "N/A": 71
+   },
+   71
+  ],
+  "REPAIR SHOPS": [
+   {
+    "Pass": 57
+   },
+   57
+  ],
+  "AFFILIATES": [
+   {
+    "Pass": 46
+   },
+   46
+  ],
+  "CLAIM REPORTS": [
+   {
+    "Pass": 54,
+    "Fail": 3,
+    "Blocked": 5
+   },
+   62
+  ],
+  "PRODUCT REVIEWS": [
+   {
+    "N/A": 46
+   },
+   46
+  ],
+  "DEVICE BUYBACK": [
+   {
+    "N/A": 40
+   },
+   40
+  ],
+  "SETTINGS - DEVICE  CATEGORY": [
+   {
+    "Pass": 43,
+    "Fail": 1
+   },
+   44
+  ],
+  "SETTINGS - PRODUCT CATEGORY ": [
+   {
+    "Pass": 44,
+    "Fail": 1
+   },
+   45
+  ],
+  "SETTINGS - BRAND": [
+   {
+    "Pass": 55,
+    "Fail": 1
+   },
+   56
+  ],
+  "SETTINGS - REGISTRATION SURVEY ": [
+   {
+    "Pass": 10
+   },
+   10
+  ],
+  "SETTINGS - PLAN ": [
+   {
+    "Pass": 38,
+    "Not Run": 24
+   },
+   62
+  ],
+  "SETTINGS - REPAIR NETWORk ": [
+   {
+    "Pass": 15,
+    "Fail": 2
+   },
+   17
+  ],
+  "SETTINGS - COMPANY ": [
+   {
+    "Pass": 23,
+    "Not Run": 140
+   },
+   163
+  ],
+  "SETTINGS - LANGUAGE": [
+   {
+    "Pass": 20,
+    "Fail": 3
+   },
+   23
+  ],
+  "SETTINGS - REGIONS": [
+   {
+    "Pass": 18,
+    "Fail": 1
+   },
+   19
+  ],
+  "SETTINGS - ADMINISTRATORS": [
+   {
+    "Pass": 19
+   },
+   19
+  ],
+  "SETTINGS - UNDERWRITERS": [
+   {
+    "Pass": 19
+   },
+   19
+  ],
+  "SETTINGS - SUPPORT": [
+   {
+    "Pass": 26,
+    "Fail": 2
+   },
+   28
+  ],
+  "SETTINGS - COVERAGE TYPE ": [
+   {
+    "Fail": 1,
+    "Pass": 16
+   },
+   17
+  ],
+  "SETTINGS - COVERAGE COST TYPE ": [
+   {
+    "Pass": 17
+   },
+   17
+  ],
+  "SETTINGS - SHARE": [
+   {
+    "Pass": 26
+   },
+   26
+  ],
+  "SETTINGS-REVIEW QUESTIONS": [
+   {
+    "Pass": 17,
+    "Fail": 2
+   },
+   19
+  ]
+ },
+ "overall": {
+  "PASS": 74,
+  "FAIL": 1,
+  "BLOCKED": 1,
+  "N/A": 157,
+  "Pass": 563,
+  "Fail": 17,
+  "Blocked": 5,
+  "Not Run": 164
+ }
+}
