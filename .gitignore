@@ -31,3 +31,6 @@ node_modules/
 # Playwright session state (contains live login tokens)
 auth_state.json
 **/auth_state.json
+
+# Playwright MCP page snapshots/screenshots (may contain customer PII)
+.playwright-mcp/
