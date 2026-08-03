@@ -1,0 +1,18 @@
+<!-- ===== REVIEW HEADER (not part of the email) ===== -->
+**Category:** registration
+**Customer ask:** Asks us to add a Powertek charger (barcode 810198272680) to the covered device list.
+**Flags:** none
+**References used:** canned_responses.md #1 (device make/model & product-list confusion)
+**Notes for Sarah:** Product-list confusion - the barcode already identifies the product.
+
+<!-- ===== READY-TO-PASTE REPLY ===== -->
+**From:** support@instaprotek.com  (send from the support mailbox in Outlook)
+**To:** sjuju4751@gmail.com
+**Subject:** Re: Add device to product list for warranty
+
+Hello,
+
+Thanks for reaching out. The list is for your device where you installed the app - it is not referring to the product. The product is already recognized when you scan the barcode. Please try entering your phone's make and model and you should be able to proceed.
+
+Best,
+InstaProtek Support
