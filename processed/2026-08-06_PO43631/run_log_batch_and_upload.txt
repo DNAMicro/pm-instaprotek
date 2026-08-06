@@ -1,0 +1,17 @@
+2026-08-06T12:27:22-0700 [INFO] Run timestamp (UTC): 2026-08-06_192722
+2026-08-06T12:27:22-0700 [INFO] PO number: 43631
+2026-08-06T12:27:22-0700 [INFO] PO file: Purchase Order_43631_1786042925453.pdf
+2026-08-06T12:27:22-0700 [INFO] Registration file: 43631 instaProtek LLC.xlsx
+2026-08-06T12:27:22-0700 [INFO] Loaded credentials for env=Production
+2026-08-06T12:27:22-0700 [INFO] CRM base_url from credentials env 'Production': 'https://crm.instaprotek.com' (was 'https://qa.crm.instaprotek.com')
+2026-08-06T12:27:22-0700 [INFO] Validation: 15 rows, 30 auto-fixes, 0 rows flagged for model resolution. errors=0 warnings=0
+2026-08-06T12:27:35-0700 [INFO] Already logged in (session restored from storage state).
+2026-08-06T12:27:35-0700 [INFO] Cleaned registration written to C:\Users\sarahgamba\Dropbox\PC\Documents\pm-instaprotek\processed\2026-08-06_192722_PO43631\43631 instaProtek LLC.xlsx
+2026-08-06T12:27:35-0700 [INFO] Original preserved at C:\Users\sarahgamba\Dropbox\PC\Documents\pm-instaprotek\processed\2026-08-06_192722_PO43631\43631 instaProtek LLC.original.xlsx
+2026-08-06T12:27:35-0700 [INFO] Using product SKU from --product-sku flag: 'ESC030012MO00IK' (skipping references lookup)
+2026-08-06T12:27:54-0700 [DEBUG] Plans tab JS click attempt 1 -> id='enterprise-tabs-2'
+2026-08-06T12:28:21-0700 [DEBUG] New Batch dialog (.md-dialog--centered .userDialog) didn't appear in 10s
+2026-08-06T12:28:22-0700 [INFO] Plan Purchase Date set to '08/06/2026' (verified)
+2026-08-06T12:28:29-0700 [INFO] Save & Continue intercepted; falling back to JS click
+2026-08-06T12:28:30-0700 [INFO] Batch detail URL captured: https://crm.instaprotek.com/portal/company/a395cc90-438f-4f5b-9c40-9dc8c75cac42
+2026-08-06T12:28:30-0700 [INFO] Batch created: product_label='ESC030012MO00IK (ESC030012MO00IK)' product_sku='ESC030012MO00IK'

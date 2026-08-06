@@ -1,0 +1,10 @@
+{
+  "url": "https://hooks.ringcentral.com/webhook/v2/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvdCI6ImMiLCJvaSI6IjE3MDU3MjE4NTciLCJpZCI6IjM3NDQwNDcxMzEifQ.2wjy0wa4pkJt3Wz4zHj-9okE07C-qeORxkSZaT0w3sY",
+  "request_body": {
+    "title": "InstaProtek registration submitted \u2014 PO 43631",
+    "text": "**Plan:** Extended Service Contract - 12 Months\n**Pins:** 15\n**Batch:** 9572\n**End user:** Erick Betancourt\n**Transaction date:** 08/06/2026\n**Effective date:** 08/03/2026\n**Auto-corrected rows:** 15\n**Flagged rows:** 0\n**Run folder:** `processed/2026-08-06_PO43631`\n**Run timestamp (UTC):** 2026-08-06_192722\n**Contracts generated:** 15\n```\n193391123026, 606289456992, 990297769368, 457796394825, 649178015578, 467481176643, 823914379982, 896949027800, 883324766863, 470569181378, 078480729579, 645749209476, 050620474622, 193431280992, 680780283890\n```"
+  },
+  "status_code": 200,
+  "response_text": "{\"status\":\"OK\"}",
+  "ok": true
+}

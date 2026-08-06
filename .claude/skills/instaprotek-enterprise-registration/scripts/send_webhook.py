@@ -28,6 +28,8 @@ class SuccessPayload:
     processed_folder: str
     run_timestamp: str
     crm_url: str | None = None
+    batch_number: str | None = None
+    contract_numbers: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -56,6 +58,13 @@ def format_success_message(p: SuccessPayload) -> dict[str, str]:
         f"**Run folder:** `{p.processed_folder}`",
         f"**Run timestamp (UTC):** {p.run_timestamp}",
     ]
+    if p.batch_number:
+        lines.insert(2, f"**Batch:** {p.batch_number}")
+    if p.contract_numbers:
+        lines.append(f"**Contracts generated:** {len(p.contract_numbers)}")
+        lines.append("```")
+        lines.append(", ".join(p.contract_numbers))
+        lines.append("```")
     return {"title": title, "text": "\n".join(lines)}
 
 

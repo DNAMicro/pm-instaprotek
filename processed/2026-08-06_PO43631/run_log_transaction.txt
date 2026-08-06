@@ -1,0 +1,25 @@
+2026-08-06T12:55:07-0700 [INFO] Already logged in (session restored from storage state).
+2026-08-06T12:55:27-0700 [DEBUG] Plans tab JS click attempt 1 -> id='enterprise-tabs-2'
+2026-08-06T12:55:48-0700 [INFO] After filter for PO 43631: 8 rows present (incl. header)
+2026-08-06T12:55:48-0700 [INFO] Clicking batch row: '9572'
+2026-08-06T12:55:52-0700 [INFO] Found 1 listbox(es) in dialog while changing rows-per-page
+2026-08-06T12:55:52-0700 [INFO]   listbox[0] text='50\narrow_drop_down'
+2026-08-06T12:55:52-0700 [INFO] Pagination toggle click via JS: opened
+2026-08-06T12:55:52-0700 [INFO] 100-option click via JS: clicked
+2026-08-06T12:55:56-0700 [INFO] After header select-all: (15, 15)
+2026-08-06T12:56:05-0700 [INFO] Found 2 listbox(es) in dialog while changing rows-per-page
+2026-08-06T12:56:05-0700 [INFO]   listbox[0] text='Registered'
+2026-08-06T12:56:05-0700 [INFO]   listbox[1] text='50\narrow_drop_down'
+2026-08-06T12:56:05-0700 [INFO] Pagination toggle click via JS: opened
+2026-08-06T12:56:05-0700 [INFO] 100-option click via JS: clicked
+2026-08-06T12:56:08-0700 [INFO] Scraped 15 contract number(s) from Contracts tab
+2026-08-06T12:56:08-0700 [INFO] Transaction generated. 15 contract number(s) captured.
+2026-08-06T12:56:08-0700 [INFO]   contract: 193391123026
+2026-08-06T12:56:08-0700 [INFO]   contract: 606289456992
+2026-08-06T12:56:08-0700 [INFO]   contract: 990297769368
+2026-08-06T12:56:08-0700 [INFO]   contract: 457796394825
+2026-08-06T12:56:08-0700 [INFO]   contract: 649178015578
+2026-08-06T12:56:08-0700 [INFO]   ... (10 more)
+
+CONTRACT_NUMBERS:193391123026,606289456992,990297769368,457796394825,649178015578,467481176643,823914379982,896949027800,883324766863,470569181378,078480729579,645749209476,050620474622,193431280992,680780283890
+2026-08-06T12:56:08-0700 [INFO] Transaction step completed for PO 43631
