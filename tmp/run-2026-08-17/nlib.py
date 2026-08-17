@@ -60,7 +60,7 @@ def md_pick(pg, text=None, index=0):
 def add_new_in_record(pg):
     """Click the addNew that belongs to the open record shell (not the grid behind it)."""
     n=pg.evaluate("""()=>{const els=[...document.querySelectorAll('.md-dialog--full-page button,.md-dialog--full-page i')]
-        .filter(e=>/addNew/.test(e.textContent)&&e.offsetParent!==null);
+        .filter(e=>/addNew|add_circle/.test(e.textContent)&&e.offsetParent!==null);
       if(els.length){els[0].click();return els.length;}return 0;}""")
     pg.wait_for_timeout(6500); return n
 
