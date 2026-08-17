@@ -1,0 +1,114 @@
+{
+ "Device Category": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/category",
+  "rows": 8,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Device Categories",
+  "addNew": 1
+ },
+ "Product Category": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/product-category",
+  "rows": 8,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Product Categories",
+  "addNew": 1
+ },
+ "Brand": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/brand",
+  "rows": 50,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Brands",
+  "addNew": 1
+ },
+ "Registration Survey": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/survey",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 1
+ },
+ "Plans": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/product-plans",
+  "rows": 50,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Plans",
+  "addNew": 1
+ },
+ "Company": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/company",
+  "rows": 25,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Companies",
+  "addNew": 1
+ },
+ "Repair Network": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/repair-network",
+  "rows": 1,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Repair Network",
+  "addNew": 1
+ },
+ "Languages": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/languages",
+  "rows": 3,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Languages",
+  "addNew": 1
+ },
+ "Regions": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/regions",
+  "rows": 4,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Regions",
+  "addNew": 1
+ },
+ "Administrators": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/administrators",
+  "rows": 4,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Administrators",
+  "addNew": 1
+ },
+ "Underwriters": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/underwriters",
+  "rows": 4,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Underwriters",
+  "addNew": 1
+ },
+ "Support": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/support",
+  "rows": 10,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Supports",
+  "addNew": 1
+ },
+ "Coverage Type": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/coverage-type",
+  "rows": 11,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Coverage Types",
+  "addNew": 1
+ },
+ "Coverage Cost Type": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/coverage-cost-type",
+  "rows": 5,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Coverage Cost Types",
+  "addNew": 1
+ },
+ "Share": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/share/product",
+  "rows": 8,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Shares",
+  "addNew": 1
+ },
+ "Review Questions": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/review-questions",
+  "rows": 15,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Review Questions",
+  "addNew": 1
+ }
+}
