@@ -34,3 +34,7 @@ auth_state.json
 
 # Playwright MCP page snapshots/screenshots (may contain customer PII)
 .playwright-mcp/
+
+# Regression run evidence screenshots (may contain customer PII —
+# the nullnet env carries live production data, see run-2026-08-17)
+tmp/**/evidence/*.png
