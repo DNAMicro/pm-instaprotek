@@ -77,7 +77,11 @@ def act_input(pg, phrase, value=None):
             L=pg.locator(".md-dialog:not(.md-dialog--full-page) input[type=text]").first
         L.scroll_into_view_if_needed(); L.fill(val); pg.wait_for_timeout(600)
         got=L.input_value()
-        return (val in got or got==val, f"field '{c['label'] or c['id']}' now reads '{got}'")
+        # masked fields reformat the value (phone -> (415) 555-0188, money -> USD 1.00),
+        # so compare on digits/alphanumerics rather than requiring an exact echo
+        def norm(x): return re.sub(r'[^a-z0-9]','',(x or '').lower())
+        ok = (val in got) or (got==val) or (norm(val) and norm(val)==norm(got))
+        return (ok, f"field '{c['label'] or c['id']}' now reads '{got}'")
     except Exception as e:
         return (False, f"could not type into '{c['label'] or c['id']}': {str(e)[:70]}")
 

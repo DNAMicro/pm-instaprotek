@@ -38,6 +38,10 @@ def run_tab(pg, sheet, cf, rec):
     created=False; upload_i=0; last_opts=[]; last_md=False
     for k in keys:
         d=desc[k].lower().strip()
+        # the suite has consistent typos; normalise so the dispatcher can match
+        for a,bb in [("clcik","click"),("serach","search"),("uplaod","upload"),("inpout","input"),
+                     ("inptu","input"),("anme","name"),("teh","the"),("byoass","bypass"),("chek","check")]:
+            d=d.replace(a,bb)
         try:
             if re.search(r'click .*new button|clcik new button|click new', d) or (k.endswith("|1") and "new" in d):
                 N.add_new_grid(pg)
@@ -50,10 +54,51 @@ def run_tab(pg, sheet, cf, rec):
             elif re.search(r'select (an? )?image', d):
                 ok,msg=S.act_upload(pg, upload_i); upload_i+=1
                 rec(k,"PASS" if ok else "FAIL", f"Selected image reflects in the section — {msg}.")
+            elif ("address" in d and "email" not in d) and re.search(r'^(input|search)', d):
+                ok=False
+                try:
+                    ai=pg.get_by_placeholder("Search address")
+                    ai.first.scroll_into_view_if_needed(); ai.first.click(); ai.first.fill("")
+                    ai.first.type("1600 Amphitheatre Parkway, Mountain View", delay=80)
+                    pg.locator(".address__suggestion__item").first.wait_for(state="visible", timeout=11000); ok=True
+                except Exception as e: print("   addr err", str(e)[:60], flush=True)
+                rec(k,"PASS" if ok else "FAIL","Typing an address surfaces suggested result(s) in the autocomplete.")
+            elif ("address" in d and "email" not in d) and d.startswith("select"):
+                brk=None
+                try:
+                    pg.locator(".address__suggestion__item").first.click(); pg.wait_for_timeout(2200)
+                    brk=pg.evaluate(f"""()=>{{const d={N.SUB};if(!d)return[];
+                      return ['street','city','zip_code','country','state'].filter(id=>d.querySelector('#'+id));}}""")
+                    for fid,val in [("street","1600 Amphitheatre Parkway"),("city","Mountain View"),("zip_code","94043")]:
+                        L=pg.locator(f".md-dialog:not(.md-dialog--full-page) #{fid}")
+                        if L.count() and not L.first.input_value(): L.first.fill(val)
+                    for fid,txt in [("country","United States"),("state","California")]:
+                        if pg.locator(f".md-dialog:not(.md-dialog--full-page) #{fid}").count():
+                            try:
+                                N.rs_open(pg,fid,".md-dialog:not(.md-dialog--full-page)"); N.rs_pick(pg,txt)
+                            except Exception: pass
+                except Exception as e: print("   addr sel err", str(e)[:60], flush=True)
+                rec(k,"PASS" if brk else "FAIL", f"Selecting a suggestion reveals the address breakdown sub-form: {brk}")
+            elif re.search(r'^(input|inpout|inptu)\b', d) and ("notes" in d or "note" in d):
+                ok=False
+                try:
+                    ce=pg.locator(".md-dialog:not(.md-dialog--full-page) [contenteditable=true]").first
+                    if ce.count():
+                        ce.click(); pg.keyboard.type("Regression test notes 2026-08-17."); pg.wait_for_timeout(1200)
+                        ok=pg.evaluate(f"""()=>{{const d={N.SUB};const e=d&&d.querySelector('[contenteditable=true]');
+                          return e?e.innerText.trim().length>0:false;}}""")
+                    else:
+                        ok,_m=S.act_input(pg,"notes","Regression test notes 2026-08-17.")
+                except Exception as e: print("   notes err", str(e)[:60], flush=True)
+                rec(k,"PASS" if ok else "FAIL", f"Notes editor accepts input ({ok}).")
             elif re.search(r'^(input|inpout|inptu)\b', d) or d.startswith("input"):
                 phrase=re.sub(r'^\w+\s+','',d)
                 val=TAG
                 if "iso" in phrase: val="rt"
+                if "phone" in phrase or "number" in phrase: val="4155550188"
+                if "email" in phrase: val="regressiontest_0817@qamail.test"
+                if "website" in phrase: val="https://example.test"
+                if "business hours" in phrase: val="9:00 AM - 5:00 PM"
                 if "url" in phrase: val="https://example.test/done"
                 if "script" in phrase: val="Regression test script"
                 ok,msg=S.act_input(pg, phrase, val)
@@ -138,7 +183,8 @@ def run_tab(pg, sheet, cf, rec):
         # NOTE: the grid search does not match hyphenated terms, so search on the
         # stable TAG and read the row text to confirm the edit landed.
         N.search_grid(pg, TAG); pg.wait_for_timeout(1200)
-        rowtxt=pg.evaluate("""()=>{const r=document.querySelector('.md-table-row.table-row');return r?r.innerText.split('\\n')[0].trim():'';}""")
+        rowtxt=pg.evaluate("""()=>{const r=document.querySelector('.md-table-row.table-row');
+          return r?r.innerText.replace(/\\s+/g,' ').trim():'';}""")
         rec("Grid|12","PASS" if (not still and "EDIT" in rowtxt) else "FAIL",
             f"Save ('{r}') closes the modal and the change shows on the grid — row now reads '{rowtxt}'{'; validation '+str(errs) if errs else ''}.")
 
