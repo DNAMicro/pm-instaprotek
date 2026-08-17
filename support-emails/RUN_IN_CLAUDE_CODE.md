@@ -11,7 +11,7 @@ Run the instaprotek-support-emails skill. Read the new customer inquiries in the
 support@instaprotek.com mailbox via the Microsoft 365 connector. For each inquiry, follow the
 skill exactly: use canned response #1 for device / product-list confusion ("cannot find
 company/brand/product", "add device/model/brand", entering make & model), canned response #3 for
-connection / server errors, and the DEFAULT "how can we help you" response for anything else -
+connection / server errors, and the DEFAULT "share a few details" response for anything else -
 do not compose a bespoke reply for uncovered cases. Ground any factual answer in
 support-emails/reference/. Never offer refunds, replacements, discounts, credits, free items, or
 any other concession - if the customer asks for one, flag the draft NEEDS APPROVAL. Never invent

@@ -23,8 +23,8 @@ covered by an approved answer. When in doubt, use this - do NOT compose a bespok
 
 Hello,
 
-Thanks for reaching out. How can we help you? Please share a few details about the issue you're
-seeing (a screenshot helps too) and we'll take it from there.
+Thanks for reaching out. Please share a few details about the issue you're seeing (a screenshot
+helps too) so we can assist you better.
 
 Best,
 InstaProtek Support

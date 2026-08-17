@@ -64,7 +64,7 @@ matches one of these, use that approved response (personalize the greeting with 
   already recognized from the scanned barcode; enter the phone's make and model to proceed.
 - **Default for everything else (catch-all)** - if the inquiry does not clearly match the
   product-list or connection rules (including empty/photo-only emails, or anything you are unsure
-  about), do NOT compose a bespoke answer. Use the "how can we help you" default response and let
+  about), do NOT compose a bespoke answer. Use the "share a few details" default response and let
   Sarah handle the specifics.
 - **Connection / server error** - "cannot connect to server", "unable to connect", or anything about
   connectivity: ask if it's still happening, advise uninstall/reinstall to refresh the server
@@ -77,7 +77,7 @@ the customer also asks for a refund/replacement/other concession.
 
 1. Collect the email(s) from connector, inbox folder, or paste.
 2. For each email: classify (registration / claim / coverage question / repair / buyback /
-   billing / account / complaint / other), check reference docs, then draft. If it does not clearly match a canned rule, use the default "how can we help you" response instead of composing a bespoke reply (still flag NEEDS APPROVAL / ESCALATE where relevant).
+   billing / account / complaint / other), check reference docs, then draft. If it does not clearly match a canned rule, use the default "share a few details" response instead of composing a bespoke reply (still flag NEEDS APPROVAL / ESCALATE where relevant).
 3. Save one file per draft in `support-emails/drafts/` named
    `YYYY-MM-DD_<from-or-subject-slug>.md` using `templates/draft_template.md`:
    a review header (category, summary of the ask, flags, refs used), then the ready-to-paste
