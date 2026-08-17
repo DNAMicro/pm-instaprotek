@@ -15,5 +15,10 @@ Hi <First name>,
 <Reply body — short natural paragraphs. No invented facts. [NEEDS INFO: x] where data is
 missing. No concessions unless approved.>
 
-Best,
-InstaProtek Support
+Best Regards,
+Instaprotek Support Team
+support@instaprotek.com
+Office Hours:
+Monday-Friday
+8:00 AM - 5:00 PM PST
+www.instaprotek.com

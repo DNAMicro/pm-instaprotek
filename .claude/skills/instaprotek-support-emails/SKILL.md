@@ -37,7 +37,10 @@ Customer-centric and human — warm, direct, competent. Must NOT read as AI-gene
 - Use the customer's first name, mirror their formality, vary sentence rhythm.
 - One clear apology max when something went wrong, then focus on what happens next.
 - Plain words over corporate ones (use "fix", not "rectify"; "send", not "provide").
-- Sign off: `InstaProtek Support` unless Sarah specifies a name.
+- Sign off with the live support signature (`Best Regards,` / `Instaprotek Support Team` /
+  `support@instaprotek.com` / office hours / `www.instaprotek.com`) — see `canned_responses.md`.
+  Outlook inserts it automatically on a reply from support@instaprotek.com, so when replying there
+  type only the greeting and body. Use a name only if Sarah specifies one.
 
 ## Sources of incoming email
 
