@@ -73,7 +73,25 @@ def run_tab(pg, sheet, cf, rec):
                     ok,msg=S.act_pick(pg, md=last_md)
                     rec(k,"PASS" if ok else "FAIL", f"Selected '{msg}' reflects on the field.")
             elif re.search(r'save', d):
+                # some forms (e.g. Review Questions) require committing a sub-item
+                # with a 'Done' button before the record can be saved
+                if pg.evaluate(f"""()=>{{const d={N.SUB};if(!d)return false;
+                      return !![...d.querySelectorAll('button')].find(x=>/^Done$/.test(x.textContent.trim()));}}"""):
+                    N.sub_click(pg,"^Done$"); pg.wait_for_timeout(2000)
+                    print("   (committed sub-item via Done)", flush=True)
                 r,still,errs=S.save(pg)
+                # some forms demand a minimum number of sub-items (e.g. "Minimum of 3 options.")
+                for attempt in range(4):
+                    if not (still and any("inimum" in e for e in errs)): break
+                    added=pg.evaluate(f"""()=>{{const d={N.SUB};const t=d.querySelector('#tempOption');
+                      if(!t)return false;
+                      const set=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;
+                      set.call(t,'RegressionTest0817-opt{attempt}');t.dispatchEvent(new Event('input',{{bubbles:true}}));
+                      return true;}}""")
+                    pg.wait_for_timeout(900)
+                    N.sub_click(pg,"^Done$"); pg.wait_for_timeout(1800)
+                    print(f"   (added extra option {attempt} to satisfy minimum)", flush=True)
+                    r,still,errs=S.save(pg)
                 created = (not str(r).startswith('none')) and not still
                 listed=False
                 if created:
@@ -94,17 +112,28 @@ def run_tab(pg, sheet, cf, rec):
         opened=pg.evaluate("""()=>{const r=document.querySelector('.md-table-row.table-row');if(!r)return 'no-row';
           const a=[...r.querySelectorAll('button,i.material-icons')].find(e=>/edit|find_in_page/.test(e.textContent));
           (a||r).click();return 'ok';}""")
-        pg.wait_for_timeout(6000)
+        pg.wait_for_timeout(6500)
+        # the record may open EITHER as a sub-modal or as a full-page record view
         got=N.sub_text(pg) or ""
-        rec("Grid|10","PASS" if (found>0 and opened=="ok" and got) else "FAIL",
-            f"Clicking our test record on the grid opens its record/modal ({found} row(s) matched '{TAG}'): {got[:110].replace(chr(10),' | ')}")
+        full=pg.evaluate("""()=>{const d=document.querySelector('.md-dialog--full-page');return d?d.innerText.slice(0,140):'';}""")
+        scope=".md-dialog:not(.md-dialog--full-page)" if got else ".md-dialog--full-page"
+        rec("Grid|10","PASS" if (found>0 and opened=="ok" and (got or full)) else "FAIL",
+            f"Clicking our test record on the grid opens its record ({found} row(s) matched '{TAG}'): {(got or full)[:115].replace(chr(10),' | ')}")
         edited=False; newname=TAG+"-EDIT"
         try:
-            L=pg.locator(".md-dialog:not(.md-dialog--full-page) input[type=text]:not([id*=search])").first
-            L.fill(newname); pg.wait_for_timeout(700); edited=(L.input_value()==newname)
+            L=pg.locator(f"{scope} input[type=text]:not([id*=search])").first
+            L.scroll_into_view_if_needed(); L.fill(newname); pg.wait_for_timeout(700); edited=(L.input_value()==newname)
         except Exception as e: print("   edit err", str(e)[:60], flush=True)
         rec("Grid|11","PASS" if edited else "FAIL", f"The record's name field accepts an edited value '{newname}' ({edited}).")
-        r,still,errs=S.save(pg)
+        if got:
+            r,still,errs=S.save(pg)
+        else:
+            r=pg.evaluate("""()=>{const d=document.querySelector('.md-dialog--full-page');if(!d)return 'none';
+              const b=[...d.querySelectorAll('button')].find(x=>/Save and Close|Save & Close/.test(x.textContent)&&!x.disabled)
+                    ||[...d.querySelectorAll('button')].find(x=>/Save/.test(x.textContent)&&!x.disabled);
+              if(b){b.click();return b.textContent.trim();}return 'none';}""")
+            pg.wait_for_timeout(7000); still=False; errs=[]
+            pg.goto(N.BASE+cf["route"], wait_until="domcontentloaded", timeout=60000); pg.wait_for_timeout(7000)
         pg.wait_for_timeout(2500)
         # NOTE: the grid search does not match hyphenated terms, so search on the
         # stable TAG and read the row text to confirm the edit landed.

@@ -54,13 +54,23 @@ def find_control(pg, phrase, types=None):
 # ---------- actions ----------
 def act_input(pg, phrase, value=None):
     c=find_control(pg, phrase, types=["text","email","tel","number","textarea","TEXTAREA"])
-    if not c or c["isSelect"]:
-        c2=find_control(pg, phrase)
-        if not c2 or c2["isSelect"]: return (False, f"no text field matched '{phrase}' (controls: {[x['label'] or x['id'] for x in controls(pg)][:8]})")
-        c=c2
+    if not c:
+        c=find_control(pg, phrase)
+    if not c:
+        return (False, f"no field matched '{phrase}' (controls: {[x['label'] or x['id'] for x in controls(pg)][:8]})")
     val=value or TESTVAL
     sel=f".md-dialog:not(.md-dialog--full-page) #{c['id']}" if c["id"] else None
     try:
+        if c["isSelect"]:
+            # react-select wrapper: click, type, commit with Enter, read the value label
+            L=pg.locator(sel).first if (sel and pg.locator(sel).count()) else \
+              pg.locator(".md-dialog:not(.md-dialog--full-page) .Select input").first
+            L.scroll_into_view_if_needed(); L.click()
+            L.type(val, delay=35); pg.wait_for_timeout(900)
+            pg.keyboard.press("Enter"); pg.wait_for_timeout(900)
+            shown=pg.evaluate(f"""()=>{{const d={N.SUB};const s=d.querySelector('.Select');
+              return s?((s.querySelector('.Select-value-label')||{{}}).textContent||s.querySelector('input')?.value||'').trim():'';}}""")
+            return (val in (shown or ""), f"field '{c['label'] or c['id']}' (a selectable/creatable field) now reads '{shown}'")
         if sel and pg.locator(sel).count():
             L=pg.locator(sel).first
         else:

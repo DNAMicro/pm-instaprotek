@@ -113,22 +113,28 @@ def run_grid(pg, rec, prefix, filter_label, entity):
     except Exception as e: pass
     rec(f"{prefix}|3","PASS" if fo else "FAIL", f"Filter-field dropdown lists the grid columns: {fo}")
 
-    tgt=next((o for o in fo if o.strip().lower()=="status"), fo[0] if fo else None)
-    if tgt:
+    # try filter columns in turn until one yields an enumerable value list
+    order=[o for o in fo if o.strip().lower()=="status"]+[o for o in fo if o.strip().lower()!="status"]
+    tgt=None; vo=[]; sel_ok=False; tried=[]
+    for cand in order[:4]:
         try:
-            rs_pick(pg,tgt); pg.wait_for_timeout(1200)
-            rec(f"{prefix}|4","PASS" if "Select a value" in bt(pg) else "FAIL", f"Selected '{tgt}'; it reflects on the field and 'Select a value' appears.")
-        except Exception as e: rec(f"{prefix}|4","FAIL", str(e)[:120])
-    else: rec(f"{prefix}|4","FAIL","No filter options available.")
-
-    vo=[]
-    for _ in range(3):
-        try:
-            vo=rs_open_ph(pg,"Select a value")
-        except Exception: pass
-        if vo: break
-        pg.wait_for_timeout(900)
-    rec(f"{prefix}|5","PASS" if vo else "FAIL", f"'Select a value' opens a dependent dropdown for '{tgt}': {vo[:8]}")
+            rs_open_ph(pg,"Select a filter"); rs_pick(pg,cand); pg.wait_for_timeout(1500)
+        except Exception:
+            continue
+        tgt=cand; sel_ok = "Select a value" in bt(pg)
+        tried.append(cand)
+        got=[]
+        for _ in range(3):
+            try: got=rs_open_ph(pg,"Select a value")
+            except Exception: pass
+            if got: break
+            pg.wait_for_timeout(1100)
+        if got: vo=got; break
+    rec(f"{prefix}|4","PASS" if sel_ok else "FAIL",
+        f"Selected filter column '{tgt}'; it reflects on the field and the 'Select a value' field appears.")
+    rec(f"{prefix}|5","PASS" if vo else "FAIL",
+        f"'Select a value' opens a dropdown dependent on the chosen column '{tgt}': {vo[:8]}" if vo
+        else f"No enumerable values were returned for any of the filter columns tried {tried}.")
 
     picked=None
     if vo:
@@ -141,6 +147,11 @@ def run_grid(pg, rec, prefix, filter_label, entity):
     pg.wait_for_timeout(3200)
     rec(f"{prefix}|7","PASS" if ap=="clicked" else "FAIL", f"Add Filter applies the filter and creates a filtered tab in the grid ({ap}).")
 
+    # collapse the filter panel so it stops overlaying the search/export controls
+    try:
+        fb2=pg.get_by_text(filter_label)
+        if fb2.count(): fb2.first.click(); pg.wait_for_timeout(1500)
+    except Exception: pass
     try:
         s=pg.locator("input[placeholder*='Search']").first
         s.fill("a"); pg.wait_for_timeout(2600); n=pg.locator(".md-table-row.table-row").count(); s.fill(""); pg.wait_for_timeout(1500)
