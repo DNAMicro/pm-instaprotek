@@ -1,0 +1,50 @@
+2026-08-10T08:58:43-0700 [INFO] Run timestamp (UTC): 2026-08-10_155843
+2026-08-10T08:58:43-0700 [INFO] PO number: 43641
+2026-08-10T08:58:43-0700 [INFO] PO file: Purchase Order_43641_1786116836805.pdf
+2026-08-10T08:58:43-0700 [INFO] Registration file: 43641 instaProtek LLC.xlsx
+2026-08-10T08:58:43-0700 [INFO] Loaded credentials for env=Production
+2026-08-10T08:58:43-0700 [INFO] CRM base_url from credentials env 'Production': 'https://crm.instaprotek.com' (was 'https://qa.crm.instaprotek.com')
+2026-08-10T08:58:44-0700 [INFO] Validation: 75 rows, 225 auto-fixes, 0 rows flagged for model resolution. errors=0 warnings=0
+2026-08-10T08:59:00-0700 [INFO] Already logged in (session restored from storage state).
+2026-08-10T08:59:01-0700 [INFO] Cleaned registration written to C:\Users\sarahgamba\Dropbox\PC\Documents\pm-instaprotek\processed\2026-08-10_155843_PO43641\43641 instaProtek LLC.xlsx
+2026-08-10T08:59:01-0700 [INFO] Original preserved at C:\Users\sarahgamba\Dropbox\PC\Documents\pm-instaprotek\processed\2026-08-10_155843_PO43641\43641 instaProtek LLC.original.xlsx
+2026-08-10T08:59:01-0700 [INFO] Using product SKU from --product-sku flag: 'ESC030012MO00IK' (skipping references lookup)
+2026-08-10T08:59:20-0700 [DEBUG] Plans tab JS click attempt 1 -> id='enterprise-tabs-2'
+2026-08-10T08:59:47-0700 [DEBUG] New Batch dialog (.md-dialog--centered .userDialog) didn't appear in 10s
+2026-08-10T08:59:48-0700 [INFO] Plan Purchase Date set to '08/07/2026' (verified)
+2026-08-10T08:59:54-0700 [INFO] Save & Continue intercepted; falling back to JS click
+2026-08-10T08:59:56-0700 [INFO] Batch detail URL captured: https://crm.instaprotek.com/portal/company/a395cc90-438f-4f5b-9c40-9dc8c75cac42
+2026-08-10T08:59:56-0700 [INFO] Batch created: product_label='ESC030012MO00IK (ESC030012MO00IK)' product_sku='ESC030012MO00IK'
+2026-08-10T09:00:28-0700 [DEBUG] Plans tab JS click attempt 1 -> id='enterprise-tabs-2'
+2026-08-10T09:00:44-0700 [INFO] Opening batch by captured URL: https://crm.instaprotek.com/portal/company/a395cc90-438f-4f5b-9c40-9dc8c75cac42
+2026-08-10T09:01:15-0700 [ERROR] Transaction submission failed: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name="s New Transaction").first
+Traceback (most recent call last):
+  File "C:\Users\sarahgamba\Dropbox\PC\Documents\pm-instaprotek\.claude\skills\instaprotek-enterprise-registration\scripts\run.py", line 613, in _run_pipeline
+    runner.create_transaction(txn)
+  File "C:\Users\sarahgamba\Dropbox\PC\Documents\pm-instaprotek\.claude\skills\instaprotek-enterprise-registration\scripts\playwright_runner.py", line 1062, in create_transaction
+    _locator(page, new_txn_btn).first.click()
+  File "C:\Users\sarahgamba\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\sync_api\_generated.py", line 16196, in click
+    self._sync(
+  File "C:\Users\sarahgamba\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\sarahgamba\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\_impl\_locator.py", line 162, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sarahgamba\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\_impl\_frame.py", line 566, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\sarahgamba\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sarahgamba\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name="s New Transaction").first
+
+2026-08-10T09:01:15-0700 [ERROR] FAILURE [create_transaction]: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name="s New Transaction").first
+
