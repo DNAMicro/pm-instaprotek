@@ -1,0 +1,11 @@
+{
+ "reg": "112456244808",
+ "gone": true,
+ "intact": [
+  "Registration Number",
+  "Plan",
+  "Coverage Amount",
+  "Device",
+  "Serial Number"
+ ]
+}

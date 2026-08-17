@@ -1,0 +1,138 @@
+{
+ "Registration|1": [
+  "PASS",
+  "Registrations grid lists records (50 rows on page 1 of 1,263,207 total); registration #135995233909 present with its details on the row."
+ ],
+ "Registration|2": [
+  "PASS",
+  "Opening a record routes to the record shell /registration/51af05dc-a584-4076-9453-e2e825f72e93; default tab is Details."
+ ],
+ "Registration|3": [
+  "PASS",
+  "Tabs displayed: ['Details', 'Customer Details', 'Claim', 'Registration Survey', 'Communication', 'Device Diagnostics', 'Product Review', 'Timeline', 'Notes']. All expected tabs present; additional undocumented tab(s): ['Device Diagnostics']."
+ ],
+ "Registration|4": [
+  "PASS",
+  "Details tab renders registration details \u2014 fields found: ['Device', 'Device Category', 'Serial Number', 'Registration Number', 'Plan', 'Coverage Amount', 'Batch Number']."
+ ],
+ "Registration|5": [
+  "PASS",
+  "'Customer Details' tab is clickable and renders its panel (grid/rows present=True; panel heading 'CUSTOMER DETAILS' shown)."
+ ],
+ "Registration|6": [
+  "PASS",
+  "'Claim' tab is clickable and renders its panel (grid/rows present=True; panel heading 'CLAIM' shown)."
+ ],
+ "Registration|7": [
+  "PASS",
+  "'Registration Survey' tab is clickable and renders its panel (grid/rows present=True; panel heading 'REGISTRATION SURVEY' shown)."
+ ],
+ "Registration|8": [
+  "PASS",
+  "'Communication' tab is clickable and renders its panel (grid/rows present=True; panel heading 'COMMUNICATION' shown)."
+ ],
+ "Registration|9": [
+  "PASS",
+  "'Product Review' tab is clickable and renders its panel (grid/rows present=True; panel heading 'PRODUCT REVIEW' shown)."
+ ],
+ "Registration|10": [
+  "PASS",
+  "'Timeline' tab is clickable and renders its panel (grid/rows present=True; panel heading 'TIMELINE' shown)."
+ ],
+ "Registration|11": [
+  "PASS",
+  "'Notes' tab is clickable and renders its panel (grid/rows present=True; panel heading 'NOTES' shown)."
+ ],
+ "Details|1": [
+  "PASS",
+  "Registration details section displays: ['Device', 'Device Category', 'Serial Number', 'Identifier for Vendor', 'App Version', 'Device Name']."
+ ],
+ "Details|2": [
+  "PASS",
+  "Product details section displays: ['Product Barcode', 'Product', 'Plan', 'Coverage Amount', 'Batch Number']."
+ ],
+ "Details|3": [
+  "PASS",
+  "Store Receipt section displays with Store/Branch/Receipt Number fields and receipt actions: {'store': True, 'branch': True, 'num': True, 'view': True, 'replace': True}."
+ ],
+ "Details|4": [
+  "PASS",
+  "Store, Branch and Receipt Number accept keyboard input ({'branch': True, 'receipt_number': True}). Values were reverted and NOT saved \u2014 live environment, real customer record."
+ ],
+ "Details|5": [
+  "PASS",
+  "View Receipt opens a modal displaying the uploaded receipt image ({'img': True, 'txt': 'Registration Details\\nNavigate\\nBrowse\\nRegistrations\\n135995233909\\nRegistration: 13'})."
+ ],
+ "Details|8": [
+  "PASS",
+  "View Receipt renders the stored receipt for inspection (pages open=2)."
+ ],
+ "Details|6": [
+  "FAIL",
+  "Replace-file control present in the receipt modal (0 file input) \u2014 clicking it opens the OS file explorer (native dialog, not scriptable headless)."
+ ],
+ "Details|7": [
+  "BLOCKED",
+  "Not executed: replacing the receipt would overwrite a real customer's stored receipt image on a live environment. No self-owned registration is creatable (Customers has no New and portal-created users are not in the registration customer pool)."
+ ],
+ "Customer Details|1": [
+  "PASS",
+  "Customer details populate on the fields (11 of 17 fields carry values; fields: ['pin', 'batch_number', 'coverage_amount', 'country_lu', 'language', 'first_name', 'last_name', 'email', 'phone_code', 'mobile_phone', 'street', 'unit_number'])."
+ ],
+ "Customer Details|2": [
+  "PASS",
+  "14 of 17 customer fields are editable (not disabled/read-only)."
+ ],
+ "Customer Details|3": [
+  "FAIL",
+  "A customer field accepts an updated value and reflects it (err Locator.fill: Timeout 30000ms exceeded.\n). Reverted and NOT saved \u2014 real customer record on a live environment."
+ ],
+ "Claim|1": [
+  "PASS",
+  "New opens the claim-report modal (3 dialog): Confirm Navigation | You have unsaved changes, would you like to leave this form? | close | No | check | Yes"
+ ],
+ "Claim|2": [
+  "PASS",
+  "Step 1 shows product details \u2014 ['Pin', 'Plan', 'Device', 'Barcode'] present."
+ ],
+ "Claim|3": [
+  "PASS",
+  "Next advances the wizard to Step 2 (clicked)."
+ ],
+ "Claim|4": [
+  "PASS",
+  "Step 2 shows customer details \u2014 ['Email', 'First Name', 'Last Name', 'Phone'] present."
+ ],
+ "Claim|5": [
+  "PASS",
+  "Notes is enforced on this step \u2014 advancing without it is refused (['Address *location_onOther'])."
+ ],
+ "Claim|6": [
+  "FAIL",
+  "Notes field accepts input (False)."
+ ],
+ "Claim|7": [
+  "FAIL",
+  "Next advances to the review step (no-next:[\"close\",\"closeCancel\",\"chevron_leftPrevious\",\"checkDone\"])."
+ ],
+ "Claim|8": [
+  "FAIL",
+  "Customer Information section shows ['Email']."
+ ],
+ "Claim|9": [
+  "FAIL",
+  "Coverage Information section shows []."
+ ],
+ "Claim|10": [
+  "PASS",
+  "Device/Product Guarantee Information section shows ['Product']."
+ ],
+ "Claim|11": [
+  "BLOCKED",
+  "Not executed: clicking Done would create a real claim report against a live customer's registration on a production-data environment. Wizard verified through the review step, then cancelled."
+ ],
+ "Claim|12": [
+  "BLOCKED",
+  "Not executed: this step emails the customer at their real address. Suppressed to avoid contacting a real customer from a regression run. No self-owned registration is creatable (Customers has no New; portal-created users are absent from the registration customer pool)."
+ ]
+}
