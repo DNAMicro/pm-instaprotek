@@ -1,0 +1,30 @@
+{
+ "Record|1": [
+  "PASS",
+  "User record opens showing profile image(True), email 'regressiontest_20260817@qamail.test' and header 'RegressionTest UserAug17'; Date Created column present in grid."
+ ],
+ "Record|2": [
+  "PASS",
+  "Change Password modal opens (2 dialogs stacked) with a New Password field and a disabled 'Save & Close' until input is given."
+ ],
+ "Record|3": [
+  "PASS",
+  "New password reflects on the field; 'Save & Close' enabled state went disabled=True -> disabled=False."
+ ],
+ "Record|4": [
+  "PASS",
+  "Save & Close on Change Password (clicked): modal closed=True, success toast=True. Password updated for the test account."
+ ],
+ "Record|5": [
+  "PASS",
+  "User details display and are editable: 3 text fields, editable = ['email', 'first_name', 'last_name']."
+ ],
+ "Record|6": [
+  "PASS",
+  "Last Name edited from 'UserAug17' to 'UserAug17Edited' \u2014 new value reflects on the field."
+ ],
+ "Record|7": [
+  "PASS",
+  "Save (clicked, toast=False) then reopened the record: Last Name reads 'UserAug17Edited' \u2014 edit persisted."
+ ]
+}

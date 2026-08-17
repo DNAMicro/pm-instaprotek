@@ -1,0 +1,47 @@
+{
+ "Users": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/user",
+  "rows": 51,
+  "lost": false
+ },
+ "Customers": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/customer",
+  "rows": 51,
+  "lost": false
+ },
+ "Calls": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/call",
+  "rows": 51,
+  "lost": false
+ },
+ "Registrations": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/registration",
+  "rows": 51,
+  "lost": false
+ },
+ "Purchase": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/purchase",
+  "rows": 1,
+  "lost": false
+ },
+ "Repair Shops": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/shop",
+  "rows": 1,
+  "lost": false
+ },
+ "Affiliates": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/affiliate",
+  "rows": 2,
+  "lost": false
+ },
+ "Claim Reports": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/claim",
+  "rows": 51,
+  "lost": false
+ },
+ "Timeline": {
+  "url": "https://crm.nullnet.instaprotek.com/portal/timeline",
+  "rows": 0,
+  "lost": false
+ }
+}

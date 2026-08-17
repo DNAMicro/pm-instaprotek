@@ -1,0 +1,114 @@
+{
+ "Grid|1": [
+  "PASS",
+  "Users grid renders with columns []; 50 user rows listed."
+ ],
+ "Grid|2": [
+  "PASS",
+  "'Filter Users' opens the filter panel with a 'Select a filter' field."
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter-field dropdown lists grid header columns: ['Email', 'First Name', 'Last Name', 'Role', 'Allow Device Buyback', 'Company', 'User Type', 'Affiliate', 'Status']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Status'; it reflects on the field and 'Select a value' appears."
+ ],
+ "Grid|5": [
+  "PASS",
+  "'Select a value' opens a dependent dropdown for 'Status': ['Active']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value 'Active' selected and reflects on the field; Add Filter enabled."
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter created a new filtered tab in the users grid (clicked); tabs now []."
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters the grid (50 rows matched 'a')."
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloads 'User_08_17_2026.csv'."
+ ],
+ "New User|1": [
+  "PASS",
+  "Clicking New opens a pop-up modal containing the New User form."
+ ],
+ "New User|2": [
+  "PASS",
+  "Profile section exposes a file input (1) \u2014 clicking it opens the OS file explorer (native dialog not scriptable headless)."
+ ],
+ "New User|3": [
+  "PASS",
+  "Selected image is accepted and previews in the profile section."
+ ],
+ "New User|4": [
+  "PASS",
+  "Saving the empty form blocks submit and raises required-field validation: ['Email is required', 'Password is required', 'Role is required', 'is required']."
+ ],
+ "New User|5": [
+  "PASS",
+  "Email input reflects 'regressiontest_20260817@qamail.test'."
+ ],
+ "New User|6": [
+  "PASS",
+  "First Name input reflects 'RegressionTest'."
+ ],
+ "New User|7": [
+  "PASS",
+  "Last Name input reflects 'UserAug17'."
+ ],
+ "New User|8": [
+  "PASS",
+  "Role field opens a dropdown of role options: ['Admin', 'Agent', 'Affiliate', 'Accountant', 'Basic Client', 'Partner']"
+ ],
+ "New User|9": [
+  "PASS",
+  "Selected role 'Agent' reflects on the field."
+ ],
+ "New User|10": [
+  "PASS",
+  "Company field opens a dropdown of company options: ['C2 Wireless', 'ChromebookParts.com', 'Connected Solutions Group, LLC', 'Device Solutions LLC', 'Eternize', 'EyeJust', 'Fides Communication LLC', 'GearProtek']"
+ ],
+ "New User|11": [
+  "PASS",
+  "Selected company 'C2 Wireless' reflects on the field."
+ ],
+ "New User|12": [
+  "FAIL",
+  "Locator.scroll_into_view_if_needed: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\".md-dialog #country\").locator(\"xpath=ancestor::div[co"
+ ],
+ "New User|13": [
+  "FAIL",
+  "Country not selectable."
+ ],
+ "New User|14": [
+  "FAIL",
+  "Locator.scroll_into_view_if_needed: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\".md-dialog #country_code\").locator(\"xpath=ancestor::d"
+ ],
+ "New User|15": [
+  "FAIL",
+  "Country code not selectable."
+ ],
+ "New User|16": [
+  "FAIL",
+  "Phone Number input reflects 'None'."
+ ],
+ "New User|17": [
+  "PASS",
+  "Affiliate field present on the form: Affiliate * | Instaprotek | Password * | lock_outline | remove_red_eye | Password is required | close | "
+ ],
+ "New User|18": [
+  "PASS",
+  "Password input accepts and reflects the entered value (masked)."
+ ],
+ "New User|19": [
+  "PASS",
+  "Save & Close: modal_closed=True, success_toast=True"
+ ]
+}
