@@ -46,10 +46,14 @@ def module_section(t):
         P.append('<p><em>Out of scope for the portal regression suite (app-only module). All scenarios recorded N/A and excluded from the pass rate.</em></p>')
     P.append('<table data-layout="full-width"><tbody><tr><th>Section</th><th>ID</th><th>Test description</th>'
              '<th>Expected result</th><th>Actual result</th><th>Status</th><th>Notes / Defect ID</th></tr>')
+    def clip(x, n):
+        t=str(x if x is not None else "").strip()
+        t=" ".join(t.split())
+        return (t[:n].rstrip()+" …") if len(t)>n else t
     for row in rows:
         P.append("<tr><td>%s</td><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
-                 % (esc(row["section"]),row["sid"],esc(row["desc"]),esc(row["exp"]),
-                    esc(row["act"]),loz(row["status"]),esc(row["defect"])))
+                 % (esc(row["section"]),row["sid"],esc(clip(row["desc"],110)),esc(clip(row["exp"],200)),
+                    esc(clip(row["act"],420)),loz(row["status"]),esc(row["defect"])))
     P.append("</tbody></table>")
     return "".join(P)
 

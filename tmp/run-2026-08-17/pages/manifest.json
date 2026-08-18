@@ -2,7 +2,7 @@
  {
   "title": "Detailed results 1 \u2014 Users, Registration, Repair Shops",
   "file": "/home/farsheed/pm-instaprotek/tmp/run-2026-08-17/pages/child1.html",
-  "kb": 52.1,
+  "kb": 50.6,
   "modules": [
    "USERS",
    "PORTAL - REGISTRATION",
@@ -12,7 +12,7 @@
  {
   "title": "Detailed results 2 \u2014 Affiliates, Claim Reports",
   "file": "/home/farsheed/pm-instaprotek/tmp/run-2026-08-17/pages/child2.html",
-  "kb": 42.7,
+  "kb": 41.4,
   "modules": [
    "AFFILIATES",
    "CLAIM REPORTS"
@@ -21,7 +21,7 @@
  {
   "title": "Detailed results 3 \u2014 Settings: Company",
   "file": "/home/farsheed/pm-instaprotek/tmp/run-2026-08-17/pages/child3.html",
-  "kb": 59.5,
+  "kb": 58.7,
   "modules": [
    "SETTINGS - COMPANY "
   ]
@@ -29,7 +29,7 @@
  {
   "title": "Detailed results 4 \u2014 Settings: Device Category, Product Category, Brand, Plan, Registration Survey",
   "file": "/home/farsheed/pm-instaprotek/tmp/run-2026-08-17/pages/child4.html",
-  "kb": 78.4,
+  "kb": 77.5,
   "modules": [
    "SETTINGS - DEVICE  CATEGORY",
    "SETTINGS - PRODUCT CATEGORY ",
@@ -41,7 +41,7 @@
  {
   "title": "Detailed results 5 \u2014 Settings: remaining tabs",
   "file": "/home/farsheed/pm-instaprotek/tmp/run-2026-08-17/pages/child5.html",
-  "kb": 76.2,
+  "kb": 75.5,
   "modules": [
    "SETTINGS - REPAIR NETWORk ",
    "SETTINGS - LANGUAGE",
@@ -58,7 +58,7 @@
  {
   "title": "Detailed results 6 \u2014 Out-of-scope modules (N/A)",
   "file": "/home/farsheed/pm-instaprotek/tmp/run-2026-08-17/pages/child6.html",
-  "kb": 54.9,
+  "kb": 53.0,
   "modules": [
    "ORDERS",
    "PRODUCT REVIEWS",
