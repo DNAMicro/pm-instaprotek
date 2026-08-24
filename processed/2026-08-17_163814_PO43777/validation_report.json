@@ -1,0 +1,1015 @@
+{
+  "fixes_applied": [
+    {
+      "row": 1,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 1,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 2,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 2,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 3,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 3,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 4,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 4,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 5,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 5,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 6,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 6,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 7,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 7,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 8,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 8,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 9,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 9,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 10,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 10,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 11,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 11,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 12,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 12,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 13,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 13,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 14,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 14,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 15,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 15,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 16,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 16,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 17,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 17,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 18,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 18,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 19,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 19,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 20,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 20,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 21,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 21,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 22,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 22,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 23,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 23,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 24,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 24,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 25,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 25,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 26,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 26,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 27,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 27,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 28,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 28,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 29,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 29,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 30,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 30,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 31,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 31,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 32,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 32,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 33,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 33,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 34,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 34,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 35,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 35,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 36,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 36,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 37,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 37,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 38,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 38,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 39,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 39,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    },
+    {
+      "row": 40,
+      "column": "First Name",
+      "fix": "trim_whitespace",
+      "before": "sarah ",
+      "after": "sarah"
+    },
+    {
+      "row": 40,
+      "column": "City",
+      "fix": "trim_whitespace",
+      "before": "McKinney ",
+      "after": "McKinney"
+    }
+  ],
+  "cross_validation": {
+    "csv_row_count": 40,
+    "po_quantity": 40,
+    "row_count_match": true,
+    "csv_end_user_name": "sarah cloud",
+    "po_end_user_name": "sarah cloud",
+    "end_user_match": true
+  },
+  "warnings": [],
+  "model_resolution": [
+    {
+      "row": 1,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 2,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 3,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 4,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 5,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 6,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 7,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 8,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 9,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 10,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 11,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 12,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 13,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 14,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 15,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 16,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 17,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 18,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 19,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 20,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 21,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 22,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 23,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 24,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 25,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 26,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 27,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 28,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 29,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 30,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 31,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 32,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 33,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 34,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 35,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 36,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 37,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 38,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 39,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    },
+    {
+      "row": 40,
+      "original_manufacturer": "Samsung Galaxy",
+      "original_model_number": "A15 5G",
+      "resolved_manufacturer": "Samsung Galaxy",
+      "resolved_model_number": "A15 5G",
+      "method": "already_correct",
+      "search_query": null,
+      "search_candidate": null,
+      "search_source_url": null
+    }
+  ]
+}

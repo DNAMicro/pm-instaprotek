@@ -1,0 +1,10 @@
+{
+  "url": "https://hooks.ringcentral.com/webhook/v2/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvdCI6ImMiLCJvaSI6IjE3MDU3MjE4NTciLCJpZCI6IjM3NDQwNDcxMzEifQ.2wjy0wa4pkJt3Wz4zHj-9okE07C-qeORxkSZaT0w3sY",
+  "request_body": {
+    "title": "InstaProtek registration FAILED \u2014 PO 43766",
+    "text": "**Stage:** resolve_models\n**Reason:** 1 row(s) could not be reconciled to the Brand menu\n**Details:**\n```\n{\n  \"unresolved\": [\n    {\n      \"row\": 1,\n      \"manufacturer\": \"Motorola\",\n      \"model_number\": \"Moto G 2025\",\n      \"search_query\": \"Motorola Moto G 2025 model name\",\n      \"search_candidate\": null,\n      \"search_source_url\": null,\n      \"error\": \"search_returned_no_results\"\n    }\n  ]\n}\n```\n**Failure folder:** `processed\\failures\\2026-08-17_161921_PO43766`\n**Run timestamp (UTC):** 2026-08-17_161921"
+  },
+  "status_code": 200,
+  "response_text": "{\"status\":\"OK\"}",
+  "ok": true
+}
