@@ -2,8 +2,8 @@
 **Category:** claim
 **Customer ask:** Tried to claim for a Samsung Galaxy S25 Ultra camera lens and could not; then found a claim had been filed against his tempered glass that he says he never submitted.
 **Flags:** NEEDS INFO
-**References used:** canned_responses.md #2 (default "share a few details")
-**Notes for Sarah:** A claim he did not file is worth checking in the portal before replying - the draft does not concede that anything went wrong on our side, and does not offer to reverse or re-issue anything.
+**References used:** canned_responses.md #4 ("File a Claim" button not working / claim already used)
+**Notes for Sarah:** Canned #4 fits his case exactly: a claim was already filed against that registration, which is why the app would not let him file another. Still worth confirming in the portal that the tempered-glass claim is genuinely his.
 
 <!-- ===== READY-TO-PASTE REPLY ===== -->
 **From:** support@instaprotek.com  (send from the support mailbox in Outlook)
@@ -12,7 +12,7 @@
 
 Hi Slader,
 
-Thanks for reaching out. Please share a few details about the issue you're seeing (a screenshot helps too) so we can assist you better.
+One registration is to one claim only. Pls do another registration using the barcode that is shown in your account, when asked for the receipt, upload any photo. Once done, you'll be able to file a claim against that new registration. Thank you!
 
 Best Regards,
 Instaprotek Support Team

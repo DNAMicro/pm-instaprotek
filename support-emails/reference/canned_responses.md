@@ -59,3 +59,22 @@ Office Hours:
 Monday-Friday
 8:00 AM - 5:00 PM PST
 www.instaprotek.com
+
+## 4. "File a Claim" button not working / claim already used
+Triggers (any): the File a Claim button in the app is greyed out, inoperable, or does nothing;
+"it wouldn't let me file a claim"; a claim was already filed against the registration they want to
+claim on. Approved by Sarah 2026-08-31.
+
+Hello,
+
+One registration is to one claim only. Pls do another registration using the barcode that is shown
+in your account, when asked for the receipt, upload any photo. Once done, you'll be able to file a
+claim against that new registration. Thank you!
+
+Best Regards,
+Instaprotek Support Team
+support@instaprotek.com
+Office Hours:
+Monday-Friday
+8:00 AM - 5:00 PM PST
+www.instaprotek.com
