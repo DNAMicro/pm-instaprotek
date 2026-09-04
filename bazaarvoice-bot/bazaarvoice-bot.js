@@ -7,7 +7,8 @@
  *   node bazaarvoice-bot.js                  dry run, drafts only
  *   node bazaarvoice-bot.js --self-test      offline check of the drafting rules
  *   node bazaarvoice-bot.js --limit 5        only handle the first 5 reviews
- *   node bazaarvoice-bot.js --post           actually post the responses
+ *   node bazaarvoice-bot.js --rehearse       type each reply then cancel, publishes nothing
+ *   node bazaarvoice-bot.js --post           actually publish the responses
  */
 
 const fs = require('fs');
@@ -27,6 +28,7 @@ const opt = (name, fallback) => {
 };
 
 const POST = flag('--post');
+const REHEARSE = flag('--rehearse');
 const HEADLESS = flag('--headless') ? true : config.browser.headless;
 const LIMIT = parseInt(opt('--limit', '0'), 10) || 0;
 const TIMEOUT = config.browser.timeout;
@@ -501,6 +503,91 @@ async function extractReviews(page) {
   return { reviews, skippedOld, unparsed };
 }
 
+/* ------------------------------------------------------------------ */
+/* Posting                                                              */
+/* ------------------------------------------------------------------ */
+
+const RESPONSE_BOX = 'textarea[ng-model="text"]';
+const RESPOND_BUTTON = 'input.respond-button, input[type="submit"][value="Respond"]';
+const CANCEL_BUTTON = 'input[type="reset"][value="Cancel"]';
+
+/**
+ * Publish one response.
+ *
+ * The card is re-found by its review text rather than by index: posting makes
+ * a review drop out of the "Without any response" list, so every index after
+ * it shifts and position based lookups would reply to the wrong customer.
+ *
+ * With `rehearse` the draft is typed and then cancelled, which exercises
+ * everything except the irreversible final click.
+ */
+async function postResponse(page, review, text, { rehearse = false } = {}) {
+  const snippet = review.text.replace(/\s+/g, ' ').trim().slice(0, 50);
+  const card = page.locator(CARD_SELECTOR).filter({ hasText: snippet }).first();
+
+  if (!(await card.count().catch(() => 0))) {
+    return { status: 'skipped', reason: 'card no longer in the list' };
+  }
+
+  // Some retailers do not accept brand responses at all.
+  const blocked = card.locator('textarea[placeholder*="allow responses"]').first();
+  if (await blocked.isVisible().catch(() => false)) {
+    return { status: 'skipped', reason: 'retailer does not allow responses' };
+  }
+  const upgrade = card.locator('input[value*="Upgrade to Respond"]').first();
+  if (await upgrade.isVisible().catch(() => false)) {
+    return { status: 'skipped', reason: 'account lacks respond entitlement' };
+  }
+
+  const box = card.locator(RESPONSE_BOX).first();
+  if (!(await box.isVisible().catch(() => false))) {
+    return { status: 'skipped', reason: 'no response box on this card' };
+  }
+
+  // Clicking the box is what reveals the Respond button.
+  await box.click();
+  await page.waitForTimeout(600);
+  await box.fill(text);
+  await page.waitForTimeout(600);
+
+  const typed = await box.inputValue().catch(() => '');
+  if (typed.trim() !== text.trim()) {
+    return { status: 'failed', reason: 'response text did not land in the box' };
+  }
+
+  if (rehearse) {
+    await card.locator(CANCEL_BUTTON).first().click().catch(() => {});
+    await page.waitForTimeout(500);
+    return { status: 'rehearsed', reason: 'typed and cancelled, nothing published' };
+  }
+
+  const respond = card.locator(RESPOND_BUTTON).first();
+  if (!(await respond.isVisible().catch(() => false))) {
+    await card.locator(CANCEL_BUTTON).first().click().catch(() => {});
+    return { status: 'failed', reason: 'Respond button never appeared' };
+  }
+
+  await respond.click();
+  await page.waitForTimeout(4000);
+
+  // A published response either removes the card from this filtered list or
+  // stamps it with a "Published by" line.
+  const gone = (await page.locator(CARD_SELECTOR).filter({ hasText: snippet }).count().catch(() => 0)) === 0;
+  const published = gone
+    ? true
+    : await page
+        .locator(CARD_SELECTOR)
+        .filter({ hasText: snippet })
+        .first()
+        .innerText()
+        .then((t) => /Published by/i.test(t))
+        .catch(() => false);
+
+  return published
+    ? { status: 'posted', reason: gone ? 'card left the un-responded list' : 'card shows a published response' }
+    : { status: 'failed', reason: 'no confirmation that the response published' };
+}
+
 async function main() {
   if (flag('--self-test')) {
     process.exit(selfTest() ? 0 : 1);
@@ -527,7 +614,11 @@ async function main() {
   const page = await context.newPage();
   page.setDefaultTimeout(TIMEOUT);
 
-  const report = { started: new Date().toISOString(), mode: POST ? 'post' : 'dry-run', drafts: [] };
+  const report = {
+    started: new Date().toISOString(),
+    mode: POST ? 'post' : REHEARSE ? 'rehearse' : 'dry-run',
+    drafts: [],
+  };
 
   try {
     await login(page, credentials);
@@ -551,12 +642,19 @@ async function main() {
       log(`    reply : ${response}`);
       if (problems.length) log(`    RULE VIOLATION: ${problems.join('; ')}`);
 
-      if (POST) {
+      if (POST || REHEARSE) {
         if (problems.length) {
-          log('    skipped posting because the draft failed validation');
+          log('    NOT POSTED: draft failed brand validation');
+          report.drafts[report.drafts.length - 1].postStatus = 'blocked by validation';
+          log('');
           continue;
         }
-        log('    posting is not wired to the live editor yet, skipped');
+        const result = await postResponse(app, review, response, { rehearse: REHEARSE });
+        report.drafts[report.drafts.length - 1].postStatus = result.status;
+        report.drafts[report.drafts.length - 1].postReason = result.reason;
+        log(`    ${result.status.toUpperCase()}: ${result.reason}`);
+        // Space the submissions out rather than hammering the endpoint.
+        await app.waitForTimeout(2000);
       }
       log('');
     }
@@ -574,7 +672,8 @@ async function main() {
       `Bazaarvoice review bot ran successfully (${report.mode})`,
       [
         `**Status:** SUCCESS`,
-        `**Mode:** ${POST ? 'LIVE, responses posted' : 'DRY RUN, nothing posted'}`,
+        `**Mode:** ${POST ? 'LIVE, responses published' : REHEARSE ? 'REHEARSAL, nothing published' : 'DRY RUN, nothing published'}`,
+        `**Responses published:** ${report.drafts.filter((d) => d.postStatus === 'posted').length}`,
         `**Reviews processed:** ${report.drafts.length}`,
         `**Positive:** ${byType.positive || 0}`,
         `**Defect:** ${byType.defect || 0}`,

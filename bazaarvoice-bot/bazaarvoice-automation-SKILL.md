@@ -304,6 +304,38 @@ writes screenshots and a `report.json` under `runs/<timestamp>/`.
 - Use `page.screenshot()` to debug page state
 - Check browser console for JavaScript errors
 
+## Posting responses
+
+The response editor is inline in each review card:
+
+| Element | Selector |
+|---|---|
+| Form | `form[name="responseForm"]` (`ng-submit="publish()"`) |
+| Reply box | `textarea[ng-model="text"]` |
+| Submit | `input[type="submit"][value="Respond"]` (`.respond-button`) |
+| Cancel | `input[type="reset"][value="Cancel"]` |
+
+The Respond button stays hidden until the reply box is clicked, so click the box first,
+then fill it. Playwright's `fill()` drives the Angular binding correctly: the form flips
+to `ng-valid` once text lands.
+
+**Find the card by its review text, never by index.** Publishing removes a review from the
+"Without any response" list, which shifts every index after it. Position based lookups will
+reply to the wrong customer.
+
+**Skip conditions** (both are normal, neither is an error):
+- A visible textarea reading "This retailer doesn't allow responses to reviews."
+- A visible `Upgrade to Respond to Reviews` button, meaning the account lacks the entitlement.
+
+**Confirmation:** after clicking Respond, the card either drops out of the filtered list or
+gains a "Published by" line. If neither happens, treat the post as failed.
+
+**Rehearsing:** `--rehearse` types each reply into the real editor and then clicks Cancel.
+It exercises the whole path except the irreversible final click, which makes it the right
+way to check selectors after a Bazaarvoice UI change.
+
+Drafts that fail brand validation are never posted, in any mode.
+
 ## Daily run and RingCentral notification (REQUIRED)
 
 **Always send a notification to the RingCentral channel every time the daily run finishes.**
