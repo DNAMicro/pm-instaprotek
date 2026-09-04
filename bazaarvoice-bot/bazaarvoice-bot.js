@@ -45,6 +45,22 @@ const MODE_LABEL = {
 
 const log = (...a) => console.log(...a);
 
+// RingCentral messages are read by the team in Pacific, and this machine's clock is Phoenix
+// time, so neither UTC nor the local zone is the right thing to show. Format explicitly.
+const pacific = (d = new Date()) => {
+  const p = Object.fromEntries(
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Los_Angeles',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false, timeZoneName: 'short',
+    })
+      .formatToParts(d)
+      .map((x) => [x.type, x.value])
+  );
+  return `${p.year}-${p.month}-${p.day} ${p.hour}:${p.minute}:${p.second} ${p.timeZoneName}`;
+};
+
 /* ------------------------------------------------------------------ */
 /* Response drafting                                                    */
 /* ------------------------------------------------------------------ */
@@ -694,7 +710,7 @@ async function main() {
         `**Inbox counter:** ${report.resultCount || 'n/a'}`,
         `**Filters:** ${[config.filters.content_type, config.filters.state, config.filters.time_range].filter(Boolean).join(', ')}`,
         `**Run folder:** \`${path.relative(__dirname, OUT)}\``,
-        `**Finished (UTC):** ${new Date().toISOString()}`,
+        `**Finished:** ${pacific()}`,
       ]
     );
   } catch (error) {
@@ -711,7 +727,7 @@ async function main() {
       `**Reason:** ${error.message}`,
       `**Reviews processed before failure:** ${report.drafts.length}`,
       `**Run folder:** \`${path.relative(__dirname, OUT)}\``,
-      `**Failed (UTC):** ${new Date().toISOString()}`,
+      `**Failed:** ${pacific()}`,
     ]);
     await browser.close();
     process.exit(1);
