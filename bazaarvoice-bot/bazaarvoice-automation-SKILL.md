@@ -37,13 +37,57 @@ Cloud Server Deployment
 
 The Bazaarvoice bot performs these steps:
 
-1. **Login** — Authenticate to Bazaarvoice using stored credentials
-2. **Filter** — Display unread reviews from the last month
-3. **Process** — For each review:
+1. **Login** — Authenticate to the Bazaarvoice portal using stored credentials
+2. **Navigate** — Reach the review inbox (see "Reaching the review inbox" below)
+3. **Filter** — Show reviews that have not been responded to
+4. **Process** — For each review:
    - Read and understand the customer's feedback
    - Determine review type (positive, defect, charging issue, etc.)
    - Draft an appropriate response
-   - Post the response
+   - Validate the draft against the brand rules
+   - Post the response (only when run with `--post`)
+5. **Notify** — Post a success notification to RingCentral at the end of every run
+
+## Reaching the review inbox (IMPORTANT)
+
+Do **not** navigate straight to `https://response.bazaarvoice.com/#/respond`. That URL
+redirects back to `portal.bazaarvoice.com/home` and the run finds zero reviews. The only
+reliable route is the one a person takes:
+
+1. Log in, landing on `https://portal.bazaarvoice.com/home`
+2. Click **More** in the top nav
+3. Click **Connections** — this is a `button[role="menuitem"]`, not a link, and it
+   **opens a new browser tab** at `https://response.bazaarvoice.com/#/connections`.
+   The automation must capture that popup tab and keep working in it.
+4. In the new tab, click **Questions and Reviews** in the top nav. This lands on
+   `https://response.bazaarvoice.com/#/respond`, the review inbox.
+
+### Filters
+
+In the "Refine Your Results" sidebar, select:
+
+| Filter group | Value | Why |
+|---|---|---|
+| Content | **Reviews** | Skips shopper questions, which need a different answer style |
+| State | **Without any response** | This is what "not yet responded" actually means. "Unread" is a different axis and will miss reviews |
+| Time | **Any Time** | Combined with the age rule below |
+
+**Age rule: disregard reviews that are a year old or older.** Cards show relative
+timestamps ("3 months ago", "a year ago"); anything at or past twelve months is skipped
+in code via `filters.max_age_months`. Filtering by "Last month" in the UI instead is too
+narrow and typically returns zero rows.
+
+### Useful selectors
+
+| Thing | Selector |
+|---|---|
+| Review card | `[ng-repeat="content in contentStore.contents"]` |
+| Star rating | `.response-star-on`, read `style.width` (100% = 5 stars, 60% = 3) |
+| Result counter | text matching `of [0-9,]+` |
+| Cookie banner | `#onetrust-accept-btn-handler` (it blocks clicks until dismissed) |
+
+The sidebar filters are plain Angular text nodes, so click them with an exact text
+match such as `:text-is("Without any response")`.
 
 ## Step 2: Project Setup
 
@@ -72,8 +116,10 @@ Create these files in your project root:
 {
   "bazaarvoice_url": "https://response.bazaarvoice.com/#/respond",
   "filters": {
-    "status": "Unread",
-    "time_range": "Last month"
+    "content_type": "Reviews",
+    "state": "Without any response",
+    "time_range": "Any Time",
+    "max_age_months": 12
   },
   "browser": {
     "headless": false,
@@ -86,6 +132,11 @@ Create these files in your project root:
     "support_email": "ecom@liquipel.com",
     "support_phone": "1 855 478 4735",
     "support_hours": "Monday to Friday, 8 AM to 5 PM Pacific Time"
+  },
+  "webhook": {
+    "url": "https://hooks.ringcentral.com/webhook/v2/...",
+    "timeout_seconds": 15,
+    "notify_on": "every run, success and failure"
   }
 }
 ```
