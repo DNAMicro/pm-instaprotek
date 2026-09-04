@@ -33,6 +33,16 @@ const HEADLESS = flag('--headless') ? true : config.browser.headless;
 const LIMIT = parseInt(opt('--limit', '0'), 10) || 0;
 const TIMEOUT = config.browser.timeout;
 
+// --rehearse types each reply then cancels, so it publishes nothing even when --post is also
+// present, which run-daily.sh always passes. Rehearsal therefore has to win over POST here, or
+// a run that published nothing gets announced to RingCentral as LIVE.
+const MODE = REHEARSE ? 'rehearse' : POST ? 'post' : 'dry-run';
+const MODE_LABEL = {
+  rehearse: 'REHEARSAL, nothing published',
+  post: 'LIVE, responses published',
+  'dry-run': 'DRY RUN, nothing published',
+}[MODE];
+
 const log = (...a) => console.log(...a);
 
 /* ------------------------------------------------------------------ */
@@ -605,7 +615,7 @@ async function main() {
     process.exit(1);
   }
 
-  log(POST ? '*** LIVE MODE: responses will be posted ***\n' : 'DRY RUN: nothing will be posted\n');
+  log(MODE === 'post' ? '*** LIVE MODE: responses will be posted ***\n' : `${MODE_LABEL}\n`);
 
   const browser = await chromium.launch({ headless: HEADLESS });
   const context = await browser.newContext(
@@ -616,7 +626,7 @@ async function main() {
 
   const report = {
     started: new Date().toISOString(),
-    mode: POST ? 'post' : REHEARSE ? 'rehearse' : 'dry-run',
+    mode: MODE,
     drafts: [],
   };
 
@@ -672,7 +682,7 @@ async function main() {
       `Bazaarvoice review bot ran successfully (${report.mode})`,
       [
         `**Status:** SUCCESS`,
-        `**Mode:** ${POST ? 'LIVE, responses published' : REHEARSE ? 'REHEARSAL, nothing published' : 'DRY RUN, nothing published'}`,
+        `**Mode:** ${MODE_LABEL}`,
         `**Responses published:** ${report.drafts.filter((d) => d.postStatus === 'posted').length}`,
         `**Reviews processed:** ${report.drafts.length}`,
         `**Positive:** ${byType.positive || 0}`,
@@ -697,7 +707,7 @@ async function main() {
     );
     await notifyRingCentral('Bazaarvoice review bot FAILED', [
       `**Status:** FAILED`,
-      `**Mode:** ${POST ? 'LIVE' : 'DRY RUN'}`,
+      `**Mode:** ${MODE_LABEL}`,
       `**Reason:** ${error.message}`,
       `**Reviews processed before failure:** ${report.drafts.length}`,
       `**Run folder:** \`${path.relative(__dirname, OUT)}\``,
