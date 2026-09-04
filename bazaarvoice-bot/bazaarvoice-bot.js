@@ -395,37 +395,97 @@ async function applyFilters(page) {
   await shot(page, 'after-filters');
 }
 
+const CARD_SELECTOR = '[ng-repeat="content in contentStore.contents"]';
+
+/**
+ * Turn a relative timestamp like "3 months ago" or "a year ago" into days.
+ * Returns null when nothing parseable is present.
+ */
+function ageInDays(label) {
+  const m = (label || '').match(/(a|an|\d+)\s+(minute|hour|day|week|month|year)s?\s+ago/i);
+  if (!m) return null;
+  const n = /^(a|an)$/i.test(m[1]) ? 1 : parseInt(m[1], 10);
+  const perUnit = { minute: 1 / 1440, hour: 1 / 24, day: 1, week: 7, month: 30.44, year: 365.25 };
+  return n * perUnit[m[2].toLowerCase()];
+}
+
+/**
+ * Cards render as plain text blocks shaped like:
+ *   SSSSS / SSSSS            (star glyphs)
+ *   [optional review title]
+ *   Product name @ Retailer  ‐ 3 months ago
+ *   review body
+ *   [optional reviewer name]
+ *   Mark Unread
+ */
+function parseCard(raw, index) {
+  const lines = raw
+    .split('\n')
+    .map((l) => l.trim())
+    .filter((l) => l && !/^S+$/.test(l));
+
+  const headerIdx = lines.findIndex((l) => /\sago\s*$/.test(l) && /@/.test(l));
+  if (headerIdx === -1) return null;
+
+  const header = lines[headerIdx];
+  const agoMatch = header.match(/((?:a|an|\d+)\s+\w+\s+ago)\s*$/i);
+  const age = agoMatch ? agoMatch[1] : null;
+  const productPart = header.split(/\s+[‐\-–—]\s+(?:a|an|\d+)\s+\w+\s+ago/)[0];
+  const [product, retailer] = productPart.split('@').map((s) => (s || '').trim());
+
+  const title = headerIdx > 0 ? lines[headerIdx - 1] : null;
+
+  // Everything between the header and the trailing controls is body + name.
+  const tail = lines.slice(headerIdx + 1).filter((l) => !/^(Mark Unread|Mark Read|View Best Practices|Edit|Delete)$/i.test(l));
+  const body = tail[0] || '';
+  const maybeName = tail[1] || '';
+  // A short trailing line that is not a sentence is the reviewer handle.
+  const reviewer = maybeName && maybeName.length <= 30 && !/[.!?]$/.test(maybeName) ? maybeName : '';
+
+  return {
+    index,
+    product: product || null,
+    retailer: retailer || null,
+    title: title && title !== product ? title : null,
+    text: body,
+    reviewer,
+    age,
+    ageDays: ageInDays(age),
+    rating: null, // stars render as glyphs, so tone is driven by the text
+  };
+}
+
 async function extractReviews(page) {
-  const cardSelectors = [
-    '[data-testid*="review" i]',
-    '[class*="review-card" i]',
-    '[class*="ReviewCard" i]',
-    'article',
-    'li[class*="review" i]',
-  ];
-  for (const sel of cardSelectors) {
-    const count = await page.locator(sel).count().catch(() => 0);
-    if (count > 0) {
-      log(`   found ${count} candidate reviews via "${sel}"`);
-      const reviews = [];
-      const n = LIMIT ? Math.min(LIMIT, count) : count;
-      for (let i = 0; i < n; i++) {
-        const card = page.locator(sel).nth(i);
-        const text = (await card.innerText().catch(() => '')).trim();
-        if (!text) continue;
-        const ratingMatch = text.match(/([1-5])\s*(?:out of 5|star)/i);
-        reviews.push({
-          index: i,
-          selector: sel,
-          text,
-          reviewer: (text.split('\n')[0] || '').slice(0, 40),
-          rating: ratingMatch ? parseInt(ratingMatch[1], 10) : null,
-        });
-      }
-      if (reviews.length) return reviews;
+  const count = await page.locator(CARD_SELECTOR).count().catch(() => 0);
+  log(`   ${count} review card(s) loaded in the list`);
+  if (!count) return { reviews: [], skippedOld: 0, unparsed: 0 };
+
+  const maxAgeDays = (config.filters.max_age_months || 12) * 30.44;
+  const reviews = [];
+  let skippedOld = 0;
+  let unparsed = 0;
+
+  for (let i = 0; i < count; i++) {
+    if (LIMIT && reviews.length >= LIMIT) break;
+    const raw = (await page.locator(CARD_SELECTOR).nth(i).innerText().catch(() => '')).trim();
+    if (!raw) continue;
+
+    const card = parseCard(raw, i);
+    if (!card || !card.text) {
+      unparsed++;
+      continue;
     }
+    // Anything a year or older is stale, leave it alone.
+    if (card.ageDays !== null && card.ageDays >= maxAgeDays) {
+      skippedOld++;
+      continue;
+    }
+    reviews.push(card);
   }
-  return [];
+
+  if (skippedOld) log(`   skipped ${skippedOld} review(s) a year or older`);
+  if (unparsed) log(`   could not parse ${unparsed} card(s)`);
+  return { reviews, skippedOld, unparsed };
 }
 
 async function main() {
@@ -458,10 +518,13 @@ async function main() {
 
   try {
     await login(page, credentials);
-    await openRespondWorkspace(page);
-    await applyFilters(page);
+    const app = await openRespondWorkspace(page);
+    await applyFilters(app);
 
-    const reviews = await extractReviews(page);
+    const { reviews, skippedOld, unparsed } = await extractReviews(app);
+    report.skippedOld = skippedOld;
+    report.unparsed = unparsed;
+    report.resultCount = await resultCount(app);
     log(`\nProcessing ${reviews.length} review(s)\n`);
 
     for (const review of reviews) {
@@ -469,8 +532,9 @@ async function main() {
       const problems = validate(response, type);
       report.drafts.push({ ...review, type, response, problems });
 
-      log(`[${review.index}] ${type} | ${review.rating || '?'} star | ${review.reviewer}`);
-      log(`    review: ${review.text.replace(/\s+/g, ' ').slice(0, 120)}`);
+      log(`[${review.index}] ${type} | ${review.age || '?'} | ${review.reviewer || 'anonymous'} | ${review.retailer || '?'}`);
+      log(`    product: ${(review.product || '').slice(0, 80)}`);
+      log(`    review : ${review.text.replace(/\s+/g, ' ').slice(0, 140)}`);
       log(`    reply : ${response}`);
       if (problems.length) log(`    RULE VIOLATION: ${problems.join('; ')}`);
 
@@ -503,7 +567,9 @@ async function main() {
         `**Charging:** ${byType.charging || 0}`,
         `**Neutral:** ${byType.neutral || 0}`,
         `**Drafts flagged by brand rules:** ${flagged}`,
-        `**Filters:** ${config.filters.status}, ${config.filters.time_range}`,
+        `**Skipped as a year or older:** ${report.skippedOld || 0}`,
+        `**Inbox counter:** ${report.resultCount || 'n/a'}`,
+        `**Filters:** ${[config.filters.content_type, config.filters.state, config.filters.time_range].filter(Boolean).join(', ')}`,
         `**Run folder:** \`${path.relative(__dirname, OUT)}\``,
         `**Finished (UTC):** ${new Date().toISOString()}`,
       ]
