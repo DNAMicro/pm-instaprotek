@@ -3,7 +3,7 @@
   "filters": {
     "content_type": "Reviews",
     "state": "Without any response",
-    "time_range": "Last month",
+    "time_range": "Any Time",
     "max_age_months": 12
   },
   "browser": {
