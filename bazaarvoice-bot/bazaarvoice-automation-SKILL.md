@@ -284,18 +284,43 @@ All responses must follow these rules:
 ```bash
 # Install dependencies (first time only)
 npm install
+npx playwright install chromium
 
-# Test the bot locally
-npm start
+# Offline check of the drafting and brand rules, no login needed
+node bazaarvoice-bot.js --self-test
 
-# The browser will open and show the bot in action
-# Verify it logs in, filters, and processes reviews correctly
+# Dry run against the live inbox: logs in, filters, drafts, posts NOTHING
+node bazaarvoice-bot.js --limit 8
+
+# Post for real
+node bazaarvoice-bot.js --post
 ```
+
+The bot is **dry run by default** and only posts when `--post` is passed. Every run
+writes screenshots and a `report.json` under `runs/<timestamp>/`.
 
 **Debugging tips:**
 - If selectors fail, inspect the Bazaarvoice page and update selectors in the script
 - Use `page.screenshot()` to debug page state
 - Check browser console for JavaScript errors
+
+## Daily run and RingCentral notification (REQUIRED)
+
+**Always send a notification to the RingCentral channel every time the daily run finishes.**
+This is not optional and must never be skipped:
+
+- On a completed run, post a **success** notification titled
+  `Bazaarvoice review bot ran successfully` with `**Status:** SUCCESS`.
+- On a failure, post a **failure** notification with `**Status:** FAILED` and the reason.
+- A silent day therefore always means the run never fired, never that a notification was
+  skipped. Do not add flags to suppress it for scheduled runs.
+
+The success message reports mode (dry run or live), reviews processed, the breakdown by
+review type, drafts flagged by the brand rules, how many were skipped as a year or older,
+the inbox counter, the filters used, and the run folder.
+
+The webhook URL lives in `config.json` under `webhook.url` and can be overridden with the
+`RINGCENTRAL_WEBHOOK_URL` environment variable.
 
 ## Step 6: Cloud Server Deployment
 
@@ -338,8 +363,9 @@ Using cron (Linux/Mac):
 # Edit crontab
 crontab -e
 
-# Add this line to run bot daily at 5 PM
-0 17 * * * cd /path/to/bazaarvoice-bot && npm start
+# Add this line to run bot daily at 5 PM.
+# The bot posts its own success notification to RingCentral when it finishes.
+0 17 * * * cd /path/to/bazaarvoice-bot && node bazaarvoice-bot.js --post
 ```
 
 Using Windows Task Scheduler:

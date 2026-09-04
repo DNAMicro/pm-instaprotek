@@ -57,10 +57,25 @@ npm install
 
 ### 5. Test locally
 ```bash
-npm start
+npx playwright install chromium     # first time only
+node bazaarvoice-bot.js --self-test # offline rule check
+node bazaarvoice-bot.js --limit 8   # dry run, posts nothing
 ```
 
-The browser will open and show the bot logging in and filtering reviews.
+The bot is dry run by default and only posts with `--post`.
+
+### 6. How it reaches the reviews
+
+Log in, then **More > Connections** (opens a new tab) **> Questions and Reviews**.
+Filter to **Reviews** + **Without any response** + **Any Time**, and disregard anything
+a year old or older. Going directly to `response.bazaarvoice.com/#/respond` does not work,
+it bounces back to the portal home.
+
+### 7. Daily notification (required)
+
+Every finished run posts a notification to the RingCentral channel: a success notice
+titled "Bazaarvoice review bot ran successfully" when it completes, or a failure notice
+with the reason when it does not. Never disable this for scheduled runs.
 
 ## For GitHub
 
