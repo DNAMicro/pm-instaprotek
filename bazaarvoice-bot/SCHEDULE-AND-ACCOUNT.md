@@ -84,3 +84,35 @@ node bazaarvoice-bot.js --headless --post --limit 1       # one real reply, then
 
 Replies are public on the retailer's site. The response app has Edit and Delete per reply, and
 a deletion can take up to an hour to propagate.
+
+## Model and token usage
+
+**The scheduled process uses no model at all.** Login, filtering, scraping, drafting, posting
+and the RingCentral summary are all Playwright or string formatting; Sarah's `draftResponse()`
+is template substitution. The bot's only dependency is `playwright` and its only outbound call
+is the webhook. Token cost of a nightly run is zero, so there is nothing to right-size.
+
+This section exists for one reason: if reply drafting is ever moved to a model, the flags below
+are not optional. Measured on 2026-09-04, per reply, steady state with a warm cache:
+
+| Configuration | Input tokens | Cost per reply | 864 review backlog |
+|---|---|---|---|
+| Templates (today) | 0 | $0 | $0 |
+| `claude -p` sonnet, no flags | 22,870 | $0.0353 | $30.50 |
+| `claude -p` sonnet `--restricted --strict-mcp-config` | 14,434 | $0.0182 | $15.72 |
+| `claude -p` haiku 4.5, same flags | 11,022 | $0.0089 | $7.69 |
+
+Roughly 11,000 tokens of every call is Claude Code's own harness: tool definitions, the
+Atlassian MCP server's tools, and `CLAUDE.md`, all reloaded to produce an 80 token reply.
+`--strict-mcp-config` alone saves about 8,400 tokens per call by not starting MCP servers the
+drafter would never use, and `--restricted` drops the tools that run commands, which a
+text-only call has no business holding anyway.
+
+So: **haiku 4.5 with `--restricted --strict-mcp-config`**, which is the cheap mechanical end of
+the model-to-task rule in `CLAUDE.md`. Drafting a review reply against fixed brand rules is
+mechanical work; it does not need a frontier model.
+
+Even optimized that is 99% overhead. The genuinely token-efficient route for this one task is
+the Anthropic API with Haiku directly, around 700 tokens per call with no harness, but that
+needs an API key rather than the subscription login. At 25 replies a day the difference is
+cents, so it is only worth revisiting for a large backlog burn.
