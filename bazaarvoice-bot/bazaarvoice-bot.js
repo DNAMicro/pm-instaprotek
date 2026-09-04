@@ -71,7 +71,7 @@ function classify(reviewText, rating) {
   const mentionsCharging = /charg|wall adapter|watt/.test(t);
   const defect = /not work|doesn.?t work|didn.?t work|stopped working|broke|broken|defect|damaged|cracked|faulty|dead|useless|fell apart|quit working/.test(t);
   const complaint = /slow|sluggish|barely|hardly|disappoint|poor|cheap|waste|never |won.?t |wouldn.?t |returned|refund|too long|worse/.test(t);
-  const praise = /love|excellent|great|perfect|awesome|amazing|works well|highly recommend|happy/.test(t);
+  const praise = /love|excellent|great|perfect|awesome|amazing|works well|highly recommend|happy|best|nice|easy|like this|good|works fine|no problem|brand new|as described|quality/.test(t);
 
   // Only treat charging as the topic when the customer is unhappy about it.
   // A five star review that happens to say "charges quickly" is praise.
@@ -475,6 +475,19 @@ async function extractReviews(page) {
       unparsed++;
       continue;
     }
+
+    // Stars are glyphs; the score lives in the width of the filled overlay,
+    // so 100% is five stars, 60% is three.
+    card.rating = await page
+      .locator(CARD_SELECTOR)
+      .nth(i)
+      .locator('.response-star-on')
+      .first()
+      .evaluate((el) => {
+        const w = parseFloat((el.style.width || '').replace('%', ''));
+        return Number.isNaN(w) ? null : Math.round(w / 20);
+      })
+      .catch(() => null);
     // Anything a year or older is stale, leave it alone.
     if (card.ageDays !== null && card.ageDays >= maxAgeDays) {
       skippedOld++;
@@ -532,7 +545,7 @@ async function main() {
       const problems = validate(response, type);
       report.drafts.push({ ...review, type, response, problems });
 
-      log(`[${review.index}] ${type} | ${review.age || '?'} | ${review.reviewer || 'anonymous'} | ${review.retailer || '?'}`);
+      log(`[${review.index}] ${type} | ${review.rating ? review.rating + ' star' : 'no rating'} | ${review.age || '?'} | ${review.reviewer || 'anonymous'} | ${review.retailer || '?'}`);
       log(`    product: ${(review.product || '').slice(0, 80)}`);
       log(`    review : ${review.text.replace(/\s+/g, ' ').slice(0, 140)}`);
       log(`    reply : ${response}`);
@@ -558,8 +571,9 @@ async function main() {
     }, {});
     const flagged = report.drafts.filter((d) => d.problems.length).length;
     await notifyRingCentral(
-      `Bazaarvoice review bot run complete (${report.mode})`,
+      `Bazaarvoice review bot ran successfully (${report.mode})`,
       [
+        `**Status:** SUCCESS`,
         `**Mode:** ${POST ? 'LIVE, responses posted' : 'DRY RUN, nothing posted'}`,
         `**Reviews processed:** ${report.drafts.length}`,
         `**Positive:** ${byType.positive || 0}`,
@@ -583,6 +597,7 @@ async function main() {
       JSON.stringify({ ...report, error: error.message }, null, 2)
     );
     await notifyRingCentral('Bazaarvoice review bot FAILED', [
+      `**Status:** FAILED`,
       `**Mode:** ${POST ? 'LIVE' : 'DRY RUN'}`,
       `**Reason:** ${error.message}`,
       `**Reviews processed before failure:** ${report.drafts.length}`,
