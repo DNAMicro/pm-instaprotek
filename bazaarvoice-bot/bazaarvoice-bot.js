@@ -332,33 +332,63 @@ async function login(page, credentials) {
   return true;
 }
 
-/** Login can drop us on the portal home, so route into the respond workspace. */
+/**
+ * Route into the respond workspace.
+ *
+ * Going straight to response.bazaarvoice.com/#/respond just bounces back to
+ * the portal home, so the only reliable path is the one a human takes:
+ * More > Connections (which opens a NEW TAB) > Questions and Reviews.
+ * Returns the tab the review inbox actually lives in.
+ */
 async function openRespondWorkspace(page) {
-  if (!/#\/respond/.test(page.url())) {
-    log('Opening the respond workspace');
-    await page.goto(config.bazaarvoice_url, { waitUntil: 'domcontentloaded', timeout: TIMEOUT });
-  }
-  await waitForAppReady(page);
-  await dismissCookieBanner(page);
-  log(`   now on ${page.url()}`);
-  await shot(page, 'respond-workspace');
+  log('Opening the respond workspace (More > Connections > Questions and Reviews)');
+
+  await page.locator('button:has-text("More"), [role="button"]:has-text("More")').first().click();
+  await page.waitForTimeout(1500);
+
+  const [popup] = await Promise.all([
+    page.context().waitForEvent('page', { timeout: 20000 }).catch(() => null),
+    page.locator('button[role="menuitem"]:has-text("Connections")').first().click(),
+  ]);
+
+  const app = popup || page;
+  await app.waitForTimeout(8000);
+  await waitForAppReady(app);
+  await dismissCookieBanner(app);
+  log(`   connections tab: ${app.url()}`);
+
+  await app.locator(':text-is("Questions and Reviews")').first().click();
+  await app.waitForTimeout(8000);
+  await waitForAppReady(app);
+  log(`   review inbox: ${app.url()}`);
+  await shot(app, 'respond-workspace');
+  return app;
+}
+
+/** Reads the "N of M" counter above the result list. */
+async function resultCount(page) {
+  const text = await page
+    .locator(':text-matches("of [0-9,]+")')
+    .first()
+    .innerText()
+    .catch(() => '');
+  return text.replace(/\s+/g, ' ').trim();
 }
 
 async function applyFilters(page) {
-  log(`Applying filters: status=${config.filters.status}, range=${config.filters.time_range}`);
-  for (const label of [config.filters.status, config.filters.time_range]) {
-    const control = await firstVisible(page, [
-      `button:has-text("${label}")`,
-      `label:has-text("${label}")`,
-      `[role="option"]:has-text("${label}")`,
-      `text="${label}"`,
-    ], 6000);
-    if (control) {
+  const wanted = [config.filters.content_type, config.filters.state, config.filters.time_range].filter(Boolean);
+  log(`Applying filters: ${wanted.join(' + ')}`);
+
+  for (const label of wanted) {
+    // The sidebar filters are plain text nodes in an Angular list, so an exact
+    // text match is what actually hits them.
+    const control = page.locator(`:text-is("${label}")`).first();
+    if (await control.isVisible().catch(() => false)) {
       await control.click().catch(() => {});
-      await page.waitForTimeout(1500);
-      log(`   applied "${label}"`);
+      await page.waitForTimeout(4000);
+      log(`   applied "${label}"  ->  ${await resultCount(page)}`);
     } else {
-      log(`   WARNING: filter control "${label}" not found, continuing unfiltered`);
+      log(`   WARNING: filter "${label}" not found, continuing without it`);
     }
   }
   await page.waitForTimeout(2500);
