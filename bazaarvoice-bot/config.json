@@ -1,8 +1,10 @@
 {
   "bazaarvoice_url": "https://response.bazaarvoice.com/#/respond",
   "filters": {
-    "status": "Unread",
-    "time_range": "Last month"
+    "content_type": "Reviews",
+    "state": "Without any response",
+    "time_range": "Last month",
+    "max_age_months": 12
   },
   "browser": {
     "headless": false,
