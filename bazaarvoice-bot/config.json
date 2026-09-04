@@ -1,0 +1,19 @@
+{
+  "bazaarvoice_url": "https://response.bazaarvoice.com/#/respond",
+  "filters": {
+    "status": "Unread",
+    "time_range": "Last month"
+  },
+  "browser": {
+    "headless": false,
+    "timeout": 30000
+  },
+  "response_rules": {
+    "no_dashes": true,
+    "vary_openings": true,
+    "closing": "Thank you!",
+    "support_email": "ecom@liquipel.com",
+    "support_phone": "1 855 478 4735",
+    "support_hours": "Monday to Friday, 8 AM to 5 PM Pacific Time"
+  }
+}

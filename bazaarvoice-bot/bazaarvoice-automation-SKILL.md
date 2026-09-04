@@ -1,0 +1,351 @@
+---
+name: bazaarvoice-automation
+description: Set up and deploy automated customer review responses for Bazaarvoice. Use this skill when you need to create a Node.js/Playwright bot that responds to unread product reviews on Bazaarvoice with warm, on-brand replies. Covers the complete workflow: understanding the automation architecture, securing credentials, writing response logic for different review types (positive feedback, product defects, charging issues), local testing, and cloud server deployment. Includes best practices for handling sensitive credentials and examples of review response patterns. Invoke this skill whenever you need to automate Bazaarvoice review management, set up review response workflows, or deploy customer response automation to a server.
+---
+
+# Bazaarvoice Review Response Automation
+
+## Overview
+
+This skill guides you through building and deploying an automated system to respond to customer reviews on Bazaarvoice using Node.js and Playwright. The bot handles filtering, drafting warm responses following brand guidelines, and posting responses directly to the platform.
+
+## When to Use This Skill
+
+- **Setting up automated review responses** for e-commerce products
+- **Deploying a review bot** to a cloud server
+- **Managing review response workflows** with custom brand guidelines
+- **Handling different review types** (complaints, positive feedback, technical issues) programmatically
+- **Securing credentials** for platform integrations
+
+## Architecture Overview
+
+```
+Your Local Development
+    ↓
+├── Files: package.json, bazaarvoice-bot.js, config.json
+├── Credentials: credentials.json (local only, .gitignore)
+└── Push to GitHub (credentials excluded)
+    ↓
+Cloud Server Deployment
+    ├── Clone repo
+    ├── Install dependencies
+    ├── Set environment credentials
+    └── Run bot on schedule or manually
+```
+
+## Step 1: Understand the Workflow
+
+The Bazaarvoice bot performs these steps:
+
+1. **Login** — Authenticate to Bazaarvoice using stored credentials
+2. **Filter** — Display unread reviews from the last month
+3. **Process** — For each review:
+   - Read and understand the customer's feedback
+   - Determine review type (positive, defect, charging issue, etc.)
+   - Draft an appropriate response
+   - Post the response
+
+## Step 2: Project Setup
+
+### Local Development Files
+
+Create these files in your project root:
+
+**`package.json`** — Node.js dependencies
+```json
+{
+  "name": "bazaarvoice-review-bot",
+  "version": "1.0.0",
+  "description": "Automate customer review responses on Bazaarvoice",
+  "main": "bazaarvoice-bot.js",
+  "scripts": {
+    "start": "node bazaarvoice-bot.js"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}
+```
+
+**`config.json`** — Non-sensitive settings (safe for GitHub)
+```json
+{
+  "bazaarvoice_url": "https://response.bazaarvoice.com/#/respond",
+  "filters": {
+    "status": "Unread",
+    "time_range": "Last month"
+  },
+  "browser": {
+    "headless": false,
+    "timeout": 30000
+  },
+  "response_rules": {
+    "no_dashes": true,
+    "vary_openings": true,
+    "closing": "Thank you!",
+    "support_email": "ecom@liquipel.com",
+    "support_phone": "1 855 478 4735",
+    "support_hours": "Monday to Friday, 8 AM to 5 PM Pacific Time"
+  }
+}
+```
+
+**`credentials.json.example`** — Template only (commit to GitHub)
+```json
+{
+  "bazaarvoice": {
+    "username": "your_email@example.com",
+    "password": "your_password",
+    "url": "https://response.bazaarvoice.com/#/respond"
+  }
+}
+```
+
+**`.gitignore`** — Keep secrets out of GitHub
+```
+node_modules/
+credentials.json
+.env
+.env.local
+*.log
+.DS_Store
+```
+
+### Installation
+
+```bash
+# Create folder and initialize
+mkdir bazaarvoice-bot && cd bazaarvoice-bot
+
+# Copy the files above into this folder
+
+# Install dependencies
+npm install
+
+# Create credentials file (copy from template)
+cp credentials.json.example credentials.json
+# Edit credentials.json with your actual Bazaarvoice login
+```
+
+## Step 3: Core Bot Script
+
+Create **`bazaarvoice-bot.js`** to handle the automation:
+
+```javascript
+const { chromium } = require('playwright');
+const config = require('./config.json');
+const credentials = require('./credentials.json');
+
+async function loginToBazaarvoice(page) {
+  console.log('🔓 Logging in to Bazaarvoice...');
+  await page.goto(credentials.bazaarvoice.url, { waitUntil: 'networkidle' });
+  
+  // Fill login form (adjust selectors based on actual page)
+  await page.fill('input[type="email"]', credentials.bazaarvoice.username);
+  await page.fill('input[type="password"]', credentials.bazaarvoice.password);
+  await page.click('button[type="submit"]');
+  
+  await page.waitForNavigation({ waitUntil: 'networkidle' });
+  console.log('✅ Logged in');
+}
+
+async function filterReviews(page) {
+  console.log('🔍 Applying filters...');
+  // Click Unread filter
+  await page.click('text=Unread');
+  // Click Last Month filter
+  await page.click('text=Last month');
+  await page.waitForTimeout(2000);
+  console.log('✅ Filters applied');
+}
+
+async function draftResponse(reviewText, reviewerName) {
+  // Detect review type and draft appropriate response
+  
+  if (reviewText.toLowerCase().includes('love') || reviewText.toLowerCase().includes('excellent')) {
+    return `We're thrilled you're happy with your product! Thank you!`;
+  }
+  
+  if (reviewText.toLowerCase().includes('not work') || reviewText.toLowerCase().includes('broken')) {
+    return `We're sorry this didn't work as expected. We'd like to make it right. Please reach out to our support team at ${config.response_rules.support_email} or call ${config.response_rules.support_phone} (${config.response_rules.support_hours}) for a replacement. Thank you!`;
+  }
+  
+  if (reviewText.toLowerCase().includes('charging')) {
+    return `Thanks for your feedback. Fast charging requires pairing with a compatible fast charging adapter and device. For assistance, contact ${config.response_rules.support_email} or ${config.response_rules.support_phone} (${config.response_rules.support_hours}). Thank you!`;
+  }
+  
+  return `Thank you for taking the time to share your feedback!`;
+}
+
+async function main() {
+  const browser = await chromium.launch({ headless: config.browser.headless });
+  const page = await browser.newPage();
+  
+  try {
+    await loginToBazaarvoice(page);
+    await filterReviews(page);
+    
+    // Get reviews and respond to each
+    console.log('📋 Processing reviews...');
+    // (Add logic to extract and respond to each review)
+    
+    console.log('✅ Done!');
+  } catch (error) {
+    console.error('❌ Error:', error);
+    process.exit(1);
+  } finally {
+    await browser.close();
+  }
+}
+
+main();
+```
+
+## Step 4: Response Style Guidelines
+
+All responses must follow these rules:
+
+**Tone**
+- Warm and customer-centric
+- Address by name when available (e.g., "Hi Sarah,") — never invent names
+- Vary opening phrases across responses
+
+**Format**
+- No dashes of any kind (em-dash, en-dash, hyphens as connectors)
+- Close with "Thank you!" — never "have a great day"
+
+**Handling Review Types**
+
+| Review Type | Response Approach |
+|---|---|
+| **Positive** | 1-2 sentences, no support info needed |
+| **Defect/Damage** | Apologize, offer replacement via support contact, weave naturally into text |
+| **Charging Issue** | Note that fast charging needs compatible adapter + device, offer support |
+| **Mixed** | Address positive, then handle the issue |
+
+**Support Contact Format**
+- Embed naturally: "We'd like to help—please reach out to ecom@liquipel.com or call 1 855 478 4735 (Monday to Friday, 8 AM to 5 PM Pacific Time)"
+- Never mention refunds
+- Don't troubleshoot; offer replacement only
+
+## Step 5: Local Testing
+
+```bash
+# Install dependencies (first time only)
+npm install
+
+# Test the bot locally
+npm start
+
+# The browser will open and show the bot in action
+# Verify it logs in, filters, and processes reviews correctly
+```
+
+**Debugging tips:**
+- If selectors fail, inspect the Bazaarvoice page and update selectors in the script
+- Use `page.screenshot()` to debug page state
+- Check browser console for JavaScript errors
+
+## Step 6: Cloud Server Deployment
+
+### On Your Cloud Server
+
+**1. Clone and setup:**
+```bash
+git clone https://github.com/your-username/bazaarvoice-bot.git
+cd bazaarvoice-bot
+npm install
+```
+
+**2. Add credentials (secure method):**
+```bash
+# Option A: Create credentials.json (not in GitHub)
+cat > credentials.json << 'EOF'
+{
+  "bazaarvoice": {
+    "username": "your_email@example.com",
+    "password": "your_password",
+    "url": "https://response.bazaarvoice.com/#/respond"
+  }
+}
+EOF
+
+# Option B: Use environment variables (if your script supports it)
+export BAZAARVOICE_USERNAME="your_email@example.com"
+export BAZAARVOICE_PASSWORD="your_password"
+```
+
+**3. Run the bot:**
+```bash
+npm start
+```
+
+**4. Schedule on cloud server:**
+
+Using cron (Linux/Mac):
+```bash
+# Edit crontab
+crontab -e
+
+# Add this line to run bot daily at 5 PM
+0 17 * * * cd /path/to/bazaarvoice-bot && npm start
+```
+
+Using Windows Task Scheduler:
+- Create task with trigger "Daily at 5:00 PM"
+- Action: `node "C:\path\to\bazaarvoice-bot\bazaarvoice-bot.js"`
+
+## Step 7: Monitoring and Maintenance
+
+**Check logs:**
+```bash
+npm start > bot.log 2>&1
+tail -f bot.log
+```
+
+**Common issues:**
+- **Login fails** → Credentials invalid or Bazaarvoice UI changed
+- **Selectors don't match** → Inspect page, update selectors in script
+- **No reviews found** → Check filters are applied correctly
+
+**Updates:**
+- When Bazaarvoice changes UI, update page selectors
+- Test locally before deploying changes to server
+- Keep credentials.json secure and never commit it
+
+## Security Best Practices
+
+✅ **Do:**
+- Store credentials.json only on your server (not in GitHub)
+- Use `.gitignore` to prevent accidental commits
+- Rotate credentials regularly
+- Run bot with minimal required permissions
+- Log activity but never log credentials
+
+❌ **Don't:**
+- Commit credentials to GitHub
+- Store credentials in environment variables in shell history
+- Run bot with elevated privileges
+- Share credentials.json across machines
+
+## Example Response Patterns
+
+**Positive review:**
+> "We're so glad you love your Liquipel product! Thank you!"
+
+**Product defect:**
+> "We're sorry the charging cable isn't working properly. We'd like to make this right for you. Please contact our support team at ecom@liquipel.com or call 1 855 478 4735 (Monday to Friday, 8 AM to 5 PM Pacific Time) and they'll send you a replacement right away. Thank you!"
+
+**Charging speed complaint:**
+> "Thanks for your feedback on charging speed. Fast charging works best when paired with a compatible fast charging wall adapter and compatible device. Our support team at ecom@liquipel.com or 1 855 478 4735 (Monday to Friday, 8 AM to 5 PM Pacific Time) can help ensure you have the right setup. Thank you!"
+
+## Next Steps
+
+1. Create the files locally
+2. Test the bot with your Bazaarvoice account
+3. Push to GitHub (credentials excluded)
+4. Deploy to cloud server
+5. Set up scheduling
+6. Monitor logs and iterate
+
+Good luck!

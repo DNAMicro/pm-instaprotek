@@ -1,0 +1,15 @@
+{
+  "name": "bazaarvoice-review-bot",
+  "version": "1.0.0",
+  "description": "Automate customer review responses on Bazaarvoice",
+  "main": "bazaarvoice-bot.js",
+  "scripts": {
+    "start": "node bazaarvoice-bot.js"
+  },
+  "keywords": ["bazaarvoice", "reviews", "automation"],
+  "author": "Sarah Gamba",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}
