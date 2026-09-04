@@ -1,0 +1,504 @@
+/**
+ * Bazaarvoice review response bot.
+ *
+ * Safe by default: runs as a DRY RUN and posts nothing. Pass --post to submit
+ * responses for real.
+ *
+ *   node bazaarvoice-bot.js                  dry run, drafts only
+ *   node bazaarvoice-bot.js --self-test      offline check of the drafting rules
+ *   node bazaarvoice-bot.js --limit 5        only handle the first 5 reviews
+ *   node bazaarvoice-bot.js --post           actually post the responses
+ */
+
+const fs = require('fs');
+const path = require('path');
+const { chromium } = require('playwright');
+const config = require('./config.json');
+
+const RULES = config.response_rules;
+const OUT = path.join(__dirname, 'runs', new Date().toISOString().replace(/[:.]/g, '-'));
+const AUTH_STATE = path.join(__dirname, 'auth-state.json');
+
+const argv = process.argv.slice(2);
+const flag = (name) => argv.includes(name);
+const opt = (name, fallback) => {
+  const i = argv.indexOf(name);
+  return i !== -1 && argv[i + 1] ? argv[i + 1] : fallback;
+};
+
+const POST = flag('--post');
+const HEADLESS = flag('--headless') ? true : config.browser.headless;
+const LIMIT = parseInt(opt('--limit', '0'), 10) || 0;
+const TIMEOUT = config.browser.timeout;
+
+const log = (...a) => console.log(...a);
+
+/* ------------------------------------------------------------------ */
+/* Response drafting                                                    */
+/* ------------------------------------------------------------------ */
+
+const SUPPORT = `${RULES.support_email} or call ${RULES.support_phone} (${RULES.support_hours})`;
+
+const OPENINGS = {
+  positive: [
+    'We are so glad you are happy with it!',
+    'What a great thing to hear!',
+    'It is great to hear this worked out so well for you!',
+    'We love hearing this!',
+  ],
+  negative: [
+    'We are sorry this did not work out as expected.',
+    'We apologize that this fell short for you.',
+    'We are sorry to hear about this experience.',
+    'This is not what we want you to receive.',
+  ],
+};
+
+const counter = { positive: 0, negative: 0 };
+function opening(kind) {
+  const list = OPENINGS[kind];
+  return list[counter[kind]++ % list.length];
+}
+
+/** Strip every kind of dash, per the brand rule. Keeps spacing tidy. */
+function stripDashes(text) {
+  return text.replace(/[-‐-―−]/g, ' ').replace(/\s{2,}/g, ' ').trim();
+}
+
+function classify(reviewText, rating) {
+  const t = (reviewText || '').toLowerCase();
+
+  const mentionsCharging = /charg|wall adapter|watt/.test(t);
+  const defect = /not work|doesn.?t work|didn.?t work|stopped working|broke|broken|defect|damaged|cracked|faulty|dead|useless|fell apart|quit working/.test(t);
+  const complaint = /slow|sluggish|barely|hardly|disappoint|poor|cheap|waste|never |won.?t |wouldn.?t |returned|refund|too long|worse/.test(t);
+  const praise = /love|excellent|great|perfect|awesome|amazing|works well|highly recommend|happy/.test(t);
+
+  // Only treat charging as the topic when the customer is unhappy about it.
+  // A five star review that happens to say "charges quickly" is praise.
+  const chargingIssue = mentionsCharging && (defect || complaint || (rating && rating <= 3));
+
+  if (chargingIssue) return 'charging';
+  if (defect) return 'defect';
+  if (complaint && rating && rating <= 3) return 'defect';
+  if (praise && !defect && !complaint) return 'positive';
+  if (rating && rating >= 4) return 'positive';
+  return 'neutral';
+}
+
+function draftResponse(review) {
+  const name = (review.reviewer || '').trim();
+  const greeting = name && !/^anonymous$/i.test(name) ? `Hi ${name}, ` : '';
+  const type = classify(review.text, review.rating);
+  let body;
+
+  switch (type) {
+    case 'positive':
+      body = `${opening('positive')} ${RULES.closing}`;
+      break;
+    case 'defect':
+      body = `${opening('negative')} We would like to make this right and send you a replacement. Please reach out to our support team at ${SUPPORT} and they will take care of you. ${RULES.closing}`;
+      break;
+    case 'charging':
+      body = `Thanks for sharing your feedback on charging. Fast charging works best when the cable is paired with a compatible fast charging wall adapter and a compatible device. Our support team at ${SUPPORT} can help make sure you have the right setup or send a replacement if something is not working. ${RULES.closing}`;
+      break;
+    default:
+      // Lukewarm review with no stated problem: stay short and do not push
+      // support contact or a replacement the customer never asked for.
+      body = `We appreciate you taking the time to share your feedback. ${RULES.closing}`;
+  }
+
+  return { type, response: stripDashes(greeting + body) };
+}
+
+/** Brand rules that every outgoing response must satisfy. */
+function validate(response, type) {
+  const problems = [];
+  if ((type === 'positive' || type === 'neutral') && response.includes(RULES.support_email)) {
+    problems.push('pushes support contact on a review with no stated problem');
+  }
+  if (type === 'positive' && response.split(/[.!?]\s/).length > 3) {
+    problems.push('positive reply runs longer than two sentences');
+  }
+  if (/[-‐-―−]/.test(response)) problems.push('contains a dash');
+  if (!response.endsWith(RULES.closing)) problems.push(`does not close with "${RULES.closing}"`);
+  if (/have a great day/i.test(response)) problems.push('uses banned closing "have a great day"');
+  if ((response.match(/thank you/gi) || []).length > 1) problems.push('says "thank you" more than once');
+  if (/refund|money back|reimburse/i.test(response)) problems.push('mentions a refund');
+  if (response.length > 1000) problems.push('over 1000 characters');
+  return problems;
+}
+
+/* ------------------------------------------------------------------ */
+/* Offline self test                                                    */
+/* ------------------------------------------------------------------ */
+
+const SAMPLES = [
+  { reviewer: 'Sarah', rating: 5, text: 'I love this cable, it is excellent and works great every day.' },
+  { reviewer: 'Mike', rating: 1, text: 'Stopped working after two weeks. Completely broken now.' },
+  { reviewer: 'Anonymous', rating: 2, text: 'Charging is really slow compared to my old cable.' },
+  { reviewer: '', rating: 3, text: 'It is fine I guess. Nothing special about it.' },
+  { reviewer: 'Dana', rating: 2, text: 'The fast charging does not work at all, cable seems defective.' },
+  { reviewer: 'Chris', rating: 5, text: 'Perfect fit and it charges quickly. Highly recommend.' },
+  { reviewer: 'Pat', rating: 4, text: 'Great quality cable, though the cord is a little shorter than I expected.' },
+  { reviewer: 'Jordan', rating: 1, text: 'Arrived cracked and the packaging was damaged. Very disappointed.' },
+  { reviewer: 'Alex', rating: 3, text: 'Love the braided design but it charges slower than my old one.' },
+];
+
+function selfTest() {
+  log('Running offline self test of the drafting rules\n');
+  let failures = 0;
+  const seen = new Set();
+  for (const s of SAMPLES) {
+    const { type, response } = draftResponse(s);
+    const problems = validate(response, type);
+    if (problems.length) failures++;
+    seen.add(response);
+    log(`  [${type.padEnd(8)}] ${s.rating} star  "${s.text.slice(0, 55)}..."`);
+    log(`     -> ${response}`);
+    log(`     ${problems.length ? 'FAIL: ' + problems.join('; ') : 'ok'}\n`);
+  }
+  log(`Rule violations: ${failures}`);
+  log(`Distinct responses across ${SAMPLES.length} samples: ${seen.size}`);
+  return failures === 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* RingCentral notification                                             */
+/* ------------------------------------------------------------------ */
+
+const WEBHOOK_URL = process.env.RINGCENTRAL_WEBHOOK_URL || (config.webhook && config.webhook.url);
+const NOTIFY = !flag('--skip-webhook');
+
+/**
+ * Every completed run reports to the RingCentral channel, success and failure
+ * alike, so a silent daily run is always a real problem and never just a
+ * skipped notification.
+ */
+async function notifyRingCentral(title, lines) {
+  if (!NOTIFY) {
+    log('Webhook skipped (--skip-webhook)');
+    return { skipped: true };
+  }
+  if (!WEBHOOK_URL) {
+    log('WARNING: no webhook URL configured, RingCentral notification skipped');
+    return { skipped: true, reason: 'no url' };
+  }
+  const body = { title, text: lines.join('\n') };
+  const timeout = (config.webhook && config.webhook.timeout_seconds ? config.webhook.timeout_seconds : 15) * 1000;
+  try {
+    const res = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      signal: AbortSignal.timeout(timeout),
+    });
+    log(`RingCentral notification sent (HTTP ${res.status})`);
+    return { ok: res.ok, status: res.status };
+  } catch (err) {
+    log(`WARNING: RingCentral notification failed: ${err.message}`);
+    return { ok: false, error: err.message };
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Browser automation                                                   */
+/* ------------------------------------------------------------------ */
+
+async function shot(page, name) {
+  fs.mkdirSync(OUT, { recursive: true });
+  const file = path.join(OUT, `${name}.png`);
+  await page.screenshot({ path: file, fullPage: true }).catch(() => {});
+  log(`   screenshot: ${path.relative(__dirname, file)}`);
+}
+
+/** Try a list of selectors, return the first one that is actually visible. */
+async function firstVisible(page, selectors, timeout = 8000) {
+  const deadline = Date.now() + timeout;
+  while (Date.now() < deadline) {
+    for (const sel of selectors) {
+      const loc = page.locator(sel).first();
+      if (await loc.isVisible().catch(() => false)) return loc;
+    }
+    await page.waitForTimeout(400);
+  }
+  return null;
+}
+
+/**
+ * The OneTrust consent banner overlays the login form and swallows clicks,
+ * so it has to go before anything else on the page can be driven.
+ */
+async function dismissCookieBanner(page) {
+  const accept = await firstVisible(page, [
+    '#onetrust-accept-btn-handler',
+    'button:has-text("Accept All Cookies")',
+    'button:has-text("Accept all")',
+    '.onetrust-close-btn-handler',
+  ], 5000);
+  if (!accept) return false;
+  await accept.click().catch(() => {});
+  await page.locator('#onetrust-banner-sdk').waitFor({ state: 'hidden', timeout: 8000 }).catch(() => {});
+  await page.waitForTimeout(500);
+  log('   dismissed cookie consent banner');
+  return true;
+}
+
+async function isLoggedIn(page) {
+  if (await page.locator('input[type="password"]').first().isVisible().catch(() => false)) return false;
+  const url = page.url();
+  if (/login|signin|sign-in|auth0|\/auth/i.test(url)) return false;
+  // Anywhere inside the authenticated app counts: the portal drops you on
+  // /home first and only then routes through to the respond workspace.
+  return /bazaarvoice\.com/i.test(url);
+}
+
+/** The app renders a full page spinner while it boots. Wait it out. */
+async function waitForAppReady(page) {
+  await page.waitForLoadState('networkidle', { timeout: TIMEOUT }).catch(() => {});
+  await page
+    .locator('[class*="spinner" i], [class*="loading" i], [role="progressbar"]')
+    .first()
+    .waitFor({ state: 'hidden', timeout: 20000 })
+    .catch(() => {});
+  await page.waitForTimeout(1500);
+}
+
+async function login(page, credentials) {
+  log('Logging in to Bazaarvoice');
+  await page.goto(credentials.url, { waitUntil: 'domcontentloaded', timeout: TIMEOUT });
+  await page.waitForTimeout(3000);
+  await dismissCookieBanner(page);
+
+  if (await isLoggedIn(page)) {
+    log('   already authenticated from saved session');
+    return true;
+  }
+
+  const emailField = await firstVisible(page, [
+    'input[type="email"]',
+    'input[name="username"]',
+    'input[name="email"]',
+    'input[id*="mail" i]',
+    'input[placeholder*="mail" i]',
+  ]);
+  if (!emailField) {
+    await shot(page, 'login-no-email-field');
+    throw new Error('Could not find the email field on the login page');
+  }
+  await emailField.fill(credentials.username);
+
+  // Some tenants use a two step form: email, Next, then password.
+  let passwordField = await firstVisible(page, ['input[type="password"]'], 2000);
+  if (!passwordField) {
+    const next = await firstVisible(page, [
+      'button:has-text("Next")',
+      'button:has-text("Continue")',
+      'button[type="submit"]',
+    ], 3000);
+    if (next) {
+      await next.click();
+      await page.waitForTimeout(2500);
+    }
+    passwordField = await firstVisible(page, ['input[type="password"]'], 8000);
+  }
+  if (!passwordField) {
+    await shot(page, 'login-no-password-field');
+    throw new Error('Could not find the password field on the login page');
+  }
+  await passwordField.fill(credentials.password);
+
+  const submit = await firstVisible(page, [
+    'button[type="submit"]',
+    'button:has-text("Sign in")',
+    'button:has-text("Log in")',
+    'input[type="submit"]',
+  ]);
+  if (!submit) {
+    await shot(page, 'login-no-submit');
+    throw new Error('Could not find the sign in button');
+  }
+  await submit.click();
+  await page.waitForTimeout(6000);
+  await waitForAppReady(page);
+
+  if (!(await isLoggedIn(page))) {
+    await shot(page, 'login-failed');
+    throw new Error(`Login did not complete. Landed on ${page.url()} (MFA or SSO may be required)`);
+  }
+  log(`   authenticated, landed on ${page.url()}`);
+
+  await page.context().storageState({ path: AUTH_STATE });
+  log('   session saved');
+  return true;
+}
+
+/** Login can drop us on the portal home, so route into the respond workspace. */
+async function openRespondWorkspace(page) {
+  if (!/#\/respond/.test(page.url())) {
+    log('Opening the respond workspace');
+    await page.goto(config.bazaarvoice_url, { waitUntil: 'domcontentloaded', timeout: TIMEOUT });
+  }
+  await waitForAppReady(page);
+  await dismissCookieBanner(page);
+  log(`   now on ${page.url()}`);
+  await shot(page, 'respond-workspace');
+}
+
+async function applyFilters(page) {
+  log(`Applying filters: status=${config.filters.status}, range=${config.filters.time_range}`);
+  for (const label of [config.filters.status, config.filters.time_range]) {
+    const control = await firstVisible(page, [
+      `button:has-text("${label}")`,
+      `label:has-text("${label}")`,
+      `[role="option"]:has-text("${label}")`,
+      `text="${label}"`,
+    ], 6000);
+    if (control) {
+      await control.click().catch(() => {});
+      await page.waitForTimeout(1500);
+      log(`   applied "${label}"`);
+    } else {
+      log(`   WARNING: filter control "${label}" not found, continuing unfiltered`);
+    }
+  }
+  await page.waitForTimeout(2500);
+  await shot(page, 'after-filters');
+}
+
+async function extractReviews(page) {
+  const cardSelectors = [
+    '[data-testid*="review" i]',
+    '[class*="review-card" i]',
+    '[class*="ReviewCard" i]',
+    'article',
+    'li[class*="review" i]',
+  ];
+  for (const sel of cardSelectors) {
+    const count = await page.locator(sel).count().catch(() => 0);
+    if (count > 0) {
+      log(`   found ${count} candidate reviews via "${sel}"`);
+      const reviews = [];
+      const n = LIMIT ? Math.min(LIMIT, count) : count;
+      for (let i = 0; i < n; i++) {
+        const card = page.locator(sel).nth(i);
+        const text = (await card.innerText().catch(() => '')).trim();
+        if (!text) continue;
+        const ratingMatch = text.match(/([1-5])\s*(?:out of 5|star)/i);
+        reviews.push({
+          index: i,
+          selector: sel,
+          text,
+          reviewer: (text.split('\n')[0] || '').slice(0, 40),
+          rating: ratingMatch ? parseInt(ratingMatch[1], 10) : null,
+        });
+      }
+      if (reviews.length) return reviews;
+    }
+  }
+  return [];
+}
+
+async function main() {
+  if (flag('--self-test')) {
+    process.exit(selfTest() ? 0 : 1);
+  }
+
+  let credentials;
+  try {
+    credentials = require('./credentials.json').bazaarvoice;
+  } catch (e) {
+    console.error('Missing credentials.json. Copy credentials.json.example and fill it in.');
+    process.exit(1);
+  }
+  if (!credentials || !credentials.username || !credentials.password) {
+    console.error('credentials.json is missing bazaarvoice.username or bazaarvoice.password');
+    process.exit(1);
+  }
+
+  log(POST ? '*** LIVE MODE: responses will be posted ***\n' : 'DRY RUN: nothing will be posted\n');
+
+  const browser = await chromium.launch({ headless: HEADLESS });
+  const context = await browser.newContext(
+    fs.existsSync(AUTH_STATE) ? { storageState: AUTH_STATE } : {}
+  );
+  const page = await context.newPage();
+  page.setDefaultTimeout(TIMEOUT);
+
+  const report = { started: new Date().toISOString(), mode: POST ? 'post' : 'dry-run', drafts: [] };
+
+  try {
+    await login(page, credentials);
+    await openRespondWorkspace(page);
+    await applyFilters(page);
+
+    const reviews = await extractReviews(page);
+    log(`\nProcessing ${reviews.length} review(s)\n`);
+
+    for (const review of reviews) {
+      const { type, response } = draftResponse(review);
+      const problems = validate(response, type);
+      report.drafts.push({ ...review, type, response, problems });
+
+      log(`[${review.index}] ${type} | ${review.rating || '?'} star | ${review.reviewer}`);
+      log(`    review: ${review.text.replace(/\s+/g, ' ').slice(0, 120)}`);
+      log(`    reply : ${response}`);
+      if (problems.length) log(`    RULE VIOLATION: ${problems.join('; ')}`);
+
+      if (POST) {
+        if (problems.length) {
+          log('    skipped posting because the draft failed validation');
+          continue;
+        }
+        log('    posting is not wired to the live editor yet, skipped');
+      }
+      log('');
+    }
+
+    fs.mkdirSync(OUT, { recursive: true });
+    fs.writeFileSync(path.join(OUT, 'report.json'), JSON.stringify(report, null, 2));
+    log(`Report written to ${path.relative(__dirname, path.join(OUT, 'report.json'))}`);
+
+    const byType = report.drafts.reduce((acc, d) => {
+      acc[d.type] = (acc[d.type] || 0) + 1;
+      return acc;
+    }, {});
+    const flagged = report.drafts.filter((d) => d.problems.length).length;
+    await notifyRingCentral(
+      `Bazaarvoice review bot run complete (${report.mode})`,
+      [
+        `**Mode:** ${POST ? 'LIVE, responses posted' : 'DRY RUN, nothing posted'}`,
+        `**Reviews processed:** ${report.drafts.length}`,
+        `**Positive:** ${byType.positive || 0}`,
+        `**Defect:** ${byType.defect || 0}`,
+        `**Charging:** ${byType.charging || 0}`,
+        `**Neutral:** ${byType.neutral || 0}`,
+        `**Drafts flagged by brand rules:** ${flagged}`,
+        `**Filters:** ${config.filters.status}, ${config.filters.time_range}`,
+        `**Run folder:** \`${path.relative(__dirname, OUT)}\``,
+        `**Finished (UTC):** ${new Date().toISOString()}`,
+      ]
+    );
+  } catch (error) {
+    log(`\nERROR: ${error.message}`);
+    await shot(page, 'error');
+    fs.mkdirSync(OUT, { recursive: true });
+    fs.writeFileSync(
+      path.join(OUT, 'report.json'),
+      JSON.stringify({ ...report, error: error.message }, null, 2)
+    );
+    await notifyRingCentral('Bazaarvoice review bot FAILED', [
+      `**Mode:** ${POST ? 'LIVE' : 'DRY RUN'}`,
+      `**Reason:** ${error.message}`,
+      `**Reviews processed before failure:** ${report.drafts.length}`,
+      `**Run folder:** \`${path.relative(__dirname, OUT)}\``,
+      `**Failed (UTC):** ${new Date().toISOString()}`,
+    ]);
+    await browser.close();
+    process.exit(1);
+  }
+
+  await browser.close();
+  log('Done');
+}
+
+main();

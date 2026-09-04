@@ -15,5 +15,10 @@
     "support_email": "ecom@liquipel.com",
     "support_phone": "1 855 478 4735",
     "support_hours": "Monday to Friday, 8 AM to 5 PM Pacific Time"
+  },
+  "webhook": {
+    "url": "https://hooks.ringcentral.com/webhook/v2/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvdCI6ImMiLCJvaSI6IjE3MDU3MjE4NTciLCJpZCI6IjM3NDQwNDcxMzEifQ.2wjy0wa4pkJt3Wz4zHj-9okE07C-qeORxkSZaT0w3sY",
+    "timeout_seconds": 15,
+    "notify_on": "every run, success and failure"
   }
 }
