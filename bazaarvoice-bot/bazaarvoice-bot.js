@@ -32,6 +32,7 @@ const REHEARSE = flag('--rehearse');
 const HEADLESS = flag('--headless') ? true : config.browser.headless;
 const LIMIT = parseInt(opt('--limit', '0'), 10) || 0;
 const TIMEOUT = config.browser.timeout;
+const LOGIN_EMAIL_ATTEMPTS = 3;
 
 // --rehearse types each reply then cancels, so it publishes nothing even when --post is also
 // present, which run-daily.sh always passes. Rehearsal therefore has to win over POST here, or
@@ -42,6 +43,9 @@ const MODE_LABEL = {
   post: 'LIVE, responses published',
   'dry-run': 'DRY RUN, nothing published',
 }[MODE];
+// The failure notification states the mode without claiming an outcome: a run that died before
+// publishing anything must not be announced as "responses published".
+const MODE_WORD = { rehearse: 'REHEARSAL', post: 'LIVE', 'dry-run': 'DRY RUN' }[MODE];
 
 const log = (...a) => console.log(...a);
 
@@ -240,6 +244,26 @@ async function shot(page, name) {
 }
 
 /** Try a list of selectors, return the first one that is actually visible. */
+async function loginErrorText(page) {
+  const text = await page
+    .locator('[role="alert"], [class*="alert" i], [class*="error" i], [class*="toast" i], [class*="notification" i]')
+    .allInnerTexts()
+    .catch(() => []);
+  const hit = text
+    .map((t) => t.replace(/\s+/g, ' ').trim())
+    .find((t) => t && t.length < 300 && /error|invalid|incorrect|try again|locked|not recognis|not recogniz/i.test(t));
+  return hit || null;
+}
+
+// Only some login errors are worth asking again. "Please try again" is Bazaarvoice telling us
+// its own lookup hiccuped; a rejected password or a locked account is settled, and retrying
+// those would just drive the account further toward a lockout.
+function isRetryableLoginError(text) {
+  if (!text) return false;
+  if (/incorrect|invalid|locked|disabled|not recognis|not recogniz|too many/i.test(text)) return false;
+  return /try again|error when checking|temporar|unexpected|went wrong/i.test(text);
+}
+
 async function firstVisible(page, selectors, timeout = 8000) {
   const deadline = Date.now() + timeout;
   while (Date.now() < deadline) {
@@ -302,13 +326,15 @@ async function login(page, credentials) {
     return true;
   }
 
-  const emailField = await firstVisible(page, [
+  const emailSelectors = [
     'input[type="email"]',
     'input[name="username"]',
     'input[name="email"]',
     'input[id*="mail" i]',
     'input[placeholder*="mail" i]',
-  ]);
+  ];
+
+  const emailField = await firstVisible(page, emailSelectors);
   if (!emailField) {
     await shot(page, 'login-no-email-field');
     throw new Error('Could not find the email field on the login page');
@@ -316,22 +342,49 @@ async function login(page, credentials) {
   await emailField.fill(credentials.username);
 
   // Some tenants use a two step form: email, Next, then password.
+  //
+  // The email step calls a Bazaarvoice lookup that intermittently answers "There was an error
+  // when checking your email address. Please try again." That is retryable and says so, but it
+  // used to abort the whole nightly run on the first occurrence, which is what happened on
+  // 2026-09-04. Retry it a few times before giving up.
   let passwordField = await firstVisible(page, ['input[type="password"]'], 2000);
-  if (!passwordField) {
+  let lastLoginError = null;
+
+  for (let attempt = 1; !passwordField && attempt <= LOGIN_EMAIL_ATTEMPTS; attempt++) {
     const next = await firstVisible(page, [
       'button:has-text("Next")',
       'button:has-text("Continue")',
       'button[type="submit"]',
     ], 3000);
-    if (next) {
-      await next.click();
-      await page.waitForTimeout(2500);
-    }
+    if (!next) break;
+
+    await next.click();
+    await page.waitForTimeout(2500);
     passwordField = await firstVisible(page, ['input[type="password"]'], 8000);
+    if (passwordField) break;
+
+    lastLoginError = await loginErrorText(page);
+    if (!isRetryableLoginError(lastLoginError)) break; // settled, or no banner at all
+
+    log(`   email step failed (attempt ${attempt}/${LOGIN_EMAIL_ATTEMPTS}): ${lastLoginError}`);
+    if (attempt === LOGIN_EMAIL_ATTEMPTS) break;
+
+    await page.waitForTimeout(5000 * attempt); // back off before asking again
+    await page.reload({ waitUntil: 'domcontentloaded', timeout: TIMEOUT }).catch(() => {});
+    await page.waitForTimeout(3000);
+    await dismissCookieBanner(page);
+    const retryField = await firstVisible(page, emailSelectors);
+    if (!retryField) break;
+    await retryField.fill(credentials.username);
   }
+
   if (!passwordField) {
     await shot(page, 'login-no-password-field');
-    throw new Error('Could not find the password field on the login page');
+    throw new Error(
+      lastLoginError
+        ? `Login blocked at the email step after ${LOGIN_EMAIL_ATTEMPTS} attempts. Bazaarvoice said: "${lastLoginError}"`
+        : 'Could not find the password field on the login page'
+    );
   }
   await passwordField.fill(credentials.password);
 
@@ -723,7 +776,7 @@ async function main() {
     );
     await notifyRingCentral('Bazaarvoice review bot FAILED', [
       `**Status:** FAILED`,
-      `**Mode:** ${MODE_LABEL}`,
+      `**Mode:** ${MODE_WORD}`,
       `**Reason:** ${error.message}`,
       `**Reviews processed before failure:** ${report.drafts.length}`,
       `**Run folder:** \`${path.relative(__dirname, OUT)}\``,
