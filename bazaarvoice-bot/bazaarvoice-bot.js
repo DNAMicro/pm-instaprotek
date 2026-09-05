@@ -33,6 +33,7 @@ const HEADLESS = flag('--headless') ? true : config.browser.headless;
 const LIMIT = parseInt(opt('--limit', '0'), 10) || 0;
 const TIMEOUT = config.browser.timeout;
 const LOGIN_EMAIL_ATTEMPTS = 3;
+const PUBLISH_CONFIRM_MS = 20000;
 
 // --rehearse types each reply then cancels, so it publishes nothing even when --post is also
 // present, which run-daily.sh always passes. Rehearsal therefore has to win over POST here, or
@@ -105,15 +106,24 @@ function classify(reviewText, rating) {
   const complaint = /slow|sluggish|barely|hardly|disappoint|poor|cheap|waste|never |won.?t |wouldn.?t |returned|refund|too long|worse/.test(t);
   const praise = /love|excellent|great|perfect|awesome|amazing|works well|highly recommend|happy|best|nice|easy|like this|good|works fine|no problem|brand new|as described|quality/.test(t);
 
+  // The rating is a better signal of how the customer feels than any keyword. On 2026-09-04 a
+  // five star review that read "i liked that it made the screen smooth even with it cracked"
+  // matched the defect list on the word "cracked", and a happy customer was publicly sent an
+  // apology and a replacement offer. A 4 or 5 star review is never a complaint.
+  const happy = Boolean(rating && rating >= 4);
+
   // Only treat charging as the topic when the customer is unhappy about it.
   // A five star review that happens to say "charges quickly" is praise.
-  const chargingIssue = mentionsCharging && (defect || complaint || (rating && rating <= 3));
+  const chargingIssue = mentionsCharging && !happy && (defect || complaint || (rating && rating <= 3));
 
+  // Defect wins over charging. "Arrived broken and would not charge" is a broken product, not
+  // an adapter compatibility question, and the charging reply would answer it by explaining
+  // fast charging adapters. A charging complaint with no hardware failure still lands below.
+  if (defect && !happy) return 'defect';
   if (chargingIssue) return 'charging';
-  if (defect) return 'defect';
   if (complaint && rating && rating <= 3) return 'defect';
   if (praise && !defect && !complaint) return 'positive';
-  if (rating && rating >= 4) return 'positive';
+  if (happy) return 'positive';
   return 'neutral';
 }
 
@@ -647,20 +657,28 @@ async function postResponse(page, review, text, { rehearse = false } = {}) {
   }
 
   await respond.click();
-  await page.waitForTimeout(4000);
 
-  // A published response either removes the card from this filtered list or
-  // stamps it with a "Published by" line.
-  const gone = (await page.locator(CARD_SELECTOR).filter({ hasText: snippet }).count().catch(() => 0)) === 0;
-  const published = gone
-    ? true
-    : await page
-        .locator(CARD_SELECTOR)
-        .filter({ hasText: snippet })
-        .first()
-        .innerText()
-        .then((t) => /Published by/i.test(t))
-        .catch(() => false);
+  // A published response either removes the card from this filtered list or stamps it with a
+  // "Published by" line, but the list can lag well past a single fixed wait. On 2026-09-04
+  // three replies that had in fact published were reported as failures after a flat 4 second
+  // check, so poll until the deadline instead.
+  let gone = false;
+  let published = false;
+  const deadline = Date.now() + PUBLISH_CONFIRM_MS;
+  while (Date.now() < deadline) {
+    await page.waitForTimeout(1500);
+    const matches = page.locator(CARD_SELECTOR).filter({ hasText: snippet });
+    if ((await matches.count().catch(() => 1)) === 0) {
+      gone = true;
+      published = true;
+      break;
+    }
+    const text = await matches.first().innerText().catch(() => '');
+    if (/Published by/i.test(text)) {
+      published = true;
+      break;
+    }
+  }
 
   return published
     ? { status: 'posted', reason: gone ? 'card left the un-responded list' : 'card shows a published response' }
