@@ -34,6 +34,8 @@ const LIMIT = parseInt(opt('--limit', '0'), 10) || 0;
 const TIMEOUT = config.browser.timeout;
 const LOGIN_EMAIL_ATTEMPTS = 3;
 const PUBLISH_CONFIRM_MS = 20000;
+const GOTO_ATTEMPTS = 3;
+const GOTO_TIMEOUT = 60000;
 
 // --rehearse types each reply then cancels, so it publishes nothing even when --post is also
 // present, which run-daily.sh always passes. Rehearsal therefore has to win over POST here, or
@@ -325,9 +327,34 @@ async function waitForAppReady(page) {
   await page.waitForTimeout(1500);
 }
 
+// When the saved session has gone stale, response.bazaarvoice.com bounces through the auth
+// handoff, and every hop restarts Playwright's navigation clock. On 2026-09-05 that chain outran
+// the flat 30s budget and the run died before it had even reached the login form. Give the first
+// navigation a longer budget and a couple of retries; a page that is merely slow is not a failure.
+async function gotoWithRetry(page, url) {
+  let lastError;
+  for (let attempt = 1; attempt <= GOTO_ATTEMPTS; attempt++) {
+    try {
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: GOTO_TIMEOUT });
+      return;
+    } catch (err) {
+      lastError = err;
+      log(`   navigation attempt ${attempt}/${GOTO_ATTEMPTS} timed out`);
+      // The document is often already there behind a redirect that never settled. If the browser
+      // landed on Bazaarvoice at all, carry on rather than throwing the run away.
+      if (/bazaarvoice\.com/i.test(page.url())) {
+        log('   page is on Bazaarvoice already, continuing');
+        return;
+      }
+      if (attempt < GOTO_ATTEMPTS) await page.waitForTimeout(5000 * attempt);
+    }
+  }
+  throw lastError;
+}
+
 async function login(page, credentials) {
   log('Logging in to Bazaarvoice');
-  await page.goto(credentials.url, { waitUntil: 'domcontentloaded', timeout: TIMEOUT });
+  await gotoWithRetry(page, credentials.url);
   await page.waitForTimeout(3000);
   await dismissCookieBanner(page);
 
