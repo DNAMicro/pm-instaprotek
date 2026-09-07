@@ -14,7 +14,7 @@ BOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export HOME="${HOME:-/home/farsheed}"
 export PATH="$HOME/.local/bin:$HOME/.nvm/versions/node/v24.15.0/bin:/usr/local/bin:/usr/bin:/bin"
 
-DAILY_LIMIT="${BV_DAILY_LIMIT:-25}"
+DAILY_LIMIT="${BV_DAILY_LIMIT:-50}"
 
 # The bot reads the FIRST --limit it sees, so only supply the default when the caller has not
 # passed one of their own. Otherwise `./run-daily.sh --limit 2` would be silently ignored.

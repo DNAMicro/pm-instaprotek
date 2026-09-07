@@ -36,6 +36,7 @@ const LOGIN_EMAIL_ATTEMPTS = 3;
 const PUBLISH_CONFIRM_MS = 20000;
 const GOTO_ATTEMPTS = 3;
 const GOTO_TIMEOUT = 60000;
+const READ_MORE_WAIT_MS = 20000;
 
 // --rehearse types each reply then cancels, so it publishes nothing even when --post is also
 // present, which run-daily.sh always passes. Rehearsal therefore has to win over POST here, or
@@ -104,7 +105,7 @@ function classify(reviewText, rating) {
   const t = (reviewText || '').toLowerCase();
 
   const mentionsCharging = /charg|wall adapter|watt/.test(t);
-  const defect = /not work|doesn.?t work|didn.?t work|stopped working|broke|broken|defect|damaged|cracked|faulty|dead|useless|fell apart|quit working/.test(t);
+  const defect = /not work|doesn.?t work|didn.?t work|stopped working|break|broke|broken|defect|damaged|cracked|faulty|dead|useless|fell apart|quit working/.test(t);
   const complaint = /slow|sluggish|barely|hardly|disappoint|poor|cheap|waste|never |won.?t |wouldn.?t |returned|refund|too long|worse/.test(t);
   const praise = /love|excellent|great|perfect|awesome|amazing|works well|highly recommend|happy|best|nice|easy|like this|good|works fine|no problem|brand new|as described|quality/.test(t);
 
@@ -113,6 +114,12 @@ function classify(reviewText, rating) {
   // matched the defect list on the word "cracked", and a happy customer was publicly sent an
   // apology and a replacement offer. A 4 or 5 star review is never a complaint.
   const happy = Boolean(rating && rating >= 4);
+
+  // The mirror image, and the same lesson. On 2026-09-07 a one star review reading "The tip breaks
+  // very easy ... Horribe material with a high price" was drafted "What a great thing to hear!":
+  // no negative keyword fired, and "easy" matched the praise list. A 1 or 2 star review is never
+  // praise, whatever words it happens to contain.
+  const unhappy = Boolean(rating && rating <= 2);
 
   // Only treat charging as the topic when the customer is unhappy about it.
   // A five star review that happens to say "charges quickly" is praise.
@@ -124,6 +131,7 @@ function classify(reviewText, rating) {
   if (defect && !happy) return 'defect';
   if (chargingIssue) return 'charging';
   if (complaint && rating && rating <= 3) return 'defect';
+  if (unhappy) return 'defect';
   if (praise && !defect && !complaint) return 'positive';
   if (happy) return 'positive';
   return 'neutral';
@@ -573,8 +581,34 @@ function parseCard(raw, index) {
   };
 }
 
+const READ_MORE = '.read-more';
+
+/**
+ * The result list renders 50 cards at a time. It is not an infinite scroll and there is no pager:
+ * the app appends the next 50 only when you click the "Read more" footer, which Angular shows while
+ * contentStore.moreContents is true and hides once the list is exhausted. Returns the new card
+ * count, unchanged when there is nothing left to fetch.
+ */
+async function loadMoreCards(page, known) {
+  const before = known;
+  const readMore = page.locator(READ_MORE).first();
+  if (!(await readMore.isVisible().catch(() => false))) return before;
+
+  await readMore.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
+  await readMore.click({ timeout: 10000 }).catch(() => {});
+
+  // The next batch comes over the network, so poll for it rather than betting on one fixed delay.
+  const deadline = Date.now() + READ_MORE_WAIT_MS;
+  while (Date.now() < deadline) {
+    await page.waitForTimeout(500);
+    const now = await page.locator(CARD_SELECTOR).count().catch(() => before);
+    if (now > before) return now;
+  }
+  return before;
+}
+
 async function extractReviews(page) {
-  const count = await page.locator(CARD_SELECTOR).count().catch(() => 0);
+  let count = await page.locator(CARD_SELECTOR).count().catch(() => 0);
   log(`   ${count} review card(s) loaded in the list`);
   if (!count) return { reviews: [], skippedOld: 0, unparsed: 0 };
 
@@ -582,16 +616,37 @@ async function extractReviews(page) {
   const reviews = [];
   let skippedOld = 0;
   let unparsed = 0;
+  let i = 0;
 
-  for (let i = 0; i < count; i++) {
-    if (LIMIT && reviews.length >= LIMIT) break;
+  // "Read more" is only clicked to satisfy an explicit --limit. Cards a year or older are dropped
+  // after parsing and they come out of the same batch of 50, so a budget that ran only on what
+  // rendered first could quietly deliver far fewer; loading more tops the batch back up. Without a
+  // limit we deliberately stay on the first 50 rather than walking the whole backlog, because an
+  // unbounded --post run would otherwise reply to every outstanding review in one sitting.
+  while (true) {
+    for (; i < count; i++) {
+      if (LIMIT && reviews.length >= LIMIT) break;
+      await parseOneCard();
+    }
+    if (!LIMIT || reviews.length >= LIMIT) break;
+    const grown = await loadMoreCards(page, count);
+    if (grown === count) break; // "Read more" is gone, so that is the whole list
+    count = grown;
+    log(`   loaded more: ${count} review card(s) in the list`);
+  }
+
+  if (skippedOld) log(`   skipped ${skippedOld} review(s) a year or older`);
+  if (unparsed) log(`   could not parse ${unparsed} card(s)`);
+  return { reviews, skippedOld, unparsed };
+
+  async function parseOneCard() {
     const raw = (await page.locator(CARD_SELECTOR).nth(i).innerText().catch(() => '')).trim();
-    if (!raw) continue;
+    if (!raw) return;
 
     const card = parseCard(raw, i);
     if (!card || !card.text) {
       unparsed++;
-      continue;
+      return;
     }
 
     // Stars are glyphs; the score lives in the width of the filled overlay,
@@ -609,14 +664,10 @@ async function extractReviews(page) {
     // Anything a year or older is stale, leave it alone.
     if (card.ageDays !== null && card.ageDays >= maxAgeDays) {
       skippedOld++;
-      continue;
+      return;
     }
     reviews.push(card);
   }
-
-  if (skippedOld) log(`   skipped ${skippedOld} review(s) a year or older`);
-  if (unparsed) log(`   could not parse ${unparsed} card(s)`);
-  return { reviews, skippedOld, unparsed };
 }
 
 /* ------------------------------------------------------------------ */

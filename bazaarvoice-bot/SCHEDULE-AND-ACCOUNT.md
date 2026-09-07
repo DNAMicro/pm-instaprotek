@@ -52,16 +52,29 @@ Check it with `crontab -l`. Logs land in `logs/YYYY-MM-DD.log`; the bot's own pe
 
 ### What the wrapper passes, and why
 
-`run-daily.sh` calls the bot with `--post --headless --limit 25`.
+`run-daily.sh` calls the bot with `--post --headless --limit 50`.
 
 - `--post` because the bot is dry run by default. Without it the cron would draft every night
   and publish nothing.
 - `--headless` because `config.json` sets `headless: false` for desktop use and cron has no
   display.
-- `--limit 25` because **the backlog is 864 unanswered reviews out of 2,821**, and the bot has
-  no built in cap of its own. An uncapped run would publish every card it has loaded, around 50
-  public replies, on the first night. 25 a day works the backlog down at a reviewable pace and
-  keeps any drafting problem to a small blast radius.
+- `--limit 50` because **the backlog is around 950 unanswered reviews out of 3,175** and still
+  growing, and the bot has no built in cap of its own. 50 a day works it down at a pace that is
+  still reviewable the next morning while keeping any drafting problem to a bounded blast radius.
+  It opened at 25 a day on 2026-09-04 and was raised on 2026-09-07 once two runs had published
+  cleanly.
+
+### How the list loads
+
+The result list is not an infinite scroll and it has no pager. Bazaarvoice renders 50 cards and
+appends the next 50 only when the **"Read more"** footer is clicked (`.read-more`, Angular's
+`loadMore()`), which the app hides once the list is exhausted. Scrolling to the bottom does
+nothing, so before 2026-09-07 any `--limit` above 50 silently capped at 50. `loadMoreCards()`
+clicks that footer, and only when a `--limit` still needs filling.
+
+Without a `--limit` the bot deliberately stays on the first 50 rather than clicking through the
+whole backlog: an unbounded `--post` run would otherwise reply to every outstanding review in one
+sitting.
 
 Change the pace without editing the crontab by setting `BV_DAILY_LIMIT`, or run it by hand:
 
@@ -114,5 +127,5 @@ mechanical work; it does not need a frontier model.
 
 Even optimized that is 99% overhead. The genuinely token-efficient route for this one task is
 the Anthropic API with Haiku directly, around 700 tokens per call with no harness, but that
-needs an API key rather than the subscription login. At 25 replies a day the difference is
+needs an API key rather than the subscription login. At 50 replies a day the difference is
 cents, so it is only worth revisiting for a large backlog burn.
