@@ -679,22 +679,39 @@ const RESPOND_BUTTON = 'input.respond-button, input[type="submit"][value="Respon
 const CANCEL_BUTTON = 'input[type="reset"][value="Cancel"]';
 
 /**
- * Publish one response.
+ * Locate a review's card in the current list.
  *
- * The card is re-found by its review text rather than by index: posting makes
- * a review drop out of the "Without any response" list, so every index after
- * it shifts and position based lookups would reply to the wrong customer.
+ * The card is re-found rather than held by index: posting makes a review drop out of the
+ * "Without any response" list, so every index after it shifts and a position based lookup would
+ * reply to the wrong customer. The opening text alone is not a unique key either - a 2026-09-07
+ * batch held two different "Wrong item" reviews, from Autumn and from Susan - so the reviewer
+ * name narrows it. That name is read off the card in the first place, so when we have one it is
+ * guaranteed to be on the card we want.
+ */
+function findCards(page, review) {
+  const snippet = review.text.replace(/\s+/g, ' ').trim().slice(0, 50);
+  const cards = page.locator(CARD_SELECTOR).filter({ hasText: snippet });
+  return review.reviewer ? cards.filter({ hasText: review.reviewer }) : cards;
+}
+
+/**
+ * Publish one response.
  *
  * With `rehearse` the draft is typed and then cancelled, which exercises
  * everything except the irreversible final click.
  */
 async function postResponse(page, review, text, { rehearse = false } = {}) {
-  const snippet = review.text.replace(/\s+/g, ' ').trim().slice(0, 50);
-  const card = page.locator(CARD_SELECTOR).filter({ hasText: snippet }).first();
-
-  if (!(await card.count().catch(() => 0))) {
+  const cards = findCards(page, review);
+  const matched = await cards.count().catch(() => 0);
+  if (!matched) {
     return { status: 'skipped', reason: 'card no longer in the list' };
   }
+  // Two cards that agree on both the opening text and the reviewer are not tellable apart, and
+  // replying to the wrong one of those is harmless. Say so in the report rather than guessing.
+  if (matched > 1) {
+    log(`   note: ${matched} cards match this reviewer and text, replying to the first`);
+  }
+  const card = cards.first();
 
   // Some retailers do not accept brand responses at all.
   const blocked = card.locator('textarea[placeholder*="allow responses"]').first();
@@ -745,7 +762,7 @@ async function postResponse(page, review, text, { rehearse = false } = {}) {
   const deadline = Date.now() + PUBLISH_CONFIRM_MS;
   while (Date.now() < deadline) {
     await page.waitForTimeout(1500);
-    const matches = page.locator(CARD_SELECTOR).filter({ hasText: snippet });
+    const matches = findCards(page, review);
     if ((await matches.count().catch(() => 1)) === 0) {
       gone = true;
       published = true;
