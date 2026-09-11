@@ -269,8 +269,10 @@ async function loginErrorText(page) {
     .locator('[role="alert"], [class*="alert" i], [class*="error" i], [class*="toast" i], [class*="notification" i]')
     .allInnerTexts()
     .catch(() => []);
+  // innerText is undefined on SVG elements, and the error toast's icon matches [class*="error"].
+  // On 2026-09-10 that undefined crashed the run exactly when the retryable toast appeared.
   const hit = text
-    .map((t) => t.replace(/\s+/g, ' ').trim())
+    .map((t) => (t || '').replace(/\s+/g, ' ').trim())
     .find((t) => t && t.length < 300 && /error|invalid|incorrect|try again|locked|not recognis|not recogniz/i.test(t));
   return hit || null;
 }
@@ -881,6 +883,7 @@ async function main() {
     );
   } catch (error) {
     log(`\nERROR: ${error.message}`);
+    if (error.stack) log(error.stack.split('\n').slice(1, 6).join('\n'));
     await shot(page, 'error');
     fs.mkdirSync(OUT, { recursive: true });
     fs.writeFileSync(

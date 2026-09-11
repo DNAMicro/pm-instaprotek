@@ -31,7 +31,9 @@ LOG_FILE="$LOG_DIR/$(date +%Y-%m-%d).log"
   echo "=============================================================="
   echo "run start $(date -Iseconds)"
   node "$BOT_DIR/bazaarvoice-bot.js" --post --headless "${LIMIT_ARGS[@]}" "$@"
-  echo "run end $(date -Iseconds) exit=$?"
+  # Capture the status first: the $(date) substitution would otherwise reset $? to 0.
+  status=$?
+  echo "run end $(date -Iseconds) exit=$status"
 } >> "$LOG_FILE" 2>&1
 
 # Keep 30 days of logs and run folders.
