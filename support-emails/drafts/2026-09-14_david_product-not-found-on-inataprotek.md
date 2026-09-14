@@ -1,7 +1,7 @@
 <!-- ===== REVIEW HEADER (not part of the email) ===== -->
 **Category:** registration
 **Customer ask:** Powersmart product not on the list; says he will go to the product company otherwise.
-**Flags:** none; DRAFT ONLY - not sent
+**Flags:** none; SENT 2026-09-14 (approved by Sarah for the device-list batch)
 **References used:** canned_responses.md #1 (device make/model & product-list confusion)
 **Notes for Sarah:** #1 match. Mildly unhappy but no concession requested.
 

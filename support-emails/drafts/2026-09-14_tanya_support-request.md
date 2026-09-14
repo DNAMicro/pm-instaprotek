@@ -1,7 +1,7 @@
 <!-- ===== REVIEW HEADER (not part of the email) ===== -->
 **Category:** registration
 **Customer ask:** Bought several Simple adapters; 'Simple' is not a listed product.
-**Flags:** none; DRAFT ONLY - not sent
+**Flags:** none; SENT 2026-09-14 (approved by Sarah for the device-list batch)
 **References used:** canned_responses.md #1 (device make/model & product-list confusion)
 **Notes for Sarah:** Straight #1 match.
 

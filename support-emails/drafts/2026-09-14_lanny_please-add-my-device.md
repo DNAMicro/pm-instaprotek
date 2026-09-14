@@ -1,7 +1,7 @@
 <!-- ===== REVIEW HEADER (not part of the email) ===== -->
 **Category:** registration
 **Customer ask:** Asks for his Motorola Moto G Stylus 5G 2022 to be added.
-**Flags:** none; DRAFT ONLY - not sent
+**Flags:** none; SENT 2026-09-14 (approved by Sarah for the device-list batch)
 **References used:** canned_responses.md #1 (device make/model & product-list confusion)
 **Notes for Sarah:** #1 match - this is the device make/model step, which is exactly what the rule covers.
 

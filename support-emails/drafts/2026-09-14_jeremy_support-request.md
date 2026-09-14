@@ -1,7 +1,7 @@
 <!-- ===== REVIEW HEADER (not part of the email) ===== -->
 **Category:** registration
 **Customer ask:** Powertek power value pack charger not listed.
-**Flags:** none; DRAFT ONLY - not sent
+**Flags:** none; SENT 2026-09-14 (approved by Sarah for the device-list batch)
 **References used:** canned_responses.md #1 (device make/model & product-list confusion)
 **Notes for Sarah:** #1 match. No first name given anywhere in the thread, so the greeting is 'Hello there,'.
 

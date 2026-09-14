@@ -1,7 +1,7 @@
 <!-- ===== REVIEW HEADER (not part of the email) ===== -->
 **Category:** registration
 **Customer ask:** Trying to activate a Simple 6FT USB-C cable.
-**Flags:** none; DRAFT ONLY - not sent
+**Flags:** none; SENT 2026-09-14 (approved by Sarah for the device-list batch)
 **References used:** canned_responses.md #1 (device make/model & product-list confusion)
 **Notes for Sarah:** First of two threads from her; #1 keeps both answers consistent.
 
