@@ -1,0 +1,27 @@
+Device Category        /portal/category             rows=  9 lost=False new=1 filter=arrow_drop_downFilter Device Categories
+Product Category       /portal/product-category     rows=  8 lost=False new=1 filter=arrow_drop_downFilter Product Categories
+Brand                  /portal/brand                rows= 50 lost=False new=1 filter=arrow_drop_downFilter Brands
+Registration Survey    /portal/survey               rows=  0 lost=False new=1 filter=None
+Plans                  /portal/product-plans        rows= 50 lost=False new=1 filter=arrow_drop_downFilter Plans
+Company                /portal/company              rows=  0 lost=False new=1 filter=arrow_drop_downFilter Companies
+Repair Network         /portal/repair-network       rows=  0 lost=False new=0 filter=None
+Languages              /portal/languages            rows=  3 lost=False new=1 filter=arrow_drop_downFilter Languages
+Regions                /portal/regions              rows=  4 lost=False new=1 filter=arrow_drop_downFilter Regions
+Administrators         /portal/administrators       rows=  4 lost=False new=1 filter=arrow_drop_downFilter Administrators
+Underwriters           /portal/underwriters         rows=  4 lost=False new=1 filter=arrow_drop_downFilter Underwriters
+Support                /portal/support              rows=  0 lost=False new=0 filter=None
+Coverage Type          /portal/coverage-type        rows=  0 lost=False new=0 filter=None
+Coverage Cost Type     /portal/coverage-cost-type   rows=  0 lost=False new=0 filter=None
+Share                  /portal/share/product        rows=  0 lost=False new=0 filter=None
+Review Questions       /portal/review-questions     rows=  0 lost=False new=0 filter=None
+Users                  /portal/user                 rows=  0 lost=False new=0 filter=None
+Customers              /portal/customer             rows=  0 lost=False new=0 filter=None
+Registrations          /portal/registration         rows=  0 lost=False new=0 filter=None
+Repair Shops           /portal/shop                 rows=  0 lost=False new=0 filter=None
+Affiliates             /portal/affiliate            rows=  0 lost=False new=0 filter=None
+Claim Reports          /portal/claim                rows=  0 lost=False new=0 filter=None
+Product Reviews        /portal/product-review       rows=  0 lost=False new=0 filter=None
+Device Buyback         /portal/buy-back             rows=  0 lost=False new=0 filter=None
+Orders                 /portal/order                rows= 50 lost=False new=0 filter=arrow_drop_downFilter Orders
+Purchase               /portal/purchase             rows=  0 lost=False new=0 filter=arrow_drop_downFilter Purchases
+Calls                  /portal/call                 rows= 50 lost=False new=1 filter=arrow_drop_downFilter Calls

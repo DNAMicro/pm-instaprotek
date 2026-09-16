@@ -1,0 +1,31 @@
+Update Plan
+
+=====
+
+Action is Update Plan
+add_circle
+
+=====
+
+arrow_drop_down
+Filter Activity
+Action is Update Plan
+add_circle
+
+=====
+
+Update Plan
+Name:Extended Service Contract
+Coverage Sku:ESC030036MO00IK
+
+=====
+
+Update Plan
+Company Name:RegressionTest0817-DET
+Name:RegressionTest0817-DET
+
+=====
+
+Update Plan
+Terms Conditions:2022-02-08T03_44_40.879Z.pdf
+Name:Demo Plan 100

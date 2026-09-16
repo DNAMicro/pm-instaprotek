@@ -1,0 +1,191 @@
+{
+ "Device Category": {
+  "url": "/portal/category",
+  "rows": 9,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Device Categories",
+  "addNew": 1
+ },
+ "Product Category": {
+  "url": "/portal/product-category",
+  "rows": 8,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Product Categories",
+  "addNew": 1
+ },
+ "Brand": {
+  "url": "/portal/brand",
+  "rows": 50,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Brands",
+  "addNew": 1
+ },
+ "Registration Survey": {
+  "url": "/portal/survey",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 1
+ },
+ "Plans": {
+  "url": "/portal/product-plans",
+  "rows": 50,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Plans",
+  "addNew": 1
+ },
+ "Company": {
+  "url": "/portal/company",
+  "rows": 0,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Companies",
+  "addNew": 1
+ },
+ "Repair Network": {
+  "url": "/portal/repair-network",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Languages": {
+  "url": "/portal/languages",
+  "rows": 3,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Languages",
+  "addNew": 1
+ },
+ "Regions": {
+  "url": "/portal/regions",
+  "rows": 4,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Regions",
+  "addNew": 1
+ },
+ "Administrators": {
+  "url": "/portal/administrators",
+  "rows": 4,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Administrators",
+  "addNew": 1
+ },
+ "Underwriters": {
+  "url": "/portal/underwriters",
+  "rows": 4,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Underwriters",
+  "addNew": 1
+ },
+ "Support": {
+  "url": "/portal/support",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Coverage Type": {
+  "url": "/portal/coverage-type",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Coverage Cost Type": {
+  "url": "/portal/coverage-cost-type",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Share": {
+  "url": "/portal/share/product",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Review Questions": {
+  "url": "/portal/review-questions",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Users": {
+  "url": "/portal/user",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Customers": {
+  "url": "/portal/customer",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Registrations": {
+  "url": "/portal/registration",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Repair Shops": {
+  "url": "/portal/shop",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Affiliates": {
+  "url": "/portal/affiliate",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Claim Reports": {
+  "url": "/portal/claim",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Product Reviews": {
+  "url": "/portal/product-review",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Device Buyback": {
+  "url": "/portal/buy-back",
+  "rows": 0,
+  "lost": false,
+  "filter": null,
+  "addNew": 0
+ },
+ "Orders": {
+  "url": "/portal/order",
+  "rows": 50,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Orders",
+  "addNew": 0
+ },
+ "Purchase": {
+  "url": "/portal/purchase",
+  "rows": 0,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Purchases",
+  "addNew": 0
+ },
+ "Calls": {
+  "url": "/portal/call",
+  "rows": 50,
+  "lost": false,
+  "filter": "arrow_drop_downFilter Calls",
+  "addNew": 1
+ }
+}

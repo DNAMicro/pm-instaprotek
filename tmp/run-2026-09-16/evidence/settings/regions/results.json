@@ -1,0 +1,78 @@
+{
+ "New Region|1": [
+  "PASS",
+  "New button opens the create modal"
+ ],
+ "New Region|2": [
+  "PASS",
+  "Profile-image control is native file input (invokes OS file picker)"
+ ],
+ "New Region|3": [
+  "PASS",
+  "Uploaded image reflected in profile-image section"
+ ],
+ "New Region|4": [
+  "PASS",
+  "Name field accepts input ('RegTest20260916')"
+ ],
+ "New Region|5": [
+  "FAIL",
+  "Save created record; modal closed []"
+ ],
+ "Grid|1": [
+  "PASS",
+  "Regions grid displays (columns ['Region Name', 'Currency', 'Currency Code', 'Currency Symbol', 'Decimal Symbol'], rows=1)"
+ ],
+ "Grid|2": [
+  "PASS",
+  "Filter dropdown displayed (Filter Regions)"
+ ],
+ "Grid|3": [
+  "PASS",
+  "Filter options = grid columns: ['Region Name', 'Currency', 'Currency Code', 'Currency Symbol', 'Decimal Symbol', 'Decimal Digits', 'Digit Grouping Symbol', 'Languages']"
+ ],
+ "Grid|4": [
+  "PASS",
+  "Selected 'Region Name'; 'Select a value' field displayed"
+ ],
+ "Grid|5": [
+  "PASS",
+  "Value dropdown (dependent on 'Region Name'): ['Canada', 'Puerto Rico', 'United Kingdom', 'United States']"
+ ],
+ "Grid|6": [
+  "PASS",
+  "Value 'Canada' selected; Add Filter button displayed"
+ ],
+ "Grid|7": [
+  "PASS",
+  "Add Filter applied (clicked) \u2014 filtered grid tab created"
+ ],
+ "Grid|8": [
+  "PASS",
+  "Search field accepts input and filters grid"
+ ],
+ "Grid|9": [
+  "PASS",
+  "Export as CSV downloaded 'Regions_09-16-2026.csv'"
+ ],
+ "Grid|10": [
+  "FAIL",
+  "Clicking a grid record opens its edit view (no-row)"
+ ],
+ "Grid|11": [
+  "PARTIAL",
+  "no editable text field located in the open record"
+ ],
+ "Grid|12": [
+  "PARTIAL",
+  "no Save button in open record"
+ ],
+ "Grid|13": [
+  "PARTIAL",
+  "Delete shows a Yes/No confirm dialog (no-row)"
+ ],
+ "Grid|14": [
+  "PARTIAL",
+  "confirm dialog present; Yes button not resolved"
+ ]
+}
