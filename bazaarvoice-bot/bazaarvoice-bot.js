@@ -34,6 +34,10 @@ const LIMIT = parseInt(opt('--limit', '0'), 10) || 0;
 const TIMEOUT = config.browser.timeout;
 const LOGIN_EMAIL_ATTEMPTS = 3;
 const PUBLISH_CONFIRM_MS = 20000;
+// Bounded so an intercepted Respond click falls through to the direct-dispatch path with time
+// to spare, instead of burning the full 30s default and failing the run.
+const CLICK_TIMEOUT_MS = 8000;
+const MAX_CONSECUTIVE_FAILURES = 3;
 const GOTO_ATTEMPTS = 3;
 const GOTO_TIMEOUT = 60000;
 const READ_MORE_WAIT_MS = 20000;
@@ -697,6 +701,47 @@ function findCards(page, review) {
 }
 
 /**
+ * Click a card's Respond button.
+ *
+ * Three things sit on top of that button and swallow the click, which is what killed the
+ * 2026-09-15 run after 30s of Playwright retries:
+ *   - the product-details popover, which opens on hover as the mouse travels to the button;
+ *   - the response textarea itself, which grows over the button while editing;
+ *   - the fixed top navbar, because Playwright scrolls the minimum distance and can park the
+ *     button underneath it.
+ * So: centre the button in the viewport first, park the mouse away from the card so any hover
+ * popover closes, and only then click. If an overlay still wins, dispatch the click on the
+ * element itself - that reaches the button regardless of what is painted above it. A disabled
+ * button ignores that dispatch, and the publish check below is what confirms the outcome
+ * either way, so this cannot turn a no-op into a false "posted".
+ */
+async function clickRespond(page, respond) {
+  await respond.evaluate((el) => el.scrollIntoView({ block: 'center', inline: 'nearest' })).catch(() => {});
+  await page.mouse.move(5, 300).catch(() => {});
+  await page.waitForTimeout(500);
+
+  try {
+    await respond.click({ timeout: CLICK_TIMEOUT_MS });
+    return true;
+  } catch (e) {
+    log(`    note: Respond click was intercepted, dispatching it on the button directly`);
+  }
+
+  await page.keyboard.press('Escape').catch(() => {});
+  await respond.evaluate((el) => el.scrollIntoView({ block: 'center', inline: 'nearest' })).catch(() => {});
+  await page.waitForTimeout(300);
+  const dispatched = await respond.evaluate((el) => {
+    if (el.disabled) return false;
+    el.click();
+    return true;
+  }).catch(() => false);
+  if (!dispatched) {
+    log('    note: Respond button is disabled, nothing was submitted');
+  }
+  return dispatched;
+}
+
+/**
  * Publish one response.
  *
  * With `rehearse` the draft is typed and then cancelled, which exercises
@@ -753,7 +798,10 @@ async function postResponse(page, review, text, { rehearse = false } = {}) {
     return { status: 'failed', reason: 'Respond button never appeared' };
   }
 
-  await respond.click();
+  const clicked = await clickRespond(page, respond);
+  if (!clicked) {
+    return { status: 'failed', reason: 'Respond button could not be clicked' };
+  }
 
   // A published response either removes the card from this filtered list or stamps it with a
   // "Published by" line, but the list can lag well past a single fixed wait. On 2026-09-04
@@ -814,9 +862,14 @@ async function main() {
     drafts: [],
   };
 
+  // The respond inbox opens in a popup tab, so `page` stays on the portal home. Track the tab
+  // the work is actually in, or the failure screenshot shows the wrong thing entirely.
+  let active = page;
+
   try {
     await login(page, credentials);
     const app = await openRespondWorkspace(page);
+    active = app;
     await applyFilters(app);
 
     const { reviews, skippedOld, unparsed } = await extractReviews(app);
@@ -825,6 +878,7 @@ async function main() {
     report.resultCount = await resultCount(app);
     log(`\nProcessing ${reviews.length} review(s)\n`);
 
+    let consecutiveFailures = 0;
     for (const review of reviews) {
       const { type, response } = draftResponse(review);
       const problems = validate(response, type);
@@ -843,10 +897,27 @@ async function main() {
           log('');
           continue;
         }
-        const result = await postResponse(app, review, response, { rehearse: REHEARSE });
+        // One unhappy card used to abort the whole run: on 2026-09-15 a single stuck Respond
+        // button left the third review of the batch untouched. Record the failure and carry on,
+        // but give up if the failures come one after another, which means the page itself is
+        // broken and every remaining review would just burn a timeout.
+        let result;
+        try {
+          result = await postResponse(app, review, response, { rehearse: REHEARSE });
+        } catch (e) {
+          result = { status: 'failed', reason: e.message.split('\n')[0] };
+          await shot(app, `error-review-${review.index}`);
+        }
         report.drafts[report.drafts.length - 1].postStatus = result.status;
         report.drafts[report.drafts.length - 1].postReason = result.reason;
         log(`    ${result.status.toUpperCase()}: ${result.reason}`);
+        consecutiveFailures = result.status === 'failed' ? consecutiveFailures + 1 : 0;
+        if (consecutiveFailures >= MAX_CONSECUTIVE_FAILURES) {
+          log('');
+          throw new Error(
+            `${consecutiveFailures} responses failed in a row, stopping the run: ${result.reason}`
+          );
+        }
         // Space the submissions out rather than hammering the endpoint.
         await app.waitForTimeout(2000);
       }
@@ -862,12 +933,16 @@ async function main() {
       return acc;
     }, {});
     const flagged = report.drafts.filter((d) => d.problems.length).length;
+    const failed = report.drafts.filter((d) => d.postStatus === 'failed').length;
     await notifyRingCentral(
-      `Bazaarvoice review bot ran successfully (${report.mode})`,
+      failed
+        ? `Bazaarvoice review bot finished with ${failed} failed response(s) (${report.mode})`
+        : `Bazaarvoice review bot ran successfully (${report.mode})`,
       [
-        `**Status:** SUCCESS`,
+        `**Status:** ${failed ? 'COMPLETED WITH FAILURES' : 'SUCCESS'}`,
         `**Mode:** ${MODE_LABEL}`,
         `**Responses published:** ${report.drafts.filter((d) => d.postStatus === 'posted').length}`,
+        `**Responses that failed to post:** ${failed}`,
         `**Reviews processed:** ${report.drafts.length}`,
         `**Positive:** ${byType.positive || 0}`,
         `**Defect:** ${byType.defect || 0}`,
@@ -884,7 +959,7 @@ async function main() {
   } catch (error) {
     log(`\nERROR: ${error.message}`);
     if (error.stack) log(error.stack.split('\n').slice(1, 6).join('\n'));
-    await shot(page, 'error');
+    await shot(active, 'error');
     fs.mkdirSync(OUT, { recursive: true });
     fs.writeFileSync(
       path.join(OUT, 'report.json'),
