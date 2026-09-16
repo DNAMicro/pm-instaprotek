@@ -63,6 +63,25 @@ An ownership guard (`assert_ours`) now precedes every edit, save and delete: the
 text must contain the run tag `RegressionTest0916`, or the operation aborts and the scenario is
 recorded Blocked. The grid-search recovery path is removed entirely.
 
+## Blast radius (measured 2026-09-16, read-only)
+
+**289 registrations reference this plan.** Measured via the Registrations grid filter
+(`Plan` column -> value `2 - Years Warranty Replacement`): `1-50 of 289`.
+
+The plan value is **still offered as a filter value** on the Registrations grid, and opening a
+sample registration (`9d5efa0f-c54f-4237-b044-492767daa709`, registration `680399676351`,
+customer Azzaria Carcamo, Superior Communications) shows field `service_plan` still reading
+`2 - Years Warranty Replacement`. No error indicators on the record.
+
+So the registrations are **not visibly broken** — they retain the plan value, whether as a
+denormalized name snapshot or via a DB row that survives the portal-level delete.
+
+What IS lost: the plan is gone from the Plans catalogue, so
+- no NEW registration can be created against it, and
+- anything that re-resolves the plan by id at runtime (coverage terms, T&C PDF, claim pricing)
+  may fail for those 289 registrations. **This could not be verified from the portal** and should
+  be checked at the database/API level.
+
 ## Remediation required (cannot be done from the portal)
 
 Restore row `d1dfbdbc-1cb0-48f5-aee9-5a5a4f594c3a` in the product plans table from the most
