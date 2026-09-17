@@ -22,6 +22,50 @@ the templates for each release so every cycle keeps its own record.
   Defect Log, and an auto-calculating Run Summary (pass rate, defect counts, readiness flag).
 - `Instaprotek_Pre-Release_Checklist.docx` — a quick tick-box gate to run before shipping.
 
+## Test data
+
+- **Shared test registration — product barcode `810135810326`.** Every case that needs a
+  registration or a claim uses ONE shared registration. Create it once from the mock data below
+  **before** running any registration- or claim-dependent case, reuse it for all of them, and
+  delete it (with its claim/order) at the end of the run. Never create a new registration per case.
+  - Modules that depend on it: **Portal - Registration** and **Claim Reports**.
+  - Claim filing is app-only. File the claim in the app against this same registration; that opens
+    the claim record in the portal, where the claim-record cases (Claim Reports S14-34) are run.
+  - Order: create the registration (portal) -> Portal Registration cases -> file the claim in the
+    app -> Claim Reports record cases (S14-34) in the portal -> delete the registration and claim.
+
+  | Field | Value |
+  |---|---|
+  | Product barcode | `810135810326` |
+  | First / Last name | Jordan / Testwell |
+  | Email | qa.jordan.testwell@example.com |
+  | Phone | (202) 555-0142 |
+  | Address | 100 QA Street, Testville, CA 94016 |
+  | Manufacturer / Model | Samsung / SM-A156UZKDXAA |
+  | Serial / IMEI | 350776860000142 |
+  | Purchase date | within the last few days (inside the 30-day window and the 1-yr warranty) |
+  | Price / New? | 80 / No |
+
+- **Upload fixtures** — attach these wherever the portal or app asks for a photo or document
+  (all watermarked TEST, in `Insta-testing/test-data/`): purchase receipt
+  `fake_purchase_receipt.png`, damaged-device photo showing the IMEI `fake_device_photo.png`,
+  repair receipt `fake_repair_receipt.png`.
+
+## Product Plans — never create one
+
+**Do not create, edit, or delete a Product Plan during a regression run.** Exercise the plan
+cases read-only against an existing plan: open it, confirm the grid, tabs, and displayed fields,
+and stop there.
+
+Set every plan create/edit/delete case (New Plan wizard, plan Record and Details field edits,
+plan teardown) to `N/A` with the note
+`plan CRUD excluded — see Insta-testing/incidents/2026-09-16-production-plan-deleted.md`.
+
+Why: on 2026-09-16 plan creation failed validation, the driver fell back to opening the first row
+of an unfiltered grid, and teardown deleted a **live production plan**. 289 registrations still
+reference it and 8 of its fields were never captured, so it cannot be re-keyed — only restored
+from a database backup. Plan creation is the step that leads there. Skip it.
+
 ## Workflow
 
 ### 1. Start a cycle
@@ -90,7 +134,8 @@ the templates for each release so every cycle keeps its own record.
 
 ### 5. Clean up (teardown)
 - Once results and any needed evidence are recorded, **delete all test records created during
-  the run** so the environment is left clean for the next cycle.
+  the run** so the environment is left clean for the next cycle. That includes the shared test
+  registration (barcode `810135810326`) and any claim or order filed against it.
 - Applies to the test environment (default `QA-environment`); never run destructive cleanup
   against Production.
 
@@ -118,5 +163,7 @@ the templates for each release so every cycle keeps its own record.
 - **Test data cleanup (required):** after a run, delete all test records created during it so the
   environment is left clean. Capture any needed evidence first; never run cleanup against Production.
 - **Scope note:** exclude modules the team marks out of scope (currently Orders, Product Reviews,
-  Device Buyback — app-only / out of scope) by setting their cases to `N/A`; do not count them in pass rate.
+  Device Buyback — app-only / out of scope) by setting their cases to `N/A`; do not count them in
+  pass rate. Plan create/edit/delete cases are excluded the same way — see
+  "Product Plans — never create one".
 - **Bug filing & report delivery are REQUIRED every run** — see steps 3 (Jira) and 4 (Confluence + RingCentral).
