@@ -66,6 +66,34 @@ of an unfiltered grid, and teardown deleted a **live production plan**. 289 regi
 reference it and 8 of its fields were never captured, so it cannot be re-keyed — only restored
 from a database backup. Plan creation is the step that leads there. Skip it.
 
+## Production runs — registration and claims only
+
+**Applies to Production (`crm.instaprotek.com`) ONLY.** On QA and Staging the full suite runs
+normally; nothing in this section changes those.
+
+A Production regression is not a full regression. It is:
+
+1. **Registration and Claim Reports cases** — the only modules executed in full, using the
+   shared test registration (barcode `810135810326`, see "Test data").
+2. **Browse-only smoke checks for every other module** — open the module, confirm the grid
+   renders with its columns, the filters and search respond, a record opens read-only, and the
+   tabs route. Then stop. Record these as `Pass`/`Fail` on the grid/navigation cases only.
+
+**Create nothing else.** No Plans, Companies, Batches, Users, Repair Shops, Affiliates, Regions,
+Brands, Coverage Types, Administrators, Underwriters, Support, Review Questions, Languages,
+Notes, or any other record. Every create / edit / delete case outside Registration and Claims is
+`N/A` on a Production run, with the note `Production run — create/edit/delete out of scope`.
+
+Rationale: writes to Production are writes to live customer data. The 2026-09-16 run is the
+worked example — see "Product Plans — never create one" and
+`Insta-testing/incidents/2026-09-16-production-plan-deleted.md`.
+
+**Cleanup on Production is not automated.** The standing rule (never run destructive cleanup
+against Production) still holds, so a harness must never delete on Production. The test
+registration and its claim are removed by the team through the approved Production data-removal
+path. Record what was created — registration number, claim number, record ids — in the run notes
+and in the Confluence report so there is an explicit list to remove. Do not leave it undocumented.
+
 ## Workflow
 
 ### 1. Start a cycle
@@ -151,6 +179,8 @@ from a database backup. Plan creation is the step that leads there. Skip it.
 
 - **Default environment:** `QA-environment`. Run each regression cycle here unless told
   otherwise; use Staging for the final pre-go-live pass and Production for smoke checks only.
+  A Production run is scoped down hard — registration and claims cases plus browse-only smoke
+  checks, and no other record creation. See "Production runs — registration and claims only".
 - **Model / token usage:** optimize token usage by matching the model to the task — a fast,
   lightweight model for mechanical steps (copying templates, filling Status cells, tallying
   counts, simple lookups), and a stronger model only for judgment-heavy steps (triaging defect
@@ -161,7 +191,8 @@ from a database backup. Plan creation is the step that leads there. Skip it.
   `git add -A && git commit -m "Regression run <version>" && git push`
   Remote: `https://github.com/DNAMicro/pm-instaprotek.git` (add once with `git remote add origin <url>` if unset).
 - **Test data cleanup (required):** after a run, delete all test records created during it so the
-  environment is left clean. Capture any needed evidence first; never run cleanup against Production.
+  environment is left clean. Capture any needed evidence first; never run cleanup against
+  Production — on a Production run, list what was created instead so the team can remove it.
 - **Scope note:** exclude modules the team marks out of scope (currently Orders, Product Reviews,
   Device Buyback — app-only / out of scope) by setting their cases to `N/A`; do not count them in
   pass rate. Plan create/edit/delete cases are excluded the same way — see
