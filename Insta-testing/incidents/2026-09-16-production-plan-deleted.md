@@ -82,6 +82,38 @@ What IS lost: the plan is gone from the Plans catalogue, so
   may fail for those 289 registrations. **This could not be verified from the portal** and should
   be checked at the database/API level.
 
+## Archive investigation (2026-09-17) — is it archived rather than deleted?
+
+PM states the system archives rather than hard-deletes, and that archived records are
+retrievable. **Nothing reachable from an Agent-role login brings this record back:**
+
+| Check | Result |
+|---|---|
+| Record URL direct | "No records found!" |
+| Plans grid filter -> Status column | **Does not exist** — typing "stat" matches none of the 14 filter columns |
+| CSV export | 53 rows, record absent |
+| Routes `?archived=true`, `/archived`, `/archive`, `?status=archived`, `?isActive=false` | all return the same 53 |
+| App's own API `POST /node/grid`, `status` field rewritten in-flight to `archived`/`Archived`/`inactive`/`Inactive`/`deleted`/`all`/`0`/`1` | **every value returns exactly 53; the plan is in none** |
+
+The grid payload is `{"start":0,"limit":50,"status":"","sort_column":"name","sort_direction":"asc","node":"product_list","product_company_id":"","grid":true}` — the backend does carry a
+`status` concept, but no value tried surfaces the record. Record endpoint is
+`GET /node/product_list/<id>`; for this id it returns the SPA shell, not record JSON.
+
+**IMPORTANT DISTINCTION — the delete did not come from the grid.** Teardown opened the record
+and clicked the **Delete button inside the open record**, then confirmed Yes. If archive-on-delete
+is implemented on the grid's delete icon, the in-record Delete may be a separate code path that
+hard-deletes. If confirmed, that is a product defect in its own right and should be filed.
+
+**Caveats on the "unrecoverable" conclusion:**
+1. This run is authenticated as `agentqa@dnamicro.com`, **Agent role only** — an admin account
+   may expose an archive view not visible here.
+2. Only UI + its API were observable. A soft-delete column could exist in the database with
+   nothing surfacing it.
+
+**To settle it:** query the product plans table for `d1dfbdbc-1cb0-48f5-aee9-5a5a4f594c3a` and
+inspect its deleted/archived/active column. If the row exists with an archive flag, this is an
+un-archive, not a restore.
+
 ## Remediation required (cannot be done from the portal)
 
 Restore row `d1dfbdbc-1cb0-48f5-aee9-5a5a4f594c3a` in the product plans table from the most
