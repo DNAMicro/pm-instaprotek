@@ -51,25 +51,29 @@ the templates for each release so every cycle keeps its own record.
   `fake_purchase_receipt.png`, damaged-device photo showing the IMEI `fake_device_photo.png`,
   repair receipt `fake_repair_receipt.png`.
 
-## Product Plans — never create one
+## Record safety (all environments)
 
-**Do not create, edit, or delete a Product Plan during a regression run.** Exercise the plan
-cases read-only against an existing plan: open it, confirm the grid, tabs, and displayed fields,
-and stop there.
+These two rules are about how the run interacts with records. They do not change what any
+environment tests — QA and Staging still execute the full suite, plan CRUD included.
 
-Set every plan create/edit/delete case (New Plan wizard, plan Record and Details field edits,
-plan teardown) to `N/A` with the note
-`plan CRUD excluded — see Insta-testing/incidents/2026-09-16-production-plan-deleted.md`.
+- **Never recover by opening "the first grid row."** The Plans grid search does not filter: it
+  returns the same rows for any term, so a positive row count proves nothing. If a record this
+  run created cannot be located by its own URL, the scenario is `Blocked` — never fall back to a
+  row position.
+- **Prove ownership before any edit, save, or delete.** The open record's own text must contain
+  this run's tag. If it does not, abort the operation and record the scenario `Blocked`.
 
-Why: on 2026-09-16 plan creation failed validation, the driver fell back to opening the first row
-of an unfiltered grid, and teardown deleted a **live production plan**. 289 registrations still
-reference it and 8 of its fields were never captured, so it cannot be re-keyed — only restored
-from a database backup. Plan creation is the step that leads there. Skip it.
+Why both exist: on 2026-09-16 plan creation failed validation, the driver fell back to opening
+the first row of an unfiltered grid, and teardown deleted a **live production plan**. 289
+registrations still reference it and 8 of its fields were never captured, so it cannot be
+re-keyed — only restored from a database backup. Full write-up:
+`Insta-testing/incidents/2026-09-16-production-plan-deleted.md`.
 
 ## Production runs — registration and claims only
 
 **Applies to Production (`crm.instaprotek.com`) ONLY.** On QA and Staging the full suite runs
-normally; nothing in this section changes those.
+normally — every module, full CRUD, plans and companies and batches included. Nothing in this
+section changes those environments.
 
 A Production regression is not a full regression. It is:
 
@@ -84,8 +88,13 @@ Brands, Coverage Types, Administrators, Underwriters, Support, Review Questions,
 Notes, or any other record. Every create / edit / delete case outside Registration and Claims is
 `N/A` on a Production run, with the note `Production run — create/edit/delete out of scope`.
 
+**Product Plans in particular: do not create, edit, or delete one on Production.** Plan cases on
+a Production run are read-only — open an existing plan, confirm the grid, tabs, and displayed
+fields, stop. The New Plan wizard, plan field edits, and plan teardown are `N/A`.
+
 Rationale: writes to Production are writes to live customer data. The 2026-09-16 run is the
-worked example — see "Product Plans — never create one" and
+worked example — a plan-creation case on Production ended with a live plan deleted. See
+"Record safety (all environments)" and
 `Insta-testing/incidents/2026-09-16-production-plan-deleted.md`.
 
 **Cleanup on Production is not automated.** The standing rule (never run destructive cleanup
@@ -195,6 +204,6 @@ and in the Confluence report so there is an explicit list to remove. Do not leav
   Production — on a Production run, list what was created instead so the team can remove it.
 - **Scope note:** exclude modules the team marks out of scope (currently Orders, Product Reviews,
   Device Buyback — app-only / out of scope) by setting their cases to `N/A`; do not count them in
-  pass rate. Plan create/edit/delete cases are excluded the same way — see
-  "Product Plans — never create one".
+  pass rate. This exclusion list is environment-independent; the extra Production-only
+  exclusions are in "Production runs — registration and claims only".
 - **Bug filing & report delivery are REQUIRED every run** — see steps 3 (Jira) and 4 (Confluence + RingCentral).
