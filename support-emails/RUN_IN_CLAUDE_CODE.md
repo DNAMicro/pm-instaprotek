@@ -10,7 +10,9 @@
 Run instaprotek support email. Respond to each unread Focused email as a reply, use the support
 signature, do not send — just leave them in drafts. Make each reply a conversation (in-thread).
 Access the support mailbox through Claude Chrome and respond from there, not in my dnamicro email.
-Once done, send a success notification in the RingCentral channel.
+
+(The RingCentral notification is automatic now — the skill always posts it, so you no longer need
+to ask for it.)
 
 ## What it does
 1. Opens `https://outlook.office.com/mail/support@instaprotek.com/` in Chrome and lists the unread
@@ -24,7 +26,9 @@ Once done, send a success notification in the RingCentral channel.
    Missing facts get `[NEEDS INFO]`; legal/chargeback/injury/press or a stuck repeat contact gets
    `ESCALATE`.
 6. Saves a review `.md` per draft in `drafts/` plus a row in `_draft_log.csv`, commits and pushes.
-7. Posts a success notification to the RingCentral channel with the counts and flag breakdown.
+7. **Always** posts a notification to the RingCentral channel with the counts, flag breakdown,
+   named ESCALATE cases and the commit SHA — on every run, asked for or not, and on failed or
+   partial runs too. The webhook response is saved to `drafts/_webhook_<date>.json`.
 
 ## After it runs
 Open the **support mailbox** (`support@instaprotek.com`) > Drafts, review each reply — especially

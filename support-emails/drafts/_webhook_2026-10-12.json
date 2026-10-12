@@ -1,0 +1,12 @@
+{
+  "url": "https://hooks.ringcentral.com/webhook/v2/<redacted - see enterprise-registration config/settings.json>",
+  "status_code": 200,
+  "ok": true,
+  "response_text": "{\"status\":\"OK\"}",
+  "posted_at_local": "2026-10-12",
+  "request_body": {
+  "title": "InstaProtek support emails drafted — 2026-10-12",
+  "text": "**50 in-thread reply drafts** created in `support@instaprotek.com > Drafts`. **Nothing was sent** — all drafts await Sarah's review.\n\n**Inbox:** 51 conversations (Sat 10/10 8:42 AM → Mon 10/12 8:48 AM). 50 drafted; 1 skipped (internal OOS handover from the warehouse — belongs to the OOS skill, logged separately).\n\n**Categories:** 25 registration · 20 claim · 3 other · 1 coverage · 1 complaint\n\n**Flags:** 3 ESCALATE · 12 NEEDS APPROVAL · 22 NEEDS INFO\n\n**ESCALATE — review first:**\n```\nRon Herrick     — reported InstaProtek to the California AG; open since 9/28\nLaurie Wilson   — 4th contact since 8/18; canned #4 has failed twice\nBetsy Rakola    — app defect blocks reimbursement; claim closes Oct 18\n```\n**NEEDS APPROVAL:** all concession requests left unpromised — incl. Kassandra Horn (free replacement + waived shipping), Maleah Cummings (paid $9.99 shipping twice), Clayton Bailey (wrong size sent), 4 address changes.\n\n**Commit:** `5b79650`\n**Signature:** live mailbox signature auto-applied by Outlook Web; never retyped."
+}
+
+}
