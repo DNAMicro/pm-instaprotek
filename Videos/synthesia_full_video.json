@@ -1,0 +1,72 @@
+{
+  "asset_id": "user.36e8003e-b5e3-4008-85dd-486ba6d930fb",
+  "test": {
+    "video_id": "b1d75b37-7854-4e40-9e73-df2b268424f3",
+    "scenes": 15,
+    "status": "complete",
+    "duration": "0:01:20.981",
+    "file": "Landingpages_synthesia_test.mp4"
+  },
+  "slices": {
+    "A_intro": {
+      "asset_id": "user.fd9fbabe-2964-4a08-8bec-3d06ef8ec049",
+      "window": "2.60-13.80"
+    },
+    "B_brikd": {
+      "asset_id": "user.76accd81-bf24-461f-bce1-45595c5f481a",
+      "window": "24.80-35.40"
+    },
+    "C_transition": {
+      "asset_id": "user.5244bfd6-5307-4959-b8e6-dcbc44caa7d8",
+      "window": "35.40-39.40"
+    },
+    "P01_simple": {
+      "asset_id": "user.d515ad95-e518-4d3f-9044-63e08dc571c6",
+      "window": "39.40-45.40"
+    },
+    "P02_shieldit": {
+      "asset_id": "user.bd9bdf25-90e0-4076-ac44-775bf162be7f",
+      "window": "45.40-48.50"
+    },
+    "P03_powertek": {
+      "asset_id": "user.2920d433-3ce0-4a2e-b9ba-c4db8e070acc",
+      "window": "48.50-52.80"
+    },
+    "P04_powerlab": {
+      "asset_id": "user.12d76bb5-7261-4a01-ae1c-c310d74de895",
+      "window": "52.80-56.50"
+    },
+    "P05_itskins": {
+      "asset_id": "user.42ccccf5-f8f5-4dbe-9d5d-63e015203a13",
+      "window": "56.50-61.30"
+    },
+    "P06_powersmart": {
+      "asset_id": "user.0fafa272-9332-445d-8a4b-bfe19de896be",
+      "window": "61.30-66.10"
+    },
+    "P07_otterbox": {
+      "asset_id": "user.3999e500-94ca-4084-aac6-dccc97abe813",
+      "window": "66.10-67.90"
+    },
+    "P08_ijoy": {
+      "asset_id": "user.7e38c56a-0b0c-44af-83f4-e3461d74eef1",
+      "window": "67.90-71.35"
+    },
+    "P09_liquipel": {
+      "asset_id": "user.d757dcf5-42f4-4b93-8573-a4b82b38e553",
+      "window": "71.35-73.80"
+    },
+    "P10_tech21": {
+      "asset_id": "user.685df3ac-cfe1-4c13-b675-b0b943f49e5e",
+      "window": "73.80-76.80"
+    },
+    "P11_flow": {
+      "asset_id": "user.7c737108-5c27-405f-bb5d-6ce89a4eaea0",
+      "window": "76.80-85.20"
+    },
+    "P12_outro": {
+      "asset_id": "user.0d11d837-4acd-4427-b369-dd25b564f9e8",
+      "window": "85.20-90.40"
+    }
+  }
+}

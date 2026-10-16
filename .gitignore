@@ -43,3 +43,5 @@ tmp/**/evidence/*.png
 # Video work: intermediate Synthesia clips and preview frames
 Videos/narration/*.mp4
 tmp/vframes/
+Videos/slices/
+Videos/Landingpages_synthesia_test.mp4
