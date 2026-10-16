@@ -1,0 +1,96 @@
+{
+  "video": "Landingpages.mp4",
+  "notes": "start_sec = when the clip should begin in the ORIGINAL video timeline. window = how long that page is on screen. Pronunciations use <sub alias=...>; edit the alias text to change how a name is spoken.",
+  "segments": [
+    {
+      "id": "A_intro",
+      "start_sec": 3.4,
+      "window": "2.8-24.8s  standard landing page (a53)",
+      "script": "This is the <sub alias=\"Insta Protek\">instaProtek</sub> app landing page. Customers can tap to download the app from the App Store or Google Play. Below the download buttons, the \"You Break It, We Fix It\" guarantee is displayed."
+    },
+    {
+      "id": "B_brikd",
+      "start_sec": 25.0,
+      "window": "24.8-36.4s  Brikd page, full screen (a30)",
+      "script": "Next, the same page co-branded for a partner. Here, the <sub alias=\"Brick-d\">Brikd</sub> logo appears next to <sub alias=\"Insta Protek\">instaProtek</sub>, with the Product Replacement Warranty banner. The download buttons stay the same."
+    },
+    {
+      "id": "C_transition",
+      "start_sec": 35.4,
+      "window": "36.4s  window switches to partner tour",
+      "script": "Let's browse through the other partner pages."
+    },
+    {
+      "id": "P01_simple",
+      "start_sec": 39.4,
+      "window": "39.2-45.2s  Simple (a14)",
+      "script": "Simple, also with the Product Replacement Warranty."
+    },
+    {
+      "id": "P02_shieldit",
+      "start_sec": 45.4,
+      "window": "45.2-48.3s  ShieldIT (a42)",
+      "script": "Next, <sub alias=\"Shield I T\">ShieldIT</sub>."
+    },
+    {
+      "id": "P03_powertek",
+      "start_sec": 48.5,
+      "window": "48.3-52.6s  Powertek (a40)",
+      "script": "<sub alias=\"Power-tek\">Powertek</sub>, with the Lifetime Product Replacement Warranty."
+    },
+    {
+      "id": "P04_powerlab",
+      "start_sec": 52.8,
+      "window": "52.6-56.3s  PowerLab (a54)",
+      "script": "<sub alias=\"Power Lab\">PowerLab</sub>, with the \"You Break It, We Fix It\" guarantee."
+    },
+    {
+      "id": "P05_itskins",
+      "start_sec": 56.5,
+      "window": "56.3-61.1s  ITSKINS (a22), page scrolls at ~58.5s",
+      "script": "<sub alias=\"I T Skins\">ITSKINS</sub>. Scroll down for the download buttons."
+    },
+    {
+      "id": "P06_powersmart",
+      "start_sec": 61.3,
+      "window": "61.1-65.9s  Powersmart (a41)",
+      "script": "<sub alias=\"Power Smart\">Powersmart</sub>, with the Lifetime Product Replacement Warranty."
+    },
+    {
+      "id": "P07_otterbox",
+      "start_sec": 66.1,
+      "window": "66.0-67.7s  OtterBox (a20)",
+      "script": "<sub alias=\"Otter Box\">OtterBox</sub>."
+    },
+    {
+      "id": "P08_ijoy",
+      "start_sec": 67.9,
+      "window": "67.7-71.1s  iJOY (a2)",
+      "script": "<sub alias=\"eye joy\">iJOY</sub>."
+    },
+    {
+      "id": "P09_liquipel",
+      "start_sec": 71.35,
+      "window": "71.2-73.5s  Liquipel (a1)",
+      "script": "<sub alias=\"Lik-wi-pel\">Liquipel</sub>."
+    },
+    {
+      "id": "P10_tech21",
+      "start_sec": 73.8,
+      "window": "73.6-90.5s  Tech21 (a5) to end",
+      "script": "And finally, <sub alias=\"Tech Twenty-One\">Tech21</sub>."
+    },
+    {
+      "id": "P11_flow",
+      "start_sec": 76.8,
+      "window": "Tech21 still on screen",
+      "script": "Every partner page follows the same simple flow. Tap to download the <sub alias=\"Insta Protek\">instaProtek</sub> app from the App Store or Google Play."
+    },
+    {
+      "id": "P12_outro",
+      "start_sec": 85.2,
+      "window": "Tech21 still on screen, ends ~90.4s",
+      "script": "That's a look at the <sub alias=\"Insta Protek\">instaProtek</sub> partner landing pages."
+    }
+  ]
+}

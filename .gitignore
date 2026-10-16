@@ -1,5 +1,6 @@
 # Credentials — never commit
 credentials.json
+synthesia-credentials.json
 
 # Playwright session storage
 .claude/skills/instaprotek-enterprise-registration/.auth/
@@ -38,3 +39,7 @@ auth_state.json
 # Regression run evidence screenshots (may contain customer PII —
 # the nullnet env carries live production data, see run-2026-08-17)
 tmp/**/evidence/*.png
+
+# Video work: intermediate Synthesia clips and preview frames
+Videos/narration/*.mp4
+tmp/vframes/
