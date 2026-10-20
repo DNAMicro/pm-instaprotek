@@ -6,7 +6,7 @@
       "id": "A_intro",
       "start_sec": 3.4,
       "window": "2.8-24.8s standard landing page; scene ends 13.8s so the idle stretch is cut",
-      "script": "This is the <sub alias=\"Instuh-protek\">instaProtek</sub> app landing page. Customers can tap to download the app from the App Store or Google Play.",
+      "script": "This is the <sub alias=\"Insta-protect\">instaProtek</sub> app landing page. Customers can tap to download the app from the App Store or Google Play.",
       "scene_end": 10.2
     },
     {
@@ -91,13 +91,13 @@
       "id": "P11_flow",
       "start_sec": 76.8,
       "window": "Tech21 still on screen",
-      "script": "Every partner page follows the same simple flow. Tap to download the <sub alias=\"Instuh-protek\">instaProtek</sub> app from the App Store or Google Play."
+      "script": "Every partner page follows the same simple flow. Tap to download the <sub alias=\"Insta-protect\">instaProtek</sub> app from the App Store or Google Play."
     },
     {
       "id": "P12_outro",
       "start_sec": 85.2,
       "window": "Tech21 still on screen, ends ~90.4s",
-      "script": "That's a look at the <sub alias=\"Instuh-protek\">instaProtek</sub> partner landing pages."
+      "script": "That's a look at the <sub alias=\"Insta-protect\">instaProtek</sub> partner landing pages."
     }
   ]
 }
