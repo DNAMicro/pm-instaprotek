@@ -68,5 +68,12 @@
       "asset_id": "user.0d11d837-4acd-4427-b369-dd25b564f9e8",
       "window": "85.20-90.40"
     }
+  },
+  "final": {
+    "video_id": "72c21e01-231c-4b83-8101-b39bd114e2fe",
+    "scenes": 15,
+    "status": "complete",
+    "duration": "0:01:02.264",
+    "file": "Landingpages_synthesia.mp4"
   }
 }
