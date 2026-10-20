@@ -1,10 +1,10 @@
 {
   "asset_id": "user.36e8003e-b5e3-4008-85dd-486ba6d930fb",
   "test": {
-    "video_id": "a7d3fafa-8d42-4330-bd80-281850400c4a",
+    "video_id": "ac42ad44-670c-4123-b685-faa0bf64455b",
     "scenes": 15,
     "status": "complete",
-    "duration": "0:01:02.264",
+    "duration": "0:01:01.315",
     "file": "Landingpages_synthesia_test.mp4"
   },
   "slices": {
@@ -37,8 +37,8 @@
       "window": "52.80-55.80"
     },
     "P05_itskins": {
-      "asset_id": "user.42ccccf5-f8f5-4dbe-9d5d-63e015203a13",
-      "window": "56.50-61.30"
+      "asset_id": "user.740e8674-0975-4ef5-85c0-2508a8fce3ca",
+      "window": "56.50-59.50"
     },
     "P06_powersmart": {
       "asset_id": "user.b3a9a529-2adb-4796-8244-047e3d4889fa",

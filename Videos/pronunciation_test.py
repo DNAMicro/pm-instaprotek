@@ -16,25 +16,36 @@ from synthesia_narration import STOCK_AVATAR, call, download, load_key_and_avata
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "pronunciation_test.mp4")
 
-# instaProtek, stress on IN-sta
+# instaProtek = "InstaProtect", stress on IN-sta. Each one is read inside the
+# exact first sentence of the video, because the sentence changes how it sounds.
 VARIANTS = [
-    '<sub alias="Insta-protek">instaProtek</sub>',
-    '<sub alias="INSTA-protek">instaProtek</sub>',
-    '<sub alias="IN-stuh-proh-tek">instaProtek</sub>',
-    '<sub alias="Instuh-protek">instaProtek</sub>',
-    '<sub alias="Insta protek">instaProtek</sub>',
-    '<phoneme alphabet="ipa" ph="ˈɪnstəˌproʊtɛk">instaProtek</phoneme>',
+    '<sub alias="Insta-protect">instaProtek</sub>',
+    '<sub alias="Insta Protect">instaProtek</sub>',
+    '<sub alias="InstaProtect">instaProtek</sub>',
+    '<sub alias="Instaprotect">instaProtek</sub>',
+    '<sub alias="Insta-pro-tect">instaProtek</sub>',
+    '<sub alias="Instuh-protect">instaProtek</sub>',
 ]
+SENTENCE = "This is the {} app landing page."
 WORDS = ["One", "Two", "Three", "Four", "Five", "Six"]
+
+# Liquipel = "Leekwepel"; read on its own, as in the video
+LIQUIPEL = [
+    '<sub alias="Leekwepel">Liquipel</sub>',
+    '<sub alias="Leek-weh-pel">Liquipel</sub>',
+    '<sub alias="Leek-wepple">Liquipel</sub>',
+]
 
 
 def main():
     key, _ = load_key_and_avatar()
-    script = " ".join(f"Option {w}. This is the {v} app. <break time=\"1s\"/>"
+    script = " ".join(f"Option {w}. " + SENTENCE.format(v) + " <break time=\"1s\"/>"
                       for w, v in zip(WORDS, VARIANTS))
+    script += " " + " ".join(f"Partner option {w}. {v}. <break time=\"1s\"/>"
+                             for w, v in zip(WORDS, LIQUIPEL))
     body = {
         "test": True,
-        "title": "instaProtek pronunciation options (test)",
+        "title": "instaProtek and Liquipel pronunciation options (test)",
         "visibility": "private",
         "aspectRatio": "16:9",
         "input": [{
