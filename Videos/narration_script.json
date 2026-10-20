@@ -6,14 +6,15 @@
       "id": "A_intro",
       "start_sec": 3.4,
       "window": "2.8-24.8s standard landing page; scene ends 13.8s so the idle stretch is cut",
-      "script": "This is the <sub alias=\"Instuh-protek\">instaProtek</sub> app landing page. Customers can tap to download the app from the App Store or Google Play. Below the download buttons, the \"You Break It, We Fix It\" guarantee is displayed.",
-      "scene_end": 13.8
+      "script": "This is the <sub alias=\"Instuh-protek\">instaProtek</sub> app landing page. Customers can tap to download the app from the App Store or Google Play.",
+      "scene_end": 10.2
     },
     {
       "id": "B_brikd",
       "start_sec": 24.8,
       "window": "24.8-36.4s  Brikd page, full screen (a30)",
-      "script": "Next, the same page co-branded for a partner. Here, the <sub alias=\"Brick\">Brikd</sub> logo appears next to <sub alias=\"Instuh-protek\">instaProtek</sub>, with the Product Replacement Warranty banner. The download buttons stay the same."
+      "script": "Next, the same page co-branded for our partner <sub alias=\"Brick\">Brikd</sub>.",
+      "scene_end": 28.6
     },
     {
       "id": "C_transition",
@@ -25,25 +26,28 @@
       "id": "P01_simple",
       "start_sec": 39.4,
       "window": "39.2-45.2s  Simple (a14)",
-      "script": "Simple, also with the Product Replacement Warranty."
+      "script": "Simple.",
+      "scene_end": 42.4
     },
     {
       "id": "P02_shieldit",
       "start_sec": 45.4,
       "window": "45.2-48.3s  ShieldIT (a42)",
-      "script": "Next, <sub alias=\"Shield-eat\">ShieldIT</sub>."
+      "script": "<sub alias=\"Shield-eat\">ShieldIT</sub>."
     },
     {
       "id": "P03_powertek",
       "start_sec": 48.5,
       "window": "48.3-52.6s  Powertek (a40)",
-      "script": "<sub alias=\"Power-tek\">Powertek</sub>, with the Lifetime Product Replacement Warranty."
+      "script": "<sub alias=\"Power-tek\">Powertek</sub>.",
+      "scene_end": 51.5
     },
     {
       "id": "P04_powerlab",
       "start_sec": 52.8,
       "window": "52.6-56.3s  PowerLab (a54)",
-      "script": "<sub alias=\"Power Lab\">PowerLab</sub>, with the \"You Break It, We Fix It\" guarantee."
+      "script": "<sub alias=\"Power Lab\">PowerLab</sub>.",
+      "scene_end": 55.8
     },
     {
       "id": "P05_itskins",
@@ -55,7 +59,8 @@
       "id": "P06_powersmart",
       "start_sec": 61.3,
       "window": "61.1-65.9s  Powersmart (a41)",
-      "script": "<sub alias=\"Power Smart\">Powersmart</sub>, with the Lifetime Product Replacement Warranty."
+      "script": "<sub alias=\"Power Smart\">Powersmart</sub>.",
+      "scene_end": 64.3
     },
     {
       "id": "P07_otterbox",
@@ -67,7 +72,8 @@
       "id": "P08_ijoy",
       "start_sec": 67.9,
       "window": "67.7-71.1s  iJOY (a2)",
-      "script": "<sub alias=\"eye joy\">iJOY</sub>."
+      "script": "<sub alias=\"eye joy\">iJOY</sub>.",
+      "scene_end": 70.9
     },
     {
       "id": "P09_liquipel",
