@@ -6,14 +6,14 @@
       "id": "A_intro",
       "start_sec": 3.4,
       "window": "2.8-24.8s standard landing page; scene ends 13.8s so the idle stretch is cut",
-      "script": "This is the <sub alias=\"Insta-protek\">instaProtek</sub> app landing page. Customers can tap to download the app from the App Store or Google Play. Below the download buttons, the \"You Break It, We Fix It\" guarantee is displayed.",
+      "script": "This is the <sub alias=\"Instuh-protek\">instaProtek</sub> app landing page. Customers can tap to download the app from the App Store or Google Play. Below the download buttons, the \"You Break It, We Fix It\" guarantee is displayed.",
       "scene_end": 13.8
     },
     {
       "id": "B_brikd",
       "start_sec": 24.8,
       "window": "24.8-36.4s  Brikd page, full screen (a30)",
-      "script": "Next, the same page co-branded for a partner. Here, the <sub alias=\"Brick\">Brikd</sub> logo appears next to <sub alias=\"Insta-protek\">instaProtek</sub>, with the Product Replacement Warranty banner. The download buttons stay the same."
+      "script": "Next, the same page co-branded for a partner. Here, the <sub alias=\"Brick\">Brikd</sub> logo appears next to <sub alias=\"Instuh-protek\">instaProtek</sub>, with the Product Replacement Warranty banner. The download buttons stay the same."
     },
     {
       "id": "C_transition",
@@ -85,13 +85,13 @@
       "id": "P11_flow",
       "start_sec": 76.8,
       "window": "Tech21 still on screen",
-      "script": "Every partner page follows the same simple flow. Tap to download the <sub alias=\"Insta-protek\">instaProtek</sub> app from the App Store or Google Play."
+      "script": "Every partner page follows the same simple flow. Tap to download the <sub alias=\"Instuh-protek\">instaProtek</sub> app from the App Store or Google Play."
     },
     {
       "id": "P12_outro",
       "start_sec": 85.2,
       "window": "Tech21 still on screen, ends ~90.4s",
-      "script": "That's a look at the <sub alias=\"Insta-protek\">instaProtek</sub> partner landing pages."
+      "script": "That's a look at the <sub alias=\"Instuh-protek\">instaProtek</sub> partner landing pages."
     }
   ]
 }
